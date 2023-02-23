@@ -4,14 +4,13 @@ TODO: Replace with project-specific CodeCov badge
 # project_name
 Short description of project_name
 
-- [project_name](#project_name)
-  - [Questions and Feedback](#questions-and-feedback)
-  - [Guidance](#guidance)
-    - [Getting Started](#getting-started)
-    - [Proposing Changes](#proposing-changes)
-    - [Updating Dependencies](#updating-dependencies)
-  - [How Do I Contribute?](#how-do-i-contribute)
-  - [Notice](#notice)
+- [Questions and Feedback](#questions-and-feedback)
+- [Guidance](#guidance)
+  - [Getting Started](#getting-started)
+  - [Proposing Changes](#proposing-changes)
+  - [Updating Dependencies](#updating-dependencies)
+- [How Do I Contribute?](#how-do-i-contribute)
+- [Notice](#notice)
 
 ## Questions and Feedback
 Please submit issues for any technical questions/concerns or contact ctid@mitre-engenuity.org directly for more general inquiries.
@@ -71,7 +70,7 @@ Please submit [issues](https://github.com/center-for-threat-informed-defense/pro
 technical questions/concerns or contact ctid@mitre-engenuity.org directly for more general inquiries.
 
 ## Notice
-Copyright 2021 MITRE Engenuity. Approved for public release. Document number XXXXX
+Copyright 2021 MITRE Engenuity. Approved for public release. Document number PRS_NUMBER
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
