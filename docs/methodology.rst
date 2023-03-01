@@ -41,7 +41,7 @@ Analytic: ADFind (https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8
    :alt: ADfind Analytic
    :align: center
 
-    ADFind Analytic
+   ADFind Analytic
 
 We are given this analytic that looks for specific command line arguments dealing with the ADFind tool. It also looks for the key word ‘\adfind.exe’ within the image path. Looking at the current data sources provided by the analytic and the Pyramid of Evasiveness, we can begin to place where everything is. First, we place Image|endswith: ‘\adfind.exe’ within the **Operational and Environmental Variables** level. While the intention of this analytic is looking for the execution of commands through this tool, this image path can be obfuscated by adversaries within the command line. We put the command line arguments into the **Custom Software and Open Source** level, since these command line arguments are specific to the tool itself. The final placement of the analytic is below. 
 
@@ -49,7 +49,7 @@ We are given this analytic that looks for specific command line arguments dealin
    :alt: ADfind Original Analytic Level Scoring
    :align: center
 
-    ADFind Analytic scored against Levels of Evasiveness
+   ADFind Analytic scored against Levels of Evasiveness
 
 As it stands, this analytic could be easily evaded by adversaries. **How can we improve this analytic so it is more robust in terms of the tools that could be used to evade it?** We don’t need to improve it down all the way to the system application or kernel layer, so let’s take it one step at a time.
 
@@ -59,7 +59,7 @@ As mentioned previously, adversaries can change the image path name so detection
    :alt: ADfind Improved Analytic Level Scoring
    :align: center
 
-    ADFind Analytic after improvements were made based on various indicators
+   ADFind Analytic after improvements were made based on various indicators
 
 Through this process, we have improved our analytic by just changing one data source to identify adversary behavior and make it more difficult for them to evade detection of this analytic. Not everyone is going to be able to collect Sysmon or make these analytic improvements. However, it gets us thinking of where we can begin to make these small, incremental steps within our environment to create more robust analytics.
 
