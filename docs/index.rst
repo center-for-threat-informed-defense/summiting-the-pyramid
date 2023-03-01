@@ -8,5 +8,6 @@ One paragraph description of STP.
     :caption: Contents
 
     overview
-    introduction
+    methodology
+    resources
     changelog
