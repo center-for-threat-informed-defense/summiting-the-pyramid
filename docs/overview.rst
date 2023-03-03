@@ -7,32 +7,13 @@ Overview
 
 .. epigraph::
 
-   Put some profound quote here.
-
-   -- Khalil Gibran, `April 26, 2015 <https://github.com/JohnLaTwC/Shared/blob/master/Defenders%20think%20in%20lists.%20Attackers%20think%20in%20graphs.%20As%20long%20as%20this%20is%20true%2C%20attackers%20win.md>`__
+   Welcome to Summiting the Pyramid!
 
 Introduction
 ------------
+This website will be periodically updated to include research updates for our participants. At the end of the project, it will be released to the public with our guidance and research documentation.
 
-TBD
-
-Get Started
------------
-
-Here are a few ways for you to learn more and get started with Summiting the Pyramid:
-
-1. :newsgroup:`foo the bar` hello world
-2. :newsgroup:`baz the bat` goodbye world
-
-Deep Dive
----------
-
-If you decide you want to dive even deeper into Summiting, here are the key resources
-for building up a full understanding of the project:
-
-* more
-* links
-* here
+**Use the index to begin looking at our research!**
 
 Notice
 ------
