@@ -47,7 +47,7 @@ Analytic: ADFind (https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8
 
 We are given this analytic that looks for specific command line arguments dealing with the ADFind tool. It also looks for the key word ‘\adfind.exe’ within the image path. Looking at the current data sources provided by the analytic and the Levels of Evasiveness, we can begin to place where everything is. First, we place Image|endswith: ‘\adfind.exe’ within the **Operational and Environmental Variables** level. While the intention of this analytic is looking for the execution of commands through this tool, this image path can be obfuscated by adversaries within the command line. We put the command line arguments into the **Custom Software and Open Source** level, since these command line arguments are specific to the tool itself. The final placement of the analytic is below.
 
-.. figure:: _static/adfind_analytic_levels.png
+.. figure:: _static/adfind_original.png
    :alt: ADfind Original Analytic Level Scoring
    :align: center
 
