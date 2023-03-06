@@ -2,7 +2,7 @@
 
 ## How to contribute
 
-Thanks for contributing to project_name!
+Thanks for contributing to Summiting the Pyramid!
 
 You are welcome to comment on issues, open new issues, and open pull requests.
 
