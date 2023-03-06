@@ -1,4 +1,4 @@
-# Summting the Pyramid
+# Summiting the Pyramid
 The Summiting the Pyramid project is focused on helping defenders by developing a methodology to improve analytics that can catch adversaries even as they evolve, detect future campaigns, and meet the promises of behavioral analytics.
 
 Please use the link here to access the most up-to-date download for our guidance
