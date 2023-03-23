@@ -10,5 +10,7 @@ One paragraph description of STP.
     overview
     methodology
     levels
+    levelsexplanation
+    analytics
     resources
     changelog
