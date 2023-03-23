@@ -9,5 +9,6 @@ One paragraph description of STP.
 
     overview
     methodology
+    levels
     resources
     changelog
