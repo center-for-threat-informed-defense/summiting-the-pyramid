@@ -11,6 +11,6 @@ One paragraph description of STP.
     methodology
     levels
     levelsexplanation
-    analytics
+    analyticslist
     resources
     changelog
