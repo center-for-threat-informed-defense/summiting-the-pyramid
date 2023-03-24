@@ -11,3 +11,4 @@ One paragraph description of STP.
     methodology
     resources
     changelog
+    test_grid_table

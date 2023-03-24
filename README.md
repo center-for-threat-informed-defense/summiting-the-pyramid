@@ -26,6 +26,17 @@ contributors if are you interested in [contributing or simply reporting issues.]
 Please submit [issues](https://github.com/center-for-threat-informed-defense/project_name/issues) for any
 technical questions/concerns or contact ctid@mitre-engenuity.org directly for more general inquiries.
 
+### Local Development
+To do any local development, first you need to install the Python dependencies:
+
+`pip install -r requirements-dev.txt`
+
+After installing the dependencies, you'll then need to build the website.
+
+`make docs-serve`
+
+You should then be able to navigate to the website at http://127.0.0.1:8000.
+
 ## Notice
 Copyright 2023 MITRE Engenuity. Approved for public release. Document number PRS_NUMBER
 
