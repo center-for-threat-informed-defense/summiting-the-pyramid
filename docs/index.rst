@@ -12,6 +12,6 @@ One paragraph description of STP.
     levels
     levelsexplanation
     analyticslist
+    analytics/index
     resources
     changelog
-    test_grid_table

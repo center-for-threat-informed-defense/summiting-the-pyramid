@@ -33,7 +33,7 @@ To do any local development, first you need to install the Python dependencies:
 
 After installing the dependencies, you'll then need to build the website.
 
-`make docs-serve`
+`make docs-server`
 
 You should then be able to navigate to the website at http://127.0.0.1:8000.
 

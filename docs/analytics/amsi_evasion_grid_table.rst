@@ -1,13 +1,13 @@
-
+-------------------------
 AMSI Evasion - Grid Table
-=========================
+-------------------------
 
 Note: This is the wall analogy aka higher is better
 
 Original Analytic: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
 
 Original Analytic Scoring
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 +-------------------------------------+--------------------------------------------+
 | Level                               | Observables                                |
 +=====================================+============================================+
@@ -31,7 +31,7 @@ Original Analytic Scoring
 
 
 Improved Analytic Scoring
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 +-------------------------------------+------------------------------------------------------------------------+
 | Level                               | Observables                                                            |
 +=====================================+========================================================================+
@@ -52,9 +52,15 @@ Improved Analytic Scoring
 +-------------------------------------+------------------------------------------------------------------------+
 
 Research Notes and Caveats
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 The original analytic relies on the adversary removing the AMSI provider from the registry. There is a known 
 technique to evade this analytic where an new (Fake) AMSI is registered in the directory. This moves to detect 
 any change in the directory. This directory is “special” due to the way the OS uses it in the queuing of AMSI 
-tasking. With these modification the adversary cannot add, remove, or modify any values in this directory, 
+tasking [#f1]_ . With these modification the adversary cannot add, remove, or modify any values in this directory, 
 detecting the activity.
+
+
+
+.. rubric:: References
+
+.. [#f1] https://learn.microsoft.com/en-us/windows/win32/amsi/dev-audience#register-your-provider-dll-with-amsi
