@@ -9,6 +9,9 @@ One paragraph description of STP.
 
     overview
     methodology
+    levels
+    levelsexplanation
+    analyticslist
     resources
     changelog
     test_grid_table
