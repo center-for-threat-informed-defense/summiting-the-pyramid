@@ -1,7 +1,7 @@
 Summiting the Pyramid |version|
 ===============================
-
-One paragraph description of STP.
+..
+    One paragraph description of STP.
 
 .. toctree::
     :maxdepth: 2
