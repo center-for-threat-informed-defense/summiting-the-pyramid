@@ -1,5 +1,6 @@
 Summit the Pyramid
 ==================
+Updated: 03/23/2023
 
 Goal of Summiting the Pyramid
 -----------------------------
@@ -23,17 +24,17 @@ The following capability abstraction map for T1050 - New Service illustrates how
 
 **How can we create analytics that detect adversary behavior and attacks while using the Pyramid of Pain and capability abstraction as references?**
 
-The Levels of Evasiveness
+Levels and Observables
 -------------------------
-The “Levels of Evasiveness” attempts to show the relationship between indicators used to detect adversary activities and robustness of resulting analytics in order to determine relative complexity of evasion. When analytics are created, the question should be asked, “How difficult would it be for an adversary to evade this analytic?” The Pyramid of Pain shows us how difficult it is for an adversary to change their behavior. The Levels of Evasiveness will focus on understanding how some levels are more evasive than others, resulting in more robust analytics which detect further into the OS.
+The table of levels and observables attempts to show the relationship between indicators used to detect adversary activities and robustness of resulting analytics in order to determine relative complexity of evasion. When analytics are created, the question should be asked, “How difficult would it be for an adversary to evade this analytic?” The Pyramid of Pain shows us how difficult it is for an adversary to change their behavior. These levels will focus on understanding how some analytic observables are more evasive or more difficult to bypass than others, resulting in more robust analytics which detect further into the OS.
 
-.. figure:: _static/levels_of_evasiveness.png
-   :alt: Levels of Evasiveness
+.. figure:: _static/levels_03232023.PNG
+   :alt: Difficulty of Bypassing Analytic Observables
    :align: center
 
-   Levels of Evasiveness
+   Levels and Observables
 
-While this reverse “pyramid” is used to inform defenders about the state of their analytic, it is not meant to imply judgement of certain analytics. As Jared Atkinson mentioned in his write-up on the Detection Spectrum, “There is a place for precise detections just like there is a place for broad detections” (https://posts.specterops.io/detection-spectrum-198a0bfb9302 ). These levels are used to inform how defenders can utilize indicators further down the technical stack to create less evade-able analytics, saving time, resources, and analyst workload. This can be used not only to create new analytics, but to improve current detections by reducing dependencies on lower levels on the Pyramid of Pain and the Levels of Evasiveness. Creating more defense-in-depth can be utilized to defend against future adversaries, and inform how to improve current analytic detections.
+While these levels are used to inform defenders about the state of their analytic, it is not meant to imply judgement of certain analytics. As Jared Atkinson mentioned in his write-up on the Detection Spectrum, “There is a place for precise detections just like there is a place for broad detections” (https://posts.specterops.io/detection-spectrum-198a0bfb9302 ). These levels are used to inform how defenders can utilize indicators further down the technical stack to create less evade-able analytics, saving time, resources, and analyst workload. This can be used not only to create new analytics, but to improve current detections by reducing dependencies on lower levels on the Pyramid of Pain and the levels listed here. Creating more defense-in-depth can be utilized to defend against future adversaries, and inform how to improve current analytic detections.
 
 Example: ADFind.exe
 -------------------
@@ -47,7 +48,7 @@ Analytic: ADFind (https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8
 
 We are given this analytic that looks for specific command line arguments dealing with the ADFind tool. It also looks for the key word ‘\adfind.exe’ within the image path. Looking at the current data sources provided by the analytic and the Levels of Evasiveness, we can begin to place where everything is. First, we place Image|endswith: ‘\adfind.exe’ within the **Operational and Environmental Variables** level. While the intention of this analytic is looking for the execution of commands through this tool, this image path can be obfuscated by adversaries within the command line. We put the command line arguments into the **Custom Software and Open Source** level, since these command line arguments are specific to the tool itself. The final placement of the analytic is below.
 
-.. figure:: _static/adfind_original.PNG
+.. figure:: _static/adfind_original_032023.PNG
    :alt: ADfind Original Analytic Level Scoring
    :align: center
 
@@ -57,7 +58,7 @@ As it stands, this analytic could be easily evaded by adversaries if they were t
 
 As mentioned previously, adversaries can change the image path name so detection tools do not detect the real tool they are attempting to use. However, they must declare the tool they are using somewhere. Adversaries must embed tools into their malware in order to know where to find the specific file to use. This can be identified through the data source **OriginalFileName**, a data source that is available through parsing in Sysmon. By tracking the embedded file rather than the image name, we can identify the tool the adversary is going to use. We can make the analytic improvements here, which have been highlighted in purple.
 
-.. figure:: _static/adfind_analytics_levels_improved.png
+.. figure:: _static/adfind_analytics_levels_improved_032023.png
    :alt: ADfind Improved Analytic Level Scoring
    :align: center
 

@@ -9,5 +9,7 @@ One paragraph description of STP.
 
     overview
     methodology
+    levels
+    levelsexplanation
     resources
     changelog
