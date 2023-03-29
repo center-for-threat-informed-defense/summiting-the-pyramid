@@ -2,9 +2,19 @@
 AMSI Evasion
 ------------
 
-Note: This is the wall analogy aka higher is better
+https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
 
-Original Analytic: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
+.. list-table::
+    :widths: 30 70
+
+    * - Original Analytic
+      - | EventType: DeleteKey
+        | TargetObject|endswith:
+        |    - '{2781761E-28E0-4109-99FE-B9D127C57AFE}' # IOfficeAntiVirus
+        |    - '{A7C452EF-8E9F-42EB-9F2B-245613CA0DC9}' # ProtectionManagement.dll
+    * - Improved Analytic
+      - | TargetObject|contains: 
+        |    - 'Computer\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\AMSI\\Providers\\' 
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^

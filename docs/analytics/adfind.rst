@@ -1,8 +1,28 @@
-------
-ADFind
-------
+-----------------
+Suspicious ADFind
+-----------------
 
-Original Analytic: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
+https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
+
+.. list-table::
+    :widths: 30 70
+
+    * - Original Analytic
+      - | CommandLine|contains:
+        |   - 'objectcategory'
+        |   - 'trustdmp'
+        |   - 'dcmodes'
+        |   - 'dclist'
+        |   - 'computers_pwdnotreqd'
+        | Image|endswith: '\adfind.exe'
+    * - Improved Analytic
+      - | CommandLine|contains:
+        |   - 'objectcategory'
+        |   - 'trustdmp'
+        |   - 'dcmodes'
+        |   - 'dclist'
+        |   - 'computers_pwdnotreqd'
+        | OriginalFileName: ?adfind.exe?
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^

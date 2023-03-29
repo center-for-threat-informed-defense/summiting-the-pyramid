@@ -1,6 +1,6 @@
-===============================
-Analytics Repository (Option 2)
-===============================
+====================
+Analytics Repository
+====================
 
 The following examples demonstrate how to score an analytic in accordance with the Summiting the Pyramid methodology.
 
@@ -10,4 +10,7 @@ The following examples demonstrate how to score an analytic in accordance with t
 
     adfind
     amsi_evasion_list_table
-    bloodhound
+    .. 
+        bloodhound
+    ..
+        dllhost_activity
