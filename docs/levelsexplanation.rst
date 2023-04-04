@@ -3,7 +3,7 @@ Explaining the Levels
 
 When developing the Summiting the Pyramid Project, we needed to determine how to group different observables, or parts of an analytic, and how to rank them. Currently, we have described these levels as the **Difficulty of Bypassing Analytic Observables**. There are seven levels which are grouped based on how difficult it is for an adversary to evade the analytic observable.
 
-.. figure:: _static/levels_03232023.PNG
+.. figure:: _static/levels_04042023.PNG
    :alt: Difficulty of Bypassing Analytic Observables
    :align: center
 
