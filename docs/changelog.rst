@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.0.2 -- March 28, 2023
+    Added Analytics Repository and examples of scoring analytics according to the methodology
+
 1.0.1 -- March 23, 2023
     Updated methodology writeup with new levels, new page on current levels documentation
 
