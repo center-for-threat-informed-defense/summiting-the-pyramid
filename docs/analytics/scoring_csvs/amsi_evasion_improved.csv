@@ -1,0 +1,9 @@
+﻿Level,Observables
+Kernel/Interfaces,"TargetObject|contains:
+    - 'Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AMSI\Providers\' "
+System Calls,
+OS API,
+Library API,
+Native Tooling,
+Custom Software/Open Source,
+Operational/Environmental Variables,
