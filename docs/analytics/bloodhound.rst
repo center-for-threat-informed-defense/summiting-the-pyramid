@@ -87,6 +87,6 @@ Research Notes and Caveats
 ..
     TODO: verify the level of this analytic.
 
-Looking at specific file names is less is very brittle. Looking for the file format using regex is 
+Looking at specific file names is very brittle. Looking for the file format using regex is 
 still at the Operational/Environmental Variable level, however, it is significantly more robust then 
 the specific filename seen in the SIGMA rule.
