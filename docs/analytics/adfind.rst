@@ -50,7 +50,7 @@ Original Analytic Scoring
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
     * - Operational/Environmental Variables
-      - Image|endswith: ‘\adfind.exe’
+      - Image|endswith: ''\adfind.exe'
 
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,7 +78,7 @@ Improved Analytic Scoring
         |   - 'dcmodes'
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
-        | OriginalFileName: ‘adfind.exe’
+        | OriginalFileName: 'adfind.exe'
     * - Operational/Environmental Variables
       - 
 
