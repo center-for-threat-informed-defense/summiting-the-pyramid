@@ -33,10 +33,10 @@ all utilize the same registry key within the Registry Service Database. If an ad
 can create a new service using the Windows API, RPC, or Registry.
 
 .. figure:: _static/new_service_capability_abstraction.png
-   :alt: New Service Capability Abstraction - Created by Specter Ops
+   :alt: New Service Capability Abstraction - Created by SpecterOps
    :align: center
 
-   New Service Capability Abstraction - Created by Specter Ops [#f2]_
+   New Service Capability Abstraction - Created by SpecterOps [#f2]_
 
 **How can we create analytics that detect adversary behavior and attacks while using the Pyramid of Pain and capability abstraction as references?**
 

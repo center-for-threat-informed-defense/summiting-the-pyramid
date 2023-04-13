@@ -66,23 +66,25 @@ Determining Evadability Level
 
 The Evadability Level *E(X)* for a given observable is equivalent to the Level of Evadability that the observable resides at:
 
-   - For an observable A, **E(A) = Level of Evadability of A**
+  - For an observable A, **E(A) = Level of Evadability of A**
+
 
 In determining the Evadability Level *E(X)* for a more complex analytic, we can apply a set of Boolean logic rules to find the resulting value.  
 The set of rules below are for use in comparing two analytic components at levels A and B:
 
-   - **E(A AND B) → MIN(E(A), E(B)) [when A ∩ B ≠ ∅]** - The evadability level of A and B is equal to the lowest level value of the two observables, 
-   as long as there exists some overlap between the data that can be detected by each observable; if this were not true, the analytic would never return any results.
+  - **E(A AND B) → MIN(E(A), E(B)) [when A ∩ B ≠ ∅]** - The evadability level of A and B is equal to the lowest level value of the two observables, 
+    as long as there exists some overlap between the data that can be detected by each observable; if this were not true, the analytic would never return any results.
+  
+  - **E(A OR B) → MAX(E(A), E(B))** - The evadability level of A OR B is equal to the highest level value of the two observables; if all 
+    implementations of the attack technique were known, the evadability level could be represented as E(A OR B) ≥ MAX(E(A), E(B)), where the 
+    evadability score could surpass the highest level if the observables at that level were fully detectable by the analytic.
+  
+  - **E(NOT A) → E(A)** - The evadability level of NOT A would be equivalent to the evadability level of the observable A itself, since the 
+    detection focus is still at A’s level of evadability.
+  
+  - **E(A AND B | A) → E(B)** - The evadability level of A and B predicated on observing A is equivalent to the evadability level of B, since 
+    observing A is a given in this context.
 
-   - **E(A OR B) → MAX(E(A), E(B))** - The evadability level of A OR B is equal to the highest level value of the two observables; if all 
-   implementations of the attack technique were known, the evadability level could be represented as E(A OR B) ≥ MAX(E(A), E(B)), where the 
-   evadability score could surpass the highest level if the observables at that level were fully detectable by the analytic.
-
-   - **E(NOT A) → E(A)** - The evadability level of NOT A would be equivalent to the evadability level of the observable A itself, since the 
-   detection focus is still at A’s level of evadability.
-
-   - **E(A AND B | A) → E(B)** - The evadability level of A and B predicated on observing A is equivalent to the evadability level of B, since 
-   observing A is a given in this context.
 
 Relative Robustness Score
 -------------------------
@@ -182,7 +184,7 @@ The observables for both analytics aligned to the Levels of Evadability can be s
         |   - 'computers_pwdnotreqd'
         | OriginalFileName: 'adfind.exe'
     * - Operational/Environmental Variables
-      - Image|endswith: ‘\adfind.exe’
+      - Image|endswith: '\adfind.exe'
       - 
 
 By calculating the Evadability Tuple Score for both analytics, we can confirm that the updated analytic should be both harder to 
@@ -200,5 +202,5 @@ evade (via higher Evadability Level), and relatively stronger in terms of robust
 .. rubric:: References
 
 .. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
-.. [#f2] MITRE ATT&CK Defender
+.. [#f2] https://mitre-engenuity.org/cybersecurity/mad/
 .. [#f3] https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
