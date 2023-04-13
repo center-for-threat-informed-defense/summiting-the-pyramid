@@ -37,15 +37,15 @@ jobs:
       with:
         name: summiting_the_pyramid_docs_html
         path: docs/_build/html/
-    - name: Install TeX Live
-      run: sudo apt install -y latexmk texlive texlive-latex-extra texlive-science
-    - name: Build PDF docs
-      run: poetry run sphinx-build -M latexpdf docs docs/_build
-    - name: Upload PDF docs
-      uses: actions/upload-artifact@v3
-      with:
-        name: summiting_the_pyramid_docs_pdf
-        path: docs/_build/latex/
+    # - name: Install TeX Live
+    #   run: sudo apt install -y latexmk texlive texlive-latex-extra texlive-science
+    # - name: Build PDF docs
+    #   run: poetry run sphinx-build -M latexpdf docs docs/_build
+    # - name: Upload PDF docs
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: summiting_the_pyramid_docs_pdf
+    #     path: docs/_build/latex/
 
   # TODO uncomment when we publish the project
   # github_pages:
