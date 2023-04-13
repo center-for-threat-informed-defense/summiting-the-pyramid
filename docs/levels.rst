@@ -10,7 +10,7 @@ Levels and Observables
      - Observable Fields
      - Observable Values
    * - Kernel and Interfaces
-     - Registry modification, event IDs, network protocol
+     - 
      - add (CAR), remove (CAR), key_edit (CAR), value_edit (CAR)
      - 
    * - System Calls

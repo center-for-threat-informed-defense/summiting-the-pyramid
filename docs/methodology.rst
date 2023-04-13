@@ -48,7 +48,7 @@ difficult would it be for an adversary to evade this analytic?” The Pyramid of
 their behavior. These levels will focus on understanding how some analytic observables are more evasive or more difficult to bypass than 
 others, resulting in more robust analytics which detect further into the OS.
 
-.. figure:: _static/levels_03232023.PNG
+.. figure:: _static/levels_04042023.PNG
    :alt: Difficulty of Bypassing Analytic Observables
    :align: center
 

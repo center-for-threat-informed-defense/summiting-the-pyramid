@@ -1,3 +1,5 @@
+:orphan:
+
 -------------------------
 Insert Analytic Name Here
 -------------------------
@@ -35,6 +37,7 @@ Original Analytic Scoring
       - 
     * - Operational/Environmental Variables
       - 
+
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -61,6 +64,8 @@ Improved Analytic Scoring
 
 Research Notes and Caveats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+Make sure to change the reference number and copy/paste what is needed in there [#f1]_ .
 
 .. rubric:: References
-.. [#f1]
+
+.. [#f1] https://learn.microsoft.com/en-us/windows/win32/amsi/dev-audience#register-your-provider-dll-with-amsi
