@@ -114,7 +114,7 @@ System calls are where user-mode applications executed in CPU Ring 3 pass contro
 The user-mode application has little visibility and control to what happens at this level. This includes kernel-drivers and functions that call upon the kernel 
 directly to complete tasks. These system calls are usually implemented by storing values in system registers to indicate which functionality is requested, 
 followed by an interrupt signal in assembly. These low-level actions are usually performed by C wrapper functions. In Windows, these system call C wrapper 
-functions usually start with Nt or Zw [#12]_. In other operating systems, these C wrapper functions are usually included in libc. However, these wrapper function 
+functions usually start with Nt or Zw [#f12]_. In other operating systems, these C wrapper functions are usually included in libc. However, these wrapper function 
 can be bypassed in user-mode by directly setting the appropriate register(s) and invoking the direct system call interrupt. System calls also include the 
 actions resulting from routines, such as file manipulation or communication protection.
 
@@ -131,7 +131,7 @@ Kernel and Interface Observables
 --------------------------------
 
 As defined by Microsoft, the kernel, “implements the core functionality that everything else in the operating system depends upon.” [#f14]_ This is the heart of the 
-Operating System, as it provides the services for everything, including managing threads, conflicts and errors, and memory space [#15]_. Some of the kernel library 
+Operating System, as it provides the services for everything, including managing threads, conflicts and errors, and memory space [#f15]_. Some of the kernel library 
 support routines available start with ``Ke`` within the Windows Operating System. Defenders can monitor kernel activity through observables including registry 
 modification, some event IDs, and network protocols. 
 
