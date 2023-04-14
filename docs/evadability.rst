@@ -19,7 +19,7 @@ evadability and strength of a composite analytic.
 Basic Guidelines
 ----------------
 
-In order to devise an objective method of “scoring” complex analytics, we began by 
+In order to devise an objective method of scoring complex analytics, we began by 
 examining common Boolean logic operations and how they factor into important 
 analytic metrics, including recall and precision, before concluding on a new 
 metric, evadability.
@@ -119,9 +119,9 @@ others within the same evadability level.
 
    Evadability Tuple Example Calculations
 
-To illustrate this process, let’s take the example of the SIGMA analytic focused on Adfind.exe [#f3]_: 
+To illustrate this process, let’s take the example of the SIGMA analytic focused on ``adfind.exe`` [#f3]_: 
 
-.. code-block::
+.. code-block:: yaml
 
     selection:
         CommandLine|contains:
@@ -134,7 +134,7 @@ To illustrate this process, let’s take the example of the SIGMA analytic focus
 
 Through analysis of the original analytic’s Levels of Evadability for the listed observables, we have proposed the following change to the analytic that will increase its robustness and difficulty to evade:
 
-.. code-block::
+.. code-block:: yaml
    
     selection:
         CommandLine|contains:
@@ -184,7 +184,7 @@ The observables for both analytics aligned to the Levels of Evadability can be s
         |   - 'computers_pwdnotreqd'
         | OriginalFileName: 'adfind.exe'
     * - Operational/Environmental Variables
-      - Image|endswith: '\adfind.exe'
+      - Image|endswith: '\\adfind.exe'
       - 
 
 By calculating the Evadability Tuple Score for both analytics, we can confirm that the updated analytic should be both harder to 

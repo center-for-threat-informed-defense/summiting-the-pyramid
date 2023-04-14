@@ -11,7 +11,7 @@ grouped based on how difficult it is for an adversary to evade the analytic obse
 
    Levels and Observables
 
-We will describe and outline our research below on how we determined these different level.
+We will describe and outline our research below on how we determined these different levels.
 
 Operational and Environmental Variables
 ---------------------------------------
@@ -50,8 +50,8 @@ Native Tooling
 
 **Description**: *Tools which are native to the OS. The adversary has minimal control in changing functions and protocols to make them specific for their attack.*
 
-Native tooling represents tools that are native to the respective OS. For example, Windows has the Task Scheduler (schtasks.exe), ping (ping.exe) and WMI 
-command line utility (wmic.exe). The observables that are offered in this level are similar to those offered in the open-source tooling level, such as 
+Native tooling represents tools that are native to the respective OS. For example, Windows has the Task Scheduler (``schtasks.exe``), ping (``ping.exe``) and WMI 
+command line utility (``wmic.exe``). The observables that are offered in this level are similar to those offered in the open-source tooling level, such as 
 signatures, tool-specific configurations, and command line arguments. The observable values for this level are dependent on the OS that is being defended.
 
 **Why are native tools split from open-source tooling?**
@@ -60,7 +60,7 @@ Native tooling is less flexible than open-source applications, as an adversary h
 The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the tool.
 
 Since the adversary cannot change the tool itself and it is managed by an organization, it is much more difficult to distinguish adversary behavior 
-from benign behavior. This provides an opportunity for an adversary to blend into the computing environment, also known as a Living off the Land attack [#f3]_ [#f4]_. 
+from benign behavior. This provides an opportunity for an adversary to blend into the computing environment, also known as a Living off the Land (LotL) attack [#f3]_ [#f4]_. 
 It is likely that analytics utilizing native tool observables will need to be combined with other level’s observables, or require further research into 
 low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.
 
@@ -102,8 +102,8 @@ since other operating systems will interact directly with the kernel through sys
 API calls [#f9]_ allow a defender to focus on the certain capability of a tool compared to the tool itself. This potentially allows the creation of analytics that track 
 similar behavior of API calls, called low-variance behaviors, across multiple different tools, rather than building an analytic per tool. Now, certain API 
 calls might hook specific events. Jonny Johnson’s research focuses on mapping API calls to Windows Event IDs and Sysmon Event IDs that they may trigger [#f10]_ [#f11]_. 
-For example, ``LogonUserA`` will trigger the 4624-event code. However, this is not true for all events. Monitoring API calls can be extremely difficult. However, 
-further static and dynamic research can uncover potential links to event-codes, or lower-level calls that can be tracked otherwise.
+For example, ``LogonUserA`` will trigger Event ID 4624. However, this is not true for all events. Monitoring API calls can be extremely difficult. However, 
+further static and dynamic research can uncover potential links to event codes, or lower-level calls that can be tracked otherwise.
 
 System Calls
 ------------
