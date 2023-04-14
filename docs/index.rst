@@ -11,6 +11,7 @@ Summiting the Pyramid |version|
     methodology
     levels
     levelsexplanation
+    evadability
     analytics/index
     resources
     changelog

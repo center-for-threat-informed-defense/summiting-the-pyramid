@@ -1,5 +1,7 @@
 Changelog
 =========
+1.0.3 -- April 13, 2023
+    Added Evadability and Boolean Logic blog post, cleaned up prior post references, and other miscellaneous improvements
 
 1.0.2 -- March 28, 2023
     Added Analytics Repository and examples of scoring analytics according to the methodology

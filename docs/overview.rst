@@ -11,14 +11,15 @@ Overview
 
 Introduction
 ------------
-This website will be periodically updated to include research updates for our participants. At the end of the project, it will be released to the public with our guidance and research documentation.
+This website will be periodically updated to include research updates for our participants. At the end of the project, it will be 
+released to the public with our guidance and research documentation.
 
 **Use the index to begin looking at our research!**
 
 Notice
 ------
 
-© 2022 MITRE Engenuity. Approved for public release. Document number PRS_NUMBER.
+© 2023 MITRE Engenuity. Approved for public release. Document number PRS_NUMBER.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 file except in compliance with the License. You may obtain a copy of the License at
