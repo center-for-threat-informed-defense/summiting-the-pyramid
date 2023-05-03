@@ -1,3 +1,5 @@
+.. _Evadability and Boolean Logic:
+
 Evadability & Boolean Logic
 ===========================
 

@@ -13,6 +13,8 @@ grouped based on how difficult it is for an adversary to evade the analytic obse
 
 We will describe and outline our research below on how we determined these different levels.
 
+.. _Operational Environmental Variables:
+
 Operational and Environmental Variables
 ---------------------------------------
 
@@ -30,6 +32,8 @@ capture values which point to the context of a certain application, user, or pro
 processes, these will not detect anything new, or if the adversary decides to change an operational or environmental variable to evade detection. To 
 ensure detection in-depth, these observables should be combined with other level observables.
 
+.. _Custom Software and Open Source:
+
 Custom Software and Open-Source Applications
 --------------------------------------------
 
@@ -44,6 +48,8 @@ Open-source tooling gives adversaries an additional outlet of configuration to e
 identifying certain tool-specific configurations, an adversary can go into the open-source code, change it, and evade that detection [#f2]_. While this 
 requires knowledge on the adversary to change the tool configuration without changing the tool capability, it gives an adversary flexibility to 
 evade detection through the availability of application code itself.
+
+.. _Native Tooling:
 
 Native Tooling
 --------------
@@ -63,6 +69,8 @@ Since the adversary cannot change the tool itself and it is managed by an organi
 from benign behavior. This provides an opportunity for an adversary to blend into the computing environment, also known as a Living off the Land (LotL) attack [#f3]_ [#f4]_. 
 It is likely that analytics utilizing native tool observables will need to be combined with other level’s observables, or require further research into 
 low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.
+
+.. _Library API:
 
 Library API
 -----------
@@ -85,6 +93,9 @@ observable which could house API calls used by multiple tools. This could allow 
 or interprocess communication that might look suspicious. Since these packages and tools can be so broad and include a lot of functions, we separated API 
 functions from the library, and they are being tracked in the next level.
 
+
+.. _OS API Level:
+
 OS (Subsystem) API
 ------------------
 
@@ -104,6 +115,8 @@ similar behavior of API calls, called low-variance behaviors, across multiple di
 calls might hook specific events. Jonny Johnson’s research focuses on mapping API calls to Windows Event IDs and Sysmon Event IDs that they may trigger [#f10]_ [#f11]_. 
 For example, ``LogonUserA`` will trigger Event ID 4624. However, this is not true for all events. Monitoring API calls can be extremely difficult. However, 
 further static and dynamic research can uncover potential links to event codes, or lower-level calls that can be tracked otherwise.
+
+.. _System Calls:
 
 System Calls
 ------------
@@ -126,6 +139,8 @@ They could leverage open source collections of system calls from modern and olde
 Like the previous level, it might be more difficult for defenders to detect the use of system calls and true positives of malicious activity. The further 
 up you go through this leveling, the more likely adversary behavior will be blended in with benign behavior. However, it does indicate that it is more 
 difficult for an adversary to evade these system calls, as they will be directly interfacing with the operating system. 
+
+.. _Kernel and Interface Observables:
 
 Kernel and Interface Observables
 --------------------------------
