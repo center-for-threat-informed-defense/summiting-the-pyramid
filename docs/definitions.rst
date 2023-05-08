@@ -4,7 +4,7 @@ This page will be updated with terms key to the development of the Summiting the
 
 Precision
 ---------
-**Precision is the ratio of true positives to results** [#f1]_
+**Precision is the ratio of true positives to total results** [#f1]_
 
 Precision is extremely important when hunting for adversary activity. High precision analytics can most likely identify true malicious behavior. Precision corresponds to a low false positive rate within a detection environment. Precision can be more challenging to optimize for analytics higher on the pyramid.
 
@@ -19,7 +19,7 @@ Recall
 ------
 **Recall is the ratio of true positives to total relevant malicious events** [#f1]_
 
-Recall brings in all events related to a specific behavior, regardless of it’s malicious and benign. This ensures that all the events a defender is interested in are collected and can be further scrutinized for identifying malicious behavior.
+Recall brings in all events related to a specific behavior, regardless of it’s malicious and benign. High recall ensures that all the events a defender is interested in are collected and can be further scrutinized for identifying malicious behavior.
 
 **How Precision and Recall Effect an Analytic**
 
@@ -35,9 +35,9 @@ On the other hand, increasing precision might decrease recall, since the scope o
 
 Evadability
 -----------
-**Evadability describes how difficult or easy it is for an adversary to evade detections without changing their technique**
+**Evadability describes how difficult or easy it is for an adversary to bypass detections without changing their technique**
 
-When we think of an adversary moving through a network, they will attempt to evade detections in multiple ways. They can use applications which have hashes not documented by security vendors, use native tooling to blend in with normal processes, or build their own tools which communicate directly with the kernel. Defenders can use different analytics to detect adversary activity and behavior at different levels. A success might be if the adversary changes their route of attack through a different technique, or if they give up on their attack entirely.
+When we think of an adversary moving through a network, they will attempt to evade detections in multiple ways. They can use applications which have hashes not documented by security vendors, use native tooling to blend in with normal processes, or build their own tools which communicate directly with the kernel. Defenders can use different analytics to detect adversary activity and behavior at different levels. A success might be if the adversary changes their attack flow through a different technique, or if they give up on their attack entirely.
 
 Some behaviors are easier for adversaries to evade compared to others. For example, if a defender is detecting one MD5 hash of a customizable tool, an adversary can change one byte of the application in order to avoid setting off the detection from the defender. This is very trivial for the adversary to change, requiring minimal effort, time, and money. However, if a defender is detecting certain PowerShell commandlets, an adversary might have to change the tool they are using to avoid detection. This requires more effort, time, and potential money, especially if the adversary want to maintain their specific technique, or route of attack.
 
@@ -46,11 +46,11 @@ Some behaviors are easier for adversaries to evade compared to others. For examp
 
 Robustness
 ----------
-**Robustness is the effort needed by an adversary to evade an analytic**
+**Robustness measures the effort needed by an adversary to evade an analytic**
 
 Robustness is crucial for the effectiveness of an analytic, and is the focus of the Summiting the Pyramid project. 
 
-The evadability of an analytic directly affects the robustness of an analytic. For example, an analytic might look for a specific hash value, something that is easy for an adversary to evade. It is cheap for the adversary to evade, making the robustness low. However, an analytic might be looking for the execution of a specific system call, making the evadability of an adversary’s technique increasingly difficult. Since it would cost the adversary more to evade the detection, the robustness of that specific analytic is high.
+The evadability of an analytic directly affects the robustness of an analytic. For example, an analytic might look for a specific hash value, something that is easy for an adversary to evade. It is cheap for the adversary to evade, making the robustness low. However, an analytic might be looking for the execution of a specific system call, making the evadability of an adversary’s technique increasingly difficult. Since it would cost the adversary more to evade the observable, the robustness of that specific analytic is high.
 
 We are not decreasing the attack’s evasiveness through robustness, nor is robustness about scoring the tradecraft of the adversary. Evasiveness and evadability are two different concepts. Rather, we are scoring the robustness of an analytic in conjunction with the effort to evade the specific detection.
 
