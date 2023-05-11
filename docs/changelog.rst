@@ -1,5 +1,8 @@
 Changelog
 =========
+1.0.5 -- May 3, 2023
+    Added writeup on scoring analytic, added link references to explaining level sections
+
 1.0.4 -- April 20, 2023
     Added writeup on definitions for project
 

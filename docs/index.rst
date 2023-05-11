@@ -13,6 +13,7 @@ Summiting the Pyramid |version|
     levels
     levelsexplanation
     evadability
+    scoringanalytic
     analytics/index
     resources
     changelog
