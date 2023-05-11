@@ -3,6 +3,9 @@ Changelog
 1.0.5 -- May 3, 2023
     Added writeup on scoring analytic, added link references to explaining level sections
 
+1.0.4 -- April 20, 2023
+    Added writeup on definitions for project
+
 1.0.3 -- April 13, 2023
     Added Evadability and Boolean Logic blog post, cleaned up prior post references, and other miscellaneous improvements
 

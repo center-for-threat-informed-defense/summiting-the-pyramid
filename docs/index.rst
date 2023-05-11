@@ -9,6 +9,7 @@ Summiting the Pyramid |version|
 
     overview
     methodology
+    definitions
     levels
     levelsexplanation
     evadability
