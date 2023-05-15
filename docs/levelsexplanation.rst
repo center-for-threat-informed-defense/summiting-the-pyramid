@@ -37,9 +37,9 @@ ensure detection in-depth, these observables should be combined with other level
 Tools Within Adversary Control
 ------------------------------
 
-**Description**: *These are tools that are custom-made by the adversary, which they control the code, functions, and binaries associated with them.*
+**Description**: *These are tools that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.*
 
-Tools which are open-source or are custom made provide users the flexibility to configure the tool to meet their specific needs. These include tools such as 
+Tools which are within adversary control provide users the flexibility to configure the tool to meet their specific needs. These include tools such as 
 ADFind, Cobalt Strike, and others which the adversary can modify or configure to accomplish their goal.
 
 **Why are applications within adversary control placed here?**
