@@ -82,7 +82,7 @@ As it stands, this analytic could be easily evaded by adversaries if they were t
 
 As mentioned previously, adversaries can change the image path name so detection tools do not detect the real tool they are attempting to use. However, they must declare the tool they are using somewhere. Adversaries must embed tools into their malware in order to know where to find the specific file to use. This can be identified through the data source **OriginalFileName**, a data source that is available through parsing in Sysmon. By tracking the embedded file rather than the image name, we can identify the tool the adversary is going to use. We can make the analytic improvements here, which have been highlighted in purple.
 
-.. figure:: _static/adfind_analytics_levels_improved_052023.png
+.. figure:: _static/adfind_analytics_levels_improved_052023.PNG
    :alt: ADfind Improved Analytic Level Scoring
    :align: center
 
