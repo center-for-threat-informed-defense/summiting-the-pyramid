@@ -13,7 +13,7 @@ For this walk through, we will highlight our scoring of `suspicious pipe creatio
 
 Step 1: Identify the log source of the analytic
 -----------------------------------------------
-Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that we score the data source at the highlest level it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, MITRE’s Cyber Analytics Repository (CAR), and other vendor-specific tools. Keep this in mind as you score your analytic.
+Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that we score the data source at the highest level it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, MITRE’s Cyber Analytics Repository (CAR), and other vendor-specific tools. Keep this in mind as you score your analytic.
 
 In the pipe creation example, the log source identified is Windows, and the category is ‘pipe_created.’ Based on the types of event IDs Windows provides and the description, we know that the analytic is made for Sysmon logs. We will keep this in mind as we continue to score our analytic.
 

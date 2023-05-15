@@ -60,7 +60,7 @@ Native tooling represents tools that are either native to the respective OS or a
 
 **Why are tools split between within adversary control and outside adversary control?**
 
-Tooling outside adversry control is less flexible than tools within adversary control, as an adversary has to behave and act with what is available to them through the tool. 
+Tooling outside adversary control is less flexible than tools within adversary control, as an adversary has to behave and act with what is available to them through the tool. 
 The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the tool.
 
 Since the adversary cannot change the tool itself and it is managed by an organization, it is much more difficult to distinguish adversary behavior 
