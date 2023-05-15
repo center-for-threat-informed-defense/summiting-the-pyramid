@@ -1,5 +1,8 @@
 Changelog
 =========
+1.0.6 -- May 15, 2023
+    Changed levels 2/3 to tools within/outside adversary control, added level numbers to tables
+
 1.0.5 -- May 3, 2023
     Added writeup on scoring analytic, added link references to explaining level sections
 

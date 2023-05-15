@@ -38,7 +38,7 @@ For our example, let’s consider each component individually. First, we know th
 
    The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
 
-Next, the selection_malleable_profiles and selection_malleable_profile_CatalogChangeListener selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the custom software level since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
+Next, the selection_malleable_profiles and selection_malleable_profile_CatalogChangeListener selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the tools within adversary control level, since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
 
 .. figure:: _static/pipes_level1.png
    :alt: Suspicious Pipe Creation selections scored at level 1

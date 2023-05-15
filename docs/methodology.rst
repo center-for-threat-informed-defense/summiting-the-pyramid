@@ -1,6 +1,6 @@
 Summit the Pyramid
 ==================
-Updated: 03/23/2023
+Updated: 05/15/2023
 
 Goal of Summiting the Pyramid
 -----------------------------
@@ -48,7 +48,7 @@ difficult would it be for an adversary to evade this analytic?” The Pyramid of
 their behavior. These levels will focus on understanding how some analytic observables are more evasive or more difficult to bypass than 
 others, resulting in more robust analytics which detect further into the OS.
 
-.. figure:: _static/levels_04042023.PNG
+.. figure:: _static/levels_05152023.PNG
    :alt: Difficulty of Bypassing Analytic Observables
    :align: center
 
@@ -70,9 +70,9 @@ Example: ADFind.exe
 
    ADFind Analytic
 
-We are given this analytic that looks for specific command line arguments dealing with the ADFind tool [#f4]_. It also looks for the key word ‘\adfind.exe’ within the image path. Looking at the current data sources provided by the analytic and the Levels of Evasiveness, we can begin to place where everything is. First, we place Image|endswith: ‘\adfind.exe’ within the **Operational and Environmental Variables** level. While the intention of this analytic is looking for the execution of commands through this tool, this image path can be obfuscated by adversaries within the command line. We put the command line arguments into the **Custom Software and Open Source** level, since these command line arguments are specific to the tool itself. The final placement of the analytic is below.
+We are given this analytic that looks for specific command line arguments dealing with the ADFind tool [#f4]_. It also looks for the key word ‘\adfind.exe’ within the image path. Looking at the current data sources provided by the analytic and the Levels of Evasiveness, we can begin to place where everything is. First, we place Image|endswith: ‘\adfind.exe’ within the **Operational and Environmental Variables** level. While the intention of this analytic is looking for the execution of commands through this tool, this image path can be obfuscated by adversaries within the command line. We put the command line arguments into the **Tools Within Adversary Control** level, since these command line arguments are specific to the tool itself. The final placement of the analytic is below.
 
-.. figure:: _static/adfind_original_032023.PNG
+.. figure:: _static/adfind_original_052023.PNG
    :alt: ADfind Original Analytic Level Scoring
    :align: center
 
@@ -82,7 +82,7 @@ As it stands, this analytic could be easily evaded by adversaries if they were t
 
 As mentioned previously, adversaries can change the image path name so detection tools do not detect the real tool they are attempting to use. However, they must declare the tool they are using somewhere. Adversaries must embed tools into their malware in order to know where to find the specific file to use. This can be identified through the data source **OriginalFileName**, a data source that is available through parsing in Sysmon. By tracking the embedded file rather than the image name, we can identify the tool the adversary is going to use. We can make the analytic improvements here, which have been highlighted in purple.
 
-.. figure:: _static/adfind_analytics_levels_improved_032023.png
+.. figure:: _static/adfind_analytics_levels_improved_052023.png
    :alt: ADfind Improved Analytic Level Scoring
    :align: center
 
