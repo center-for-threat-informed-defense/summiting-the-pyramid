@@ -19,24 +19,32 @@ https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_del
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - 
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - 
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - 
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       - |  EventType: DeleteKey
         |  TargetObject|endswith:
         |    - '{2781761E-28E0-4109-99FE-B9D127C57AFE}'
@@ -46,25 +54,33 @@ Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - | TargetObject|contains:
         | - 'Computer\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\AMSI\\Providers\\'
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - 
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - 
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       - 
 
 Research Notes and Caveats

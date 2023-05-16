@@ -13,7 +13,7 @@ For this walk through, we will highlight our scoring of `suspicious pipe creatio
 
 Step 1: Identify the log source of the analytic
 -----------------------------------------------
-Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that we score the data source at the highlest level it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, MITRE’s Cyber Analytics Repository (CAR), and other vendor-specific tools. Keep this in mind as you score your analytic.
+Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that we score the data source at the highest level it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, MITRE’s Cyber Analytics Repository (CAR), and other vendor-specific tools. Keep this in mind as you score your analytic.
 
 In the pipe creation example, the log source identified is Windows, and the category is ‘pipe_created.’ Based on the types of event IDs Windows provides and the description, we know that the analytic is made for Sysmon logs. We will keep this in mind as we continue to score our analytic.
 
@@ -38,7 +38,7 @@ For our example, let’s consider each component individually. First, we know th
 
    The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
 
-Next, the selection_malleable_profiles and selection_malleable_profile_CatalogChangeListener selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the custom software level since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
+Next, the selection_malleable_profiles and selection_malleable_profile_CatalogChangeListener selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the tools within adversary control level, since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
 
 .. figure:: _static/pipes_level1.png
    :alt: Suspicious Pipe Creation selections scored at level 1

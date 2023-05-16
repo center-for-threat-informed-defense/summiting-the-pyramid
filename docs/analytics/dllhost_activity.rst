@@ -20,48 +20,64 @@ https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - 
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - ImageFileName="\\dllhost.exe"
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - 
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       -  command="dllhost.exe"
       
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - 
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - 
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - ImageFileName="\*\\dllhost.exe" (parent_file_name="scrons.exe" OR lsass OR command="\*dllhost.exe")
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       - 
 
 Research Notes and Caveats

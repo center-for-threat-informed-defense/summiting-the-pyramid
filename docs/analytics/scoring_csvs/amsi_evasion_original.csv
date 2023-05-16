@@ -4,8 +4,8 @@ Kernel/Interfaces,
 System Calls,
 OS API,
 Library API,
-Native Tooling,
-Custom Software/Open Source,
+Tools Outside Adversary Control,
+Tools Within Adversary Control,
 Operational/Environmental Variables," EventType: DeleteKey
  TargetObject|endswith:
     - '{2781761E-28E0-4109-99FE-B9D127C57AFE}'

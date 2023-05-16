@@ -168,10 +168,10 @@ The observables for both analytics aligned to the Levels of Evadability can be s
     * - Library API
       - 
       -
-    * - Native Tooling
+    * - Tools Outside Adversary Control
       - 
       -
-    * - Custom Software/Open Source
+    * - Tools Within Adversary Control
       - | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'

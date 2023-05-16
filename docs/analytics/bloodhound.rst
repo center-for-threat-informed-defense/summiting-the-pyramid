@@ -31,24 +31,32 @@ https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - 
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - 
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - 
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       - | | rex field=target_file_name ".*\\\\(?<bloodhound_format>\d{14}_.*\.zip)"?
         | | where isnotnull(bloodhound_format)
 
@@ -56,22 +64,29 @@ Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 30 70
+    :widths: 15 30 60
     :header-rows: 1
 
     * - Level
+      - Level Name
       - Observables
-    * - Kernel/Interfaces
+    * - 7
+      - Kernel/Interfaces
       - 
-    * - System Calls
+    * - 6
+      - System Calls
       - 
-    * - OS API
+    * - 5
+      - OS API
       - 
-    * - Library API
+    * - 4
+      - Library API
       - 
-    * - Native Tooling
+    * - 3
+      - Tools Outside Adversary Control
       - 
-    * - Custom Software/Open Source
+    * - 2
+      - Tools Within Adversary Control
       - | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'
@@ -79,7 +94,8 @@ Improved Analytic Scoring
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
         | OriginalFileName: ‘adfind.exe’
-    * - Operational/Environmental Variables
+    * - 1
+      - Operational/Environmental Variables
       - 
 
 Research Notes and Caveats
