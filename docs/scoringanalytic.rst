@@ -3,7 +3,7 @@ How to Score an Analytic
 
 These are the steps that should be taken to score an analytic against the Summiting the Pyramid methodology and the Analytics Observable Table. If you identify an observable or value that is not part of the current methodology, please create an issue in our `GitHub here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_ and the team will integrate feedback.
 
-For this walk through, we will highlight our scoring of `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_.
+For this walk through, we will highlight our scoring of `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_.
 
 .. figure:: _static/pipes_analytic.png
    :alt: Suspicious Pipe Creation Analytic
@@ -95,9 +95,9 @@ And that’s it! You have officially scored an analytic based on the Summiting t
 
 Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collection information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
-Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Create an issue or pull request, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_!
+Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Create an issue or pull request with the 'analytic scoring' label, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_!
 
 .. rubric:: References
 
-.. [#f1] https://github.com/SigmaHQ/sigma/blob/master/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml
+.. [#f1] https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml
 .. [#f2] https://learn.microsoft.com/en-us/windows/win32/api/namedpipeapi/nf-namedpipeapi-impersonatenamedpipeclient
