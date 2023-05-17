@@ -16,6 +16,8 @@ released to the public with our guidance and research documentation.
 
 **Use the index to begin looking at our research!**
 
+Looking to contribute to the project? Have an analytic you would like scored? `Please create an issue on our GitHub with the 'analytic scoring' label here! <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_!
+
 Notice
 ------
 
