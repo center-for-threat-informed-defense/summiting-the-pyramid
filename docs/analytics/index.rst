@@ -13,5 +13,23 @@ The following examples demonstrate how to score and improve an analytic in accor
     adfind
     amsi_evasion_list_table
 
+.. _Scored Analytics:
+
+Scored Analytics Repository
+---------------------------
 
 There is also a published CSV file that contains analytics that have been scored with the methodology: :download:`ScoredAnalytics <Scored_Analytics_20220428.csv>`
+
+Submitting an Analytic
+----------------------
+
+The Summiting team is looking for analytics which have been scored or improved by the community for our Scored Analytics Repository.
+
+If you are interested in contributing to our repository, `please utilize our Github issue submission <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_ and provide the following information:
+
+* Analytic schema (Sigma, Splunk, Elastic, etc.)
+* Log source (Windows process creation, file event, etc.)
+* Detection analytic
+* Detection logic (AND, OR, etc.)
+* The score for your analytic with a brief explanation
+* Scorer
