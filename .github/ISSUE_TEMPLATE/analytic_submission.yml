@@ -46,7 +46,7 @@ body:
     attributes:
       label: Detection Analytic
       description: Please provide detection analytic
-      placeholder: targetfilename: "\*"
+      placeholder: targetfilename
     validations:
       required: true
   - type: input
