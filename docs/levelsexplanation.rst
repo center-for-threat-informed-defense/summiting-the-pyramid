@@ -1,3 +1,5 @@
+.. _Levels Definitions:
+
 Explaining the Levels
 =====================
 

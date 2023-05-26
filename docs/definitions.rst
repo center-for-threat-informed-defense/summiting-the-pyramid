@@ -77,6 +77,8 @@ The art of capability abstraction showcases how each tool or behavior can be unc
 
 The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to levels outlined by our methodology. As observables are assigned to levels, further research can be conducted to identify detections based off those observables. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
 
+.. _Robustness Precision Recall:
+
 Summiting the Pyramid and Precision, Recall, and Robustness
 -----------------------------------------------------------
 The Summiting the Pyramid methodology is focused on how to create more robust analytics, therefore, measuring it's evadability. However, it’s important to consider the different dimensions of effective analytics.
