@@ -11,6 +11,7 @@ Summiting the Pyramid |version|
     methodology
     definitions
     levels
+    levels/index
     levelsexplanation
     evadability
     scoringanalytic

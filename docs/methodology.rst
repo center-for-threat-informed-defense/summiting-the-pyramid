@@ -6,7 +6,7 @@ Goal of Summiting the Pyramid
 -----------------------------
 The Pyramid of Pain has been used by detection engineers to determine the cost or “pain” it would take for an adversary to evade defenses 
 that are effective at that level of the pyramid. Starting at the bottom, changing indicators of hash values, IP addresses, and domains are 
-trivial for an adversary to change and continue their attack. Indicators further up the pyramid, are more difficult for an adversary to 
+trivial for an adversary to change and continue their attack. Indicators further up the pyramid are more difficult for an adversary to 
 change and consume more time and money from the adversary. Finally, Tactics, Techniques, and Procedures (TTPs), outlined by the MITRE 
 ATT&CK Framework, describe an adversary’s behavior when achieving their goals. New TTPs are the hardest for adversaries to develop, 
 as behaviors are limited by the environment they are acting in.
@@ -17,20 +17,19 @@ as behaviors are limited by the environment they are acting in.
 
    Pyramid of Pain - Created by David Bianco [#f1]_
 
-Detection engineers can leverage the Pyramid of Pain to understand how precise or robust their analytics might be when detecting adversarial 
+Detection engineers can leverage the Pyramid of Pain to understand how :ref:`precise<Precision>` or :ref:`robust<Robustness>` their analytics are when detecting adversarial 
 behavior. A detection analytic focused on identifying hash values will be precise in detecting a snapshot of malware but will not detect a 
 variant of that malware that has been altered by an adversary. A detection at the tool level might be robust in detecting specific 
-implementations of a technique but could create more false positives and even pick up benign activity if the implemented tool is native to 
-the OS. Some analytics might use a combination of various indicators to increase both the precision and recall of an adversary attack. 
-Capability Abstraction, a concept developed by SpecterOps, seeks to understand activities that occur on a system when an attacker is 
-accomplishing their goals. It also introduced a visual graphic, known as an “abstraction map”, which conveys the relationships between 
-abstraction layers and begins to highlight how an adversary can evade a specific detection or data source entirely and still accomplish their goals.
+implementations of a technique but could create more false positives, pick benign user activity, and alert on system generated noise if the implemented tool is native to 
+the OS. Some analytics might use a combination of various indicators to increase both the precision and :ref:`recall<Recall>` of an adversary attack. 
 
-The following capability abstraction map for T1050 - New Service illustrates how multiple tools can create a new service. These tools include 
-standard Windows binaries, commonly abused bins, and open-source implementations that an adversary may implement in custom code. These different 
+:ref:`Capability Abstraction`, a concept developed by SpecterOps `SpecterOps <https://posts.specterops.io/capability-abstraction-fbeaeeb26384>`_., seeks to understand activities that occur on a system when an attacker is 
+accomplishing their goals. It also introduced a visual graphic, known as an “abstraction map”, which conveys the relationships between 
+abstraction layers and begins to highlight how an adversary can evade a specific detection or data source entirely and still accomplish their goals. The following capability abstraction map for `T1543 - Create or Modify System Process: Windows Service <https://attack.mitre.org/techniques/T1543/003/>`_, illustrates how multiple tools can create a new service. These tools include 
+standard Windows binaries, commonly abused binaries, and open-source implementations that an adversary may implement in custom code. These different 
 implementations may call the Windows API differently, which in turn might call different RPC interface and methods. However, ultimately they 
 all utilize the same registry key within the Registry Service Database. If an adversary wanted to evade detection at the tool level, they 
-can create a new service using the Windows API, RPC, or Registry.
+could create a new service by directly interacting with the Windows API, RPC, or Registry.
 
 .. figure:: _static/new_service_capability_abstraction.png
    :alt: New Service Capability Abstraction - Created by SpecterOps
@@ -42,11 +41,11 @@ can create a new service using the Windows API, RPC, or Registry.
 
 Levels and Observables
 -------------------------
-The table of levels and observables attempts to show the relationship between indicators used to detect adversary activities and robustness 
+The following table of levels and observables shows the relationship between indicators used to detect adversary activities and robustness 
 of resulting analytics in order to determine relative complexity of evasion. When analytics are created, the question should be asked, “How 
 difficult would it be for an adversary to evade this analytic?” The Pyramid of Pain shows us how difficult it is for an adversary to change 
-their behavior. These levels will focus on understanding how some analytic observables are more evasive or more difficult to bypass than 
-others, resulting in more robust analytics which detect further into the OS.
+their behavior. These levels will focus on understanding how some analytic observables are more evadable or more difficult to bypass than 
+others, resulting in more robust analytics which detect activity deeper in the OS.
 
 .. figure:: _static/levels_05152023.PNG
    :alt: Difficulty of Bypassing Analytic Observables
