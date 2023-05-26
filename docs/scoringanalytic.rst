@@ -13,24 +13,24 @@ For this walk through, we will highlight our scoring of `suspicious pipe creatio
 
 Step 1: Identify the log source of the analytic
 -----------------------------------------------
-Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that we score the data source at the highest level it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, MITRE’s Cyber Analytics Repository (CAR), and other vendor-specific tools. Keep this in mind as you score your analytic.
+Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that the score is the ceiling of the data source's highest level of it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, and other vendor-specific tools. Keep this in mind as you score your analytic.
 
-In the pipe creation example, the log source identified is Windows, and the category is ‘pipe_created.’ Based on the types of event IDs Windows provides and the description, we know that the analytic is made for Sysmon logs. We will keep this in mind as we continue to score our analytic.
+In the pipe creation example, the log source identified is Windows, and the category is ‘pipe_created.’ Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. We will keep this in mind as we continue to score our analytic.
 
 .. figure:: _static/pipes_logsource.png
    :alt: Suspicious Pipe Creation Analytic Logsource
    :align: center
 
-   The logsource highlights that Windows Event IDs are detected [#f1]_
+   The logsource highlights that Sysmon events are detected [#f1]_
 
-.. important:: Some analytics might be vendor tool agnostic, such as analytics on GitHub.
+.. important:: Some analytics might be vendor tool agnostic.
     If the field names can be applied to various different tools, be sure to score it in the log source that you will be using in your environment. Keep this consistent as you look at each of the individual analytics.
 
 Step 2: Break down each of the observables
 ------------------------------------------
-Each of the observables, or the individual parts of an analytic, will have its own score. Scoring each individually will help us define a composite score for the whole analytic. Some observable scores will be more strongly determined by the fields searched, while others will be more influenced by the values specified. 
+Each of the observables, or the individual components of an analytic, will have its own score. Scoring each individually will help us define a composite score for the whole analytic. Some observable scores will be more strongly determined by the fields searched, while others will be more influenced by the values specified. 
 
-For our example, let’s consider each component individually. First, we know that Sigma utilizes the log source product and category fields for identifying Event IDs that are used within data sources. As mentioned above, we know that the analytic is looking specifically at the Sysmon pipe creation, identified as ID 17. Based on the StP methodology, event IDs can span multiple levels. It depends on how the Event ID is fired. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it **level 5** :ref:`OS API Level` level, understanding that it can at least be fired from Windows OS API calls.
+For our example, let’s consider each component individually. First, we know that Sigma utilizes the log source ``product`` and ``category`` fields for identifying Event IDs that are used within data sources. As mentioned above, we know that the analytic is looking specifically at the Sysmon pipe creation, identified as ID 17. Based on the StP methodology, Event IDs can span multiple levels. It depends on how the Event ID is fired. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it **level 5** :ref:`OS API Level` level, understanding that it can at least be fired from Windows OS API calls.
 
 .. figure:: _static/pipes_level5.png
    :alt: Suspicious Pipe Creation logsource scored at level 5
@@ -38,7 +38,7 @@ For our example, let’s consider each component individually. First, we know th
 
    The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
 
-Next, the selection_malleable_profiles and selection_malleable_profile_CatalogChangeListener selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the tools within adversary control level, since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
+Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Tools Within Adversary Control` level, since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
 
 .. figure:: _static/pipes_level1.png
    :alt: Suspicious Pipe Creation selections scored at level 1
@@ -46,7 +46,7 @@ Next, the selection_malleable_profiles and selection_malleable_profile_CatalogCh
 
    The pipes created are scored at level 1, the Operational and Environmental Variables Level [#f1]_
 
-The last section of the analytic is a filter. This is used to improve the precision of the analytic, lowering the amount of false positives which can be generated. As of right now, the scoring of the analytic is focused solely on the robustness of an analytic, not the precision or recall. Because of this, filter sections will not be scored. 
+The last component of the analytic is a filter. This is used to improve the precision of the analytic, lowering the amount of false positives which are generated. As of right now, the scoring of the analytic is focused solely on the robustness of an analytic, not the precision or recall. Because of this, filter sections will not be scored. 
 
 .. figure:: _static/pipes_filter.png
    :alt: Suspicious Pipe Creation filter
@@ -59,9 +59,9 @@ The last section of the analytic is a filter. This is used to improve the precis
 Step 3: Analyze the selection or condition of the analytic
 ----------------------------------------------------------
 
-Before scoring the analytic, the final step to take is to consider how the separate parts of an analytic are implemented. Understanding the logic of an analytic will help determine how evadable it is.
+Before scoring the analytic, the final step is to consider how the separate components of an analytic are related. Understanding the logic of an analytic will help determine how robust it is.
 
-In Sigma specifically, there are two steps which need to be looked at to understand how the analytic publisher intended the analytic to be run. It will say if each of the selections need to be considered as an AND statement or an OR statement. There can also be a condition at the bottom of an analytic which might identify a filter that needs to be applied to the analytic.
+In Sigma specifically, there are two steps which need to be looked at to understand the publisher's original intent for the analytic. It will say if each of the selections need to be considered as an AND statement or an OR statement. There can also be a condition at the bottom of an analytic which might identify a filter that needs to be applied to the analytic.
 
 .. figure:: _static/pipes_condition.png
    :alt: Suspicious Pipe Creation condition
@@ -69,9 +69,9 @@ In Sigma specifically, there are two steps which need to be looked at to underst
 
    The condition of the analytic determines how we score the overall analytic [#f1]_
 
-For our example, the condition states that this analytic will fire if any one of the selection_malleable_profile* conditions is met, unless the filter condition is also true. There are four sections in selection_malleable_profile: PipeName | startswith, PipeName,  selection_malleable_profile_CatalogChangeListener, and PipeName | endswith. The observables within each of the selections are connected using an AND. The condition states that at least 1 of the selection_malleable_profile* will be selected, making each of the selections connected by an OR. So, the final analytic would look like this:
+For our example, the condition states that this analytic will fire if any one of the ``selection_malleable_profile*`` conditions is met, unless the filter condition is also true. There are four sections in ``selection_malleable_profile``: ``PipeName | startswith``, ``PipeName``,  ``selection_malleable_profile_CatalogChangeListener``, and ``PipeName | endswith``. The observables within each of the selections are connected using an AND. The condition states that at least 1 of the ``selection_malleable_profile*`` will be selected, making each of the selections connected by an OR. So, the final analytic would look like this:
 
-**(Pipename | startswith AND Pipename) OR (Pipename | startswith AND Pipename | endswith)**
+``(Pipename | startswith AND Pipename) OR (Pipename | startswith AND Pipename | endswith)``
 
 The “not filter” indicates that anything that is not in the filter will be detected. Based on the Summiting the Pyramid methodology, analytic components that are AND’ed together, will fall to the score of the lowest observable. 
 
