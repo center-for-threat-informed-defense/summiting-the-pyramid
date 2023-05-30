@@ -38,7 +38,7 @@ For our example, let’s consider each component individually. First, we know th
 
    The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
 
-Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified are used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Tools Within Adversary Control` level, since it can be changed by the adversary. However, quite a few of the pipe names specified are not specific to CobaltStrike and belong to the operating system, such as ntsvcs. These pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
+Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Tools Within Adversary Control` level, since it can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for the ``ntsvc`` used by Windows Task Manager. In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
 
 .. figure:: _static/pipes_level1.png
    :alt: Suspicious Pipe Creation selections scored at level 1
@@ -93,7 +93,7 @@ The individual observables, the Event ID 17 and the names of pipes created by Co
 
 And that’s it! You have officially scored an analytic based on the Summiting the Pyramid methodology. Knowing the steps to score an analytic, you can apply this to your environment, see where your analytics fall, and determine if there’s any ways your analytics can be improved.
 
-Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collection information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
+Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collecting information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
 Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Create an issue or pull request with the 'analytic scoring' label, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_!
 
