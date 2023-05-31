@@ -10,7 +10,8 @@ Summiting the Pyramid |version|
     overview
     methodology
     definitions
-    levels
+    quicklevels
+    levels/index
     levelsexplanation
     evadability
     scoringanalytic
