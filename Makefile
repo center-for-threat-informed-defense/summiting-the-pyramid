@@ -21,7 +21,7 @@ docs: ## Build Sphinx HTML documentation
 
 .PHONY: docs-server
 docs-server: ## Run Sphinx build server
-	sphinx-autobuild -b dirhtml -a "$(SOURCEDIR)" "$(BUILDDIR)"  --host 10.8.141.29
+	sphinx-autobuild -b dirhtml -a "$(SOURCEDIR)" "$(BUILDDIR)"
 
 
 .PHONY: docs-pdf
