@@ -137,3 +137,5 @@ dmypy.json
 # Virtualenv
 stp_github_venv/
 
+# Makefile
+Makefile

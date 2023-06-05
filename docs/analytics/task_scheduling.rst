@@ -1,25 +1,25 @@
 -------------------------
-Task Scheduling
+Execution with schtasks
 -------------------------
 
 ..
     Insert link to analytic here (like a Sigma rule)
+
 - https://car.mitre.org/analytics/CAR-2013-08-001/
-- https://car.mitre.org/analytics/CAR-2013-05-004/
-- https://github.com/splunk/security_content/blob/develop/detections/endpoint/scheduled_task_creation_on_remote_endpoint_using_at.yml
-- https://github.com/splunk/security_content/blob/develop/detections/endpoint/scheduled_task_initiation_on_remote_endpoint.yml
 
 
 .. list-table::
     :widths: 30 70
 
     * - Original Analytic
-      -  | Image: (schtasks.exe | at.exe) AND 
-         | CommandLine: (“*\\\\*” | “*/s” | “*/run")
+      -  | command_line IN ("\*/create\*", "\*/run\*", "\*/query\*", "\*/delete\*", "\*/change\*", "\*/end\*") AND
+         | process_name = schtasks.exe
     * - Improved Analytic #1
+      - | EventID = 11 AND TargetFileName = C:\\Windows\\System32\\Tasks\\*
+    * - Improved Analytic #2
       - | index:Sysmon EventID:(12 | 13 | 14) AND
         | TargetObject:  (“HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\*” | “HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tasks\\*”)
-    * - Improved Analytic #2
+    * - Improved Analytic #3
       - | EventID: (4656 | 4657 | 4663) AND
         | TargetObject:  (“HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\*” | “HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tasks\\*”)
 
@@ -46,14 +46,83 @@ Original Analytic Scoring
       - 
     * - 3
       - Tools Outside Adversary Control
-      - Image: (schtasks.exe | at.exe)
+      - command_line IN ("\*/create\*", "\*/run\*", "\*/query\*", "\*/delete\*", "\*/change\*", "\*/end\*")
     * - 2
       - Tools Within Adversary Control
       - 
     * - 1
       - Operational/Environmental Variables
-      - CommandLine: (“*\\\\*” | “*/s” | “*/run")
+      - process_name = schtasks.exe
 
+The original analytic detects on the process name of a newly created process in combination with commandline arguments. Since the ``schtasks`` executable 
+can be easily copied and renamed by an adversary, it gets scored at the Operational/Environmental level. The commandline arguments are more 
+challenging for an adversary to change since that would require recompiling the source code. However, since `schtasks` is part of the OS and no source 
+code is available, the additional commandline arguments are considered out of the adversary's control and scored at level 3. 
+
+Existing research from Jonny Johnson and SpecterOps provides insight into what goes on behind the scenes when a task gets scheduled [#f1]_ . 
+The resulting capability abstraction map shows how ``schtasks`` is one of several ways a task can be scheduled:
+
+.. figure:: ../_static/scheduled_task_capability_abstraction_markedup.png
+  :alt: Scheduled Task Capability Abstraction - Created by SpecterOps
+  :align: center
+  
+  Scheduled Task Capability Abstraction - Created by SpecterOps [#f1]_
+
+Immediately we can see a few different ways an adversary could schedule a task on a system without firing the original level 3 analytic. One of the simpler 
+options would be using the Task Scheduler GUI, but several other alternatives exist. 
+
+This capability abstraction map can be used to create many different analytics, the most robust of which might detect on the invariant registry or file 
+creation activity. As a first attempt at an improved analytic, we can start with the file creation activity. If we create a scheduled task using the Task Scheduler 
+GUI in a test environment with Sysmon installed, we might expect to generate an Event ID 11: FileCreate.
+
+.. figure:: ../_static/sysmon_eventid11_schtasks.png
+  :alt: Sysmon Event ID 11: FileCreate
+  :align: center
+
+  Sysmon Event ID 11: FileCreate
+
+Looks like the hypothesis was correct! An Event ID 11 was generated under the expected ``C:\Windows\System32\Tasks`` directory. 
+
+.. note::
+  It is important to note all the false positives. Unfortunately this more robust analytic generates a large amount of false positives and should be combined with other observables or fields to provide 
+  context, filter out false positives, and ensure the analytic is not completely ignored by an analyst. 
+
+
+Let’s score this new analytic and see if it is more robust than the original. It’s tough to tell right now where to place Event ID 11, but fortunately 
+open-source references exist that enumerate Windows APIs and the respective Event IDs that are generated:
+
+  - Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+  - Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+
+     
+
+These two spreadsheets indicate which Event IDs are generated by user-mode or kernel-mode APIs. An excerpt of Roberto’s spreadsheet is below, showing the different 
+APIs that generated a Sysmon Event ID 11: FileCreate.
+
++--------------+---------+------------+--------------------------+
+|   API Call   | EventID | Event Name |       Log Provider       |
++==============+=========+============+==========================+
+|   CopyFile   |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+|  CopyFile2   |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+|  CopyFileEx  |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+| CreateFile2  |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+| CreateFileA  |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+| CreateFileW  |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+|   MoveFile   |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+| NtCreateFile |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+| NtWriteFile  |   11    | FileCreate | Microsoft-Windows-Sysmon |
++--------------+---------+------------+--------------------------+
+
+
+All the relevant APIs are in user-mode, therefore we can score this analytic at level 5.
 
 Improved Analytic Scoring #1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,8 +142,71 @@ Improved Analytic Scoring #1
       - 
     * - 5
       - OS API
-      - | index:Sysmon EventID:(12 | 13 | 14) AND
+      - EventID = 11
+    * - 4
+      - Library API
+      - 
+    * - 3
+      - Artifacts Outside Adversary Control
+      - TargetFileName = C:\\Windows\\System32\\Tasks\\*
+    * - 2
+      - Artifacts Within Adversary Control
+      - 
+    * - 1
+      - Operational/Environmental Variables
+      - 
+
+So far we have created an analytic using the FileCreate invariant behavior. What if we pivot and use the registry key? Might the registry key approach score 
+at a higher level? Sysmon EventID 12: RegistryEvent (Object create and delete) should be generated when a registry key is created.
+
++-------------------------+---------+------------------------------------------+--------------------------+
+|        API Call         | EventID |                Event Name                |       Log Provider       |
++=========================+=========+==========================================+==========================+
+|      RegCreateKeyA      |   12    | RegistryEvent (Object create and delete) | Microsoft-Windows-Sysmon |
++-------------------------+---------+------------------------------------------+--------------------------+
+|     RegCreateKeyExA     |   12    | RegistryEvent (Object create and delete) | Microsoft-Windows-Sysmon |
++-------------------------+---------+------------------------------------------+--------------------------+
+|     RegCreateKeyExW     |   12    | RegistryEvent (Object create and delete) | Microsoft-Windows-Sysmon |
++-------------------------+---------+------------------------------------------+--------------------------+
+|      RegCreateKeyW      |   12    | RegistryEvent (Object create and delete) | Microsoft-Windows-Sysmon |
++-------------------------+---------+------------------------------------------+--------------------------+
+|       ZwCreateKey       |   12    | RegistryEvent (Object create and delete) | Microsoft-Windows-Sysmon |
++-------------------------+---------+------------------------------------------+--------------------------+
+
+Looking back at Roberto’s Event ID to Windows API mapping, we see several user-mode APIs can generate Event ID 12. But we also see ``ZwCreateKey``, 
+a kernel-mode API. This kernel-mode API is very difficult for an adversary to evade, therefore we score it at level 7. It is important to ensure an adversary 
+can’t evade our analytic by editing an existing registry key value or an renaming an entire registry key/value pair, so we should also integrate Event 
+IDs 13: (Value Set) and 14: (Key and Value Rename) into our analytic logic. Roberto’s excerpted API research again for the additional Event IDs:
+
++---------------+---------+--------------------------------------+--------------------------+
+|   API Call    | EventID |              Event Name              |       Log Provider       |
++===============+=========+======================================+==========================+
+| ZwSetValueKey |   13    |    A registry value was modified     | Microsoft-Windows-Sysmon |
++---------------+---------+--------------------------------------+--------------------------+
+|  NtRenameKey  |   14    | RegistryEvent (Key and Value Rename) | Microsoft-Windows-Sysmon |
++---------------+---------+--------------------------------------+--------------------------+
+
+
+Improved Analytic Scoring #2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+    :widths: 15 30 60
+    :header-rows: 1
+
+    * - Level
+      - Level Name
+      - Observables
+    * - 7
+      - Kernel/Interfaces
+      - | EventID: ( 12 | 13 | 14) AND
         | TargetObject:  (“HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\*” | “HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tasks\\*”)
+    * - 6
+      - System Calls
+      - 
+    * - 5
+      - OS API
+      - 
     * - 4
       - Library API
       - 
@@ -86,18 +218,39 @@ Improved Analytic Scoring #1
       - 
     * - 1
       - Operational/Environmental Variables
-      - 
+      -
 
-The original analytics, and many other detections related to scheduled tasks, look at process name and 
-combinations of commandline arguments related remote task scheduling, unusual task names, suspicious 
-usernames, etc. These observables are at the Operational/Environmental Variables level and can be easily changed by
-an attacker to avoid detection. The scheduled task capability abstraction from SpecterOps highlights that 
-registry key creation/modification occurs for several implementations of local and remote task scheduling [#f1]_. 
-This improved detection is more difficult for an adversary to evade, and according to the StP methodology 
-is a level 5.
+As a bonus analytic, in some environments it might not be possible to deploy Sysmon. Or maybe an adversary disabled Sysmon and it’s data can no longer be 
+referenced. As another layer of defense, scheduled task activity could be detected with Windows Event Logging after enabling Object Auditing within our Local or Group 
+Security Policy and then enabling Advanced Auditing on ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\`` and 
+``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\``.
 
+.. figure:: ../_static/enabling_audit_object_access.png
+  :alt: Enabling Audit Object Access
+  :align: center
 
-Improved Analytic Scoring #2
+  Enabling Audit Object Access
+
+Once a `SACL <https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists>`_ is applied on the respective registry keys, we might expect to find Event IDs 4656, 4657, and 4663 . These events, according to Roberto’s 
+research, can be generated by kernel-mode APIs which make analytic score at level 7.
+
++---------------------+---------+-----------------------------------------+-------------------------------------+
+|      API Call       | EventID |               Event Name                |            Log Provider             |
++=====================+=========+=========================================+=====================================+
+|      ZwOpenKey      |  4656   |   A handle to an object was requested   | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+|    ZwSetValueKey    |  4657   |      A registry value was modified      | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+|   ZwEnumerateKey    |  4663   | An attempt was made to access an object | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+| ZwEnumerateValueKey |  4663   | An attempt was made to access an object | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+|      ZwOpenKey      |  4663   | An attempt was made to access an object | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+|    ZwSetValueKey    |  4663   | An attempt was made to access an object | Microsoft-Windows-Security-Auditing |
++---------------------+---------+-----------------------------------------+-------------------------------------+
+
+Improved Analytic Scoring #3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
@@ -130,36 +283,6 @@ Improved Analytic Scoring #2
       - Operational/Environmental Variables
       -
 
-This second improved analytic implementation is looking for the same invariant behavior but uses a different data source 
-that can detect activity at a deeper level in the OS than Sysmon. According to related research from Roberto 
-Rodriguez, Windows Event ID 4656, 4657, and 4663 can fire in response to several kernel-level API calls related 
-to accessing or setting registry keys [#f2]_.
-
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| API Call            | EventID | Event Name                              | Log Provider                        | ATT&CK Data Source |
-+=====================+=========+=========================================+=====================================+====================+
-| ZwOpenKey           | 4656    | A handle to an object was requested     | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| ZwSetValueKey       | 4657    | A registry value was modified           | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| ZwEnumerateKey      | 4663    | An attempt was made to access an object | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| ZwEnumerateValueKey | 4663    | An attempt was made to access an object | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| ZwOpenKey           | 4663    | An attempt was made to access an object | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-| ZwSetValueKey       | 4663    | An attempt was made to access an object | Microsoft-Windows-Security-Auditing | Windows Registry   |
-+---------------------+---------+-----------------------------------------+-------------------------------------+--------------------+
-
-Research Notes and Caveats
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-The main caveat here is that these event IDs will only be generated if a SACL is configured on the respective registry keys, 
-which in this case are ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\*`` 
-and ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\*``. With the SACL applied, 
-the improved analytic scores at a 7 according to the Summiting the Pyramid methodology and is very challenging for an 
-adversary to evade.
-
 .. rubric:: References
 
 .. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
-.. [#f2] https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0
