@@ -1,5 +1,8 @@
 Changelog
 =========
+1.0.7 -- June 5, 2023
+    Added Execution with Schtasks to the improved analytics repository
+
 1.0.6 -- May 15, 2023
     Changed levels 2/3 to tools within/outside adversary control, added level numbers to tables
 
