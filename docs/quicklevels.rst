@@ -31,12 +31,12 @@ Levels and Observables
      - 
      - .NET (Wndows)
    * - 3
-     - Tools Outside Adversary Control
+     - Artifacts Outside Adversary Control
      - Signatures, command-line arguments, tool-specific configurations, user session, authentication
      - signer (CAR), signature_valid (CAR), mime_type (CAR), link_target (CAR), command line (Sysmon), parent command line (Sysmon), process command line (Windows EID), command_line (CAR), parent_comand_line (CAR), integrity level (Sysmon), mandatory label (Windows EID), token elevation type (Windows EID), original file name (Sysmon), access_level (CAR), integrity_level (CAR), login_type (CAR), login_successful (CAR), auth_service (CAR), decision_reason (CAR), method (CAR)
      - 
    * - 2
-     - Tools Within Adversary Control
+     - Artifacts Within Adversary Control
      - Signatures, command-line arguments, tool-specific configurations, metadata, binaries
      - Command line (Sysmon), integrity level (Sysmon), parent command line (Sysmon)
      - 

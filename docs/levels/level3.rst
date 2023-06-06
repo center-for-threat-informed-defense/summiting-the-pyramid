@@ -1,8 +1,8 @@
-----------------------------------------
-Level 3: Tools Outside Adversary Control
-----------------------------------------
+--------------------------------------------
+Level 3: Artifacts Outside Adversary Control
+--------------------------------------------
 
-**Description**: Tools which are managed by outside organizations. The adversary has minimal control in changing functions and protocols to make them specific for their attack.
+**Description**: Artifacts which are managed by outside organizations. The adversary has minimal control in changing functions and protocols to make them specific for their attack.
 
 **Examples**: Signatures, command-line arguments, tool-specific configurations, metadata, binaries
 

@@ -50,10 +50,10 @@ Original Analytic Scoring
       - Library API
       - 
     * - 3
-      - Tools Outside Adversary Control
+      - Artifacts Outside Adversary Control
       - 
     * - 2
-      - Tools Within Adversary Control
+      - Artifacts Within Adversary Control
       - 
     * - 1
       - Operational/Environmental Variables
@@ -83,10 +83,10 @@ Improved Analytic Scoring
       - Library API
       - 
     * - 3
-      - Tools Outside Adversary Control
+      - Artifacts Outside Adversary Control
       - 
     * - 2
-      - Tools Within Adversary Control
+      - Artifacts Within Adversary Control
       - | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'

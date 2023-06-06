@@ -34,38 +34,38 @@ capture values which point to the context of a certain application, user, or pro
 processes, these will not detect anything new, or if the adversary decides to change an operational or environmental variable to evade detection. To 
 ensure detection in-depth, these observables should be combined with other level observables.
 
-.. _Tools Within Adversary Control:
+.. _Artifacts Within Adversary Control:
 
-Tools Within Adversary Control
-------------------------------
+Artifacts Within Adversary Control
+----------------------------------
 
-**Description**: *These are tools that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.*
+**Description**: *These are artifacts that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.*
 
-Tools which are within adversary control provide users the flexibility to configure the tool to meet their specific needs. These include tools such as 
+Artifacts which are within adversary control provide users the flexibility to configure the tool to meet their specific needs. These include items such as 
 ADFind, Cobalt Strike, and others which the adversary can modify or configure to accomplish their goal.
 
-**Why are applications within adversary control placed here?**
+**Why are artifacts within adversary control placed here?**
 
-These tools gives adversaries an additional outlet of configuration to evade certain detections. For example, if an analytic detection is 
+These artifacts gives adversaries an additional outlet of configuration to evade certain detections. For example, if an analytic detection is 
 identifying certain tool-specific configurations, an adversary can go into the open-source code, change it, and evade that detection [#f2]_. While this 
-requires knowledge on the adversary to change the tool configuration without changing the tool capability, it gives an adversary flexibility to 
+requires knowledge on the adversary to change the tool configuration without changing the capability, it gives an adversary flexibility to 
 evade detection through the availability of application code itself.
 
-.. _Tools Outside Adversary Control:
+.. _Artifacts Outside Adversary Control:
 
-Tools Outside Adversary Control
--------------------------------
+Artifacts Outside Adversary Control
+-----------------------------------
 
-**Description**: *Tools which are managed by outside organizations. The adversary has minimal control in changing functions and protocols to make them specific for their attack.*
+**Description**: *Artifacts which are managed by outside organizations. The adversary has minimal control in changing functions and protocols to make them specific for their attack.*
 
-Native tooling represents tools that are either native to the respective OS or are managed by an outside. For example, Windows has the Task Scheduler (``schtasks.exe``), ping (``ping.exe``) and WMI command line utility (``wmic.exe``). The observables that are offered in this level are similar to those offered in the tools within adversary control level, such as signatures, tool-specific configurations, and command line arguments. The observable values for this level are dependent on the OS or tool that is being defended.
+Native tooling represents artifacts that are either native to the respective OS or are managed by an outside. For example, Windows has the Task Scheduler (``schtasks.exe``), ping (``ping.exe``) and WMI command line utility (``wmic.exe``). The observables that are offered in this level are similar to those offered in the tools within adversary control level, such as signatures, tool-specific configurations, and command line arguments. The observable values for this level are dependent on the OS or tool that is being defended.
 
-**Why are tools split between within adversary control and outside adversary control?**
+**Why are artifacts split between within adversary control and outside adversary control?**
 
-Tooling outside adversary control is less flexible than tools within adversary control, as an adversary has to behave and act with what is available to them through the tool. 
-The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the tool.
+Artifacts outside adversary control is less flexible than tools within adversary control, as an adversary has to behave and act with what is available to them through the artifact. 
+The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the artifact.
 
-Since the adversary cannot change the tool itself and it is managed by an organization, it is much more difficult to distinguish adversary behavior 
+Since the adversary cannot change the capability itself and it is managed by an organization, it is much more difficult to distinguish adversary behavior 
 from benign behavior. This provides an opportunity for an adversary to blend into the computing environment, also known as a Living off the Land (LotL) attack [#f3]_ [#f4]_. 
 It is likely that analytics utilizing native tool observables will need to be combined with other level’s observables, or require further research into 
 low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.

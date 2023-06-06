@@ -39,10 +39,10 @@ Original Analytic Scoring
       - Library API
       - 
     * - 3
-      - Tools Outside Adversary Control
+      - Artifacts Outside Adversary Control
       - ImageFileName="\\dllhost.exe"
     * - 2
-      - Tools Within Adversary Control
+      - Artifacts Within Adversary Control
       - 
     * - 1
       - Operational/Environmental Variables
@@ -71,10 +71,10 @@ Improved Analytic Scoring
       - Library API
       - 
     * - 3
-      - Tools Outside Adversary Control
+      - Artifacts Outside Adversary Control
       - 
     * - 2
-      - Tools Within Adversary Control
+      - Artifacts Within Adversary Control
       - ImageFileName="\*\\dllhost.exe" (parent_file_name="scrons.exe" OR lsass OR command="\*dllhost.exe")
     * - 1
       - Operational/Environmental Variables
