@@ -38,10 +38,10 @@ Original Analytic Scoring
       - Library API
       - 
     * - 3
-      - Artifacts Outside Adversary Control
+      - Tools Outside Adversary Control
       - 
     * - 2
-      - Artifacts Within Adversary Control
+      - Tools Within Adversary Control
       - 
     * - 1
       - Operational/Environmental Variables

@@ -1,8 +1,8 @@
--------------------------------------------
-Level 2: Artifacts Within Adversary Control
--------------------------------------------
+---------------------------------------
+Level 2: Tools Within Adversary Control
+---------------------------------------
 
-**Description**: These are artifacts that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.
+**Description**: These are tools that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.
 
 **Examples**: Signatures, command-line arguments, tool-specific configurations, metadata, binaries
 

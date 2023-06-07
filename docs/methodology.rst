@@ -64,11 +64,11 @@ others, resulting in more robust analytics which detect activity deeper in the O
 |                               |  | DLLs                         |                              
 |                               |  | COM methods                  |                              
 +-------------------------------+---------------------------------+
-| Artifacts Outside Adversary   |  | Signatures                   |                              
+| Tools Outside Adversary       |  | Signatures                   |                              
 | Control                       |  | Command-line arguments       |                              
 |                               |  | Tool-specific configurations |                              
 +-------------------------------+---------------------------------+
-| Artifacts Within Adversary    |  | Signatures                   |                              
+| Tools Within Adversary        |  | Signatures                   |                              
 | Control                       |  | Command-line arguments       |                              
 |                               |  | Tool-specific configurations |                              
 +-------------------------------+---------------------------------+
@@ -122,10 +122,10 @@ For example, this analytic  looks for specific command line arguments used in co
       - Library API
       - 
     * - 3
-      - Artifacts Outside Adversary Control
+      - Tools Outside Adversary Control
       - 
     * - 2
-      - Artifacts Within Adversary Control
+      - Tools Within Adversary Control
       - | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'
@@ -160,10 +160,10 @@ As mentioned previously, adversaries can change the image name so detection tool
       - Library API
       - 
     * - 3
-      - Artifacts Outside Adversary Control
+      - Tools Outside Adversary Control
       - 
     * - 2
-      - Artifacts Within Adversary Control
+      - Tools Within Adversary Control
       - | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'
