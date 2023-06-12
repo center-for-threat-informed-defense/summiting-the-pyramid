@@ -1,8 +1,22 @@
+.. _Operational Environmental Variables:
+
 ------------------------------------------------
 Level 1: Operational and Environmental Variables
 ------------------------------------------------
 
 **Description**: Variables which are constantly changing due to running processes, applications, and users. These observables provide a snapshot in time.
+
+Operational and environmental variables capture the context of what is currently happening to a user, process, or system. This includes observables 
+such as process IDs, hash values, domain names, file names, and others. While these observables provide context for an attack, they do little to 
+outline the behaviors of both normal users and the adversary.
+
+**Why are these observables the lowest level?**
+
+These observables cannot be relied on to identify adversary behavior. These indicators take minimal effort for an adversary to change [#f1]_. A new hash value 
+can be created if one bit is changed in a file. A file name can be obfuscated within an image. When building out analytics, these observables will mostly 
+capture values which point to the context of a certain application, user, or process. While these observables can detect known malicious applications or 
+processes, these will not detect anything new, or if the adversary decides to change an operational or environmental variable to evade detection. To 
+ensure detection in-depth, these observables should be combined with other level observables.
 
 **Examples**: Hash values, IP addresses, protocol-specific ports, file names, domain names, processes, user oriented observables, others
 
@@ -50,3 +64,6 @@ Observables
 | Other                         |  | Pipe names                     |                              |
 +-------------------------------+-----------------------------------+------------------------------+
 
+.. rubric:: References
+
+.. [#f1] http://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html

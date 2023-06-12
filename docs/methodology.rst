@@ -79,7 +79,7 @@ others, resulting in more robust analytics which detect activity deeper in the O
 |                               |  | Domain names                 |                              
 +-------------------------------+---------------------------------+
 
-The :ref:`levels and observables<Levels Definitions>` are used to inform defenders about the state of their analytic, it is not meant to imply judgement of certain analytics. As 
+The :ref:`levels and observables<Levels>` are used to inform defenders about the state of their analytic, it is not meant to imply judgement of certain analytics. As 
 Jared Atkinson mentioned in his write-up on the Detection Spectrum, “There is a place for precise detections just like there is a place for 
 broad detections” [#f4]_. These levels are used to inform how defenders can utilize observables deeper in the OS to create less evade-able analytics, saving time, resources, and analyst workload. This can be 
 used not only to create new analytics, but to improve current detections by reducing dependencies on lower levels on the Pyramid of Pain and 
