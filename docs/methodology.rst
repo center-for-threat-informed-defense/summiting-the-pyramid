@@ -50,7 +50,7 @@ others, resulting in more robust analytics which detect activity deeper in the O
 +-------------------------------+---------------------------------+
 | Level                         | Observable Categories           |
 +===============================+=================================+
-| Kernel/Interfaces             |                                 |                              
+| Kernel                        |                                 |                              
 |                               |                                 |                             
 +-------------------------------+---------------------------------+
 | System Calls                  |  | File manipulation            |                              
@@ -110,7 +110,7 @@ For example, this analytic  looks for specific command line arguments used in co
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - 
     * - 6
       - System Calls
@@ -148,7 +148,7 @@ As mentioned previously, adversaries can change the image name so detection tool
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - 
     * - 6
       - System Calls

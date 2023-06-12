@@ -27,7 +27,7 @@ Original Analytic Scoring
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - 
     * - 6
       - System Calls
@@ -59,7 +59,7 @@ Improved Analytic Scoring
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - 
     * - 6
       - System Calls

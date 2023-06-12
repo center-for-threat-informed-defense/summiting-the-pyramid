@@ -11,7 +11,7 @@ Levels and Observables
      - Observable Fields
      - Observable Values
    * - 7
-     - Kernel and Interfaces
+     - Kernel
      - 
      - add (CAR), remove (CAR), key_edit (CAR), value_edit (CAR)
      - Event ID 4688, Event ID 4689, Sysmon ID 8

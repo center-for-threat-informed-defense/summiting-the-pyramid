@@ -140,9 +140,9 @@ Like the previous level, it might be more difficult for defenders to detect the 
 up you go through this leveling, the more likely adversary behavior will be blended in with benign behavior. However, it does indicate that it is more 
 difficult for an adversary to evade these system calls, as they will be directly interfacing with the operating system. 
 
-.. _Kernel and Interface Observables:
+.. _Kernel Observables:
 
-Kernel and Interface Observables
+Kernel Observables
 --------------------------------
 
 As defined by Microsoft, the kernel, “implements the core functionality that everything else in the operating system depends upon.” [#f14]_ This is the heart of the 
@@ -150,7 +150,7 @@ Operating System, as it provides the services for everything, including managing
 support routines available start with ``Ke`` within the Windows Operating System. Defenders can monitor kernel activity through observables including registry 
 modification, some event IDs, and network protocols. 
 
-**Why are kernel and interface detections at the top of detection observables?**
+**Why are kernel detections at the top of detection observables?**
 
 Kernel is the last level of the Operating System until you get to changing tactics to tampering with the hardware of the computer. If an adversary can access 
 calls to these routines, they can bypass every other documented layer and blend in with the other kernel threads and routines occurring. However, the higher 

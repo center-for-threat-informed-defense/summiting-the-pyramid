@@ -1,5 +1,5 @@
 ﻿Level,Observables
-Kernel/Interfaces,"TargetObject|contains:
+Kernel,"TargetObject|contains:
     - 'Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AMSI\Providers\' "
 System Calls,
 OS API,

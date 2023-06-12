@@ -1,5 +1,5 @@
 --------------------------
-Level 7: Kernel/Interfaces
+Level 7: Kernel
 --------------------------
 
 **Description**: Interfacing directly with ring 0 in the OS. Observables are in kernel mode.
