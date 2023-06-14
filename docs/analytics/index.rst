@@ -25,7 +25,7 @@ Submitting an Analytic
 
 The Summiting team is looking for analytics which have been scored or improved by the community for our Scored Analytics Repository.
 
-If you are interested in contributing to our repository, `please utilize our Github issue submission <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_ and provide the following information:
+If you are interested in contributing to our repository, `please utilize our Github issue submission <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_ and provide the following information:
 
 * Analytic schema (Sigma, Splunk, Elastic, etc.)
 * Log source (Windows process creation, file event, etc.)
