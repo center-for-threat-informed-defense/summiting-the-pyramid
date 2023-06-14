@@ -20,16 +20,16 @@ body:
   - type: input
     id: link
     attributes:
-      label: Analytic Link
-      description: If located in an analytic repository, please provide link to original analytic
+      label: Analytic Permalink
+      description: If located in an analytic repository, please provide link to original analytic. Please provide a permalink if possible
       placeholder: ex. sigma link
     validations:
       required: false
   - type: input
     id: schema
     attributes:
-      label: Analytic Schema
-      description: Provide the analytic schema (Sigma, Splunk, Elastic, etc.)
+      label: Analytic Syntax
+      description: Provide the analytic syntax (Sigma, Splunk, Elastic, etc.)
       placeholder: ex. Sigma
     validations:
       required: true

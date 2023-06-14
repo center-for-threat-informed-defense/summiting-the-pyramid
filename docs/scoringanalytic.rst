@@ -95,7 +95,7 @@ And that’s it! You have officially scored an analytic based on the Summiting t
 
 Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collecting information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
-Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Create an issue or pull request with the 'analytic scoring' label, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/labels/analytic%20scoring>`_!
+Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Fill out our analytic submission form, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_!
 
 .. rubric:: References
 
