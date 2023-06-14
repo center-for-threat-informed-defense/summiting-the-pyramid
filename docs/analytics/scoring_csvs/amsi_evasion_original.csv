@@ -1,6 +1,6 @@
 ﻿Level,Observables
 ,
-Kernel/Interfaces,
+Kernel,
 System Calls,
 OS API,
 Library API,

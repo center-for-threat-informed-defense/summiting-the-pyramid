@@ -55,7 +55,7 @@ Evadability is a metric that we have devised to give a relative score for the di
 analytic when executing a given Technique.  We are proposing that evadability value be determined by the lowest level that an analytic 
 contains (according to our levels of evadability) that could be evaded by an adversary and lead to a successful attack.  Thus, a high 
 evadability level, such as 7, would mean that the adversary would have to evade detection by changing their approach via interactions 
-with the kernel or interfaces, whereas a low evadability level, such as 1, would mean that an adversary could evade detection through 
+with the kernel, whereas a low evadability level, such as 1, would mean that an adversary could evade detection through 
 use of different operational or environmental variables.
 
 Evadability has a fairly strong correlation with robustness but is independent from how robustness itself is scored.  Key differences 
@@ -156,7 +156,7 @@ The observables for both analytics aligned to the Levels of Evadability can be s
     * - Level
       - Observables for Original Analytic
       - Observables for Improved Analytic
-    * - Kernel/Interfaces
+    * - Kernel
       - 
       -
     * - System Calls

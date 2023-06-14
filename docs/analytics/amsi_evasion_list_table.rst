@@ -26,7 +26,7 @@ Original Analytic Scoring
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - 
     * - 6
       - System Calls
@@ -61,7 +61,7 @@ Improved Analytic Scoring
       - Level Name
       - Observables
     * - 7
-      - Kernel/Interfaces
+      - Kernel
       - | TargetObject|contains:
         | - 'Computer\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\AMSI\\Providers\\'
     * - 6

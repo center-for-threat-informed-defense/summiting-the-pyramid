@@ -11,20 +11,20 @@ Levels and Observables
      - Observable Fields
      - Observable Values
    * - 7
-     - Kernel and Interfaces
+     - Kernel
      - 
      - add (CAR), remove (CAR), key_edit (CAR), value_edit (CAR)
-     - 
+     - Event ID 4688, Event ID 4689, Sysmon ID 8
    * - 6
      - System Calls
      - File manipulation, communication protection
      - 
-     - NtCreateProcess (Windows), NtCreateProcessEx (Windows)
+     - Sysmon ID 10
    * - 5
      - OS API
      - API Calls
      - create (CAR)
-     - CreateProcessA (Windows)
+     - Sysmon ID 1, Sysmon ID 5
    * - 4
      - Library API
      - e.g., .NET Framework, DLLs, COM methods
