@@ -1,0 +1,73 @@
+name: Analytic Submission
+description: Submit analytic to include in scored analytic repository
+title: "[Analytic-Submission]: "
+labels: ["analytic", "issue"]
+assignees:
+  - marvel90120
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to submit an analytic!
+  - type: input
+    id: name
+    attributes:
+      label: Analytic Name
+      description: Provide name of analytic
+      placeholder: ex. Suspicious ADFind
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Analytic Link
+      description: If located in an analytic repository, please provide link to original analytic
+      placeholder: ex. sigma link
+    validations:
+      required: false
+  - type: input
+    id: schema
+    attributes:
+      label: Analytic Schema
+      description: Provide the analytic schema (Sigma, Splunk, Elastic, etc.)
+      placeholder: ex. Sigma
+    validations:
+      required: true
+  - type: input
+    id: log
+    attributes:
+      label: Analytic Logsource
+      description: Provide the logsource for the analytic (Windows process creation, etc.)
+      placeholder: ex. Windows file event
+    validations:
+      required: true
+  - type: textarea
+    id: detection-analytic
+    attributes:
+      label: Detection Analytic
+      description: Please provide detection analytic
+      placeholder: targetfilename
+    validations:
+      required: true
+  - type: input
+    id: detection-logic
+    attributes:
+      label: Detection Logic
+      description: Provide the detection logic (Are observables AND, OR, etc.)
+      placeholder: ex. AND
+    validations:
+      required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Please provide any additional notes or information here
+      placeholder: Notes!
+  - type: input
+    id: scorer
+    attributes:
+      label: Scored By
+      description: Provide name, username, or organization who scored analytic (not required)
+      placeholder: ex. @marvel90120
+    validations:
+      required: false

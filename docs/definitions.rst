@@ -2,6 +2,8 @@ Definitions
 ===========
 This page will be updated with terms key to the development of the Summiting the Pyramid's research and methodology development.
 
+.. _Precision:
+
 Precision
 ---------
 **Precision is the ratio of true positives to total results** [#f1]_
@@ -14,6 +16,7 @@ Precision is extremely important when hunting for adversary activity. High preci
 
    David Bianco's Pyramid of Pain [#f2]_
 
+.. _Recall:
 
 Recall
 ------
@@ -33,6 +36,8 @@ Recall and precision go hand-in-hand. This can be demonstrated in picture above,
 
 On the other hand, increasing precision might decrease recall, since the scope of the activity a defender is interested in narrows. If the circle gets smaller, it will detect the specific red triangles it’s after and lower the amount of green smiley faces. However, it might miss other related activity, since the circle is so small. It is important for defenders to find a balance between precision and recall that works for their environment and security needs.
 
+.. _Evadability:
+
 Evadability
 -----------
 **Evadability describes how difficult or easy it is for an adversary to bypass detections without changing their technique**
@@ -44,6 +49,8 @@ Some behaviors are easier for adversaries to evade compared to others. For examp
 .. important:: After an adversary has hit multiple walls through their attack, they might transition their attack to **tampering**. 
      Tampering “results in the modification of a system, components of systems, its intended behavior, or data” [#f3]_. For the purposes of this research, an adversary switching to tampering as a method of attack can be considered on the same level as switching their technique, or router, of an attack. Detection of tampering are not captured within our current research, but will be considered during future iterations of this project.
 
+.. _Robustness:
+
 Robustness
 ----------
 **Robustness measures the effort needed by an adversary to evade an analytic**
@@ -53,6 +60,8 @@ Robustness is crucial for the effectiveness of an analytic, and is the focus of 
 The evadability of an analytic directly affects the robustness of an analytic. For example, an analytic might look for a specific hash value, something that is easy for an adversary to evade. It is cheap for the adversary to evade, making the robustness low. However, an analytic might be looking for the execution of a specific system call, making the evadability of an adversary’s technique increasingly difficult. Since it would cost the adversary more to evade the observable, the robustness of that specific analytic is high.
 
 We are not decreasing the attack’s evasiveness through robustness, nor is robustness about scoring the tradecraft of the adversary. Evasiveness and evadability are two different concepts. Rather, we are scoring the robustness of an analytic in conjunction with the effort to evade the specific detection.
+
+.. _Capability Abstraction:
 
 Capability Abstraction
 ----------------------
@@ -67,6 +76,8 @@ Capability Abstraction
 The art of capability abstraction showcases how each tool or behavior can be uncovered into different layers which can be acted upon by defenders. As seen in the capability abstraction above, tools used for kerberoasting can map to similar managed code, Windows API functions, RPC calls, and the same network protocol. Through reverse engineering, defenders can utilize this information to detect behaviors that might be more difficult for adversaries to evade. For example, if defenders wanted to detect the tool implementations of kerberoasting shown here, a defender can create an analytic surrounding the network protocol Kerberos TGS-REQ/REP, a behavior that adversaries would not be able to evade based on the research conducted.
 
 The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to levels outlined by our methodology. As observables are assigned to levels, further research can be conducted to identify detections based off those observables. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
+
+.. _Robustness Precision Recall:
 
 Summiting the Pyramid and Precision, Recall, and Robustness
 -----------------------------------------------------------
