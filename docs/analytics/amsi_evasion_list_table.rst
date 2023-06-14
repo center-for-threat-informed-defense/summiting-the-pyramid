@@ -2,7 +2,7 @@
 AMSI Evasion
 ------------
 
-https://github.com/SigmaHQ/sigma/blob/7f3eff58e17c1edec877cf45972726588d009940/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
+- https://github.com/SigmaHQ/sigma/blob/7f3eff58e17c1edec877cf45972726588d009940/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
 
 .. list-table::
     :widths: 30 70

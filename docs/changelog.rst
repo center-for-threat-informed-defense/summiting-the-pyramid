@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.9
+    Added Execution with Schtasks to the improved analytics repository
+
 0.0.8 -- June 12, 2023
     Created new levels pages, updated level names, updated change log to reflect pre-release changes
 
