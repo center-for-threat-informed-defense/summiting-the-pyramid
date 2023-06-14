@@ -20,8 +20,8 @@ body:
   - type: input
     id: link
     attributes:
-      label: Analytic Link
-      description: If located in an analytic repository, please provide link to original analytic
+      label: Analytic Permalink
+      description: If located in an analytic repository, please provide link to original analytic. Please provide a permalink if possible
       placeholder: ex. sigma link
     validations:
       required: false
