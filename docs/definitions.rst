@@ -6,7 +6,7 @@ This page will be updated with terms key to the development of the Summiting the
 
 Precision
 ---------
-**Precision is the ratio of true positives to total results** [#f1]_
+**The ratio of true positives to total positive results given by an analytic** [#f1]_
 
 Precision is extremely important when hunting for adversary activity. High precision analytics can most likely identify true malicious behavior. Precision corresponds to a low false positive rate within a detection environment. Precision can be more challenging to optimize for analytics higher on the pyramid.
 
@@ -36,18 +36,54 @@ Recall and precision go hand-in-hand. This can be demonstrated in picture above,
 
 On the other hand, increasing precision might decrease recall, since the scope of the activity a defender is interested in narrows. If the circle gets smaller, it will detect the specific red triangles it’s after and lower the amount of green smiley faces. However, it might miss other related activity, since the circle is so small. It is important for defenders to find a balance between precision and recall that works for their environment and security needs.
 
-.. _Evadability:
+.. _Observable:
 
-Evadability
------------
-**Evadability describes how difficult or easy it is for an adversary to bypass detections without changing their technique**
+Observable
+----------
+**An observable is an event, either benign or malicious, that is generated on a network or system and is visible to a defender.** [#f3]_
 
-When we think of an adversary moving through a network, they will attempt to evade detections in multiple ways. They can use applications which have hashes not documented by security vendors, use native tooling to blend in with normal processes, or build their own tools which communicate directly with the kernel. Defenders can use different analytics to detect adversary activity and behavior at different levels. A success might be if the adversary changes their attack flow through a different technique, or if they give up on their attack entirely.
+Example observables include:
 
-Some behaviors are easier for adversaries to evade compared to others. For example, if a defender is detecting one MD5 hash of a customizable tool, an adversary can change one byte of the application in order to avoid setting off the detection from the defender. This is very trivial for the adversary to change, requiring minimal effort, time, and money. However, if a defender is detecting certain PowerShell commandlets, an adversary might have to change the tool they are using to avoid detection. This requires more effort, time, and potential money, especially if the adversary want to maintain their specific technique, or route of attack.
++-------------------------------+--------------------------------------------------------------------------------------+
+| Observable                    | Generating Activity                                                                  |
++===============================+======================================================================================+
+| Windows Event 4688            |  Windows Kernel function monitored by ETW (e.g. PspCreateProcess) creates a process  |
++-------------------------------+--------------------------------------------------------------------------------------+
+| Windows Event 4688 Image "foo"|  Windows Kernel function monitored by ETW creates a process with filename "foo"      |
++-------------------------------+--------------------------------------------------------------------------------------+
+| Sysmon Event 1                | Windows function monitored by PsSetCreateProcessNotifyRoutine (e.g. CreateProcess)   |
+| OriginalFilename="foo"        | creates a process from a source file with "foo" filename in PE Header                |
++-------------------------------+--------------------------------------------------------------------------------------+
+| .pcap File                    | Network traffic occurs, visibile to a packet analyzer                                |
++-------------------------------+--------------------------------------------------------------------------------------+
+| Zeek alert                    | Network traffic occurs, visible to Zeek, which matches a policy                      |
++-------------------------------+--------------------------------------------------------------------------------------+
 
-.. important:: After an adversary has hit multiple walls through their attack, they might transition their attack to **tampering**. 
-     Tampering “results in the modification of a system, components of systems, its intended behavior, or data” [#f3]_. For the purposes of this research, an adversary switching to tampering as a method of attack can be considered on the same level as switching their technique, or router, of an attack. Detection of tampering are not captured within our current research, but will be considered during future iterations of this project.
+.. _Analytic:
+
+Analytic
+--------
+**An analytic is query logic used for detecting activity within different technology mediums using Boolean combinations of, or statistical analysis, of observables**
+
+In most security operations centers (SOCs), analytics are used to alert analysts on what they are concerned about within their environment, or keep track of certain behavior. For example, an analytic can be deployed by a team to send an alert when a new task is scheduled on a machine. Example analytics include CAR pseudocode, SIGMA rules, as well as the Splunk or Elastic queries generated by PySIGMA from SIGMA rules.
+
+An analytic is made of different observables which create detection logic for an analytic. For example, an analytic looking for scheduled task creation could consist of observables such as the 4698 Task Creation Windows Event ID, the registry key path of the scheduled task, or the command line usage of the schtasks.exe tool. These observables can make an analytic more brittle or most robust based on how evadable they are. For example, tracking the command line creation of task scheduling might be more brittle than tracking task scheduler event IDs, due to the fact than an adversary may not utilize the command line to schedule a task. Observables can be changed to create more robust analytics. 
+
+.. _Detection:
+
+Detection
+---------
+**Detections are the result of an analytic**
+
+Detections are how defenders understand if their analytics are firing correctly. Usually within a detection, a defender will look to see if their analytic is alerting on true positives. This is equal to precision. However, the analytic could be configured incorrectly and be alerting on false positives and false negatives.
+
+.. _Level:
+
+Level
+-----
+**A level is the grouping of observables and analytics based on difficulty and cost for an adversary to avoid triggering or being detected by them**
+
+The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them. Different observables are more or less evadable than others. The levels organize observables starting with the most easily evaded observables towards the bottom of the levels, to the least easily evaded observables towards the top of the wall. To read more about how the levels are currently outlined, refer to our :ref:`Levels`.
 
 .. _Robustness:
 
@@ -55,11 +91,7 @@ Robustness
 ----------
 **Robustness measures the effort needed by an adversary to evade an analytic**
 
-Robustness is crucial for the effectiveness of an analytic, and is the focus of the Summiting the Pyramid project. 
-
-The evadability of an analytic directly affects the robustness of an analytic. For example, an analytic might look for a specific hash value, something that is easy for an adversary to evade. It is cheap for the adversary to evade, making the robustness low. However, an analytic might be looking for the execution of a specific system call, making the evadability of an adversary’s technique increasingly difficult. Since it would cost the adversary more to evade the observable, the robustness of that specific analytic is high.
-
-We are not decreasing the attack’s evasiveness through robustness, nor is robustness about scoring the tradecraft of the adversary. Evasiveness and evadability are two different concepts. Rather, we are scoring the robustness of an analytic in conjunction with the effort to evade the specific detection.
+Robustness is crucial for the effectiveness of an analytic, and is the focus of the Summiting the Pyramid project. Robustness is directly related to the cost required by an adversary to evade it, including time, resources, and money. High robustness indicates an adversary has to spend a lot to evade it, forcing them to operate at higher levels, such as interacting directly with the kernel. Therefore, robustness is equal to the level at which an adversary must operate to evade a defender’s detection.  
 
 .. _Capability Abstraction:
 
@@ -81,7 +113,7 @@ The Summiting the Pyramid team is utilizing capability abstraction mappings to m
 
 Summiting the Pyramid and Precision, Recall, and Robustness
 -----------------------------------------------------------
-The Summiting the Pyramid methodology is focused on how to create more robust analytics, therefore, measuring it's evadability. However, it’s important to consider the different dimensions of effective analytics.
+The Summiting the Pyramid methodology is focused on how to create more robust analytics. However, it’s important to consider the different dimensions of effective analytics.
 
 Robustness, precision, and recall are separate concepts and should be considered as different aspects of analytics. Effective analytics can be thought of as a 3-legged stool. The three legs are precision, recall, and robustness. A balance between all the legs is needed to ensure the stool can withstand weight and not fall over. If you kick out one of the stool legs, it’s not a stool anymore! 
 
@@ -97,5 +129,5 @@ For Summiting the Pyramid 1, we will be looking primarily at the **robustness of
 
 .. [#f1] https://www.cybrary.it/course/mitre-attack-threat-hunting/
 .. [#f2] https://www.sans.org/tools/the-pyramid-of-pain/
-.. [#f3] https://csrc.nist.gov/glossary/term/tampering
+.. [#f3] http://nist.gov/
 .. [#f4] https://posts.specterops.io/capability-abstraction-fbeaeeb26384

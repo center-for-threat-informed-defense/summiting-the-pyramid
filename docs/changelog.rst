@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.10
+    Updated definitions pages to include new definitions, removed evadability from website
+
 0.0.9
     Added Execution with Schtasks to the improved analytics repository
 
