@@ -24,14 +24,20 @@ difficult to evade.
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+-------------------------------------+
-| Category                      | Observable Fields                 |   Observable Values                 |
-+===============================+===================================+=====================================+
-| API Calls                     | | add (CAR)                       | | Event ID 4688 (Process Creation)  |
-|                               | | remove (CAR)                    | | Event ID 4689 (Process Exited)    |
-|                               | | key_edit (CAR)                  | | Sysmon ID 8 (Create Remote Thread)|
-|                               | | value_edit (CAR)                |                                     |
-+-------------------------------+-----------------------------------+-------------------------------------+
++-------------------------------+-----------------------------------+-----------------------------------------------------+
+| Category                      | Observable Fields                 |   Observable Values                                 |
++===============================+===================================+=====================================================+
+| Process API Calls             | |                                 | | Event ID 4688 (Process creation)                  |
+|                               | |                                 | | Event ID 4689 (Process exited)                    |
+|                               | |                                 | | Sysmon ID 8 (Create remote thread)                |
++-------------------------------+-----------------------------------+-----------------------------------------------------+
+| File API Calls                | |                                 | | Event ID 4663 (Attempt was made to access object) |
++-------------------------------+-----------------------------------+-----------------------------------------------------+
+| Registry Keys API Calls       | |                                 | | Event ID 4656 (Handle to object requested)        |
+|                               | |                                 | | Sysmon ID 12 (Registry object added/deleted)      |
+|                               | |                                 | | Event ID 4660 (Object deleted)                    |
+|                               | |                                 | | Event ID 4657 (Registry value modified)           |
++-------------------------------+-----------------------------------+-----------------------------------------------------+
 
 .. rubric:: References
 
