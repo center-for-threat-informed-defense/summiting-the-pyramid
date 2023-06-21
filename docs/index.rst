@@ -14,5 +14,6 @@ Summiting the Pyramid |version|
     evadability
     scoringanalytic
     analytics/index
+    datasources
     resources
     changelog
