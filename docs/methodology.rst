@@ -17,7 +17,7 @@ as behaviors are limited by the environment they are acting in.
 
    Pyramid of Pain - Created by David Bianco [#f1]_
 
-Detection engineers can leverage the Pyramid of Pain to understand how :ref:`precise<Precision>` or :ref:`robust<Robustness>` their analytics are when detecting adversarial 
+Detection engineers can leverage the Pyramid of Pain to understand how :term:`precise<Precision>` or :term:`robust<Robustness>` their analytics are when detecting adversarial 
 behavior. A detection analytic focused on identifying hash values will be precise in detecting a snapshot of malware but will not detect a 
 variant of that malware that has been altered by an adversary. A detection at the tool level might be robust in detecting specific 
 implementations of a technique but could create more false positives, pick benign user activity, and alert on system generated noise if the implemented tool is native to 

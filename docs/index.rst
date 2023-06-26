@@ -17,3 +17,4 @@ Summiting the Pyramid |version|
     datasources
     resources
     changelog
+    glossary_test
