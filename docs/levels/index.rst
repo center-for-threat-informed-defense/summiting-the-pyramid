@@ -13,6 +13,8 @@ There are five levels which are grouped based on how difficult it is for an adve
 .. toctree::
     :maxdepth: 1
 
+    technique
+    implementations
     preexisting_tool
     adversary_tool
     ephemeral
@@ -23,10 +25,9 @@ There are also three columns which describe the different collection mechanisms 
 .. toctree::
     :maxdepth: 1
 
-    level7
-    level6
-    level5
-    level4
+    library
+    user-mode
+    kernel-mode
 
 For a quick search of an observable, please utilize our levels and observables page.
 

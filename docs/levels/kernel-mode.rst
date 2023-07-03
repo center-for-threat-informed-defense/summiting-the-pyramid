@@ -1,8 +1,8 @@
-.. _Kernel Observables:
+.. _Kernel-Mode:
 
----------------
-Level 7: Kernel
----------------
+---------------------
+Column K: Kernel-Mode
+---------------------
 
 **Description**: Interfacing directly with ring 0 in the OS. Observables are in kernel mode.
 
@@ -11,7 +11,6 @@ Operating System, as it provides the services for everything, including managing
 support routines available start with ``Ke`` within the Windows Operating System. Defenders can monitor kernel activity through observables including registry 
 modification, some event IDs, and network protocols. 
 
-**Why are kernel detections at the top of detection observables?**
 
 Kernel is the last level of the Operating System until you get to changing tactics to tampering with the hardware of the computer. If an adversary can access 
 calls to these routines, they can bypass every other documented layer and blend in with the other kernel threads and routines occurring. However, the higher 
@@ -19,8 +18,6 @@ the adversaries climb up the levels, the harder they fall. Directly interfacing 
 since everything is managed and run in a particular way. This is also the hardest level for a defender to detect. Context and monitoring abnormal processes 
 can assist in identifying potential malicious activity. Overall, kernel behavior showcases the most robust fields to an analytic, since this will be the most 
 difficult to evade.
-
-**Examples**: Registry modification, event IDs, network protocol
 
 Observables
 ^^^^^^^^^^^
