@@ -1,14 +1,14 @@
-.. _Tools Outside Adversary Control:
+.. _Pre-Existing Tools:
 
-----------------------------------------
-Level 3: Tools Outside Adversary Control
-----------------------------------------
+-----------------------------------
+Level 3: Core to Pre-Existing Tools
+-----------------------------------
 
-**Description**: Tools which are managed by outside organizations. The adversary has minimal control in changing functions and protocols to make them specific for their attack.
+**Description**: Observables associated with tools available to the defenders before adversary use and difficult for an adversary to modify.
 
-**Why are tools split between within adversary control and outside adversary control?**
+**Why are tools split between adversary brought and pre-existing?**
 
-Tools outside adversary control is less flexible than tools within adversary control, as an adversary has to behave and act with what is available to them through the tool. 
+Pre-existing tools provide less flexibility to adversaries than tools that are brought by an adversary, as an adversary has to behave and act with what is available to them through the tool. 
 The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the tool.
 
 Since the adversary cannot change the capability itself and it is managed by an organization, it is much more difficult to distinguish adversary behavior 

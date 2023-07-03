@@ -38,7 +38,7 @@ For our example, let’s consider each component individually. First, we know th
 
    The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
 
-Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Tools Within Adversary Control` level, since it can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for the ``ntsvc`` used by Windows Task Manager. In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
+Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Adversary Brought Tool` level, since it can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for the ``ntsvc`` used by Windows Task Manager. In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Ephemeral Values`.
 
 .. figure:: _static/pipes_level1.png
    :alt: Suspicious Pipe Creation selections scored at level 1
@@ -83,7 +83,7 @@ Step 4: Give the analytic a final score
 
 Now that we understand the individual components of this analytic, we can now score the overall analytic. 
 
-The individual observables, the Event ID 17 and the names of pipes created by CobaltStrike, have been scored at levels 5 and 1 respectively. The filter used to increase precision of the analytic has not been scored.  The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. Since the AND condition makes the observables dependent on the lowest level observable being fulfilled, the overall score of the analytic will be a **level 1**, falling to the :ref:`Operational Environmental Variables` level.
+The individual observables, the Event ID 17 and the names of pipes created by CobaltStrike, have been scored at levels 5 and 1 respectively. The filter used to increase precision of the analytic has not been scored.  The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. Since the AND condition makes the observables dependent on the lowest level observable being fulfilled, the overall score of the analytic will be a **level 1**, falling to the :ref:`Ephemeral Values` level.
 
 .. figure:: _static/pipes_finalscore.png
    :alt: Suspicious Pipe Creation final score
