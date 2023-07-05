@@ -75,7 +75,7 @@ Step 4: Give the analytic a final score
 
 Now that we understand the individual components of this analytic, we can now score the overall analytic. 
 
-The collection source was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemenral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
+The collection source was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
 
 .. figure:: _static/pipes_finalscore_07052023.png
    :alt: Suspicious Pipe Creation final score

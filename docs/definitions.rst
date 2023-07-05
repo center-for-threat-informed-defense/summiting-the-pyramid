@@ -54,7 +54,7 @@ Example observables include:
 | Sysmon Event 1                | Windows function monitored by PsSetCreateProcessNotifyRoutine (e.g. CreateProcess)   |
 | OriginalFilename="foo"        | creates a process from a source file with "foo" filename in PE Header                |
 +-------------------------------+--------------------------------------------------------------------------------------+
-| .pcap File                    | Network traffic occurs, visibile to a packet analyzer                                |
+| .pcap File                    | Network traffic occurs, visible to a packet analyzer                                |
 +-------------------------------+--------------------------------------------------------------------------------------+
 | Zeek alert                    | Network traffic occurs, visible to Zeek, which matches a policy                      |
 +-------------------------------+--------------------------------------------------------------------------------------+

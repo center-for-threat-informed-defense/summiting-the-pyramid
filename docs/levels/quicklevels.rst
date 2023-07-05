@@ -12,7 +12,7 @@ Observables Quick Search
    * - 4: Core to Some Implementations of (Sub-)Technique
      - AttributeLDAPDisplayName: msDS-KeyCredentialLink (T1556)
    * - 3: Core to Pre-Existing Tools
-     - signer (CAR), signature_valid (CAR), mime_type (CAR), link_target (CAR), command line (Sysmon), parent command line (Sysmon), process command line (Windows EID), command_line (CAR), parent_comand_line (CAR), integrity level (Sysmon), mandatory label (Windows EID), token elevation type (Windows EID), original file name (Sysmon), access_level (CAR), integrity_level (CAR), login_type (CAR), login_successful (CAR), auth_service (CAR), decision_reason (CAR), method (CAR)
+     - signer (CAR), signature_valid (CAR), mime_type (CAR), link_target (CAR), command line (Sysmon), parent command line (Sysmon), process command line (Windows EID), command_line (CAR), parent_command_line (CAR), integrity level (Sysmon), mandatory label (Windows EID), token elevation type (Windows EID), original file name (Sysmon), access_level (CAR), integrity_level (CAR), login_type (CAR), login_successful (CAR), auth_service (CAR), decision_reason (CAR), method (CAR)
    * - 2: Core to Adversary-Brought Tools
      - Command line (Sysmon), integrity level (Sysmon), parent command line (Sysmon)
    * - 1: Ephemeral Values
