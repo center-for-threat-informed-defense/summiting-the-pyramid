@@ -1,7 +1,10 @@
 Changelog
 =========
-0.0.11
+0.0.12
     Updated website materials to reflect new model for Summiting the Pyramid (levels, quick search, how to score analytic)
+
+0.0.11
+    Updated Scored Analytics CSV file
 
 0.0.10
     Updated definitions pages to include new definitions, removed evadability from website
