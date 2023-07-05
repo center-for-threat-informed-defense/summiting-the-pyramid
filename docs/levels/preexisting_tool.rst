@@ -41,7 +41,7 @@ Observables
 |                               |  | Token elevation type (EID)     |                              |
 |                               |  | Access level (CAR)             |                              |
 +-------------------------------+-----------------------------------+------------------------------+
-| User Session                  |  | Login type (CAR)              |                              |
+| User Session                  |  | Login  type (CAR)              |                              |
 |                               |  | Login successful (CAR)         |                              |
 +-------------------------------+-----------------------------------+------------------------------+
 | Authentication                |  | Auth service (CAR)             |                              |
