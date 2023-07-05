@@ -30,10 +30,10 @@ Observables
 |                               |                                   | | Sysmon ID 15 (File create stream hash)   |
 |                               |                                   | | Sysmon ID 23 (File deletion)             |
 +-------------------------------+-----------------------------------+--------------------------------------------+
-| Driver API Calls              |  |                                | | Sysmon ID 6 (Driver loaded)              |
+| Driver API Calls              |                                   | | Sysmon ID 6 (Driver loaded)              |
 +-------------------------------+-----------------------------------+--------------------------------------------+
-| Registry Key API Calls        |  |                                | | Sysmon ID 13 (Registry value set)        |
-|                               |  |                                | | Sysmon ID 14 (Registry object renamed)   |
+| Registry Key API Calls        |                                   | | Sysmon ID 13 (Registry value set)        |
+|                               |                                   | | Sysmon ID 14 (Registry object renamed)   |
 +-------------------------------+-----------------------------------+--------------------------------------------+
 
 .. rubric:: References
