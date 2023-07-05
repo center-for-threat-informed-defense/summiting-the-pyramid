@@ -1,9 +1,9 @@
 How to Score an Analytic
 ========================
 
-These are the steps that should be taken to score an analytic against the Summiting the Pyramid methodology and the Analytics Observable Table. If you identify an observable or value that is not part of the current methodology, please create an issue in our `GitHub here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_ and the team will integrate feedback.
+These are the steps that should be taken to score an analytic with the Summiting the Pyramid methodology. If you identify an observable or value that is not part of the current methodology or would like to submit your own scored analytic, please create an issue in our `GitHub here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_ and the team will integrate feedback.
 
-For this walk through, we will highlight our scoring of `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_.
+This walkthrough will highlight scoring `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_.
 
 .. figure:: _static/pipes_analytic.png
    :alt: Suspicious Pipe Creation Analytic
@@ -11,42 +11,34 @@ For this walk through, we will highlight our scoring of `suspicious pipe creatio
 
    Suspicious Pipe Creation from Cobalt Strike [#f1]_
 
-Step 1: Identify the log source of the analytic
------------------------------------------------
-Just as not all analytics are created equal, not all log sources are created equal. For example, some data sources are associated with kernel functions, while others might be triggered by, and provide insight into, specific applications. It is important to remember that the score is the ceiling of the data source's highest level of it’s monitoring within the OS or platform. The fields that are included in the event text may or may not reflect that highest potential score. This includes log sources such as Windows Event IDs, Sysmon, and other vendor-specific tools. Keep this in mind as you score your analytic.
+Step 1: Scoring the collection source of the analytic
+-----------------------------------------------------
+Just as not all analytics are created equal, not all collection sources are created equal. Our collection columns identify the different layers within the OS in which observables can be collected. Each of the different log sources within each column provide different insight into the OS.
 
-In the pipe creation example, the log source identified is Windows, and the category is ‘pipe_created.’ Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. We will keep this in mind as we continue to score our analytic.
+In the pipe creation example, the collection source identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired frm user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
 
-.. figure:: _static/pipes_logsource.png
-   :alt: Suspicious Pipe Creation Analytic Logsource
+.. figure:: _static/pipes_collectionsource_07052023.png
+   :alt: Suspicious Pipe Creation Analytic Collection Source
    :align: center
 
-   The logsource highlights that Sysmon events are detected [#f1]_
+   The collection source highlights that Sysmon events are detected [#f1]_
 
 .. important:: Some analytics might be vendor tool agnostic.
-    If the field names can be applied to various different tools, be sure to score it in the log source that you will be using in your environment. Keep this consistent as you look at each of the individual analytics.
+    If the field names can be applied to various different tools, be sure to score it in the collection source that you will be using in your environment. Keep this consistent as you look at each of the individual analytics.
 
 Step 2: Break down each of the observables
 ------------------------------------------
 Each of the observables, or the individual components of an analytic, will have its own score. Scoring each individually will help us define a composite score for the whole analytic. Some observable scores will be more strongly determined by the fields searched, while others will be more influenced by the values specified. 
 
-For our example, let’s consider each component individually. First, we know that Sigma utilizes the log source ``product`` and ``category`` fields for identifying Event IDs that are used within data sources. As mentioned above, we know that the analytic is looking specifically at the Sysmon pipe creation, identified as ID 17. Based on the StP methodology, Event IDs can span multiple levels. It depends on how the Event ID is fired. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it **level 5** :ref:`OS API Level` level, understanding that it can at least be fired from Windows OS API calls.
+Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Adversary Brought Tool` level, since it can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for the ``ntsvc`` used by Windows Task Manager. In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part without reconfiguring the tool. Due to this fact, the group of analytics is scored at a :ref:`Ephemeral Values`.
 
-.. figure:: _static/pipes_level5.png
-   :alt: Suspicious Pipe Creation logsource scored at level 5
-   :align: center
-
-   The logsource highlighting pipe creation is scored at level 5, the OS API level [#f1]_
-
-Next, the ``selection_malleable_profiles`` and ``selection_malleable_profile_CatalogChangeListener`` selections look for a pipe name used by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a level 2 dependency, being at the :ref:`Tools Within Adversary Control` level, since it can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for the ``ntsvc`` used by Windows Task Manager. In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part. Due to this fact, the group of analytics is scored at a **level 1**, :ref:`Operational Environmental Variables`.
-
-.. figure:: _static/pipes_level1.png
+.. figure:: _static/pipes_level1_07052023.png
    :alt: Suspicious Pipe Creation selections scored at level 1
    :align: center
 
    The pipes created are scored at level 1, the Operational and Environmental Variables Level [#f1]_
 
-The last component of the analytic is a filter. This is used to improve the precision of the analytic, lowering the amount of false positives which are generated. As of right now, the scoring of the analytic is focused solely on the robustness of an analytic, not the precision or recall. Because of this, filter sections will not be scored. 
+The last component of the analytic is a filter. This is used to improve the precision of the analytic, lowering the amount of false positives which are generated. As of right now, the scoring of the analytic using the Summiting the Pyramid methodology is focused solely on the robustness of an analytic, not precision or recall. Because of this, filter sections will not be scored. 
 
 .. figure:: _static/pipes_filter.png
    :alt: Suspicious Pipe Creation filter
@@ -83,19 +75,25 @@ Step 4: Give the analytic a final score
 
 Now that we understand the individual components of this analytic, we can now score the overall analytic. 
 
-The individual observables, the Event ID 17 and the names of pipes created by CobaltStrike, have been scored at levels 5 and 1 respectively. The filter used to increase precision of the analytic has not been scored.  The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. Since the AND condition makes the observables dependent on the lowest level observable being fulfilled, the overall score of the analytic will be a **level 1**, falling to the :ref:`Operational Environmental Variables` level.
+The collection source was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
 
-.. figure:: _static/pipes_finalscore.png
+.. figure:: _static/pipes_finalscore_07052023.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 
-   The final score of the suspicious pipes analytic is a 1 [#f1]_
+   The final score of the suspicious pipes analytic is 1U [#f1]_
+
+This is how you can place the score using the 2D model diagram.
+
+.. figure:: _static/pipes_2Dmodel.png
+   :alt: Suspicious Pipe Creation final score
+   :align: center
 
 And that’s it! You have officially scored an analytic based on the Summiting the Pyramid methodology. Knowing the steps to score an analytic, you can apply this to your environment, see where your analytics fall, and determine if there’s any ways your analytics can be improved.
 
 Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collecting information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
-Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table? `Fill out our analytic submission form, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_!
+**Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table?** `Fill out our analytic submission form, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_!
 
 .. rubric:: References
 

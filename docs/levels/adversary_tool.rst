@@ -1,20 +1,20 @@
-.. _Tools Within Adversary Control:
+.. _Adversary Brought Tool:
 
 ---------------------------------------
-Level 2: Tools Within Adversary Control
+Level 2: Core to Adversary-Brought Tool
 ---------------------------------------
 
-**Description**: These are tools that are custom-made or can be configured by the adversary, which they control the code, functions, and binaries associated with them.
+**Description**: Observables which are associated with tools that are brought in by an adversary to accomplish an attack. 
 
-Tools which are within adversary control provide users the flexibility to configure the tool to meet their specific needs. These include items such as 
+Tools which are brought by an adversary for an attack provide the adversary the flexibility to configure the tool and change their implementations to meet their specific needs. Tools which might fall under these observables include 
 ADFind, Cobalt Strike, and others which the adversary can modify or configure to accomplish their goal.
 
-**Why are tools within adversary control placed here?**
+**Why are adversary-brought tools placed here?**
 
 These tools gives adversaries an additional outlet of configuration to evade certain detections. For example, if an analytic detection is 
 identifying certain tool-specific configurations, an adversary can go into the open-source code, change it, and evade that detection [#f1]_. While this 
 requires knowledge on the adversary to change the tool configuration without changing the capability, it gives an adversary flexibility to 
-evade detection through the availability of application code itself.
+evade detection through the availability of application code itself. Even if an adversary does not have the power to configure the tool itself, them having control over the tool during an attack gives them the advantage over the adversary.
 
 **Examples**: Signatures, command-line arguments, tool-specific configurations, metadata, binaries
 

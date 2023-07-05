@@ -1,12 +1,12 @@
-.. _Operational Environmental Variables:
+.. _Ephemeral Values:
 
-------------------------------------------------
-Level 1: Operational and Environmental Variables
-------------------------------------------------
+-------------------------
+Level 1: Ephemeral Values
+-------------------------
 
-**Description**: Variables which are constantly changing due to running processes, applications, and users. These observables provide a snapshot in time.
+**Description**: Observables that are trivial for an adversary to change, or that change even without adversary intervention.
 
-Operational and environmental variables capture the context of what is currently happening to a user, process, or system. This includes observables 
+Ephemeral values capture the context of what is currently happening to a user, process, or system. This includes observables 
 such as process IDs, hash values, domain names, file names, and others. While these observables provide context for an attack, they do little to 
 outline the behaviors of both normal users and the adversary.
 
