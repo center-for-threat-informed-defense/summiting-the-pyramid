@@ -1,5 +1,7 @@
 Changelog
 =========
+0.0.11
+    Updated Scored Analytics CSV file
 0.0.10
     Updated definitions pages to include new definitions, removed evadability from website
 
