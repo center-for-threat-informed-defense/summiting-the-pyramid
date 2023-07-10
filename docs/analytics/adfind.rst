@@ -14,9 +14,9 @@ Original Analytic Scoring
     :header-rows: 1
 
     * - 
-      - Library
-      - User-mode
-      - Kernel-mode
+      - Library (L)
+      - User-mode (U)
+      - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
       - 
       - 
@@ -83,24 +83,29 @@ Improved Analytic Scoring
       - 
       - 
 
-This analytic looks for specific command line arguments of the ADFind tool. ADFind is identified when Image ends with ``adfind.exe``. 
-The logsource for this analytic is process create, so it could potentially fire for Event IDs 4688 and/or Sysmon Event ID 1, but 
-we can infer because of the the Image field in the analytic that it is detecting instances of Sysmon Event ID 1. 4688 has the field 
-NewProcessName, though it could be mapped to another name in your SIEM of choice. However, for scoring this analytic we will assume 
-the intention was to identify command line activity in Sysmon Event ID 1s.
+This analytic looks for specific command line arguments of the ADFind tool, identified when Image ends with ``adfind.exe``. 
+The logsource for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
+This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f1]_. 4688 has the field 
+NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
+the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
 
-Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process. Therefore it is a user-mode observable 
-and we can place other observables in the U column. 
+Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f2]_. Therefore it is a user-mode logsource 
+and we can place other the observables in the U column. 
 
-First, ``Image|endswith: '\adfind.exe'`` is placed at the **Ephemeral level**. An adversary can easily change the Image value by renaming 
+``Image|endswith: '\adfind.exe'`` is placed at the **Ephemeral level**. An adversary can easily obfuscate or change the Image value by renaming 
 the file. The command line arguments are placed at the **Core to Adversary-Brought Tool** level, since the command line arguments are 
-specific to ADFind tool and require modifying source code to change. Since the CommandLine and Image parts of the analytic are 
+specific to the ADFind tool and require modifying source code to change. Since the CommandLine and Image observables in the analytic are 
 ANDed together, according to our Boolean logic, the entire analytic scores as a 1U.
 
-This analytic can be made more robust by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
+The robustness of this analytic can be increased by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
 for an adversary to change the Image name ending with ``adfind.exe`` to avoid detection. It is more challenging for an adversary to 
-change the OriginalFileName, since it is derived from the PE header. Changing the PE header requires either modifying values at 
+change the OriginalFileName, since it is derived from the PE header. Changing the PE header requires either modifying changing values at 
 the executable's compile time or modifying raw bytes with a hex editor, both of which are more complex for an adversary than 
 renaming a file on a compromised system.
 
 By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to 2U.
+
+.. rubric:: References
+
+.. [#f1] https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90001
+.. [#f2] https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa
