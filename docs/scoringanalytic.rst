@@ -11,20 +11,20 @@ This walkthrough will highlight scoring `suspicious pipe creation from CobaltStr
 
    Suspicious Pipe Creation from Cobalt Strike [#f1]_
 
-Step 1: Scoring the collection source of the analytic
------------------------------------------------------
-Just as not all analytics are created equal, not all collection sources are created equal. Our collection columns identify the different layers within the OS in which observables can be collected. Each of the different log sources within each column provide different insight into the OS.
+Step 1: Scoring the analytic's data source
+------------------------------------------
+Just as not all analytics are created equal, not all data sources are created equal. Our data source columns identify the different layers within the OS in which observables can be collected. Each of the different log sources within each column provide different insight into the OS.
 
-In the pipe creation example, the collection source identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired frm user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
+In the pipe creation example, the data source identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired frm user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
 
 .. figure:: _static/pipes_collectionsource_07052023.png
-   :alt: Suspicious Pipe Creation Analytic Collection Source
+   :alt: Suspicious Pipe Creation Analytic Data Source
    :align: center
 
-   The collection source highlights that Sysmon events are detected [#f1]_
+   The data source highlights that Sysmon events are detected [#f1]_
 
 .. important:: Some analytics might be vendor tool agnostic.
-    If the field names can be applied to various different tools, be sure to score it in the collection source that you will be using in your environment. Keep this consistent as you look at each of the individual analytics.
+    If the field names can be applied to various different tools, be sure to score it in the data source that you will be using in your environment. Keep this consistent as you look at each of the individual analytics.
 
 Step 2: Break down each of the observables
 ------------------------------------------
@@ -75,7 +75,7 @@ Step 4: Give the analytic a final score
 
 Now that we understand the individual components of this analytic, we can now score the overall analytic. 
 
-The collection source was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
+The data source was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
 
 .. figure:: _static/pipes_finalscore_07052023.png
    :alt: Suspicious Pipe Creation final score
