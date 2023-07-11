@@ -63,7 +63,7 @@ Example observables include:
 
 Data Source
 -----------
-**A data source is where data is being generated from, regardlss of platform**
+**A data source is where data is being generated from, regardless of platform**
 
 Analytics can utilize data sources from different platforms, applications, and Operating Systems (OS). This includes data sources such as Sysmon, Windows Event IDs, Zeek, Windows application logs, and so on. Data sources can be used to improve or constrain the observables available to a defender when building an analytic.
 
