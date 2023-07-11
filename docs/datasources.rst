@@ -1,7 +1,7 @@
 .. _Data Sources:
 
-Data Sources
-============
+ATT&CK Data Source Mappings
+===========================
 
 Process
 -------

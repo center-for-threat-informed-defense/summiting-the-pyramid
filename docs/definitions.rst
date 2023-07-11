@@ -59,6 +59,19 @@ Example observables include:
 | Zeek alert                    | Network traffic occurs, visible to Zeek, which matches a policy                      |
 +-------------------------------+--------------------------------------------------------------------------------------+
 
+.. _Data-Source:
+
+Data Source
+-----------
+**A data source is where data is being generated from, regardlss of platform**
+
+Analytics can utilize data sources from different platforms, applications, and Operating Systems (OS). This includes data sources such as Sysmon, Windows Event IDs, Zeek, Windows application logs, and so on. Data sources can be used to improve or constrain the observables available to a defender when building an analytic.
+
+.. important::
+    The ATT&CK Framework has defined data sources as representing, "various subjects/topics of information that can be collected by sensors/logs." [#f4]_ Throughout our materials, data sources will refer to what we have defined in the Data Source section on this page. However, we do have a mapping of observables to ATT&CK Data Sources, which you can refer to below.
+
+    :ref:`Data Sources`
+
 .. _Analytic:
 
 Analytic
@@ -81,9 +94,17 @@ Detections are how defenders understand if their analytics are firing correctly.
 
 Level
 -----
-**A level is the grouping of observables and analytics based on difficulty and cost for an adversary to avoid triggering or being detected by them**
+**Levels in the Summiting the Pyramid methodology group observables and analytics based on the Pyramid of Pain, refined to reflect difficulty and cost for an adversary to avoid triggering or being detected by them**
 
-The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them. Different observables are more or less evadable than others. The levels organize observables starting with the most easily evaded observables towards the bottom of the levels, to the least easily evaded observables towards the top of the wall. To read more about how the levels are currently outlined, refer to our :ref:`Levels`.
+The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them. Different observables are more or less evadable than others. The Pyramid of Pain has grouped these concepts into six different levels. The 2D methodology has taken these levels, grouped them based on ephemeral values, tools, and adversary behaviors, and formed five levels to group observables. The levels organize observables starting with the most easily evaded observables towards the bottom of the levels, to the least easily evaded observables at the top of the table. To read more about how the levels are currently outlined, refer to our :ref:`Levels`.
+
+.. _Column:
+
+Column
+------
+**Columns in the Summiting the Pyramid methodology model group data source observables based on how evasive they are in the OS.**
+
+Analytics are constrained by the data source that is being used to log observables. The data source columns look to create groups of data source observables based on how evasive they are in the OS. These observables are restricted to event codes being logged at the library, user-mode, and kernel-mode levels of the OS. To read more about how the columns are currently outlined, refer to our :ref:`Levels`.
 
 .. _Robustness:
 
@@ -103,7 +124,7 @@ Capability Abstraction
    :alt: Kerberoasting - Specter Ops
    :align: center
 
-   Kerberoasting Capability Abstraction Taken From Specter Ops [#f4]_
+   Kerberoasting Capability Abstraction Taken From Specter Ops [#f5]_
 
 The art of capability abstraction showcases how each tool or behavior can be uncovered into different layers which can be acted upon by defenders. As seen in the capability abstraction above, tools used for kerberoasting can map to similar managed code, Windows API functions, RPC calls, and the same network protocol. Through reverse engineering, defenders can utilize this information to detect behaviors that might be more difficult for adversaries to evade. For example, if defenders wanted to detect the tool implementations of kerberoasting shown here, a defender can create an analytic surrounding the network protocol Kerberos TGS-REQ/REP, a behavior that adversaries would not be able to evade based on the research conducted.
 
@@ -130,4 +151,5 @@ For Summiting the Pyramid 1, we will be looking primarily at the **robustness of
 .. [#f1] https://www.cybrary.it/course/mitre-attack-threat-hunting/
 .. [#f2] https://www.sans.org/tools/the-pyramid-of-pain/
 .. [#f3] http://nist.gov/
-.. [#f4] https://posts.specterops.io/capability-abstraction-fbeaeeb26384
+.. [#f4] https://attack.mitre.org/datasources/
+.. [#f5] https://posts.specterops.io/capability-abstraction-fbeaeeb26384
