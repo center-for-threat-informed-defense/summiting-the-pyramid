@@ -1,3 +1,5 @@
+:orphan:
+
 -------------------------------------------
 Service Registry Permissions Weakness Check
 -------------------------------------------
