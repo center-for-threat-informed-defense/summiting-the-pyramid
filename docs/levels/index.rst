@@ -19,8 +19,8 @@ There are five levels which are grouped based on how difficult it is for an adve
     adversary_tool
     ephemeral
 
-**Columns: Collection Mechanisms**
-There are also three columns which describe the different collection mechanisms based on their visibility into the OS.
+**Columns: Data Sources**
+There are also three columns which describe the different data sources based on their visibility into the OS.
 
 .. toctree::
     :maxdepth: 1
