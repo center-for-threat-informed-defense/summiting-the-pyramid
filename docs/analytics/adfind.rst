@@ -6,6 +6,42 @@ Suspicious ADFind
 
 - https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
 
+.. code-block:: yaml
+
+  title: Suspicious AdFind Execution
+  id: 75df3b17-8bcc-4565-b89b-c9898acef911
+  status: experimental
+  description: Detects the execution of a AdFind for Active Directory enumeration 
+  references:
+      - https://social.technet.microsoft.com/wiki/contents/articles/7535.adfind-command-examples.aspx
+      - https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin6/Emulation_Plan/Phase1.md
+      - https://thedfirreport.com/2020/05/08/adfind-recon/
+  author: FPT.EagleEye Team, omkar72, oscd.community
+  date: 2020/09/26
+  modified: 2021/05/12
+  tags:
+      - attack.discovery
+      - attack.t1018
+      - attack.t1087.002
+      - attack.t1482
+      - attack.t1069.002
+  logsource:
+      product: windows
+      category: process_creation
+  detection:
+      selection:
+          CommandLine|contains:
+              - 'objectcategory'
+              - 'trustdmp'
+              - 'dcmodes'
+              - 'dclist'
+              - 'computers_pwdnotreqd'
+          Image|endswith: '\adfind.exe'
+      condition: selection
+  falsepositives:
+      - Administrative activity
+  level: medium
+
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -39,7 +75,7 @@ Original Analytic Scoring
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
       - 
-    * - Ephemeral
+    * - Ephemeral (1)
       - 
       - Image|endswith: '\\adfind.exe'
       - 
@@ -78,7 +114,7 @@ Improved Analytic Scoring
         |   - 'computers_pwdnotreqd'
         | OriginalFileName|endswith: '\\adfind.exe'
       - 
-    * - Ephemeral
+    * - Ephemeral (1)
       - 
       - 
       - 
