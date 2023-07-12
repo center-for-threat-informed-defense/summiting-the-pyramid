@@ -1,5 +1,7 @@
 Changelog
 =========
+0.0.13
+    Updated ADFind improvement example in Scored Analytics section and Methodology post
 0.0.12
     Updated website materials to reflect new model for Summiting the Pyramid (levels, quick search, how to score analytic)
 
