@@ -10,12 +10,12 @@ The Library collection mechanism groups observables which are collected closest 
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+-----------------------------------+
-| Category                      | Observable Fields                 |   Observable Values               |
-+===============================+===================================+===================================+
-| Scheduled Jobs                |  |                                | | Event ID 4698 (Task creation)   |
-|                               |  |                                | | Event ID 4699 (Task deletion)   |
-|                               |  |                                | | Event ID 4700 (Task enabled)    |
-|                               |  |                                | | Event ID 4701 (Task disabled)   |
-|                               |  |                                | | Event ID 4702 (Task updated)    |
-+-------------------------------+-----------------------------------+-----------------------------------+
++-------------------------------+-----------------------------------------------------------------------+
+| Category                      | Observables                                                           |
++===============================+=======================================================================+
+| Scheduled Jobs                |  | Event ID 4698 (Task creation)                                      |
+|                               |  | Event ID 4699 (Task deletion)                                      |
+|                               |  | Event ID 4700 (Task enabled)                                       |
+|                               |  | Event ID 4701 (Task disabled)                                      |
+|                               |  | Event ID 4702 (Task updated)                                       |
++-------------------------------+-----------------------------------------------------------------------+
