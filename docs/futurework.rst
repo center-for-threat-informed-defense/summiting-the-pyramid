@@ -1,0 +1,15 @@
+.. _Future-Work:
+
+-----------
+Future Work
+-----------
+The Summiting the Pyramid project uncovered other areas of research for future work. The project is looking to address these research topics during future project work.
+
+* Analytic precision and addressing false positives while retaining robustness
+* More analysis into ATT&CK data sources and scoring of ATT&CK Techniques
+* Lexical analysis and automated scoring of selected analytic query languages
+* Determining analytic robustness scoring for network-based analytics, both from a network-based sensing and host-based sensing perspective
+* Generalize the scoring methodology to additional operating systems and platforms
+* Analyze multi-analytic robustness scoring, where one or more analytics depend on or relate to each other, chains of techniques, etc.
+
+If you have any thoughts to future areas of research, please submit a `GitHub issue here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_
