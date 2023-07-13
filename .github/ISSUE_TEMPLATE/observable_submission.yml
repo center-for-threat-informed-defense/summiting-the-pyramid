@@ -20,7 +20,7 @@ body:
   - type: input
     id: level-placement
     attributes:
-      label: Analytic Placement
+      label: Observable Placement
       description: Which level/column does this observable belong in? (Can belong in more than one e.g. Levels 2/3)
       placeholder: ex. Level 2, Column K
     validations:
@@ -45,7 +45,7 @@ body:
     id: contributor
     attributes:
       label: Contributed By
-      description: Provide name, username, or organization who scored analytic (not required)
+      description: Provide name, username, or organization who scored observable (not required)
       placeholder: ex. @marvel90120
     validations:
       required: false
