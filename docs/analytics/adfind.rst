@@ -6,115 +6,106 @@ Suspicious ADFind
 
 - https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
 
-.. list-table::
-    :widths: 30 70
-
-    * - Original Analytic
-      - | CommandLine|contains:
-        |   - 'objectcategory'
-        |   - 'trustdmp'
-        |   - 'dcmodes'
-        |   - 'dclist'
-        |   - 'computers_pwdnotreqd'
-        | Image|endswith: '\\adfind.exe'
-    * - Improved Analytic
-      - | CommandLine|contains:
-        |   - 'objectcategory'
-        |   - 'trustdmp'
-        |   - 'dcmodes'
-        |   - 'dclist'
-        |   - 'computers_pwdnotreqd'
-        | OriginalFileName: 'adfind.exe'
-
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. list-table::
-    :widths: 15 30 60
+    :widths: 20 20 30 20
     :header-rows: 1
 
-    * - Level
-      - Level Name
-      - Observables
-    * - 7
-      - Kernel
+    * - 
+      - Library (L)
+      - User-mode (U)
+      - Kernel-mode (K)
+    * - Core to (Sub-) Technique (5)
       - 
-    * - 6
-      - System Calls
       - 
-    * - 5
-      - OS API
       - 
-    * - 4
-      - Library API
+    * - Core to Part of (Sub-) Technique (4)
       - 
-    * - 3
-      - Tools Outside Adversary Control
+      -
+      -
+    * - Core to Pre-Existing Tool (3)
       - 
-    * - 2
-      - Tools Within Adversary Control
-      - | CommandLine|contains:
+      - 
+      -
+    * - Core to Adversary-brought Tool (2)
+      - 
+      - | EventID: 1
+        | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'
         |   - 'dcmodes'
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
-    * - 1
-      - Operational/Environmental Variables
+      - 
+    * - Ephemeral
+      - 
       - Image|endswith: '\\adfind.exe'
+      - 
 
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 15 30 60
+    :widths: 20 20 30 20
     :header-rows: 1
 
-    * - Level
-      - Level Name
-      - Observables
-    * - 7
-      - Kernel
+    * - 
+      - Library
+      - User-mode
+      - Kernel-mode
+    * - Core to (Sub-) Technique (5)
       - 
-    * - 6
-      - System Calls
       - 
-    * - 5
-      - OS API
       - 
-    * - 4
-      - Library API
+    * - Core to Part of (Sub-) Technique (4)
       - 
-    * - 3
-      - Tools Outside Adversary Control
+      -
+      -
+    * - Core to Pre-Existing Tool (3)
       - 
-    * - 2
-      - Tools Within Adversary Control
-      - | CommandLine|contains:
+      - 
+      -
+    * - Core to Adversary-brought Tool (2)
+      - 
+      - | EventID: 1
+        | CommandLine|contains:
         |   - 'objectcategory'
         |   - 'trustdmp'
         |   - 'dcmodes'
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
-        | OriginalFileName: 'adfind.exe'
-    * - 1
-      - Operational/Environmental Variables
+        | OriginalFileName|endswith: '\\adfind.exe'
+      - 
+    * - Ephemeral
+      - 
+      - 
       - 
 
-Research Notes and Caveats
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-We are given this analytic that looks for specific command line arguments dealing with the ADFind tool. 
-It also looks for ``adfind.exe`` in the ``image`` file path. Looking at the current data sources 
-provided by the analytic and the Pyramid of Evasiveness, we can begin to place where everything is. 
-First, we place ``Image|endswith: '\adfind.exe'`` within the Operational and Environmental Variables level. 
-While the intention of this analytic is looking for the execution of commands through this tool, this 
-image path can be obfuscated by adversaries within the command line. We put the command line arguments into the 
-Tools Within Adversary Control level, since these command line arguments are specific to the tool itself. 
-The final placement of the analytic is below.
+This analytic looks for specific command line arguments of the ADFind tool, identified when Image ends with ``adfind.exe``. 
+The logsource for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
+This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f1]_. 4688 has the field 
+NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
+the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
 
-.. important:: This analytic can be evaded by adversaries if they rename the binary. 
-    Can we improve this analytic so it is more robust in terms of the tools that could be used to evade it? 
-    We cannot always improve an analytic to the system application or kernel level, but we can make smaller improvements.
+Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f2]_. Therefore it is a user-mode logsource 
+and we can place other the observables in the U column. 
 
-Adversaries can change the ``image`` name to evade some analytics. 
-However, they must declare the tool they are using somewhere--in many cases this is at compile time. This declaration can usually be 
-identified in Sysmon's ``OriginalFileName`` field.
+``Image|endswith: '\adfind.exe'`` is placed at the **Ephemeral level**. An adversary can easily obfuscate or change the Image value by renaming 
+the file. The command line arguments are placed at the **Core to Adversary-Brought Tool** level, since the command line arguments are 
+specific to the ADFind tool and require modifying source code to change. Since the CommandLine and Image observables in the analytic are 
+ANDed together, according to our Boolean logic, the entire analytic scores as a 1U.
+
+The robustness of this analytic can be increased by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
+for an adversary to change the Image name ending with ``adfind.exe`` to avoid detection. It is more challenging for an adversary to 
+change the OriginalFileName, since it is derived from the PE header. Changing the PE header requires either modifying changing values at 
+the executable's compile time or modifying raw bytes with a hex editor, both of which are more complex for an adversary than 
+renaming a file on a compromised system.
+
+By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to 2U.
+
+.. rubric:: References
+
+.. [#f1] https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90001
+.. [#f2] https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa
