@@ -1,5 +1,9 @@
 Changelog
 =========
+0.0.15
+    Updated Scheduled Task/Job improved analytic
+0.0.14
+    TODO - fill in with Michaela Refactor-pt2 note
 0.0.13
     Updated ADFind improvement example in Scored Analytics section and Methodology post
 0.0.12

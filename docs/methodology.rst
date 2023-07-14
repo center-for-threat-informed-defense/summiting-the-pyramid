@@ -166,7 +166,7 @@ Sysmon Event ID 1 is generated when Win32 API functions are called to create a n
       - 
       - EventID: 1
       - 
-    * - Ephemeral
+    * - Ephemeral (1)
       - 
       - EventID: 1
       - 

@@ -8,6 +8,7 @@ The following examples demonstrate how to score and improve an analytic in accor
     :maxdepth: 1
 
     adfind
+    task_scheduling
 
 .. _Scored Analytics:
 
