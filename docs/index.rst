@@ -15,5 +15,6 @@ Summiting the Pyramid |version|
     scoringanalytic
     analytics/index
     datasources
+    futurework
     resources
     changelog

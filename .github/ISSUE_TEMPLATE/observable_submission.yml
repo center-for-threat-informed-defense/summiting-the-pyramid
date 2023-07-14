@@ -1,0 +1,51 @@
+name: Observable Submission
+description: Submit observable to be included in 2D model documentation
+title: "[Observable-Submission]: "
+labels: ["observable", "issue"]
+assignees:
+  - marvel90120
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to contribute to Summiting the Pyramid! Please provide as much information as possible. We will follow up with additional questions if needed.
+  - type: input
+    id: observable
+    attributes:
+      label: Observable
+      description: Provide name and value of the observable
+      placeholder: ex. Event ID 4688, command-line argument
+    validations:
+      required: true
+  - type: input
+    id: level-placement
+    attributes:
+      label: Observable Placement
+      description: Which level/column does this observable belong in? (Can belong in more than one e.g. Levels 2/3)
+      placeholder: ex. Level 2, Column K
+    validations:
+      required: true
+  - type: textarea
+    id: research
+    attributes:
+      label: Research
+      description: Please provide reasoning as to why observable should be placed in proposed level.
+      placeholder: ex. Command-line argument associated with schtasks tool
+    validations:
+      required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Please provide any additional notes or information here
+      placeholder: Notes!
+    validations:
+      required: false
+  - type: input
+    id: contributor
+    attributes:
+      label: Contributed By
+      description: Provide name, username, or organization who scored observable (not required)
+      placeholder: ex. @marvel90120
+    validations:
+      required: false

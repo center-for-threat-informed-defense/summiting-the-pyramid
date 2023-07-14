@@ -18,23 +18,23 @@ User-mode provides a layer of separation between the user and the kernel. Howeve
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+--------------------------------------------+
-| Category                      | Observable Fields                 |   Observable Values                        |
-+===============================+===================================+============================================+
-| Process API Calls             |  | create (CAR)                   | | Sysmon ID 1 (Process creation)           |
-|                               |                                   | | Sysmon ID 5 (Process termination)        |
-|                               |                                   | | Sysmon ID 10 (Process access)            |
-+-------------------------------+-----------------------------------+--------------------------------------------+
-| File API Calls                |                                   | | Sysmon ID 2 (File creation time changed) |
-|                               |                                   | | Sysmon ID 11 (File create)               |
-|                               |                                   | | Sysmon ID 15 (File create stream hash)   |
-|                               |                                   | | Sysmon ID 23 (File deletion)             |
-+-------------------------------+-----------------------------------+--------------------------------------------+
-| Driver API Calls              |                                   | | Sysmon ID 6 (Driver loaded)              |
-+-------------------------------+-----------------------------------+--------------------------------------------+
-| Registry Key API Calls        |                                   | | Sysmon ID 13 (Registry value set)        |
-|                               |                                   | | Sysmon ID 14 (Registry object renamed)   |
-+-------------------------------+-----------------------------------+--------------------------------------------+
++-------------------------------+--------------------------------------------------------------------------------+
+| Category                      | Observables                                                                    |
++===============================+================================================================================+
+| Process                       | | Sysmon ID 1 (Process creation)                                               |
+|                               | | Sysmon ID 5 (Process termination)                                            |
+|                               | | Sysmon ID 10 (Process access)                                                |
++-------------------------------+--------------------------------------------------------------------------------+
+| File                          | | Sysmon ID 2 (File creation time changed)                                     |
+|                               | | Sysmon ID 11 (File create)                                                   |
+|                               | | Sysmon ID 15 (File create stream hash)                                       |
+|                               | | Sysmon ID 23 (File deletion)                                                 |
++-------------------------------+--------------------------------------------------------------------------------+
+| Driver                        | | Sysmon ID 6 (Driver loaded)                                                  |
++-------------------------------+--------------------------------------------------------------------------------+
+| Registry Key                  | | Sysmon ID 13 (Registry value set)                                            |
+|                               | | Sysmon ID 14 (Registry object renamed)                                       |
++-------------------------------+--------------------------------------------------------------------------------+
 
 .. rubric:: References
 

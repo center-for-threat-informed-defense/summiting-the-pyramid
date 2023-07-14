@@ -12,9 +12,9 @@ Analytics which are core to some implementations of a technique or sub-technique
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+------------------------------+
-| Sub-Technique/Technique       | Observable Fields                 |   Observable Values          |
-+===============================+===================================+==============================+
-| Modify Authentication         |  AttributeLDAPDisplayName         | msDS-KeyCredentialLink       |
-| Process (T1556)               |                                   |                              |
-+-------------------------------+-----------------------------------+------------------------------+
++-------------------------------+------------------------------------------------------------------+
+| Sub-Technique/Technique       | Observables                                                      |
++===============================+==================================================================+
+| Modify Authentication         |  AttributeLDAPDisplayName: msDS-KeyCredentialLink                |
+| Process (T1556)               |                                                                  |
++-------------------------------+------------------------------------------------------------------+
