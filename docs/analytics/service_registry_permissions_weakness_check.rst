@@ -92,7 +92,7 @@ In our research PowerShell scripts are relatively easy to change or obfuscate ke
 with a custom cmdlet that is named something different. This method would completely hide the ``get-acl`` name from the script text. The registry name can also be broken 
 up or obfuscated in simple ways to avoid this type of logging.  
 
-Setting a Security Access Control List (SACL) on the registry key allows us to use a kernel mode data source for the same operation. This logs what the script is 
+Setting a Security Access Control List (SACL) on the registry key allows us to use a kernel mode sensor data for the same operation. This logs what the script is 
 trying to accomplish without looking at the script itself, this takes the control from the adversary to the defender. SACLs have many options when configuring them 
 and this requires the ``Read Control`` value to be set. This triggers any time the keys permissions are triggered. However, this is a precision measure as you could 
 just log the ``Full Control`` set of activity and get more of an idea of what the key is being used for, then query within those results for the ``Access = READ_CONTROL`` 

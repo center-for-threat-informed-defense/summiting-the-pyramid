@@ -25,7 +25,7 @@ a combination of various indicators to increase both the precision and :ref:`rec
 :ref:`Capability Abstraction`, a concept developed by `SpecterOps <https://posts.specterops.io/capability-abstraction-fbeaeeb26384>`_, seeks to 
 understand activities that occur on a system when an attacker is 
 accomplishing their goals. It also introduced a visual graphic, known as an “abstraction map”, which conveys the relationships between operating system (OS)
-abstraction layers and begins to highlight how an adversary can evade a specific detection or data source entirely and still accomplish their goals. 
+abstraction layers and begins to highlight how an adversary can evade a specific detection or sensor data entirely and still accomplish their goals. 
 The following capability abstraction map for `T1543 - Create or Modify System Process: Windows Service <https://attack.mitre.org/techniques/T1543/003/>`_ illustrates 
 how multiple tools can create a new service.
 
@@ -84,13 +84,13 @@ form of event IDs. However, not all event IDs are generated in the same part of 
 are functions of the kernel, and so on. If adversaries want to bypass certain event IDs, they can just call certain API functionality lower within the OS. 
 
 
-Understanding this concept can help defenders build more robust analytics, by looking at different data sources throughout the OS. We now take our rows, and make it a two-dimensional model to reflect data sources.
+Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data.
 
 .. figure:: _static/2Dmodel_07032023.png
    :alt: Summiting the Pyramid 2D model
    :align: center
 
-There are three different layers within the OS in which data sources can be generated. The library level identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
+There are three different layers within the OS in which sensor data can be generated. The library level identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
 
 This 2D model provides the visualization of how to score the robustness of an analytic, based on the log source and the behavior associated with an attack.
 
@@ -135,7 +135,7 @@ Let's step through an example. The below analytic looks for specific command lin
    level: medium
 
 
-First, we have to understand and score this analytic's data source. The data source for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
+First, we have to understand and score this analytic's sensor robustness category. The sensor data for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
 This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f5]_. 4688 has the field 
 NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
 the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
@@ -212,7 +212,7 @@ ANDed together, according to our Boolean logic, the entire analytic scores as a 
       - 
 
 .. important:: 
-   An adversary can easily evade this analytic by renaming the executable. *Can we improve this analytic so it is more robust?* Our options for increasing robustness are pivoting to a data source that operates
+   An adversary can easily evade this analytic by renaming the executable. *Can we improve this analytic so it is more robust?* Our options for increasing robustness are pivoting to a sensor that operates
    at kernel-mode (moving a column to the right) or increasing the level our analytic operates at (moving up a row).
 
 The robustness of this analytic can be increased by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
@@ -264,7 +264,7 @@ of this analytic. Not everyone is going to be able to collect Sysmon data or imp
 
 Assumptions and Caveats
 -----------------------
-* Our current guidance addresses data sources and levels within Windows systems. There is definitely room to create guidance for networks, cloud, virtual machines, and other platform types to improve analytics across various platforms. We will attempt to begin guidance for these other platforms, but is open to :ref:`future work<Future-Work>`.
+* Our current guidance addresses sensors and levels within Windows systems. There is definitely room to create guidance for networks, cloud, virtual machines, and other platform types to improve analytics across various platforms. We will attempt to begin guidance for these other platforms, but is open to :ref:`future work<Future-Work>`.
 * The levels and observables currently defined by Summiting the Pyramid address the robustness of analytics, compared to precision and recall. To read more, :ref:`read this entry here <Robustness Precision Recall>`.
 * Tampering is a big part of an adversary attack. If an adversary can’t go any further to evade a specific analytic, they may try to use tampering to accomplish their goal. Switching from evasion to tampering increases cost for the adversary, which is a victory for the defender. The StP team will be cognizant of this as we continue to draft best practice guidance, and though a more detailed study of when an adversary changes tactic to tampering may be out of scope for this initial effort, it may be prime for future work.
 * The scoring of analytics at the Technique levels at 4 and 5 introduce the concept of analytic decay. The MITRE ATT&CK Framework is updated on a bi-annual basis, with changes to tactics, techniques, and procedural implementations. Since TTPs are subject to change, analytics looking at implementations or the whole of a sub-technique or a technique are subject to change, potentially making some analytics less effective. The Summiting project recognizes that analytic decay can be an issue for scoring analytics, and will continue to conduct research into the topic. For short-term solutions, the teams will revisit technique-oriented analytics after bi-annual ATT&CK releases and update analytics as needed. Additionally, the Summiting team will work with members of the ATT&CK team to ensure observables are in the proper rows.

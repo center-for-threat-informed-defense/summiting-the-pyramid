@@ -59,21 +59,6 @@ Example observables include:
 | Zeek alert                    | Network traffic occurs, visible to Zeek, which matches a policy                      |
 +-------------------------------+--------------------------------------------------------------------------------------+
 
-.. _Data-Source:
-
-Data Source
------------
-**A data source is where data is being generated from, regardless of platform**
-
-Analytics can utilize data sources from different platforms, applications, and Operating Systems (OS). This includes data sources such as Sysmon, Windows Event IDs, Zeek, Windows application logs, and so on. Data sources can be used to improve or constrain the observables available to a defender when building an analytic.
-
-.. important::
-    The ATT&CK Framework has defined data sources as representing, "various subjects/topics of information that can be collected by sensors/logs." [#f4]_ Throughout our materials, data sources will refer to what we have defined in the Data Source section on this page. However, we do have a mapping of observables to ATT&CK Data Sources, which you can refer to below.
-
-    :ref:`Data Sources`
-
-.. _Analytic:
-
 Analytic
 --------
 **An analytic is query logic used for detecting activity within different technology mediums using Boolean combinations of, or statistical analysis, of observables**
@@ -94,7 +79,7 @@ Detections are how defenders understand if their analytics are firing correctly.
 
 Level
 -----
-**Levels in the Summiting the Pyramid methodology group observables and analytics based on the Pyramid of Pain, refined to reflect difficulty and cost for an adversary to avoid triggering or being detected by them**
+**Levels in the Summiting the Pyramid methodology group analytic robustness observables and analytics based on the Pyramid of Pain, refined to reflect difficulty and cost for an adversary to avoid triggering or being detected by them**
 
 The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them. Different observables are more or less evadable than others. The Pyramid of Pain has grouped these concepts into six different levels. The 2D methodology has taken these levels, grouped them based on ephemeral values, tools, and adversary behaviors, and formed five levels to group observables. The levels organize observables starting with the most easily evaded observables towards the bottom of the levels, to the least easily evaded observables at the top of the table. To read more about how the levels are currently outlined, refer to our :ref:`Levels`.
 
@@ -102,9 +87,9 @@ The Summiting the Pyramid methodology is focused on scoring analytics based on t
 
 Column
 ------
-**Columns in the Summiting the Pyramid methodology model group data source observables based on how evasive they are in the OS.**
+**Columns in the Summiting the Pyramid methodology model group sensor robustness categories based on how evasive they are in the OS.**
 
-Analytics are constrained by the data source that is being used to log observables. The data source columns look to create groups of data source observables based on how evasive they are in the OS. These observables are restricted to event codes being logged at the library, user-mode, and kernel-mode levels of the OS. To read more about how the columns are currently outlined, refer to our :ref:`Levels`.
+Analytics are constrained by the sensor data that is being used to log observables. The sensor robustness category columns look to create groups of sensor data observables based on how evasive they are in the OS. These observables are restricted to event codes being logged at the library, user-mode, and kernel-mode levels of the OS. To read more about how the columns are currently outlined, refer to our :ref:`Levels`.
 
 .. _Robustness:
 
