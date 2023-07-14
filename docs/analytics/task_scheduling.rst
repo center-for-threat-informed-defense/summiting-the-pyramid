@@ -172,7 +172,9 @@ Improved Analytic Scoring #1
       - 
       - 
       - | EventID: 11
-        | TargetFileName|contains: “C:\\Windows\\System32\\Tasks\\”
+        | TargetFileName|contains: 
+        | - “C:\\Windows\\System32\\Tasks”
+        | - “C:\\Windows\\SYSWOW64\\Tasks”
     * - Core to Part of (Sub-) Technique (4)
       - 
       -
@@ -213,10 +215,9 @@ can ultimately score it at 7U. It is important to ensure an adversary can’t ev
 existing registry key value or an renaming an entire registry key/value pair, so we should also integrate Event 
 IDs 13: (Value Set) and 14: (Key and Value Rename) into our analytic logic.
 
-.. note::
-  To detect the relevant registry activity, Object Auditing must be enabled within Local or Group 
-  Security Policy and a `SACL <https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists>`_ must be set on ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\`` and 
-  ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\``
+.. figure:: ../_static/sysmon_reg_create_scheduled_task.png
+  :alt: Scheduled Task adding a new key to registry, generating an Event ID 12
+  :align: center
 
 Improved Analytic Scoring #2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -257,7 +258,7 @@ Improved Analytic Scoring #2
       - 
 
 .. note:: 
-  It is also possible to implement a similar analytic by placing a SACL on the invariant registry keys and searching for 4657 or 4663 events.
+  It is also possible to implement a similar analytic by placing a SACL on the invariant registry keys and searching for Event IDs 4657 or 4663.
 
 .. rubric:: References
 
