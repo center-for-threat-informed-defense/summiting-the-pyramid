@@ -25,7 +25,7 @@ a combination of various indicators to increase both the precision and :ref:`rec
 :ref:`Capability Abstraction`, a concept developed by `SpecterOps <https://posts.specterops.io/capability-abstraction-fbeaeeb26384>`_, seeks to 
 understand activities that occur on a system when an attacker is 
 accomplishing their goals. It also introduced a visual graphic, known as an “abstraction map”, which conveys the relationships between operating system (OS)
-abstraction layers and begins to highlight how an adversary can evade a specific detection or sensor data entirely and still accomplish their goals. 
+abstraction layers and begins to highlight how an adversary can evade a specific detection or a sensor entirely and still accomplish their goals. 
 The following capability abstraction map for `T1543 - Create or Modify System Process: Windows Service <https://attack.mitre.org/techniques/T1543/003/>`_ illustrates 
 how multiple tools can create a new service.
 
@@ -84,7 +84,7 @@ form of event IDs. However, not all event IDs are generated in the same part of 
 are functions of the kernel, and so on. If adversaries want to bypass certain event IDs, they can just call certain API functionality lower within the OS. 
 
 
-Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data.
+Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data robustness.
 
 .. figure:: _static/2Dmodel_07032023.png
    :alt: Summiting the Pyramid 2D model
@@ -135,7 +135,7 @@ Let's step through an example. The below analytic looks for specific command lin
    level: medium
 
 
-First, we have to understand and score this analytic's sensor robustness category. The sensor data for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
+First, we have to understand and score this analytic's sensor robustness category. The data source for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
 This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f5]_. 4688 has the field 
 NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
 the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
@@ -212,8 +212,7 @@ ANDed together, according to our Boolean logic, the entire analytic scores as a 
       - 
 
 .. important:: 
-   An adversary can easily evade this analytic by renaming the executable. *Can we improve this analytic so it is more robust?* Our options for increasing robustness are pivoting to a sensor that operates
-   at kernel-mode (moving a column to the right) or increasing the level our analytic operates at (moving up a row).
+   An adversary can easily evade this analytic by renaming the executable. *Can we improve this analytic so it is more robust?* Our options for increasing robustness are pivoting to a sensor that monitors kernel-level activity (moving a column to the right) or increasing the level our analytic operates at (moving up a row).
 
 The robustness of this analytic can be increased by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
 for an adversary to change the Image name ending with ``adfind.exe`` to avoid detection. It is more challenging for an adversary to 
