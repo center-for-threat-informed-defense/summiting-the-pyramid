@@ -17,7 +17,7 @@ New TTPs are the hardest for adversaries to develop, as behaviors are limited by
    Pyramid of Pain - Created by David Bianco [#f1]_
 
 Detection engineers can leverage the Pyramid of Pain to understand how :ref:`precise<Precision>` or :ref:`robust<Robustness>` their analytics are when detecting 
-dversarial behavior. A detection analytic focused on identifying hash values will be precise in detecting a snapshot of malware but will not detect a variant of 
+adversarial behavior. A detection analytic focused on identifying hash values will be precise in detecting a snapshot of malware but will not detect a variant of 
 that malware that has been altered by an adversary. A detection at the tool level might be robust in detecting specific implementations of a technique but could 
 create more false positives, pick benign user activity, and alert on system generated noise if the implemented tool is native to the OS. Some analytics might use 
 a combination of various indicators to increase both the precision and :ref:`recall<Recall>` of an adversary attack.
@@ -58,7 +58,7 @@ during an attack. These groups can better break down what a defender can focus b
    :align: center
 
 We can further break that down into rows for our model, which will display how to make it more specific for building robust analytics. In each row, we will be 
-looking for observables :ref:`observables<Observable>` in which we can build analytics for each grouping, based on the difficult for an adversary to evade each grouping.
+looking for :ref:`observables<Observable>` in which we can build analytics for each grouping, based on the difficulty for an adversary to evade.
 
 The bottom row is focused on the first grouping of ephemeral values. These are trivial for an adversary to change, or that change even without adversary intervention. 
 
