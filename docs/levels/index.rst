@@ -1,13 +1,13 @@
 .. _Levels:
 
-============
-Levels Pages
-============
+===================
+Model Mapping Pages
+===================
 
-When developing the Summiting the Pyramid Project, we needed to determine how to group different observables and data sources, or parts of an analytic, and how to 
+When developing the Summiting the Pyramid Project, we needed to determine how to group different observables and sensor data, or parts of an analytic, and how to 
 rank them. Currently, we have described these levels as the **Difficulty of Bypassing Analytic Observables**.  The following pages document the levels we have with observables.
 
-**Levels: Analytic Observables**
+**Levels: Analytic Robustness Categories**
 There are five levels which are grouped based on how difficult it is for an adversary to evade the analytic observable. 
 
 .. toctree::
@@ -19,8 +19,8 @@ There are five levels which are grouped based on how difficult it is for an adve
     adversary_tool
     ephemeral
 
-**Columns: Data Sources**
-There are also three columns which describe the different data sources based on their visibility into the OS.
+**Columns: Sensor Robustness Categories**
+There are also three columns which describe sensor data based on their visibility into the OS.
 
 .. toctree::
     :maxdepth: 1

@@ -4,7 +4,7 @@
 Level 3: Core to Pre-Existing Tools
 -----------------------------------
 
-**Description**: Observables associated with tools available to the defenders before adversary use and difficult for an adversary to modify.
+**Description**: Observables associated with a tool or functionality that existed on the system pre-compromise, may be managed by the defending organization, and difficult for an adversary to modify.
 
 **Why are tools split between adversary brought and pre-existing?**
 
