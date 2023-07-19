@@ -25,7 +25,7 @@ Observables
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Category                      | Observables                       |   Generating Activity          | Evade Behavior                 |
 +===============================+===================================+================================+================================+
-| Hash values                   |  | Hashes (Sysmon)                | Passing file or object through | Change one byte in file and    |
+| Hash values                   |  | Hashes (Sysmon)                | Passing file or object through | Change one bit in file and     |
 |                               |  | md5_hash (CAR)                 | mathmatical formula to create  | regenerate hash                |
 |                               |  | sha1_hash (CAR)                | unique identifying number      |                                |
 |                               |  | sha256_hash (CAR)              |                                |                                |
@@ -51,11 +51,11 @@ Observables
 |                               |  | ad_domain (CAR)                | registrar [#f4]_               | to different domain name       |
 |                               |  | target_ad_domain (CAR)         |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Processes                     |  | Process GUID (Sysmon)          | Processes are created through  | Fork the process to create a   |
-|                               |  | Process ID (Sysmon)            | the fork() system call, which  | new PID                        |
-|                               |  | Parent process GUID (Sysmon)   | creates a child process. The   |                                |
-|                               |  | Subject SID (EID)              | parent and child processes each|                                |
-|                               |  | Target SID (EID)               | are assigned a PID [#f5]_      |                                |
+| Processes                     |  | Process GUID (Sysmon)          | New processes create           | Operating System Kernel creates|
+|                               |  | Process ID (Sysmon)            | creates a child process. The   | a new process and associated   |
+|                               |  | Parent process GUID (Sysmon)   | parent and child processes each| metadata                       |
+|                               |  | Subject SID (EID)              | are assigned a PID [#f5]_      |                                |
+|                               |  | Target SID (EID)               |                                |                                |
 |                               |  | New process ID (EID)           |                                |                                |
 |                               |  | Creator Process ID (WEID)      |                                |                                |
 |                               |  | pid (CAR)                      |                                |                                |
