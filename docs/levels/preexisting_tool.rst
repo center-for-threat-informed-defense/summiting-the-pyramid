@@ -23,29 +23,28 @@ Observables
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
 | Category                      | Observables                       | Generating Activity          |  Evade Behavior                |
 +===============================+===================================+==============================+================================+
-| Command-line arguments        |  | Command line (Sysmon, CAR)     | Built into the tool to       | Change the tool or             |
+| Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to       | Change the tool or             |
 |                               |  | Process Command Line (EID)     | identify different           | configuration which has        |
-|                               |  | Parent command line (Sysmon,   | functionalities              | different command-line         |
-|                               |   CAR)                            |                              | arguments                      |
-|                               |  | sha256_hash (CAR)              |                              |                                |
+|                               |  | ParentCommandLine (Sysmon)     | functionalities              | different command-line         |
+|                               |                                   |                              | arguments                      |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Files                         |  | Original filename (Sysmon)     | Filename is embedded into the| Use a tool with a different    |
+| Files                         |  | OriginalFileName (Sysmon)      | Filename is embedded into the| Use a tool with a different    |
 |                               |                                   | PE header of a tool          | filename                       |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Signatures                    |  | signer (CAR)                   |                              |                                |
-|                               |  | signature_valid (CAR)          |                              |                                |
-|                               |  | mime_type (CAR)                |                              |                                |
+| Signatures                    |  | Signature (Sysmon)             |                              |                                |
+|                               |  | SignatureStatus (Sysmon)       |                              |                                |
 |                               |  | link_target (Sysmon)           |                              |                                |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Tool-specific configurations  |  | Integrity level (Sysmon, CAR)  | A recommendation for setting | Pivot to tool or raise         |
+| Tool-specific configurations  |  | Integrity level (Sysmon)       | A recommendation for setting | Pivot to tool or raise         |
 |                               |  | Mandatory Label (EID)          | up and using tools that      | permissions to avoid alerts    |
 |                               |  | Token elevation type (EID)     | support processing of        | on specific-configuration      |
-|                               |  | Access level (CAR)             | information [#f3]_           |                                |
+|                               |  | Access level (EID)             | information [#f3]_           |                                |
 |                               |  | File path outside adversary    |                              |                                |
 |                               |   control                         |                              |                                |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| User Session                  |  | Login type (CAR)               | A user logons to a profile or| Login to application or user   |
-|                               |  | Login successful (CAR)         | application [#f4]_           | with different logon type      |
+| User Session                  |  | Login Type (EID)               | A user logons to a profile or| Login to application or user   |
+|                               |  | Login successful (EID)         | application [#f4]_           | with different logon type      |
+|                               |                                   |                              | [#f5]_                         |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
 | Authentication                |  | Auth service (CAR)             |                              |                                |
 |                               |  | Decision reason (CAR)          |                              |                                |
@@ -58,3 +57,4 @@ Observables
 .. [#f2] https://www.gdatasoftware.com/blog/2022/02/37248-living-off-the-land
 .. [#f3] https://csrc.nist.gov/glossary/term/tool_configuration
 .. [#f4] https://auth0.com/docs/manage-users/sessions
+.. [#f5] https://www.ultimatewindowssecurity.com/securitylog/book/page.aspx?spid=chapter3

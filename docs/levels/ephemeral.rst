@@ -26,40 +26,33 @@ Observables
 | Category                      | Observables                       |   Generating Activity          | Evade Behavior                 |
 +===============================+===================================+================================+================================+
 | Hash values                   |  | Hashes (Sysmon)                | Passing file or object through | Change one bit in file and     |
-|                               |  | md5_hash (CAR)                 | mathmatical formula to create  | regenerate hash                |
-|                               |  | sha1_hash (CAR)                | unique identifying number      |                                |
-|                               |  | sha256_hash (CAR)              |                                |                                |
+|                               |                                   | mathmatical formula to create  | regenerate hash                |
+|                               |                                   | unique identifying number      |                                |
+|                               |                                   |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| IP address                    |  | target_address (CAR)           | Mathematically produced and    | Connect to a different ISP,    |                  
-|                               |  | dest_ip (CAR)                  | assigned by ISP [#f2]_         | restart router or modem, or    |
-|                               |  | src_ip (CAR)                   |                                | utilize a VPN                  |
+| IP address                    |  | SourceIp (Sysmon)              | Mathematically produced and    | Connect to a different ISP,    |                  
+|                               |  | DestinationIp (Sysmon)         | assigned by ISP [#f2]_         | restart router or modem, or    |
+|                               |                                   |                                | utilize a VPN                  |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Protocol-specific ports       |  | dest_port (CAR)                | Ports are standardized across  | Change port configuration      |
-|                               |  | src_port (CAR)                 | network devices [#f3]_         | settings in code or computer   |
+| Protocol-specific ports       |  | DestinationPort (Sysmon)       | Ports are standardized across  | Change port configuration      |
+|                               |  | SourcePort (Sysmon)            | network devices [#f3]_         | settings in code or computer   |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Filenames                     |  | Image (Sysmon)                 | Created by user to identify    | Filename can be changed by user|
 |                               |  | Parent image (Sysmon)          | file                           | or can be obfuscated in code   |
-|                               |  | Current directory (Sysmon)     |                                | deployment                     |
+|                               |  | CurrentDirectory (Sysmon)      |                                | deployment                     |
 |                               |  | Extension (Sysmon)             |                                |                                |
-|                               |  | Filepath (CAR)                 |                                |                                |
-|                               |  | image_path (CAR)               |                                |                                |
-|                               |  | Current Working Directory (CAR)|                                |                                |
-|                               |  | App name (CAR)                 |                                |                                |
-|                               |  | Auth target (CAR)              |                                |                                |
+|                               |  | TargetFilename (Sysmon)        |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Domain names                  |  | fqdn (CAR)                     | Reigster domain name with      | Map tools  or website          |
-|                               |  | ad_domain (CAR)                | registrar [#f4]_               | to different domain name       |
-|                               |  | target_ad_domain (CAR)         |                                |                                |
+| Domain names                  |  | SourceHostname (Sysmon)        | Reigster domain name with      | Map tools  or website          |
+|                               |  | DestinationHostname (Sysmon)   | registrar [#f4]_               | to different domain name       |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Processes                     |  | Process GUID (Sysmon)          | New processes create           | Operating System Kernel creates|
-|                               |  | Process ID (Sysmon)            | creates a child process. The   | a new process and associated   |
+| Processes                     |  | ProcessGuid (Sysmon)           | New processes create           | Operating System Kernel creates|
+|                               |  | ProcessId (Sysmon)             | creates a child process. The   | a new process and associated   |
 |                               |  | Parent process GUID (Sysmon)   | parent and child processes each| metadata                       |
 |                               |  | Subject SID (EID)              | are assigned a PID [#f5]_      |                                |
 |                               |  | Target SID (EID)               |                                |                                |
 |                               |  | New process ID (EID)           |                                |                                |
 |                               |  | Creator Process ID (WEID)      |                                |                                |
-|                               |  | pid (CAR)                      |                                |                                |
-|                               |  | ppid (CAR)                     |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Pipes                         |  | Pipe names (Sysmon)            | A pipe server or user specifies| Change the name of the pipe    |
 |                               |                                   | a name for a pipe when it calls|                                |

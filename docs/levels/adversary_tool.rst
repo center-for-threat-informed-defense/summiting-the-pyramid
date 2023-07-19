@@ -23,11 +23,11 @@ Observables
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
 | Category                      | Observables                       |   Generating Activity            |           Evade Behavior       |
 +===============================+===================================+==================================+================================+
-| Command-line arguments        |  | Command line (Sysmon)          | Built into the tool to           | Rename arguments within tool,  |
-|                               |  | Parent command line (Sysmon)   | identify different               | which requires access to code  |
-|                               |  | sha256_hash (CAR)              | functionalities                  | base. Need for recompile.      |
+| Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to           | Rename arguments within tool,  |
+|                               |  | ParentCommandLine (Sysmon)     | identify different               | which requires access to code  |
+|                               |                                   | functionalities                  | base. Need for recompile.      |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
-| Files                         |  | Original filename (Sysmon)     | Filename is embedded into        | User would have to edit the PE |
+| Files                         |  | OriginalFileName(Sysmon)       | Filename is embedded into        | User would have to edit the PE |
 |                               |                                   | the PE header of a tool          | header with the updated name   |
 |                               |                                   |                                  | and recompile the tool         |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
