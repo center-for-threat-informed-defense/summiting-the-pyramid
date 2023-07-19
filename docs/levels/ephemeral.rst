@@ -22,48 +22,55 @@ ensure detection in-depth, these observables should be combined with other level
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+------------------------------+
-| Category                      | Observable Fields                 |   Observable Values          |
-+===============================+===================================+==============================+
-| Hash values                   |  | Hashes (Sysmon)                |                              |
-|                               |  | md5_hash (CAR)                 |                              |
-|                               |  | sha1_hash (CAR)                |                              |
-|                               |  | sha256_hash (CAR)              |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| IP address                    |  | target_address (CAR)           |                              |
-|                               |  | dest_ip (CAR)                  |                              |
-|                               |  | src_ip (CAR)                   |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Protocol-specific ports       |  | dest_port (CAR)                |                              |
-|                               |  | src_port (CAR)                 |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Filenames                     |  | Image (Sysmon)                 |                              |
-|                               |  | Parent image (Sysmon)          |                              |
-|                               |  | Current directory (Sysmon)     |                              |
-|                               |  | Extension (Sysmon)             |                              |
-|                               |  | Filepath (CAR)                 |                              |
-|                               |  | image_path (CAR)               |                              |
-|                               |  | Current Working Directory (CAR)|                              |
-|                               |  | App name (CAR)                 |                              |
-|                               |  | Auth target (CAR)              |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Domain names                  |  | fqdn (CAR)                     |                              |
-|                               |  | ad_domain (CAR)                |                              |
-|                               |  | target_ad_domain (CAR)         |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Processes                     |  | Process GUID (Sysmon)          |                              |
-|                               |  | Process ID (Sysmon)            |                              |
-|                               |  | Parent process GUID (Sysmon)   |                              |
-|                               |  | Subject SID (EID)              |                              |
-|                               |  | Target SID (EID)               |                              |
-|                               |  | New process ID (EID)           |                              |
-|                               |  | Creator Process ID (WEID)      |                              |
-|                               |  | pid (CAR)                      |                              |
-|                               |  | ppid (CAR)                     |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Other                         |  | Pipe names (Sysmon)            |                              |
-+-------------------------------+-----------------------------------+------------------------------+
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Category                      | Observables                       |   Generating Activity          | Evade Behavior                 |
++===============================+===================================+================================+================================+
+| Hash values                   |  | Hashes (Sysmon)                | Passing file or object through | Change one byte in file and    |
+|                               |  | md5_hash (CAR)                 | mathmatical formula to create  | regenerate hash                |
+|                               |  | sha1_hash (CAR)                | unique identifying number      |                                |
+|                               |  | sha256_hash (CAR)              |                                |                                |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| IP address                    |  | target_address (CAR)           | Mathematically produced and    | Connect to a different ISP,    |                  
+|                               |  | dest_ip (CAR)                  | assigned by ISP [#f2]_         | restart router or modem, or    |
+|                               |  | src_ip (CAR)                   |                                | utilize a VPN                  |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Protocol-specific ports       |  | dest_port (CAR)                | Ports are standardized across  | Change port configuration      |
+|                               |  | src_port (CAR)                 | network devices [#f3]_         | settings in code or computer   |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Filenames                     |  | Image (Sysmon)                 | Created by user to identify    | Filename can be changed by user|
+|                               |  | Parent image (Sysmon)          | file                           | or can be obfuscated in code   |
+|                               |  | Current directory (Sysmon)     |                                | deployment                     |
+|                               |  | Extension (Sysmon)             |                                |                                |
+|                               |  | Filepath (CAR)                 |                                |                                |
+|                               |  | image_path (CAR)               |                                |                                |
+|                               |  | Current Working Directory (CAR)|                                |                                |
+|                               |  | App name (CAR)                 |                                |                                |
+|                               |  | Auth target (CAR)              |                                |                                |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Domain names                  |  | fqdn (CAR)                     | Reigster domain name with      | Map tools  or website          |
+|                               |  | ad_domain (CAR)                | registrar [#f4]_               | to different domain name       |
+|                               |  | target_ad_domain (CAR)         |                                |                                |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Processes                     |  | Process GUID (Sysmon)          | Processes are created through  | Fork the process to create a   |
+|                               |  | Process ID (Sysmon)            | the fork() system call, which  | new PID                        |
+|                               |  | Parent process GUID (Sysmon)   | creates a child process. The   |                                |
+|                               |  | Subject SID (EID)              | parent and child processes each|                                |
+|                               |  | Target SID (EID)               | are assigned a PID [#f5]_      |                                |
+|                               |  | New process ID (EID)           |                                |                                |
+|                               |  | Creator Process ID (WEID)      |                                |                                |
+|                               |  | pid (CAR)                      |                                |                                |
+|                               |  | ppid (CAR)                     |                                |                                |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+| Pipes                         |  | Pipe names (Sysmon)            | A pipe server or user specifies| Change the name of the pipe    |
+|                               |                                   | a name for a pipe when it calls|                                |
+|                               |                                   | CreateNamedPipe functon [#f6]  |                                |
++-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 
 .. rubric:: References
 
 .. [#f1] http://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html
+.. [#f2] https://usa.kaspersky.com/resource-center/definitions/what-is-an-ip-address
+.. [#f3] https://www.cloudflare.com/learning/network-layer/what-is-a-computer-port/
+.. [#f4] https://www.codecademy.com/resources/blog/what-is-a-domain-name/#domain-name-registrars-and-registries
+.. [#f5] https://www.tutorialspoint.com/inter_process_communication/inter_process_communication_process_creation_termination.htm
+.. [#f6] https://learn.microsoft.com/en-us/windows/win32/ipc/pipe-names
