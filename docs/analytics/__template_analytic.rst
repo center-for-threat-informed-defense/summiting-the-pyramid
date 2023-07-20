@@ -7,75 +7,71 @@ Insert Analytic Name Here
 ..
     Insert link to analytic here (like a Sigma rule)
 
-.. list-table::
-    :widths: 30 70
-
-    * - Original Analytic
-      - 
-    * - Improved Analytic
-      - 
+.. code-block:: yaml
+  
+  title: Insert Sigma rule here
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
-    :widths: 15 30 60
+    :widths: 20 20 20 20
     :header-rows: 1
 
-    * - Level
-      - Level Name
-      - Observables
-    * - 7
-      - Kernel
+    * - 
+      - Library (L)
+      - User-mode (U)
+      - Kernel-mode (K)
+    * - Core to (Sub-) Technique (5)
       - 
-    * - 6
-      - System Calls
       - 
-    * - 5
-      - OS API
       - 
-    * - 4
-      - Library API
+    * - Core to Part of (Sub-) Technique (4)
       - 
-    * - 3
-      - Tools Outside Adversary Control
+      -
+      -
+    * - Core to Pre-Existing Tool (3)
       - 
-    * - 2
-      - Tools Within Adversary Control
       - 
-    * - 1
-      - Operational/Environmental Variables
+      -
+    * - Core to Adversary-brought Tool (2)
+      - 
+      - 
+      - 
+    * - Ephemeral (1)
+      - 
+      - 
       - 
 
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 15 30 60
+    :widths: 20 20 30 20
     :header-rows: 1
 
-    * - Level
-      - Level Name
-      - Observables
-    * - 7
-      - Kernel
+    * - 
+      - Library (L)
+      - User-mode (U)
+      - Kernel-mode (K)
+    * - Core to (Sub-) Technique (5)
       - 
-    * - 6
-      - System Calls
       - 
-    * - 5
-      - OS API
       - 
-    * - 4
-      - Library API
+    * - Core to Part of (Sub-) Technique (4)
       - 
-    * - 3
-      - Tools Outside Adversary Control
+      -
+      -
+    * - Core to Pre-Existing Tool (3)
       - 
-    * - 2
-      - Tools Within Adversary Control
       - 
-    * - 1
-      - Operational/Environmental Variables
+      -
+    * - Core to Adversary-brought Tool (2)
+      - 
+      - 
+      - 
+    * - Ephemeral (1)
+      - 
+      - 
       - 
 
 Research Notes and Caveats
@@ -84,4 +80,4 @@ Make sure to change the reference number and copy/paste what is needed in there 
 
 .. rubric:: References
 
-.. [#f1] https://learn.microsoft.com/en-us/windows/win32/amsi/dev-audience#register-your-provider-dll-with-amsi
+.. [#f1] https://mitre-engenuity.org/
