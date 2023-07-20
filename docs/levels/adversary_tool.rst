@@ -23,11 +23,13 @@ Observables
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
 | Category                      | Observables                       |   Generating Activity            |           Evade Behavior       |
 +===============================+===================================+==================================+================================+
-| Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to           | Rename arguments within tool,  |
-|                               |  | ParentCommandLine (Sysmon)     | identify different               | which requires access to code  |
-|                               |                                   | functionalities                  | base. Need for recompile.      |
+| Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to identify  | Rename arguments within tool,  |
+|                               |  | ParentCommandLine (Sysmon)     | different functionalities, be    | which requires access to code  |
+|                               |                                   | called by a tool or script, or   | base. Need for recompile.      |
+|                               |                                   | called by an interactive sessions|                                |
+|                               |                                   | with a user                      |                                |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
-| Files                         |  | OriginalFileName(Sysmon)       | Filename is embedded into        | User would have to edit the PE |
+| Process creation              |  | OriginalFileName(Sysmon)       | Filename is embedded into        | User would have to edit the PE |
 |                               |                                   | the PE header of a tool          | header with the updated name   |
 |                               |                                   |                                  | and recompile the tool         |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
@@ -41,10 +43,10 @@ Observables
 | Metadata                      |  |                                | Created when a file is modified, | Recompile tool                 |
 |                               |                                   | including its deletion [#f3]_    |                                |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
-| Binaries                      |  |                                | Offered by programs which allow  | Utilize different binary or    |
-|                               |                                   | a program to be installed without| edit binary directly           |
-|                               |                                   | having to compile source code    |                                |
-|                               |                                   | [#f4]_                           |                                |
+| Binaries                      |  |                                | Offered by programs which allow  | Utilize different binary,      |
+|                               |                                   | a program to be installed without| edit binary directly, or       |
+|                               |                                   | having to compile source code    | recompile source code with     |
+|                               |                                   | [#f4]_                           | different options              |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
 
 .. rubric:: References

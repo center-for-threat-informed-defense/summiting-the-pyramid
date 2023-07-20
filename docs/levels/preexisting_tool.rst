@@ -25,11 +25,14 @@ Observables
 +===============================+===================================+==============================+================================+
 | Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to       | Change the tool or             |
 |                               |  | Process Command Line (EID)     | identify different           | configuration which has        |
-|                               |  | ParentCommandLine (Sysmon)     | functionalities              | different command-line         |
-|                               |                                   |                              | arguments                      |
+|                               |  | ParentCommandLine (Sysmon)     | functionalities, be called   | different command-line         |
+|                               |                                   | by a tool or scripts, or     | arguments                      |
+|                               |                                   | called by an interactive     |                                |
+|                               |                                   | sessions with a user         |                                |
+|                               |                                   |                              |                                |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Files                         |  | OriginalFileName (Sysmon)      | Filename is embedded into the| Use a tool with a different    |
-|                               |                                   | PE header of a tool          | filename                       |
+| Process creation              |  | OriginalFileName (Sysmon)      | Filename is embedded into the| Use a tool with a different    |
+|                               |                                   | PE header of a tool          | filename, or edit PE header    |
 +-------------------------------+-----------------------------------+------------------------------+--------------------------------+
 | Signatures                    |  | Signature (Sysmon)             |                              |                                |
 |                               |  | SignatureStatus (Sysmon)       |                              |                                |

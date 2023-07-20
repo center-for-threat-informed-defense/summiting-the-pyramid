@@ -30,12 +30,14 @@ Observables
 |                               |                                   | unique identifying number      |                                |
 |                               |                                   |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| IP address                    |  | SourceIp (Sysmon)              | Mathematically produced and    | Connect to a different ISP,    |                  
-|                               |  | DestinationIp (Sysmon)         | assigned by ISP [#f2]_         | restart router or modem, or    |
+| IP address                    |  | SourceIp (Sysmon)              | Assigned by ISP [#f2]_         | Connect to a different ISP,    |                  
+|                               |  | DestinationIp (Sysmon)         |                                | restart router or modem, or    |
 |                               |                                   |                                | utilize a VPN                  |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Protocol-specific ports       |  | DestinationPort (Sysmon)       | Ports are standardized across  | Change port configuration      |
-|                               |  | SourcePort (Sysmon)            | network devices [#f3]_         | settings in code or computer   |
+|                               |  | SourcePort (Sysmon)            | network devices [#f3]_, while  | settings in code or computer   |
+|                               |                                   | others aren't associated       |                                |
+|                               |                                   | with a protocol standard       |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Filenames                     |  | Image (Sysmon)                 | Created by user to identify    | Filename can be changed by user|
 |                               |  | Parent image (Sysmon)          | file                           | or can be obfuscated in code   |
