@@ -25,7 +25,7 @@ There are also three columns which describe sensor data based on their visibilit
 .. toctree::
     :maxdepth: 1
 
-    library
+    application
     user-mode
     kernel-mode
 

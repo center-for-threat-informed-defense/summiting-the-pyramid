@@ -12,9 +12,18 @@ Analytics which are core to some implementations of a technique or sub-technique
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+------------------------------------------------------------------+
-| Sub-Technique/Technique       | Observables                                                      |
-+===============================+==================================================================+
-| Modify Authentication         |  AttributeLDAPDisplayName: msDS-KeyCredentialLink                |
-| Process (T1556)               |                                                                  |
-+-------------------------------+------------------------------------------------------------------+
++-------------------------------+---------------------------------------------------+------------------------------------+
+| Sub-Technique/Technique       | Observables                                       | Low Variance Behavior              |
++===============================+===================================================+====================================+
+| Modify Authentication         |  AttributeLDAPDisplayName: msDS-KeyCredentialLink | AttritubuteLDAPDisplayName is      |
+| Process (T1556)               |                                                   | similar to a registry key, as it   |
+|                               |                                                   | could be an arbitrary value or one |
+|                               |                                                   | several built-in "special" values. |
+|                               |                                                   | mdDS-KeyCredentialLink is a special|
+|                               |                                                   | value used by the system for       |
+|                               |                                                   | authentication [#f1]_              |
++-------------------------------+---------------------------------------------------+------------------------------------+
+
+.. rubric:: References:
+
+.. [#f1] https://cyberstoph.org/posts/2022/03/detecting-shadow-credentials/

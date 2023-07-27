@@ -25,7 +25,7 @@ Observables Quick Search
 
    * - Column Name
      - Sensor Data Observables
-   * - Library (L)
+   * - Application (A)
      - Event ID 4698, Event ID 4699, Event ID 4700, Event ID 4701, Event ID 4702
    * - User-Mode (U)
      - Sysmon ID 1, Sysmon ID 5, Sysmon ID 2, Sysmon ID 10, Sysmon ID 11, Sysmon ID 15, Sysmon ID 23, Sysmon ID 6, Sysmon ID 13, Sysmon ID 14

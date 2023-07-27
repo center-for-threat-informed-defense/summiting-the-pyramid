@@ -24,6 +24,7 @@ Observables
 | Process                       | | Sysmon ID 1 (Process creation)                                               |
 |                               | | Sysmon ID 5 (Process termination)                                            |
 |                               | | Sysmon ID 10 (Process access)                                                |
+|                               | | Event ID 7045 (New service installed)                                        |
 +-------------------------------+--------------------------------------------------------------------------------+
 | File                          | | Sysmon ID 2 (File creation time changed)                                     |
 |                               | | Sysmon ID 11 (File create)                                                   |
@@ -34,6 +35,8 @@ Observables
 +-------------------------------+--------------------------------------------------------------------------------+
 | Registry Key                  | | Sysmon ID 13 (Registry value set)                                            |
 |                               | | Sysmon ID 14 (Registry object renamed)                                       |
++-------------------------------+--------------------------------------------------------------------------------+
+| Pipes                         | | Sysmon ID 17 (Pipe created)                                                  |
 +-------------------------------+--------------------------------------------------------------------------------+
 
 .. rubric:: References

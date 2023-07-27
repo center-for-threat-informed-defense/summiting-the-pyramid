@@ -12,9 +12,14 @@ Some ATT&CK Techniques produce artifacts which are the same across all implement
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+------------------------------------------------------------------+
-| Sub-Technique/Technique       | Observables                                                      |
-+===============================+==================================================================+
-| Scheduled Tasks (T1053)       |  Key = Tasks                                                     |
-|                               |                                                                  |
-+-------------------------------+------------------------------------------------------------------+
++-------------------------------+-------------------------------------------------------------+-------------------------------------+
+| Sub-Technique/Technique       | Observables                                                 | Invariant Behavior                  |
++===============================+=============================================================+=====================================+
+| Scheduled Tasks (T1053)       |  TargetObject = "HKLM\SOFTWARE\Microsoft\Windows NT\        | The registry key value is generated |
+|                               |  CurrentVersion\Schedule\TaskCache\Tree" OR "HKLM\SOFTWARE\ | whenever a new task is created,     |
+|                               |  Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache     | regardless of implementation [#f1]_ |
++-------------------------------+-------------------------------------------------------------+-------------------------------------+
+
+.. rubric:: References
+
+.. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
