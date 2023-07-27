@@ -86,7 +86,7 @@ are functions of the kernel, and so on. If adversaries want to bypass certain ev
 
 Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data robustness.
 
-.. figure:: _static/2Dmodel_07272023.png
+.. figure:: _static/2Dmodel_07272023.PNG
    :alt: Summiting the Pyramid 2D model
    :align: center
 
