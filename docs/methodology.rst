@@ -90,7 +90,7 @@ Understanding this concept can help defenders build more robust analytics, by lo
    :alt: Summiting the Pyramid 2D model
    :align: center
 
-There are three different layers within the OS in which sensor data can be generated. The library level identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
+There are three different layers within the OS in which sensor data can be generated. The application column identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
 
 This 2D model provides the visualization of how to score the robustness of an analytic, based on the log source and the behavior associated with an attack.
 
