@@ -1,6 +1,6 @@
 Summit the Pyramid
 ==================
-Updated: 07/03/2023
+Updated: 07/27/2023
 
 Goal of Summiting the Pyramid
 -----------------------------
