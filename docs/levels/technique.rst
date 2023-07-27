@@ -19,6 +19,10 @@ Observables
 |                               |  CurrentVersion\Schedule\TaskCache\Tree" OR "HKLM\SOFTWARE\ | whenever a new task is created,     |
 |                               |  Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache     | regardless of implementation [#f1]_ |
 +-------------------------------+-------------------------------------------------------------+-------------------------------------+
+| OS Credential Dumping:        | TargetImage = *lsass.exe                                    | Covers all implementations of       |
+| LSASS Memory (T1003.001)      | (GrantedAccess=0x1010 OR GrantedAccess=0x1410)              | LSASS dumping                       |
++-------------------------------+-------------------------------------------------------------+-------------------------------------+
+
 
 .. rubric:: References
 

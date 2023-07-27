@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.16
+    Added new research to model mapping pages, changed "library" to "application", added future work page
+
 0.0.15
     Updated Scheduled Task/Job improved analytic
 0.0.14
