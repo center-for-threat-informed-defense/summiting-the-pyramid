@@ -161,7 +161,7 @@ Improved Analytic Scoring #1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 20 20 20 30
+    :widths: 20 20 30 20
     :header-rows: 1
 
     * - 
@@ -170,11 +170,11 @@ Improved Analytic Scoring #1
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
       - 
-      - 
       - | EventID: 11
         | TargetFileName|contains: 
         | - “C:\\Windows\\System32\\Tasks”
         | - “C:\\Windows\\SYSWOW64\\Tasks”
+      -
     * - Core to Part of (Sub-) Technique (4)
       - 
       -
@@ -211,7 +211,7 @@ Windows API mapping shows us that Event ID 12 can be generated from kernel-mode 
 +-------------------------+---------+------------------------------------------+--------------------------+
 
 Since the registry key is invariant behavior, the analytic is placed at the Core to Subtechnique level and we 
-can ultimately score it at 7U. It is important to ensure an adversary can’t evade our analytic by editing an 
+can ultimately score it at 5K. It is important to ensure an adversary can’t evade our analytic by editing an 
 existing registry key value or an renaming an entire registry key/value pair, so we should also integrate Event 
 IDs 13: (Value Set) and 14: (Key and Value Rename) into our analytic logic.
 
