@@ -12,16 +12,17 @@ Some ATT&CK Techniques produce artifacts which are the same across all implement
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-------------------------------------------------------------+-------------------------------------+
-| Sub-Technique/Technique       | Observables                                                 | Invariant Behavior                  |
-+===============================+=============================================================+=====================================+
-| Scheduled Tasks (T1053)       |  TargetObject = "HKLM\SOFTWARE\Microsoft\Windows NT\        | The registry key value is generated |
-|                               |  CurrentVersion\Schedule\TaskCache\Tree" OR "HKLM\SOFTWARE\ | whenever a new task is created,     |
-|                               |  Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache     | regardless of implementation [#f1]_ |
-+-------------------------------+-------------------------------------------------------------+-------------------------------------+
-| OS Credential Dumping:        | | TargetImage = lsass.exe                                   | Covers all implementations of       |
-| LSASS Memory (T1003.001)      | | GrantedAccess: 0x1010 OR 0x1410                           | LSASS dumping                       |
-+-------------------------------+-------------------------------------------------------------+-------------------------------------+
++---------------------------+----------------------------------------------------------+--------------------------------------+
+| Sub-Technique/Technique   | Observables                                              | Invariant Behavior                   |
++===========================+==========================================================+======================================+
+|| Scheduled Tasks (T1053)  || TargetObject = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\ || The registry key value is generated |
+||                          || CurrentVersion\\Schedule\\TaskCache\\Tree" OR "HKLM\\   || whenever a new task is created,     |
+||                          || SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\       || regardless of implementation [#f1]_ |
+||                          || Schedule\\TaskCache"                                    ||                                     |
++---------------------------+----------------------------------------------------------+--------------------------------------+
+|| OS Credential Dumping:   || TargetImage = lsass.exe                                 || Covers all implementations of       |
+|| LSASS Memory (T1003.001) || GrantedAccess: 0x1010 OR 0x1410                         || LSASS dumping                       |
++---------------------------+----------------------------------------------------------+--------------------------------------+
 
 
 .. rubric:: References
