@@ -86,7 +86,7 @@ are functions of the kernel, and so on. If adversaries want to bypass certain ev
 
 Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data robustness.
 
-.. figure:: _static/2Dmodel_07032023.png
+.. figure:: _static/2Dmodel_07272023.png
    :alt: Summiting the Pyramid 2D model
    :align: center
 
@@ -147,9 +147,9 @@ Sysmon Event ID 1 is generated when Win32 API functions are called to create a n
     :header-rows: 1
 
     * - 
-      - Library
-      - User-mode
-      - Kernel-mode
+      - Application (A)
+      - User-mode (U)
+      - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
       - 
       - EventID: 1
@@ -181,7 +181,7 @@ ANDed together, according to our Boolean logic, the entire analytic scores as a 
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -227,7 +227,7 @@ By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
