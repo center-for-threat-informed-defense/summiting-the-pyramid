@@ -89,7 +89,7 @@ Column
 ------
 **Columns in the Summiting the Pyramid methodology model group sensor robustness categories based on how evasive they are in the OS.**
 
-Analytics are constrained by the sensor data that is being used to log observables. The sensor robustness category columns look to create groups of sensor data observables based on how evasive they are in the OS. These observables are restricted to event codes being logged at the library, user-mode, and kernel-mode levels of the OS. To read more about how the columns are currently outlined, refer to our :ref:`Levels`.
+Analytics are constrained by the sensor data that is being used to log observables. The sensor robustness category columns look to create groups of sensor data observables based on how evasive they are in the OS. These observables are restricted to event codes being logged at the application, user-mode, and kernel-mode levels of the OS. To read more about how the columns are currently outlined, refer to our :ref:`Levels`.
 
 .. _Robustness:
 
