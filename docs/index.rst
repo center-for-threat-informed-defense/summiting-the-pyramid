@@ -16,5 +16,6 @@ Summiting the Pyramid |version|
     analytics/index
     datasources
     futurework
+    thanks
     resources
     changelog
