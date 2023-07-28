@@ -22,7 +22,7 @@ copyright = "2023, Center for Threat-Informed Defense"
 author = "Center for Threat-Informed Defense"
 
 # The full version, including alpha/beta/rc tags
-version = "v0.0.15"
+version = "v0.0.16"
 release = version
 
 

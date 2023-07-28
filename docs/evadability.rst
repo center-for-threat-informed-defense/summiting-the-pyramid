@@ -165,7 +165,7 @@ The observables for both analytics aligned to the Levels of Evadability can be s
     * - OS API
       - 
       -
-    * - Library API
+    * - Application
       - 
       -
     * - Tools Outside Adversary Control

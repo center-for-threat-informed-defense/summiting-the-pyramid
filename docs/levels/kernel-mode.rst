@@ -19,6 +19,9 @@ since everything is managed and run in a particular way. This is also the hardes
 can assist in identifying potential malicious activity. Overall, kernel behavior showcases the most robust fields to an analytic, since this will be the most 
 difficult to evade.
 
+.. note:: 
+    Other efforts within the Center for Threat-Informed Defense are conducting research on sensor data generation, and will be expanding and adding sensor data to robustness categories in the future.
+
 Observables
 ^^^^^^^^^^^
 +-------------------------------+-----------------------------------------------------------------------------------------+
@@ -35,8 +38,14 @@ Observables
 |                               | | Event ID 4660 (Object deleted)                                                        |
 |                               | | Event ID 4657 (Registry value modified)                                               |
 +-------------------------------+-----------------------------------------------------------------------------------------+
+| Objects                       | | Event ID 5136 (A directory service object was modified)                               |
++-------------------------------+-----------------------------------------------------------------------------------------+
 
 .. rubric:: References
 
 .. [#f1] https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/windows-kernel-mode-kernel-library
 .. [#f2] https://www.techtarget.com/searchdatacenter/definition/kernel
+
+* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_

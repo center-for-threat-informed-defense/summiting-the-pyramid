@@ -85,7 +85,7 @@ The sensor data was scored at the user-mode level, placing the score of the fina
 
 This is how you can place the score using the 2D model diagram.
 
-.. figure:: _static/pipes_2Dmodel.png
+.. figure:: _static/pipes_2Dmodel_07272023.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 

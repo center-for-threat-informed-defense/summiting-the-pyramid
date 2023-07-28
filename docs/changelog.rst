@@ -1,11 +1,17 @@
 Changelog
 =========
+0.0.16
+    Added new research to model mapping pages, changed "library" to "application", added future work page
+
 0.0.15
     Updated Scheduled Task/Job improved analytic
+
 0.0.14
-    TODO - fill in with Michaela Refactor-pt2 note
+    Updated definitions, reorganized levels pages, added future work page, added links and issue template for observable submission
+
 0.0.13
     Updated ADFind improvement example in Scored Analytics section and Methodology post
+
 0.0.12
     Updated website materials to reflect new model for Summiting the Pyramid (levels, quick search, how to score analytic)
 

@@ -1,6 +1,6 @@
 Summit the Pyramid
 ==================
-Updated: 07/03/2023
+Updated: 07/27/2023
 
 Goal of Summiting the Pyramid
 -----------------------------
@@ -86,11 +86,11 @@ are functions of the kernel, and so on. If adversaries want to bypass certain ev
 
 Understanding this concept can help defenders build more robust analytics, by looking at different sensor data throughout the OS. We now take our rows, and make it a two-dimensional model to reflect sensor data robustness.
 
-.. figure:: _static/2Dmodel_07032023.png
+.. figure:: _static/2Dmodel_07272023.PNG
    :alt: Summiting the Pyramid 2D model
    :align: center
 
-There are three different layers within the OS in which sensor data can be generated. The library level identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
+There are three different layers within the OS in which sensor data can be generated. The application column identifies observables which are associated with the use of libraries, such as DLLs, available to defenders before adversary use. These are difficult for the adversary to modify, but can be evaded. User-mode observables are associated with user-mode OS activity. Finally, kernel-mode observables are associated with kernel-mode activity occurring at ring 0. Each of these columns provide the defender a different layer to detect activity within the OS, going deeper as the columns move to the right. 
 
 This 2D model provides the visualization of how to score the robustness of an analytic, based on the log source and the behavior associated with an attack.
 
@@ -147,9 +147,9 @@ Sysmon Event ID 1 is generated when Win32 API functions are called to create a n
     :header-rows: 1
 
     * - 
-      - Library
-      - User-mode
-      - Kernel-mode
+      - Application (A)
+      - User-mode (U)
+      - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
       - 
       - EventID: 1
@@ -181,7 +181,7 @@ ANDed together, according to our Boolean logic, the entire analytic scores as a 
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -227,7 +227,7 @@ By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)

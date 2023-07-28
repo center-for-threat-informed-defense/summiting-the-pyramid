@@ -20,36 +20,44 @@ low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.
 
 Observables
 ^^^^^^^^^^^
-+-------------------------------+-----------------------------------+------------------------------+
-| Category                      | Observable Fields                 |   Observable Values          |
-+===============================+===================================+==============================+
-| Command-line arguments        |  | Command line (Sysmon, CAR)     |                              |
-|                               |  | Process Command Line (EID)     |                              |
-|                               |  | Parent command line (Sysmon,   |                              |
-|                               |   CAR)                            |                              |
-|                               |  | sha256_hash (CAR)              |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Files                         |  | Original filename (Sysmon)     |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Signatures                    |  | signer (CAR)                   |                              |
-|                               |  | signature_valid (CAR)          |                              |
-|                               |  | mime_type (CAR)                |                              |
-|                               |  | link_target (Sysmon)           |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Tool-specific configurations  |  | Integrity level (Sysmon, CAR)  | | File path outside adversary|
-|                               |  | Mandatory Label (EID)          | | control                    |
-|                               |  | Token elevation type (EID)     |                              |
-|                               |  | Access level (CAR)             |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| User Session                  |  | Login  type (CAR)              |                              |
-|                               |  | Login successful (CAR)         |                              |
-+-------------------------------+-----------------------------------+------------------------------+
-| Authentication                |  | Auth service (CAR)             |                              |
-|                               |  | Decision reason (CAR)          |                              |
-|                               |  | Method (CAR)                   |                              |
-+-------------------------------+-----------------------------------+------------------------------+
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| Category                      | Observables                       | Generating Activity          |  Evade Behavior                |
++===============================+===================================+==============================+================================+
+| Command-line arguments        |  | CommandLine (Sysmon)           | Built into the tool to       | Change the tool or             |
+|                               |  | Process Command Line (EID)     | identify different           | configuration which has        |
+|                               |  | ParentCommandLine (Sysmon)     | functionalities, be called   | different command-line         |
+|                               |                                   | by a tool or scripts, or     | arguments                      |
+|                               |                                   | called by an interactive     |                                |
+|                               |                                   | sessions with a user         |                                |
+|                               |                                   |                              |                                |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| Process creation              |  | OriginalFileName (Sysmon)      | Filename is embedded into the| Use a tool with a different    |
+|                               |                                   | PE header of a tool          | filename, or edit PE header    |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| Signatures                    |  | Signature (Sysmon)             |                              |                                |
+|                               |  | SignatureStatus (Sysmon)       |                              |                                |
+|                               |  | link_target (Sysmon)           |                              |                                |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| Tool-specific configurations  |  | Integrity level (Sysmon)       | A recommendation for setting | Pivot to tool or raise         |
+|                               |  | Mandatory Label (EID)          | up and using tools that      | permissions to avoid alerts    |
+|                               |  | Token elevation type (EID)     | support processing of        | on specific-configuration      |
+|                               |  | Access level (EID)             | information [#f3]_           |                                |
+|                               |  | File path outside adversary    |                              |                                |
+|                               |   control                         |                              |                                |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| User Session                  |  | Login Type (EID)               | A user logons to a profile or| Login to application or user   |
+|                               |  | Login successful (EID)         | application [#f4]_           | with different logon type      |
+|                               |                                   |                              | [#f5]_                         |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+| Authentication                |  | Auth service (CAR)             |                              |                                |
+|                               |  | Decision reason (CAR)          |                              |                                |
+|                               |  | Method (CAR)                   |                              |                                |
++-------------------------------+-----------------------------------+------------------------------+--------------------------------+
 
 .. rubric:: References
 
 .. [#f1] https://darktrace.com/blog/living-off-the-land-how-hackers-blend-into-your-environment
 .. [#f2] https://www.gdatasoftware.com/blog/2022/02/37248-living-off-the-land
+.. [#f3] https://csrc.nist.gov/glossary/term/tool_configuration
+.. [#f4] https://auth0.com/docs/manage-users/sessions
+.. [#f5] https://www.ultimatewindowssecurity.com/securitylog/book/page.aspx?spid=chapter3
