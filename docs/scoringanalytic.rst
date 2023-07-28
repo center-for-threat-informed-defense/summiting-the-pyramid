@@ -63,19 +63,19 @@ In Sigma specifically, there are two steps which need to be looked at to underst
 
 For our example, the condition states that this analytic will fire if any one of the ``selection_malleable_profile*`` conditions is met, unless the filter condition is also true. There are four sections in ``selection_malleable_profile``: ``PipeName | startswith``, ``PipeName``,  ``selection_malleable_profile_CatalogChangeListener``, and ``PipeName | endswith``. The observables within each of the selections are connected using an AND. The condition states that at least 1 of the ``selection_malleable_profile*`` will be selected, making each of the selections connected by an OR. So, the final analytic would look like this:
 
-``(Pipename | startswith AND Pipename) OR (Pipename | startswith AND Pipename | endswith)``
+``(Pipename | startswith AND Pipename) OR (Pipename | startswith AND Pipename | endswith) = 1 AND 1 = 1``
 
 The “not filter” indicates that anything that is not in the filter will be detected. Based on the Summiting the Pyramid methodology, analytic components that are AND’ed together, will fall to the score of the lowest observable. 
 
 .. important:: To read more about AND and OR condition scoring 
-    check out the release on :ref:`Evadability and Boolean Logic`
+    check out the release on :ref:`Robustness and Boolean Logic`
 
 Step 4: Give the analytic a final score
 ---------------------------------------
 
-Now that we understand the individual components of this analytic, we can now score the overall analytic. 
+Now that we understand the individual components of this analytic, we can now score the overall analytic with the :ref:`robustness level<Robustness and Boolean Logic>`. 
 
-The sensor data was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the final score of this analytic is **1U**.
+The sensor data was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the robustness score of this analytic is **1U**.
 
 .. figure:: _static/pipes_finalscore_07052023.png
    :alt: Suspicious Pipe Creation final score
