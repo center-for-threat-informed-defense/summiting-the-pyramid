@@ -16,6 +16,7 @@ Summiting the Pyramid |version|
     analytics/index
     datasources
     precision-recall
+    capability-abstraction
     futurework
     resources
     changelog

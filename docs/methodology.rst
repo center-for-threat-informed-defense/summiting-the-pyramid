@@ -22,25 +22,6 @@ that malware that has been altered by an adversary. A detection at the tool leve
 create more false positives, pick benign user activity, and alert on system generated noise if the implemented tool is native to the OS. Some analytics might use 
 a combination of various indicators to increase both the precision and :ref:`recall<Recall>` of an adversary attack.
 
-:ref:`Capability Abstraction`, a concept developed by `SpecterOps <https://posts.specterops.io/capability-abstraction-fbeaeeb26384>`_, seeks to 
-understand activities that occur on a system when an attacker is 
-accomplishing their goals. It also introduced a visual graphic, known as an “abstraction map”, which conveys the relationships between operating system (OS)
-abstraction layers and begins to highlight how an adversary can evade a specific detection or a sensor entirely and still accomplish their goals. 
-The following capability abstraction map for `T1543 - Create or Modify System Process: Windows Service <https://attack.mitre.org/techniques/T1543/003/>`_ illustrates 
-how multiple tools can create a new service.
-
-.. figure:: _static/new_service_capability_abstraction.png
-   :alt: New Service Capability Abstraction - Created by SpecterOps
-   :align: center
-
-   New Service Capability Abstraction created by SpecterOps. The relevant MITRE ATTACK Technique ID was changed to T1543.003 after this capability abstraction was published [#f3]_
-
-These tools and implementations include standard Windows or commonly abused binaries, OS API calls or functions, and open-source or custom code that an adversary might copy or develop. These 
-different implementations may call the Windows API differently, which in turn might call different RPC interface and methods. However, ultimately they all utilize 
-the same registry key within the Registry Service Database. If an adversary wanted to evade detection at the tool level, they could create a new service by directly 
-interacting with the Windows API, RPC, or Registry. This is not a hypothetical, but has actually been seen in the wild. Threat group APT41 has utilized Windows service 
-creation within their attacks not only through the utilization of the service creation tool (sc.exe), but also by directly modifying the registry itself [#f2]_. 
-
 .. important::
    Adversaries attack different parts in the OS and might be operating at a level that deployed sensors cannot detect. Therefore, it is imperative that defenders understand 
    where their analytics are detecting activity and the type of activity their analytics are detecting when building robust analytics.
@@ -96,7 +77,7 @@ This 2D model provides the visualization of how to score the robustness of an an
 
 Improving Analytic Robustness
 -----------------------------
-Let's step through an example. The below analytic looks for specific command line arguments of the ADFind tool [#f4]_, identified when Image ends with ``adfind.exe``.
+Let's step through an example. The below analytic looks for specific command line arguments of the ADFind tool [#f2]_, identified when Image ends with ``adfind.exe``.
 
 .. code-block:: yaml
    
@@ -136,11 +117,11 @@ Let's step through an example. The below analytic looks for specific command lin
 
 
 First, we have to understand and score this analytic's sensor robustness category. The data source for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
-This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f5]_. 4688 has the field 
+This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f3]_. 4688 has the field 
 NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
 the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
 
-Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f6]_. Therefore it is a user-mode logsource and we can place the other observables in the U column.
+Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f4]_. Therefore it is a user-mode logsource and we can place the other observables in the U column.
 
 .. list-table::
     :widths: 20 20 30 20
@@ -275,8 +256,6 @@ We are always looking for feedback and integrating your thoughts and ideas! Open
 .. rubric:: References
 
 .. [#f1] http://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html
-.. [#f2] https://www.mandiant.com/resources/blog/apt41-initiates-global-intrusion-campaign-using-multiple-exploits
-.. [#f3] https://abstractionmaps.com/maps/t1050/
-.. [#f4] https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
-.. [#f5] https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90001
-.. [#f6] https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa
+.. [#f2] https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
+.. [#f3] https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90001
+.. [#f4] https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa

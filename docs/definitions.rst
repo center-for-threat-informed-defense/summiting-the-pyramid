@@ -99,26 +99,9 @@ Robustness
 
 Robustness is crucial for the effectiveness of an analytic, and is the focus of the Summiting the Pyramid project. Robustness is directly related to the cost required by an adversary to evade it, including time, resources, and money. High robustness indicates an adversary has to spend a lot to evade it, forcing them to operate at higher levels, such as interacting directly with the kernel. Therefore, robustness is equal to the level at which an adversary must operate to evade a defender’s detection.  
 
-.. _Capability Abstraction:
-
-Capability Abstraction
-----------------------
-**Capability abstraction attempts to find common touch points between tools, making capabilities less hidden from defenders**
-
-.. figure:: _static/capability_abstraction_specterops.png
-   :alt: Kerberoasting - Specter Ops
-   :align: center
-
-   Kerberoasting Capability Abstraction Taken From Specter Ops [#f5]_
-
-The art of capability abstraction showcases how each tool or behavior can be uncovered into different layers which can be acted upon by defenders. As seen in the capability abstraction above, tools used for kerberoasting can map to similar managed code, Windows API functions, RPC calls, and the same network protocol. Through reverse engineering, defenders can utilize this information to detect behaviors that might be more difficult for adversaries to evade. For example, if defenders wanted to detect the tool implementations of kerberoasting shown here, a defender can create an analytic surrounding the network protocol Kerberos TGS-REQ/REP, a behavior that adversaries would not be able to evade based on the research conducted.
-
-The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to levels outlined by our methodology. As observables are assigned to levels, further research can be conducted to identify detections based off those observables. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
-
 **References**
 
 .. [#f1] https://www.cybrary.it/course/mitre-attack-threat-hunting/
 .. [#f2] https://www.sans.org/tools/the-pyramid-of-pain/
 .. [#f3] http://nist.gov/
 .. [#f4] https://attack.mitre.org/datasources/
-.. [#f5] https://posts.specterops.io/capability-abstraction-fbeaeeb26384
