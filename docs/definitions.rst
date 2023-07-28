@@ -115,22 +115,6 @@ The art of capability abstraction showcases how each tool or behavior can be unc
 
 The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to levels outlined by our methodology. As observables are assigned to levels, further research can be conducted to identify detections based off those observables. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
 
-.. _Robustness Precision Recall:
-
-Summiting the Pyramid and Precision, Recall, and Robustness
------------------------------------------------------------
-The Summiting the Pyramid methodology is focused on how to create more robust analytics. However, it’s important to consider the different dimensions of effective analytics.
-
-Robustness, precision, and recall are separate concepts and should be considered as different aspects of analytics. Effective analytics can be thought of as a 3-legged stool. The three legs are precision, recall, and robustness. A balance between all the legs is needed to ensure the stool can withstand weight and not fall over. If you kick out one of the stool legs, it’s not a stool anymore! 
-
-.. figure:: _static/stool.png
-   :alt: Stool of Effective Analytics
-   :align: center
-
-To that end, increased robustness does not automatically mean increased precision or recall. Robustness is a different dimension of effective analytics and must not be thought of as precision or recall. However, the robustness of an analytic could affect the precision or recall of an analytic. Finding a balance between precision, recall, and robustness ensures defenders can have the most effective analytics within their environment.
-
-For Summiting the Pyramid 1, we will be looking primarily at the **robustness of analytics**. Future projects will include measuring precision and potential recall of analytics, giving us the broader picture of an analytic.
-
 **References**
 
 .. [#f1] https://www.cybrary.it/course/mitre-attack-threat-hunting/
