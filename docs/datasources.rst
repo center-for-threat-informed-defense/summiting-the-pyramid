@@ -1,44 +1,19 @@
 .. _Data Sources:
 
-ATT&CK Data Source Mappings
+ATT&CK Technique Mappings
 ===========================
 
-`Process <https://attack.mitre.org/datasources/DS0009/>`_
----------------------------------------------------------
+`T1003: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
+-----------------------------------------------------------------------
 
-.. figure:: _static/datasource_process.PNG
-   :alt: Data Source Scoring for Processes
+.. figure:: _static/TechniqueDataMapping_LSASS.PNG
+   :alt: Technique Scoring for LSASS Memory
    :align: center
 
 
-`File <https://attack.mitre.org/datasources/DS0022/>`_
-------------------------------------------------------
+`Scheduled Tasks <https://attack.mitre.org/techniques/T1053/005/>`_
+-------------------------------------------------------------------
 
-.. figure:: _static/datasource_file.PNG
-   :alt: Data Source Scoring for Processes
+.. figure:: _static/TechniqueDataMapping_ScheduledTasks.PNG
+   :alt: Technique Scoring for Scheduled Tasks
    :align: center
-
-
-`Drivers <https://attack.mitre.org/datasources/DS0027/>`_
----------------------------------------------------------
-
-.. figure:: _static/datasource_driver.PNG
-   :alt: Data Source Scoring for Processes
-   :align: center
-
-
-`Scheduled Jobs <https://attack.mitre.org/datasources/DS0003/>`_
-----------------------------------------------------------------
-
-.. figure:: _static/datasource_scheduledjob.PNG
-   :alt: Data Source Scoring for Processes
-   :align: center
-
-
-`Registry Keys <https://attack.mitre.org/datasources/DS0024/>`_
----------------------------------------------------------------
-
-.. figure:: _static/datasource_registrykey.PNG
-   :alt: Data Source Scoring for Processes
-   :align: center
-
