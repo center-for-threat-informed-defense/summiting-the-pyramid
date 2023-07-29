@@ -29,7 +29,7 @@ Observables
 |                               |                                   | called by an interactive sessions|                                |
 |                               |                                   | with a user                      |                                |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
-| Process creation              |  | OriginalFileName(Sysmon)       | Filename is embedded into        | User would have to edit the PE |
+| Process creation              |  | OriginalFileName (Sysmon)      | Filename is embedded into        | User would have to edit the PE |
 |                               |                                   | the PE header of a tool          | header with the updated name   |
 |                               |                                   |                                  | and recompile the tool         |
 +-------------------------------+-----------------------------------+----------------------------------+--------------------------------+
