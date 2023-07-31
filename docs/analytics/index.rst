@@ -10,6 +10,7 @@ The following examples demonstrate how to score and improve an analytic in accor
     adfind
     task_scheduling
     service_registry_permissions_weakness_check
+    access_token_manipulation
 
 .. _Scored Analytics:
 

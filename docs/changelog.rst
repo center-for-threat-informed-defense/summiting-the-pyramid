@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.19
+    Added access token manipulation improved analytic
+
 0.0.16
     Added new research to model mapping pages, changed "library" to "application", added future work page
 
