@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.17
+    Updated Analytics repository spreadsheet to reflect 2D methodology.
+
 0.0.16
     Added new research to model mapping pages, changed "library" to "application", added future work page
 
