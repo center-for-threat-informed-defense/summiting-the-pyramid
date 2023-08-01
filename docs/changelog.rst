@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.18
+    Updated Analytics repository spreadsheet to reflect 2D methodology.
+
 0.0.17
     Updated robustness score page, separated posts on capability abstraction and precision, recall, and robustness. Updated methodology page.
 
