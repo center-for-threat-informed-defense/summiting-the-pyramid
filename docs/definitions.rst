@@ -99,42 +99,9 @@ Robustness
 
 Robustness is crucial for the effectiveness of an analytic, and is the focus of the Summiting the Pyramid project. Robustness is directly related to the cost required by an adversary to evade it, including time, resources, and money. High robustness indicates an adversary has to spend a lot to evade it, forcing them to operate at higher levels, such as interacting directly with the kernel. Therefore, robustness is equal to the level at which an adversary must operate to evade a defender’s detection.  
 
-.. _Capability Abstraction:
-
-Capability Abstraction
-----------------------
-**Capability abstraction attempts to find common touch points between tools, making capabilities less hidden from defenders**
-
-.. figure:: _static/capability_abstraction_specterops.png
-   :alt: Kerberoasting - Specter Ops
-   :align: center
-
-   Kerberoasting Capability Abstraction Taken From Specter Ops [#f5]_
-
-The art of capability abstraction showcases how each tool or behavior can be uncovered into different layers which can be acted upon by defenders. As seen in the capability abstraction above, tools used for kerberoasting can map to similar managed code, Windows API functions, RPC calls, and the same network protocol. Through reverse engineering, defenders can utilize this information to detect behaviors that might be more difficult for adversaries to evade. For example, if defenders wanted to detect the tool implementations of kerberoasting shown here, a defender can create an analytic surrounding the network protocol Kerberos TGS-REQ/REP, a behavior that adversaries would not be able to evade based on the research conducted.
-
-The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to levels outlined by our methodology. As observables are assigned to levels, further research can be conducted to identify detections based off those observables. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
-
-.. _Robustness Precision Recall:
-
-Summiting the Pyramid and Precision, Recall, and Robustness
------------------------------------------------------------
-The Summiting the Pyramid methodology is focused on how to create more robust analytics. However, it’s important to consider the different dimensions of effective analytics.
-
-Robustness, precision, and recall are separate concepts and should be considered as different aspects of analytics. Effective analytics can be thought of as a 3-legged stool. The three legs are precision, recall, and robustness. A balance between all the legs is needed to ensure the stool can withstand weight and not fall over. If you kick out one of the stool legs, it’s not a stool anymore! 
-
-.. figure:: _static/stool.png
-   :alt: Stool of Effective Analytics
-   :align: center
-
-To that end, increased robustness does not automatically mean increased precision or recall. Robustness is a different dimension of effective analytics and must not be thought of as precision or recall. However, the robustness of an analytic could affect the precision or recall of an analytic. Finding a balance between precision, recall, and robustness ensures defenders can have the most effective analytics within their environment.
-
-For Summiting the Pyramid 1, we will be looking primarily at the **robustness of analytics**. Future projects will include measuring precision and potential recall of analytics, giving us the broader picture of an analytic.
-
 **References**
 
 .. [#f1] https://www.cybrary.it/course/mitre-attack-threat-hunting/
 .. [#f2] https://www.sans.org/tools/the-pyramid-of-pain/
 .. [#f3] http://nist.gov/
 .. [#f4] https://attack.mitre.org/datasources/
-.. [#f5] https://posts.specterops.io/capability-abstraction-fbeaeeb26384
