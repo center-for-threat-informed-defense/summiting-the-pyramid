@@ -17,7 +17,7 @@ The following examples demonstrate how to score and improve an analytic in accor
 Scored Analytics Repository
 ---------------------------
 
-There is also a published CSV file that contains analytics that have been scored with the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230626.csv>`
+There is also a published CSV file that contains analytics that have been scored with the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230731.csv>`
 
 Submitting an Analytic
 ----------------------

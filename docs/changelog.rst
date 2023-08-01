@@ -2,6 +2,12 @@ Changelog
 =========
 0.0.19
     Added access token manipulation improved analytic
+    
+0.0.18
+    Updated Analytics repository spreadsheet to reflect 2D methodology.
+
+0.0.17
+    Updated robustness score page, separated posts on capability abstraction and precision, recall, and robustness. Updated methodology page.
 
 0.0.16
     Added new research to model mapping pages, changed "library" to "application", added future work page

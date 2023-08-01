@@ -12,9 +12,11 @@ Summiting the Pyramid |version|
     definitions
     levels/index
     evadability
+    datasources
     scoringanalytic
     analytics/index
-    datasources
+    precision-recall
+    capability-abstraction
     futurework
     resources
     changelog
