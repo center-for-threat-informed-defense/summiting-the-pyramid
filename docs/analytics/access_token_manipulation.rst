@@ -98,7 +98,7 @@ Original Analytic Scoring
         |         - 'c:\\\\windows\\\\system32\\\\cmd.exe'
       - 
 
-This analytic scores at **1U** because it relies on commands being run from ``cmd.exe``. While some observables of the analytic score at level 2, they are ORed with level 1 
+This analytic's robustness score is **1U** because it relies on commands being run from ``cmd.exe``. While some observables of the analytic score at level 2, they are ORed with level 1 
 making the overall analytic score at 1U. This analytic also relies on an adversary accidentally entering these commands on the victim machine since the specific 
 arguments are typically executed on a beacon within CobaltStrike. 
 
@@ -108,7 +108,7 @@ lateral movement, access token manipulation, and credential access, so we also n
 with **T1134.001 Access Token Manipulation: Token Impersonation/Theft**. We will further scope down our research, focusing on access token theft implementations that 
 leverage Windows API calls versus command line implementations like the ``runas`` command.
 
-Test scripts were executed to call Windows APIs commonly used by adversaries and/or tools when performing access token manipulation:
+Test scripts were executed to call Windows APIs commonly used by adversaries and/or tools when performing access token manipulation, as seen on the `ATT&CK page <https://attack.mitre.org/techniques/T1134/001/>`_:
 
   - LogonUser
   - DuplicateTokenEx
@@ -125,9 +125,9 @@ Testing confirmed that calling these APIs generated Event ID 4624 (An account ha
 .. note::
   ``Audit Logon`` events must be configured in Local System or Group Policy to capture Event ID 4624
 
-With knowledge that Event ID 4624 is fired anytime an adversary performs access token manipulation, we can now begin to develop a new analytic. Simply searching for 
+With knowledge that `Event ID 4624 <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624>`_ is fired anytime an adversary performs access token manipulation, we can now begin to develop a new analytic. Simply searching for 
 Event ID 4624 would be incredibly noisy on a production environment, therefore defenders must leverage other fields in the event to filter out false positives. 
-Fortunately, the Summiting team has gone through this process already, submitted the improved analytic to SIGMA [#f1]_, and started developing a capability abstraction map.
+Fortunately, the Summiting team has gone through this process already, submitted the improved analytic to Sigma through previous research [#f1]_, and started developing a capability abstraction map. The team is continuing the research to find better event IDs or other observables which can be correlated to access tokens specifically.
 
 .. code-block:: yaml
 
@@ -201,6 +201,9 @@ Improved Analytic Scoring
       - 
       - 
       - 
+
+.. note::
+   The behavioral analytic research for Access Token Manipulation is covered in MITRE ATT&CK Defender's (MAD) Technique Detection Course on Access Token Manipulation. `Learn more about the underlying research and process of discovering the behavioral analytics by subscribing and watching the MAD Access Token Manipulation Technique Detection and Adversary Emulation course. <https://mitre-engenuity.org/cybersecurity/mad/>`_
 
 .. rubric:: References
 
