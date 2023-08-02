@@ -37,7 +37,7 @@ Ultimately, this project looks to put control back in the hands of the defender.
 
 **Looking to get started? Check out these resources!**
 
-* :ref:`Model Mapping Pages<Levels>`
+* :ref:`Model Mapping Pages<Model Mapping Pages>`
 * :ref:`Scored Analytics Repository<Scored Analytics>`
 
 Looking to contribute to the project? Have an analytic you would like scored? `Please create an issue on our GitHub here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_
