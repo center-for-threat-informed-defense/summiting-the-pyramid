@@ -81,7 +81,7 @@ Analytic Robustness Categories
 ------------------------------
 **The five categories in the Summiting the Pyramid methodology group analytic robustness observables and analytics based on the Pyramid of Pain, refined to reflect difficulty and cost for an adversary to avoid triggering or being detected by them**
 
-The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them while still executing the Technique of interest, and without tampering with the defensive sensors. Different observables are more or less evadable than others. Summiting the Pyramid has taken these categories, grouped them based on ephemeral values, tools, and adversary behaviors, and formed five categories to group observables. The categories organize observables starting with the most easily evaded observables towards the bottom of the table, to the least easily evaded observables at the top of the table. To read more about how the categories are currently outlined, refer to our :ref:`Model Mapping Pages`.
+The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them while still executing the Technique of interest, and without tampering with the defensive sensors. Different observables are more or less evadable than others. Summiting the Pyramid has defined five categories of observable robustness. The categories organize observables starting with the most easily evaded observables towards the bottom of the table, to the least easily evaded observables at the top of the table. To read more about how the categories are currently outlined, refer to our :ref:`Model Mapping Pages`.
 
 .. _Sensor Robustness Categories:
 
