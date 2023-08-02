@@ -3,7 +3,7 @@ How to Score an Analytic
 
 These are the steps that should be taken to score an analytic with the Summiting the Pyramid methodology. If you identify an observable or value that is not part of the current methodology or would like to submit your own scored analytic, please create an issue in our `GitHub here <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_ and the team will integrate feedback.
 
-This walkthrough will highlight scoring `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_.
+This walkthrough will highlight scoring `suspicious pipe creation from CobaltStrike <https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml>`_, authored by Florian Roth (Nextron Systems) and Christian Burkard (Nextron Systems).
 
 .. figure:: _static/pipes_analytic.png
    :alt: Suspicious Pipe Creation Analytic
@@ -15,7 +15,7 @@ Step 1: Scoring the analytic's sensor data
 ------------------------------------------
 Just as not all analytics are created equal, not all sensors are created equal. Our sensor robustness categories identify the different layers within the OS in which observables can be collected. Each of the different sensors within each column provide different insight into the OS.
 
-In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired from user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
+In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ Our current research so far can only justify a user-mode rating. However, further research into underlying syscalls could indicate a raised data sensor score to kernel-mode. Because of this, the data sensor placement of this analytic will be in :ref:`User-Mode`.
 
 .. figure:: _static/pipes_collectionsource_07052023.png
    :alt: Suspicious Pipe Creation Analytic Sensor Data
@@ -91,7 +91,7 @@ This is how you can place the score using the 2D model diagram.
 
 And that’s it! You have officially scored an analytic based on the Summiting the Pyramid methodology. Knowing the steps to score an analytic, you can apply this to your environment, see where your analytics fall, and determine if there’s any ways your analytics can be improved.
 
-Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be specifically for environment tuning or for collecting information rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
+Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be tuned specifically for your environment or for collecting contextual data rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
 **Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table?** `Fill out our analytic submission form, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_!
 

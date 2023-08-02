@@ -28,6 +28,8 @@ Observables
 +-------------------------------+-----------------------------------------------------------------------+
 | Windows Backup                |  | Event ID 524 (The System Catalog has been deleted) [#f4]_          |
 +-------------------------------+-----------------------------------------------------------------------+
+| Powershell                    |  | Event ID 4104 (Creating Scriptblock text) [#f5]_                   |
++-------------------------------+-----------------------------------------------------------------------+
 
 .. rubric:: References
 
@@ -35,6 +37,7 @@ Observables
 .. [#f2] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc773487%28v=ws.10%29
 .. [#f3] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc735566%28v=ws.10%29
 .. [#f4] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc734301%28v=ws.10%29
+.. [#f5] https://www.myeventlog.com/search/show/980
 
 * Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
 * Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
