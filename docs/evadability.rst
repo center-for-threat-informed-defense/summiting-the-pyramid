@@ -57,7 +57,7 @@ In determining the Robustness Level *R(X)* for a more complex analytic, we can a
   
   - **R(NOT A) → R(A)** - The robustness level of NOT A would be equivalent to the robustness level of the observable A itself, since the detection focus is still at A’s level of robustness.
   
-  - **R(A AND B | A) → R(B)** - The robustness level of A and B predicated on observing A is equivalent to the robustness level of B, since observing A is a given in this context.
+  - **R((A AND B) | A) → R(B)** - The robustness level of A and B predicated on observing A is equivalent to the robustness level of B, since observing A is a given in this context.
 
 .. rubric:: References
 
