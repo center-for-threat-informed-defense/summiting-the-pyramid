@@ -15,9 +15,9 @@ Step 1: Scoring the analytic's sensor data
 ------------------------------------------
 Just as not all analytics are created equal, not all sensors are created equal. Our sensor robustness categories identify the different layers within the OS in which observables can be collected. Each of the different sensors within each column provide different insight into the OS.
 
-In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ Our current research so far can only justify a user-mode rating. However, further research into underlying syscalls could indicate a raised data sensor score to kernel-mode. Because of this, the data sensor placement of this analytic will be in :ref:`User-Mode`.
+In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called, which is a :ref:`User-Mode` function. [#f2]_ However, after some additional research, it was found that certain Sysmon events are triggered with a minifilter. [#f3]_ Minifilters are executed by the Filter manager, operating in kernel-mode. [#f4]_ Because of this, the data sensor placement of this analytic will be in :ref:`Kernel-Mode`.
 
-.. figure:: _static/pipes_collectionsource_07052023.png
+.. figure:: _static/pipes_collectionsource_08022023.png
    :alt: Suspicious Pipe Creation Analytic Sensor Data
    :align: center
 
@@ -75,17 +75,17 @@ Step 4: Give the analytic a final score
 
 Now that we understand the individual components of this analytic, we can now score the overall analytic with the :ref:`robustness level<Robustness and Boolean Logic>`. 
 
-The sensor data was scored at the user-mode level, placing the score of the final analytic in :ref:`User-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the robustness score of this analytic is **1U**.
+The sensor data was placed at the kernel-mode level, placing the score of the final analytic in :ref:`Kernel-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter used to increase precision of the analytic has not been scored. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the robustness score of this analytic is **1K**.
 
-.. figure:: _static/pipes_finalscore_07052023.png
+.. figure:: _static/pipes_finalscore_08022023.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 
-   The final score of the suspicious pipes analytic is 1U [#f1]_
+   The final score of the suspicious pipes analytic is 1K [#f1]_
 
 This is how you can place the score using the 2D model diagram.
 
-.. figure:: _static/pipes_2Dmodel_07272023.png
+.. figure:: _static/pipes_2Dmodel_08022023.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 
@@ -93,9 +93,11 @@ And that’s it! You have officially scored an analytic based on the Summiting t
 
 Remember, not all analytics will be able to be scored utilizing this methodology. For example, some analytics might be tuned specifically for your environment or for collecting contextual data rather than detection. We are documenting different use cases where some analytics would not be scored, and will continue to update the Summiting methodology to reflect this.
 
-**Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table?** `Fill out our analytic submission form, and the team will make updates <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_!
+**Do you have analytics that should be documented in the analytic repository? Do you have new fields or observables which can be added to the analytics observables table?** `Fill out our analytic submission form, and the team review your analytic for the repository <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`_
 
 .. rubric:: References
 
 .. [#f1] https://github.com/SigmaHQ/sigma/blob/37bba95e4a7353a8d90ed43c0403fefec38152b8/rules/windows/pipe_created/pipe_created_susp_cobaltstrike_pipe_patterns.yml
 .. [#f2] https://learn.microsoft.com/en-us/windows/win32/api/namedpipeapi/nf-namedpipeapi-impersonatenamedpipeclient
+.. [#f3] https://github.com/trustedsec/SysmonCommunityGuide/blob/master/chapters/named-pipes.md
+.. [#f4] https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/filter-manager-concepts

@@ -9,6 +9,10 @@ Overview
 
    Welcome to Summiting the Pyramid!
 
+.. figure:: _static/summit_mountainrange.PNG
+   :alt: Summiting the Pyramid, Leveling Up Your Analytics
+   :align: center
+
 Introduction
 ------------
 The Pyramid of Pain has been used by detection engineers to determine the cost or “pain” it would take for an adversary to evade defenses that are effective at certain levels of the pyramid. However, how can that knowledge be utilized by defenders to understand where adversaries can evade detections? The goal of the Summiting the Pyramid project is to give the defenders the power to regain control of their environment, by creating robust analytics based on relative complexity of adversary evasion. 

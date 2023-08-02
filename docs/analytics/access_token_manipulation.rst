@@ -203,7 +203,7 @@ Improved Analytic Scoring
       - 
 
 .. note::
-   The behavioral analytic research for Access Token Manipulation is covered in MITRE ATT&CK Defender's (MAD) Technique Detection Course on Access Token Manipulation. Learn more about the underlying research and process of discovering the behavioral analytics by subscribing and watching the MAD Access Token Manipulation Technique Detection and Adversary Emulation course. [#f4]_
+   The behavioral analytic research for Access Token Manipulation is covered in MITRE ATT&CK Defender's (MAD) Technique Detection Course on Access Token Manipulation. Learn more about the underlying research and process of discovering the behavioral analytics by subscribing and watching the MAD Access Token Manipulation `Technique Detection course <https://mad.mitre-engenuity.org/CourseDetail/22>`_ and `Adversary Emulation course <https://mad.mitre-engenuity.org/CourseDetail/21>`_.
 
 .. rubric:: References
 
