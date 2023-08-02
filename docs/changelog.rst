@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.20
+    Final cleanup and feedback for website materials
+
 0.0.19
     Added access token manipulation improved analytic
     
