@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.19
+    Added access token manipulation improved analytic
+    
 0.0.18
     Updated Analytics repository spreadsheet to reflect 2D methodology.
 
