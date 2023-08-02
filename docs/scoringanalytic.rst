@@ -15,7 +15,7 @@ Step 1: Scoring the analytic's sensor data
 ------------------------------------------
 Just as not all analytics are created equal, not all sensors are created equal. Our sensor robustness categories identify the different layers within the OS in which observables can be collected. Each of the different sensors within each column provide different insight into the OS.
 
-In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and the definition, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired from user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
+In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called. [#f2]_ This may track down to a lower-level syscall, but this would require a deeper dive into syscalls for Event ID 17. For now, we will consider it being fired from user-mode into kernel-mode. Therefore, the final score of this analytic will be in :ref:`User-Mode`.
 
 .. figure:: _static/pipes_collectionsource_07052023.png
    :alt: Suspicious Pipe Creation Analytic Sensor Data
@@ -53,7 +53,7 @@ Step 3: Analyze the selection or condition of the analytic
 
 Before scoring the analytic, the final step is to consider how the separate components of an analytic are related. Understanding the logic of an analytic will help determine how robust it is.
 
-In Sigma specifically, there are two steps which need to be looked at to understand the publisher's original intent for the analytic. It will say if each of the selections need to be considered as an AND statement or an OR statement. There can also be a condition at the bottom of an analytic which might identify a filter that needs to be applied to the analytic.
+In Sigma specifically, there are two steps which need to be looked at to understand the robustness of the full analytic, with all components combined as specified. It will say if each of the selections need to be considered as an AND statement or an OR statement. There can also be a condition at the bottom of an analytic which might identify a filter that needs to be applied to the analytic.
 
 .. figure:: _static/pipes_condition.png
    :alt: Suspicious Pipe Creation condition
@@ -63,7 +63,7 @@ In Sigma specifically, there are two steps which need to be looked at to underst
 
 For our example, the condition states that this analytic will fire if any one of the ``selection_malleable_profile*`` conditions is met, unless the filter condition is also true. There are four sections in ``selection_malleable_profile``: ``PipeName | startswith``, ``PipeName``,  ``selection_malleable_profile_CatalogChangeListener``, and ``PipeName | endswith``. The observables within each of the selections are connected using an AND. The condition states that at least 1 of the ``selection_malleable_profile*`` will be selected, making each of the selections connected by an OR. So, the final analytic would look like this:
 
-``(Pipename | startswith AND Pipename) OR (Pipename | startswith AND Pipename | endswith) = 1 AND 1 = 1``
+``(selection_malleable_profiles: Pipename | startswith AND Pipename) OR (selection_malleable_profile_CatalogChangeListener: Pipename | startswith AND Pipename | endswith) = 1 AND 1 = 1``
 
 The “not filter” indicates that anything that is not in the filter will be detected. Based on the Summiting the Pyramid methodology, analytic components that are AND’ed together, will fall to the score of the lowest observable. 
 

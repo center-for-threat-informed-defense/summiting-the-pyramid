@@ -28,7 +28,6 @@ If you are interested in contributing to our repository, `please utilize our Git
 
 * Analytic schema (Sigma, Splunk, Elastic, etc.)
 * Log source (Windows process creation, file event, etc.)
-* Detection analytic
-* Detection logic (AND, OR, etc.)
+* Detection analytic with detection logic (AND, OR)
 * The score for your analytic with a brief explanation
 * Scorer

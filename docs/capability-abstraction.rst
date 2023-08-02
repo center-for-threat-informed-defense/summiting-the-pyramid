@@ -3,7 +3,7 @@
 Capability Abstraction
 ======================
 
-**Capability abstraction attempts to find common touch points between tools, making capabilities less hidden from defenders**
+**Capability abstraction documents the actions taken by the system, and their associated observables, once a Technique is executed, and help identify commonalities between implementations. Those commonalities are excellent candidates for low-variance or invariant behaviors and therefore, robust observables.**
 
 .. figure:: _static/capability_abstraction_specterops.png
    :alt: Kerberoasting - Specter Ops
