@@ -122,8 +122,7 @@ Improved Analytic Scoring
 This analytic looks for specific command line arguments of the ADFind tool, identified when Image ends with ``adfind.exe``. 
 The logsource for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
 This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f1]_. 4688 has the field 
-NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
-the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.
+NewProcessName, though it could be mapped to another field name in your SIEM of choice. We proceed with the interpretation that 4688 events will not be returned, and therefore score this using Event ID 1.
 
 Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f2]_. Therefore it is a user-mode logsource 
 and we can place other the observables in the U column. 
@@ -140,6 +139,8 @@ the executable's compile time or modifying raw bytes with a hex editor, both of 
 renaming a file on a compromised system.
 
 By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to 2U.
+
+Another approach to improve the robustness of this analytic is to drop the condition of the ``Image`` or ``OriginalFilename`` completely since the command line arguments specified in the first clause are likely unique to the adfind tool. Adding that second clause adds a way for an adversary to evade the analytic without adding to precision or recall.
 
 .. rubric:: References
 

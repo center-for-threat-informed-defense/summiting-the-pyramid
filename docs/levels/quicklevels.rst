@@ -8,7 +8,7 @@ Observables Quick Search
    * - Level Name
      - Observables
    * - 5: Core to Sub-Technique or Technique
-     - Key: Tasks (T1053)
+     - TargetObject = “HKLM\SOFTWARE\Microsoft\Windows NT\ CurrentVersion\Schedule\TaskCache\Tree” OR “HKLM\ SOFTWARE\Microsoft\Windows NT\CurrentVersion\ Schedule\TaskCache” (T1053)
    * - 4: Core to Some Implementations of (Sub-)Technique
      - AttributeLDAPDisplayName: msDS-KeyCredentialLink (T1556)
    * - 3: Core to Pre-Existing Tools

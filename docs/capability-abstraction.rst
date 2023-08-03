@@ -3,7 +3,7 @@
 Capability Abstraction
 ======================
 
-**Capability abstraction attempts to find common touch points between tools, making capabilities less hidden from defenders**
+**Capability abstraction documents the actions taken by the system, and their associated observables, once a Technique is executed, and help identify commonalities between implementations. Those commonalities are excellent candidates for low-variance or invariant behaviors and therefore, robust observables.**
 
 .. figure:: _static/capability_abstraction_specterops.png
    :alt: Kerberoasting - Specter Ops
@@ -32,7 +32,7 @@ the same registry key within the Registry Service Database. If an adversary want
 interacting with the Windows API, RPC, or Registry. This is not a hypothetical, but has actually been seen in the wild. Threat group APT41 has utilized Windows service 
 creation within their attacks not only through the utilization of the service creation tool (sc.exe), but also by directly modifying the registry itself [#f3]_. 
 
-The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to :ref:`levels<Level>` and :ref:`columns<Column>` outlined by our methodology. As observables are assigned, further research can be conducted to identify detections based off those observables, especially for observables which might cover part or all of a technique. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? Does a registry key change over all implementations of a technique? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
+The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to :ref:`Analytic Robustness Categories` and :ref:`Sensor Robustness Categories` outlined by our methodology. As observables are assigned, further research can be conducted to identify detections based off those observables, especially for observables which might cover part or all of a technique. For example, if a kernel call is detected, is there a specific Windows Event ID that is fired? Are there registry keys that are updated? Does a registry key change over all implementations of a technique? This gives the defender a broader perspective of not only the tools that use similar behaviors towards the lower-levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
 
 .. rubric:: References
 

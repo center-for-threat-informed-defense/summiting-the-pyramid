@@ -11,13 +11,11 @@ Operating System, as it provides the services for everything, including managing
 support routines available start with ``Ke`` within the Windows Operating System. Defenders can monitor kernel activity through observables including registry 
 modification, some event IDs, and network protocols. 
 
-
-Kernel is the last level of the Operating System until you get to changing tactics to tampering with the hardware of the computer. If an adversary can access 
+The kernel is the most protected core of the Operating System. Bypassing kernel functions would require that the adversary avoid using or bypass the OS. If an adversary can access 
 calls to these routines, they can bypass every other documented layer and blend in with the other kernel threads and routines occurring. However, the higher 
 the adversaries climb up the levels, the harder they fall. Directly interfacing with the kernel has a greater possibility of breaking the operating system 
 since everything is managed and run in a particular way. This is also the hardest level for a defender to detect. Context and monitoring abnormal processes 
-can assist in identifying potential malicious activity. Overall, kernel behavior showcases the most robust fields to an analytic, since this will be the most 
-difficult to evade.
+can assist in identifying potential malicious activity. Overall, kernel-generated observables are usually the hardest to evade and represent the most robust events and fields in the framework.
 
 .. note:: 
     Other efforts within the Center for Threat-Informed Defense are conducting research on sensor data generation, and will be expanding and adding sensor data to robustness categories in the future.
@@ -39,6 +37,8 @@ Observables
 |                               | | Event ID 4657 (Registry value modified)                                               |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | Objects                       | | Event ID 5136 (A directory service object was modified)                               |
++-------------------------------+-----------------------------------------------------------------------------------------+
+| Pipes                         | | Sysmon ID 17 (Pipe created)                                                           |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 
 .. rubric:: References

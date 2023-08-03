@@ -17,7 +17,7 @@ The following examples demonstrate how to score and improve an analytic in accor
 Scored Analytics Repository
 ---------------------------
 
-There is also a published CSV file that contains analytics that have been scored with the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230731.csv>`
+There is also a published CSV file that contains analytics that have been scored with the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230802.csv>`
 
 Submitting an Analytic
 ----------------------
@@ -28,7 +28,6 @@ If you are interested in contributing to our repository, `please utilize our Git
 
 * Analytic schema (Sigma, Splunk, Elastic, etc.)
 * Log source (Windows process creation, file event, etc.)
-* Detection analytic
-* Detection logic (AND, OR, etc.)
+* Detection analytic with detection logic (AND, OR)
 * The score for your analytic with a brief explanation
 * Scorer

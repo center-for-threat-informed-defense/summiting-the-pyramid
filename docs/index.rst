@@ -10,12 +10,12 @@ Summiting the Pyramid |version|
     overview
     methodology
     definitions
+    precision-recall
     levels/index
     evadability
     datasources
     scoringanalytic
     analytics/index
-    precision-recall
     capability-abstraction
     futurework
     resources
