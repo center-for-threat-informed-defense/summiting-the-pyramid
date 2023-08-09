@@ -105,7 +105,7 @@ Improved Analytic Scoring
 This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific values in the ScriptBlockText field [#f1]_. While the specified registry key 
 is core to the subtechnique [#f2]_, the actual observable is the string representation of that registry key inside the script text. It is relatively easy for an attacker to obfuscate 
 keywords or values in a PowerShell script. For example, the cmdlet ``get-acl`` is defined and included in the Microsoft.PowerShell.Security module, but equivalent functionality can be accomplished 
-with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The registry key string can be obfuscated in other ways [#f2]_, several of which are shown below.
+with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The registry key string can be obfuscated in other ways [#f3]_, several of which are shown below.
 Since the adversary can modify their tools and associated scripts before deployment to evade this analytic, it is **2A**.
 
 .. code-block:: 
@@ -158,7 +158,7 @@ an EventID 4663 will be generated whenever an attempt is made to access the regi
 
 .. note::
   SACLs have configuration options which can change the precision of an analytic. One configuration option is to log the "Full Control" set of activity and get a complete
-  view of registry key activity, and then query those results for when the registry key is read (when the ``AccessMask`` field has the corresponding value ``READ_CONTROL`` [#f3]_). 
+  view of registry key activity, and then query those results for when the registry key is read (when the ``AccessMask`` field has the corresponding value ``READ_CONTROL`` [#f4]_). 
   However, this approach could generate a large amount of benign noise. As an alternative, the SACL can be configured to generate an event only when the key is read.
 
 .. rubric:: References
