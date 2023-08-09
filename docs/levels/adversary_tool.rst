@@ -11,8 +11,8 @@ ADFind, Cobalt Strike, and others which the adversary can modify or configure to
 
 **Why are adversary-brought tools placed here?**
 
-These tools gives adversaries flexibility to evade detection by modifying the tool before deployment to target the system. For example, if an analytic detection is 
-identifying certain tool-specific configurations, an adversary can change the source code, change it, and evade that detection [#f1]_. While this 
+These tools give adversaries flexibility to evade detection by modifying the tool before deployment to the target system. For example, if an analytic detection is 
+identifying certain tool-specific configurations, an adversary can change the source code and evade that detection [#f1]_. While this 
 requires knowledge on the adversary to change the tool configuration without changing the functionality, it gives an adversary flexibility to 
 evade detection through the availability of application code itself. Even if an adversary does not have the power to configure the tool itself, them having control over the tool during an attack gives them the advantage.
 

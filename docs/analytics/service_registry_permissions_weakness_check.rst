@@ -58,14 +58,14 @@ Original Analytic Scoring
       - 
       -
     * - Core to Adversary-brought Tool (2)
-      - 
-      - 
-      - 
-    * - Ephemeral (1)
       - | EventID: 4104
         | ScriptBlockText|contains|all:    
         | - 'get-acl'    
         | - 'REGISTRY::HKLM\\SYSTEM\\CurrentControlSet\\Services\\'
+      - 
+      - 
+    * - Ephemeral (1)
+      - 
       - 
       - 
 
@@ -102,9 +102,11 @@ Improved Analytic Scoring
       - 
       - 
 
-This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific values in the ScriptBlockText field [#f1]_. It is relatively easy for an attacker to obfuscate 
+This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific values in the ScriptBlockText field [#f1]_. While the specified registry key 
+is core to the subtechnique [#f2]_, the actual observable is the string representation of that registry key inside the script text. It is relatively easy for an attacker to obfuscate 
 keywords or values in a PowerShell script. For example, the cmdlet ``get-acl`` is defined and included in the Microsoft.PowerShell.Security module, but equivalent functionality can be accomplished 
-with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The target registry key can also be obfuscated in different ways [#f2]_, several of which can be seen below.
+with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The target registry key can be obfuscated in other ways [#f2]_, several of which are below.
+Since the adversary can modify their tools and associated scripts before deployment to evade this analytic, it is **2A**.
 
 .. code-block:: 
 
@@ -162,5 +164,6 @@ an EventID 4663 will be generated whenever an attempt is made to access the regi
 .. rubric:: References
 
 .. [#f1] https://github.com/OTRF/OSSEM-DD/blob/5e16ccfe548c8c0249430247a99e213636b2a5a5/windows/etw-providers/Microsoft-Windows-PowerShell/events/event-4104_v1.yml#L22
-.. [#f2] https://i.blackhat.com/briefings/asia/2018/asia-18-Tal-Liberman-Documenting-the-Undocumented-The-Rise-and-Fall-of-AMSI.pdf
-.. [#f3] https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-lsad/5ee8db78-5f0e-47b2-aba7-8447ff454e3b
+.. [#f2] https://attack.mitre.org/techniques/T1574/011/
+.. [#f3] https://i.blackhat.com/briefings/asia/2018/asia-18-Tal-Liberman-Documenting-the-Undocumented-The-Rise-and-Fall-of-AMSI.pdf
+.. [#f4] https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-lsad/5ee8db78-5f0e-47b2-aba7-8447ff454e3b
