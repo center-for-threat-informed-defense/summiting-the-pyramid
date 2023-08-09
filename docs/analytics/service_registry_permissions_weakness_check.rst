@@ -105,7 +105,7 @@ Improved Analytic Scoring
 This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific values in the ScriptBlockText field [#f1]_. While the specified registry key 
 is core to the subtechnique [#f2]_, the actual observable is the string representation of that registry key inside the script text. It is relatively easy for an attacker to obfuscate 
 keywords or values in a PowerShell script. For example, the cmdlet ``get-acl`` is defined and included in the Microsoft.PowerShell.Security module, but equivalent functionality can be accomplished 
-with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The target registry key can be obfuscated in other ways [#f2]_, several of which are below.
+with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The registry key string can be obfuscated in other ways [#f2]_, several of which are shown below.
 Since the adversary can modify their tools and associated scripts before deployment to evade this analytic, it is **2A**.
 
 .. code-block:: 
