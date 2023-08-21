@@ -11,15 +11,7 @@ The Summiting the Pyramid Project consisted of the following MITRE Team:
 * Robert Schull
 * Ross Weisman
 
-The Summiting the Pyramid Project was made possible by the following Center for Threat-Informed Defense partners and participants:
+The Summiting the Pyramid Project would like to thank the following for their contributions in resources and review towards STP's project research:
 
-* Crowdstrike
-* Fortinet
-* Fujitsu
-* IBM Security
-* Microsoft
-* Verizon
-
-The Summiting the Pyramid Project would like to thank the following for their contributions in resources for project research:
-
+* Robleh Esa
 * UltimateWindowsSecurity

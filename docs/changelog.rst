@@ -1,5 +1,8 @@
 Changelog
 =========
+0.0.22
+    Added acknowledgements page
+
 0.0.20
     Final cleanup and feedback for website materials
 
