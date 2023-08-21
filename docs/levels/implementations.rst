@@ -28,7 +28,14 @@ Observables
 |                               |                                                   | event is indicative of this        |
 |                               |                                                   | technique.                         |
 +-------------------------------+---------------------------------------------------+------------------------------------+
+|  OS Credential Dumping:       |  TargetImage = lsass.exe                          | There are multiple access masks    |
+|  LSASS Memory (T1003.001)     |  GrantedAccess: 0x1010 OR 0x1410                  | which can be used. This analytic   | 
+|                               |                                                   | covers two of those access masks.  |
+|                               |                                                   | Anything that has the right bits   |
+|                               |                                                   | are wildcards essentially [#f2]_   |
++-------------------------------+---------------------------------------------------+------------------------------------+
 
 .. rubric:: References:
 
 .. [#f1] https://cyberstoph.org/posts/2022/03/detecting-shadow-credentials/
+.. [#f2] https://www.splunk.com/en_us/blog/security/you-bet-your-lsass-hunting-lsass-access.html
