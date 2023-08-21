@@ -13,7 +13,7 @@ This walkthrough will highlight scoring `suspicious pipe creation from CobaltStr
 
 Step 1: Scoring the analytic's sensor data
 ------------------------------------------
-Just as not all analytics are created equal, not all sensors are created equal. Our sensor robustness categories identify the different layers within the OS in which observables can be collected. Each of the different sensors within each column provide different insight into the OS.
+Just as not all analytics are created equal, not all sensors are created equal. Our event robustness categories identify the different layers within the OS in which observables can be collected. Each of the different events within each column provide different insight into the OS.
 
 In the pipe creation example, the sensor data identified is Windows, and the category is ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field names which belong to Event IDs, we know that the analytic is made for Sysmon logs. Based on past research, emulation, and Microsoft documentation, we understand that Event ID 17 is fired after ImpersonateNamedPipeClient is called, which is a :ref:`User-Mode` function. [#f2]_ However, after some additional research, it was found that certain Sysmon events are triggered with a minifilter. [#f3]_ Minifilters are executed by the Filter manager, operating in kernel-mode. [#f4]_ Because of this, the data sensor placement of this analytic will be in :ref:`Kernel-Mode`.
 

@@ -6,7 +6,7 @@ Column A: Application
 
 **Description**: Observables associated with the use of applications available to defenders before adversary use and difficult for the adversary to modify.
 
-The Application sensor robustness category groups observables which are collected closest to applications and are potentially modifiable by the user. For example, Windows provides developers the opportunity to create service providers for tools and applications, which can be used to create detection analytics. Other frameworks can be implemented by a user for needs within their environment. While users might need to download and configure application sensor data, they are available to the defender before an adversary conducts their attack.
+The Application event robustness category groups observables which are collected closest to applications and are potentially modifiable by the user. For example, Windows provides developers the opportunity to create service providers for tools and applications, which can be used to create detection analytics. Other frameworks can be implemented by a user for needs within their environment. While users might need to download and configure application sensor data, they are available to the defender before an adversary conducts their attack.
 
 .. note:: 
     Other efforts within the Center for Threat-Informed Defense are conducting research on sensor data generation, and will be expanding and adding sensor data to robustness categories in the future.

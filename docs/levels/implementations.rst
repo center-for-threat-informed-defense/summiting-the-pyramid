@@ -23,7 +23,7 @@ Observables
 |                               |                                                   | value used by the system for       |
 |                               |                                                   | authentication [#f1]_              |
 +-------------------------------+---------------------------------------------------+------------------------------------+
-| Indicator Removal: File       | Event ID 524                                      | While this is a sensor robustness  |
+| Indicator Removal: File       | Event ID 524                                      | While this is a event robustness   |
 | Deletion (T1070.004)          | Provider Name: Microsoft-Windows-Backup           | category, the utilization of this  |
 |                               |                                                   | event is indicative of this        |
 |                               |                                                   | technique.                         |
