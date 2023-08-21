@@ -1,4 +1,4 @@
-.. _Levels:
+.. _Model Mapping Pages:
 
 ===================
 Model Mapping Pages
@@ -20,16 +20,16 @@ There are five levels which are grouped based on how difficult it is for an adve
     ephemeral
 
 **Columns: Sensor Robustness Categories**
-There are also three columns which describe sensor data based on their visibility into the OS.
+There are currently three columns which describe sensor data based on their visibility into the OS.
 
 .. toctree::
     :maxdepth: 1
 
-    library
+    application
     user-mode
     kernel-mode
 
-For a quick search of an observable, please utilize our levels and observables page.
+For a quick search of an observable, please utilize the observables page.
 
 .. toctree::
     :maxdepth: 1

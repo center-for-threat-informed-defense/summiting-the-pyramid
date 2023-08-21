@@ -1,11 +1,29 @@
 Changelog
 =========
+0.0.20
+    Final cleanup and feedback for website materials
+
+0.0.19
+    Added access token manipulation improved analytic
+    
+0.0.18
+    Updated Analytics repository spreadsheet to reflect 2D methodology.
+
+0.0.17
+    Updated robustness score page, separated posts on capability abstraction and precision, recall, and robustness. Updated methodology page.
+
+0.0.16
+    Added new research to model mapping pages, changed "library" to "application", added future work page
+
 0.0.15
     Updated Scheduled Task/Job improved analytic
+
 0.0.14
-    TODO - fill in with Michaela Refactor-pt2 note
+    Updated definitions, reorganized levels pages, added future work page, added links and issue template for observable submission
+
 0.0.13
     Updated ADFind improvement example in Scored Analytics section and Methodology post
+
 0.0.12
     Updated website materials to reflect new model for Summiting the Pyramid (levels, quick search, how to score analytic)
 

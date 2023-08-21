@@ -51,7 +51,7 @@ Original Analytic Scoring
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -104,7 +104,7 @@ firing the original analytic, and our original analytic would only detect the ci
   Scheduled Task Capability Abstraction - Created by SpecterOps [#f1]_
 
 Conversely, defenders can use the capability abstraction to create several different analytics, the most 
-robust of which might detect on the invariant registry or file creation activity. As a first attempt at more robust 
+robust of which might detect on the invariant registry or file creation activity. As a first attempt at a more robust 
 analytic, we can start with the file creation activity. If we create a scheduled task via the Task 
 Scheduler GUI in a test environment with Sysmon installed, we might expect to generate an Event ID 11: FileCreate.
 
@@ -165,7 +165,7 @@ Improved Analytic Scoring #1
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -227,7 +227,7 @@ Improved Analytic Scoring #2
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)

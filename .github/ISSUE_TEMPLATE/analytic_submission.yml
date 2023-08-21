@@ -45,16 +45,8 @@ body:
     id: detection-analytic
     attributes:
       label: Detection Analytic
-      description: Please provide detection analytic
+      description: Please provide detection analytic, along with the detection logic between specific observables (AND, OR)
       placeholder: targetfilename
-    validations:
-      required: true
-  - type: input
-    id: detection-logic
-    attributes:
-      label: Detection Logic
-      description: Provide the detection logic (Are observables AND, OR, etc.)
-      placeholder: ex. AND
     validations:
       required: true
   - type: textarea

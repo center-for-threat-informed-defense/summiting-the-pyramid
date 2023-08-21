@@ -8,7 +8,7 @@ Observables Quick Search
    * - Level Name
      - Observables
    * - 5: Core to Sub-Technique or Technique
-     - Key: Tasks (T1053)
+     - TargetObject = “HKLM\SOFTWARE\Microsoft\Windows NT\ CurrentVersion\Schedule\TaskCache\Tree” OR “HKLM\ SOFTWARE\Microsoft\Windows NT\CurrentVersion\ Schedule\TaskCache” (T1053)
    * - 4: Core to Some Implementations of (Sub-)Technique
      - AttributeLDAPDisplayName: msDS-KeyCredentialLink (T1556)
    * - 3: Core to Pre-Existing Tools
@@ -25,9 +25,9 @@ Observables Quick Search
 
    * - Column Name
      - Sensor Data Observables
-   * - Library (L)
-     - Event ID 4698, Event ID 4699, Event ID 4700, Event ID 4701, Event ID 4702
+   * - Application (A)
+     - Event ID 4698, Event ID 4699, Event ID 4700, Event ID 4701, Event ID 4702, Event ID 1040, Event ID 1042, Event ID 1033
    * - User-Mode (U)
-     - Sysmon ID 1, Sysmon ID 5, Sysmon ID 2, Sysmon ID 10, Sysmon ID 11, Sysmon ID 15, Sysmon ID 23, Sysmon ID 6, Sysmon ID 13, Sysmon ID 14
+     - Sysmon ID 1, Sysmon ID 5, Sysmon ID 2, Sysmon ID 10, Sysmon ID 11, Sysmon ID 15, Sysmon ID 23, Sysmon ID 6, Sysmon ID 13, Sysmon ID 14, Sysmon ID 17, Event ID 7045
    * - Kernel-Mode (K)
-     - Event ID 4688, Event ID 4689, Sysmon ID 8, Event ID 4663, Event ID 4656, Sysmon ID 12, Event ID 4660, Event ID 4657
+     - Event ID 4688, Event ID 4689, Sysmon ID 8, Event ID 4663, Event ID 4656, Sysmon ID 12, Event ID 4660, Event ID 4657, Event ID 5136

@@ -16,6 +16,9 @@ actions resulting from routines, such as file manipulation or communication prot
 
 User-mode provides a layer of separation between the user and the kernel. However, user-mode observables could potentially be bypassed by the adversary directly interfacing with the kernel, avoiding triggering user-mode observables.
 
+.. note:: 
+    Other efforts within the Center for Threat-Informed Defense are conducting research on sensor data generation, and will be expanding and adding sensor data to robustness categories in the future.
+
 Observables
 ^^^^^^^^^^^
 +-------------------------------+--------------------------------------------------------------------------------+
@@ -24,6 +27,7 @@ Observables
 | Process                       | | Sysmon ID 1 (Process creation)                                               |
 |                               | | Sysmon ID 5 (Process termination)                                            |
 |                               | | Sysmon ID 10 (Process access)                                                |
+|                               | | Event ID 7045 (New service installed)                                        |
 +-------------------------------+--------------------------------------------------------------------------------+
 | File                          | | Sysmon ID 2 (File creation time changed)                                     |
 |                               | | Sysmon ID 11 (File create)                                                   |
@@ -39,3 +43,7 @@ Observables
 .. rubric:: References
 
 .. [#f1] https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/using-nt-and-zw-versions-of-the-native-system-services-routines
+
+* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
