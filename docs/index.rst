@@ -18,5 +18,6 @@ Summiting the Pyramid |version|
     analytics/index
     capability-abstraction
     futurework
+    thanks
     resources
     changelog

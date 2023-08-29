@@ -1,5 +1,9 @@
 Changelog
 =========
+
+0.0.22
+    Added acknowledgements page
+
 0.0.21
     Changed sensor robustness to event robustness, changed LSASS score from 5 to 4, updated ATT&CK Technique page
 
