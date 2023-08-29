@@ -83,13 +83,13 @@ Analytic Robustness Categories
 
 The Summiting the Pyramid methodology is focused on scoring analytics based on the difficulty for adversaries to evade them while still executing the Technique of interest, and without tampering with the defensive sensors. Different observables are more or less evadable than others. Summiting the Pyramid has defined five categories of observable robustness. The categories organize observables starting with the most easily evaded observables towards the bottom of the table, to the least easily evaded observables at the top of the table. To read more about how the categories are currently outlined, refer to our :ref:`Model Mapping Pages`.
 
-.. _Sensor Robustness Categories:
+.. _Event Robustness Categories:
 
-Sensor Robustness Categories
+Event Robustness Categories
 ----------------------------
 **Columns in the Summiting the Pyramid methodology model group observables and events based on where they are generated, and therefore what an adversary would need to avoid triggering them while executing the same functionality.**
 
-Analytics are constrained by the sensor data that is being used to log observables. The sensor robustness category columns look to create groups of sensor data observables based on how evasive they are in the OS. In this release, the generation locations are all different layers of the application and OS stack. In future releases, we may add locations elsewhere in cyber such as internet access point, or intra-enclave network traffic collection to extend this model to other types of observables. To read more about how the columns are currently outlined, refer to our :ref:`Model Mapping Pages`.
+Analytics are constrained by the sensor data that is being used to log observables. The event robustness category columns look to create groups of event data observables based on how evasive they are in the OS. In this release, the generation locations are all different layers of the application and OS stack. In future releases, we may add locations elsewhere in cyber such as internet access point, or intra-enclave network traffic collection to extend this model to other types of observables. To read more about how the columns are currently outlined, refer to our :ref:`Model Mapping Pages`.
 
 **References**
 

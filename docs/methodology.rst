@@ -114,7 +114,7 @@ Let's step through an example. The below analytic looks for specific command lin
    level: medium
 
 
-First, we have to understand and score this analytic's sensor robustness category. The data source for this analytic is ``process_creation``, so it could potentially trigger Windows Event ID 4688 or Sysmon Event ID 1. 
+First, we have to understand and score this analytic's event robustness category. The data source for this analytic is ``process_creation``, so it could potentially trigger Windows Event ID 4688 or Sysmon Event ID 1. 
 This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f3]_. 4688 has the field 
 NewProcessName, though it could be mapped to another field name in your SIEM of choice. As a result, we assume 
 the intent of this analytic is to identify command line activity in Sysmon Event ID 1s.

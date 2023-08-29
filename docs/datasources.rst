@@ -1,7 +1,7 @@
 .. _Data Sources:
 
-ATT&CK Technique Mappings
-===========================
+Example ATT&CK Technique Mappings
+=================================
 
 `T1003: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
 -----------------------------------------------------------------------
