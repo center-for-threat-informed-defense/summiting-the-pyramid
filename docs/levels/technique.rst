@@ -20,14 +20,8 @@ Observables
 |                           |  SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\       |  regardless of implementation [#f1]_ |
 |                           |  Schedule\\TaskCache"                                    |                                      |
 +---------------------------+----------------------------------------------------------+--------------------------------------+
-|  OS Credential Dumping:   |  TargetImage = lsass.exe                                 | The Splunk team outlines their       |
-|  LSASS Memory (T1003.001) |  GrantedAccess: 0x1010 OR 0x1410                         | research for LSASS Dumping covers    | 
-|                           |                                                          | multiple implementations of the      |
-|                           |                                                          | technique [#f2]_                     |
-+---------------------------+----------------------------------------------------------+--------------------------------------+
 
 
 .. rubric:: References
 
 .. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
-.. [#f2] https://www.splunk.com/en_us/blog/security/you-bet-your-lsass-hunting-lsass-access.html
