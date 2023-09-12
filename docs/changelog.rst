@@ -1,6 +1,9 @@
 Changelog
 =========
 
+0.0.36
+    Deleted unused files, prepped for publication
+
 0.0.22
     Added acknowledgements page
 
