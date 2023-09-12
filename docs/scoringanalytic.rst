@@ -85,7 +85,7 @@ The sensor data was placed at the kernel-mode level, placing the score of the fi
 
 This is how you can place the score using the 2D model diagram.
 
-.. figure:: _static/pipes_2Dmodel_08022023.png
+.. figure:: _static/pipes_2Dmodel_09122023.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 
