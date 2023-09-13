@@ -37,38 +37,28 @@ jobs:
       with:
         name: summiting_the_pyramid_docs_html
         path: docs/_build/html/
-    # - name: Install TeX Live
-    #   run: sudo apt install -y latexmk texlive texlive-latex-extra texlive-science
-    # - name: Build PDF docs
-    #   run: poetry run sphinx-build -M latexpdf docs docs/_build
-    # - name: Upload PDF docs
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: summiting_the_pyramid_docs_pdf
-    #     path: docs/_build/latex/
 
-  # TODO uncomment when we publish the project
-  # github_pages:
-  #   # This job only runs when committing or merging to main branch.
-  #   if: github.ref_name == 'main'
-  #   needs: docs
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+  github_pages:
+    # This job only runs when committing or merging to main branch.
+    if: github.ref_name == 'main'
+    needs: docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  #   steps:
-  #   - name: Setup Pages
-  #     uses: actions/configure-pages@v2
-  #   - name: Download HTML docs
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: summiting_the_pyramid_docs_html
-  #       path: docs
-  #   - name: Upload artifact
-  #     uses: actions/upload-pages-artifact@v1
-  #     with:
-  #       path: ./docs
-  #   - name: Deploy to GitHub Pages
-  #     id: deployment
-  #     uses: actions/deploy-pages@v1
+    steps:
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+    - name: Download HTML docs
+      uses: actions/download-artifact@v3
+      with:
+        name: summiting_the_pyramid_docs_html
+        path: docs
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./docs
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
