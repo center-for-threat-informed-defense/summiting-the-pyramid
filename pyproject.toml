@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "summiting-the-pyramid"
-version = "1.0.0"
+version = "0.0.36"
 description = ""
 authors = [
     "Ross Weisman <rpweisman@mitre.org>",
@@ -25,7 +25,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bumpver]
-current_version = "v1.0.0"
+current_version = "v0.0.36"
 version_pattern = "vMAJOR.MINOR.PATCH"
 commit_message = "Bump version {old_version} -> {new_version}"
 commit = true
@@ -33,9 +33,5 @@ tag = true
 
 [tool.bumpver.file_patterns]
 # pep440_version does not have the "v" prefix
-"pyproject.toml" = [
-    'version = "{pep440_version}"',
-]
-"docs/conf.py" = [
-    'version = "{version}"'
-]
+"pyproject.toml" = ['version = "{pep440_version}"']
+"docs/conf.py" = ['version = "{version}"']
