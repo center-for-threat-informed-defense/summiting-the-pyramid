@@ -5,6 +5,10 @@ Overview
   Whenever you update overview.rst, also look at README.md and consider whether
   you should make a corresponding update there.
 
+.. figure:: _static/summit_the_pyramid_illustration.png
+   :alt: Summiting the Pyramid
+   :align: center
+
 .. epigraph::
 
    The entire point of detecting indicators is to respond to them, and once you can
@@ -24,7 +28,7 @@ ability to evade detections based on those indicators. Summiting the Pyramid bui
 this conceptual foundation with a rigorous analysis of how to engineer analytics to
 increase robustness and make adversary evasion as costly as possible.
 
-.. figure:: _static/2Dmodel_07272023.PNG
+.. figure:: _static/table.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
