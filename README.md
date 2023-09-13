@@ -1,3 +1,5 @@
+[![build](https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/actions/workflows/build.yml/badge.svg)](https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/actions/workflows/build.yml)
+
 <!--
 When updating README.md, take a look at overview.rst and consider if you should
 make the same updates there.
