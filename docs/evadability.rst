@@ -20,13 +20,6 @@ via interactions with the kernel or interfaces, whereas a low robustness level, 
 1, would mean that an adversary could evade detection through use of different
 operational or environmental variables.
 
-Robustness has a fairly strong correlation with robustness but is independent from how
-robustness itself is scored.  Key differences include that robustness is focused on the
-ability of an analytic to hold against a given attack, whereas robustness is focused on
-the amount of effort it would take for an attacker to successfully evade a given
-analytic - to simplify it a little more, robustness is centered on the attack, while
-robustness is centered on the defense.
-
 Evaluating Robustness
 ---------------------
 
