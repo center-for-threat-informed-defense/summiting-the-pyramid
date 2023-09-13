@@ -93,7 +93,7 @@ Understanding this concept can help defenders build more robust analytics, by lo
 different sensor data throughout the OS. This second dimension in our model represents
 sensor data robustness.
 
-.. figure:: _static/table.png
+.. figure:: _static/event_robustness_table.png
    :alt: Summiting the Pyramid 2D model
    :align: center
 

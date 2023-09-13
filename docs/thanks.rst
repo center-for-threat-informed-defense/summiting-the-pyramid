@@ -15,4 +15,6 @@ The project team would also like to thank the following for their contribution o
 resources and technical review:
 
 * Robleh Esa
+* Roberto Rodriguez
+* SpecterOps
 * UltimateWindowsSecurity

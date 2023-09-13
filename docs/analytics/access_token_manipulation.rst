@@ -174,7 +174,7 @@ which can be correlated to access tokens specifically.
       - Anti-Virus
   level: medium
 
-.. figure:: ../_static/ATM_Capability_Abstraction.png
+.. figure:: ../_static/1ATM_Capability_Abstraction.png
   :alt: Capability abstraction map for API-based implementations of Access Token Manipulation: Token Impersonation and Theft
   :align: center
 

@@ -12,7 +12,7 @@ Overview
    indicators when they are attacking you. Not all indicators are created equal, though,
    and some of them are far more valuable than others.
 
-   -- David Bianco, `March 1, 2013 <https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html>`__
+   -- David Bianco, `The Pyramid of Pain <https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html>`__
 
 Introduction
 ------------
@@ -24,7 +24,7 @@ ability to evade detections based on those indicators. Summiting the Pyramid bui
 this conceptual foundation with a rigorous analysis of how to engineer analytics to
 increase robustness and make adversary evasion as costly as possible.
 
-.. figure:: _static/table.png
+.. figure:: _static/event_robustness_table.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
@@ -41,7 +41,7 @@ detected. An adversary can easily evade detection by recompiling their tools wit
 one-byte difference. This is visually represented by placing the observable on the first
 row:
 
-.. figure:: _static/summit_level1.PNG
+.. figure:: _static/1summit_level1.PNG
    :alt: Hash value at level 1: Ephemeral values
    :align: center
 
@@ -52,7 +52,7 @@ Moving right reflects the use of data sources that are harder for the attacker t
 manipulate. Taken together, these lead to analytics that are more difficult and
 expensive to evade:
 
-.. figure:: _static/summit_level5.PNG
+.. figure:: _static/1summit_level5.PNG
    :alt: Event ID at level 5: Core to Technique
    :align: center
 
