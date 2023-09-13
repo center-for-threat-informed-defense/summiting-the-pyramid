@@ -5,10 +5,6 @@ Overview
   Whenever you update overview.rst, also look at README.md and consider whether
   you should make a corresponding update there.
 
-.. figure:: _static/summit_the_pyramid_illustration.png
-   :alt: Summiting the Pyramid
-   :align: center
-
 .. epigraph::
 
    The entire point of detecting indicators is to respond to them, and once you can
