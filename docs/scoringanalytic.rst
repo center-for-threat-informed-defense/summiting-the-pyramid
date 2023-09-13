@@ -199,7 +199,7 @@ this analytic is **1K**.
 
 This is how you can place the score using the 2D model diagram.
 
-.. figure:: _static/pipes_2Dmodel_09122023.png
+.. figure:: _static/pipes_2Dmodel_09122023_revised.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 

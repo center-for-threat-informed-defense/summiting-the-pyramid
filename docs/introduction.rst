@@ -41,18 +41,12 @@ Deconstructing the Pyramid
 Let’s break down the pyramid into the different types of activity a defender can build
 their analytics around.
 
-.. figure:: _static/pyramid_breakdown_pt1.png
-   :alt: Breaking down the Pyramid of Pain
-   :align: center
-
-   Consolidating the pyramid of pain into three groupings.
-
 The first four levels of the pyramid are focused on ephemeral values which are easy for
 an adversary to change. The next level is not focused on values, but the types of tools
 an adversary will attempt to use during an attack. Finally, the top level is strictly
 focused on behaviors which an adversary will demonstrate during an attack.
 
-.. figure:: _static/pyramid_breakdown_pt2.png
+.. figure:: _static/1pyramid_breakdown_pt2_revised.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
@@ -93,7 +87,7 @@ Understanding this concept can help defenders build more robust analytics, by lo
 different sensor data throughout the OS. This second dimension in our model represents
 sensor data robustness.
 
-.. figure:: _static/2Dmodel_07272023.PNG
+.. figure:: _static/event_robustness_table_revised.png
    :alt: Summiting the Pyramid 2D model
    :align: center
 

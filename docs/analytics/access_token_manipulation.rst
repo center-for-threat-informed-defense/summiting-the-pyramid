@@ -58,7 +58,7 @@ Original Analytic Scoring
     :header-rows: 1
 
     * -
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -174,7 +174,7 @@ which can be correlated to access tokens specifically.
       - Anti-Virus
   level: medium
 
-.. figure:: ../_static/ATM_Capability_Abstraction.png
+.. figure:: ../_static/1ATM_Capability_Abstraction.png
   :alt: Capability abstraction map for API-based implementations of Access Token Manipulation: Token Impersonation and Theft
   :align: center
 
@@ -189,7 +189,7 @@ Improved Analytic Scoring
     :header-rows: 1
 
     * -
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)

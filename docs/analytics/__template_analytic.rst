@@ -18,7 +18,7 @@ Original Analytic Scoring
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
@@ -50,7 +50,7 @@ Improved Analytic Scoring
     :header-rows: 1
 
     * - 
-      - Library (L)
+      - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
