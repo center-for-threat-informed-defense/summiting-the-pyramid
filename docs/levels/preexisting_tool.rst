@@ -4,21 +4,32 @@
 Level 3: Core to Pre-Existing Tools
 -----------------------------------
 
-**Description**: Observables associated with a tool or functionality that existed on the system pre-compromise, may be managed by the defending organization, and difficult for an adversary to modify.
+**Description**: Observables associated with a tool or functionality that existed on the
+system pre-compromise, may be managed by the defending organization, and difficult for
+an adversary to modify.
 
 **Why are tools split between adversary-brought and pre-existing?**
 
-Pre-existing tools provide less flexibility to adversaries than tools that are brought by an adversary, as an adversary has to behave and act with what is available to them through the tool. 
-The configurations, command-line arguments, and other observables for this level will remain consistent with what is available for the tool.
+Pre-existing tools provide less flexibility to adversaries than tools that are brought
+by an adversary, as an adversary has to behave and act with what is available to them
+through the tool. The configurations, command-line arguments, and other observables for
+this level will remain consistent with what is available for the tool.
 
-Since the adversary cannot change the capability itself and it is managed by an organization, it is much more difficult to distinguish adversary use 
-from benign use. This provides an opportunity for an adversary to blend into the computing environment without using their own malware to trigger detections, also known as a Living off the Land (LotL) attack [#f1]_ [#f2]_.
-It is likely that analytics utilizing native tool observables will need to be combined with other level’s observables, or require further research into 
-low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.
+Since the adversary cannot change the capability itself and it is managed by an
+organization, it is much more difficult to distinguish adversary use from benign use.
+This provides an opportunity for an adversary to blend into the computing environment
+without using their own malware to trigger detections, also known as a Living off the
+Land (LotL) attack [#f1]_ [#f2]_. It is likely that analytics utilizing native tool
+observables will need to be combined with other level’s observables, or require further
+research into low-variance behaviors of abusing these tools through MITRE ATT&CK
+techniques.
 
-**Examples**: Signatures, command-line arguments, tool-specific configurations, metadata, binaries
+**Examples**: Signatures, command-line arguments, tool-specific configurations,
+metadata, binaries
 
-*Note*: These observables may change as pre-existing tools present in the environment change.
+.. note::
+
+    These observables may change as pre-existing tools present in the environment change.
 
 Observables
 ^^^^^^^^^^^

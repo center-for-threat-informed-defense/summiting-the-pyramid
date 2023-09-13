@@ -11,7 +11,7 @@ Suspicious ADFind
   title: Suspicious AdFind Execution
   id: 75df3b17-8bcc-4565-b89b-c9898acef911
   status: experimental
-  description: Detects the execution of a AdFind for Active Directory enumeration 
+  description: Detects the execution of a AdFind for Active Directory enumeration
   references:
       - https://social.technet.microsoft.com/wiki/contents/articles/7535.adfind-command-examples.aspx
       - https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin6/Emulation_Plan/Phase1.md
@@ -49,24 +49,24 @@ Original Analytic Scoring
     :widths: 20 20 30 20
     :header-rows: 1
 
-    * - 
+    * -
       - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Core to Part of (Sub-) Technique (4)
-      - 
+      -
       -
       -
     * - Core to Pre-Existing Tool (3)
-      - 
-      - 
+      -
+      -
       -
     * - Core to Adversary-brought Tool (2)
-      - 
+      -
       - | EventID: 1
         | CommandLine|contains:
         |   - 'objectcategory'
@@ -74,11 +74,11 @@ Original Analytic Scoring
         |   - 'dcmodes'
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
-      - 
+      -
     * - Ephemeral (1)
-      - 
+      -
       - Image|endswith: '\\adfind.exe'
-      - 
+      -
 
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -87,24 +87,24 @@ Improved Analytic Scoring
     :widths: 20 20 30 20
     :header-rows: 1
 
-    * - 
+    * -
       - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Core to Part of (Sub-) Technique (4)
-      - 
+      -
       -
       -
     * - Core to Pre-Existing Tool (3)
-      - 
-      - 
+      -
+      -
       -
     * - Core to Adversary-brought Tool (2)
-      - 
+      -
       - | EventID: 1
         | CommandLine|contains:
         |   - 'objectcategory'
@@ -113,34 +113,48 @@ Improved Analytic Scoring
         |   - 'dclist'
         |   - 'computers_pwdnotreqd'
         | OriginalFileName|endswith: '\\adfind.exe'
-      - 
+      -
     * - Ephemeral (1)
-      - 
-      - 
-      - 
+      -
+      -
+      -
 
-This analytic looks for specific command line arguments of the ADFind tool, identified when Image ends with ``adfind.exe``. 
-The logsource for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. 
-This analytic references the Image field which does not exist in Event ID 4688, but it does exist in Sysmon Event ID 1 [#f1]_. 4688 has the field 
-NewProcessName, though it could be mapped to another field name in your SIEM of choice. We proceed with the interpretation that 4688 events will not be returned, and therefore score this using Event ID 1.
+This analytic looks for specific command line arguments of the ADFind tool, identified
+when Image ends with ``adfind.exe``. The logsource for this analytic is
+``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon
+Event ID 1. This analytic references the Image field which does not exist in Event ID
+4688, but it does exist in Sysmon Event ID 1 [#f1]_. 4688 has the field NewProcessName,
+though it could be mapped to another field name in your SIEM of choice. We proceed with
+the interpretation that 4688 events will not be returned, and therefore score this using
+Event ID 1.
 
-Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process [#f2]_. Therefore it is a user-mode logsource 
-and we can place other the observables in the U column. 
+Sysmon Event ID 1 is generated when Win32 API functions are called to create a new
+process [#f2]_. Therefore it is a user-mode logsource and we can place other the
+observables in the U column.
 
-``Image|endswith: '\adfind.exe'`` is placed at the **Ephemeral level**. An adversary can easily obfuscate or change the Image value by renaming 
-the file. The command line arguments are placed at the **Core to Adversary-Brought Tool** level, since the command line arguments are 
-specific to the ADFind tool and require modifying source code to change. Since the CommandLine and Image observables in the analytic are 
-ANDed together, according to our Boolean logic, the entire analytic scores as a 1U.
+``Image|endswith: '\adfind.exe'`` is placed at the **Ephemeral level**. An adversary can
+easily obfuscate or change the Image value by renaming the file. The command line
+arguments are placed at the **Core to Adversary-Brought Tool** level, since the command
+line arguments are specific to the ADFind tool and require modifying source code to
+change. Since the CommandLine and Image observables in the analytic are ANDed together,
+according to our Boolean logic, the entire analytic scores as a 1U.
 
-The robustness of this analytic can be increased by leveraging the OriginalFileName field in Sysmon Event ID 1 instead of Image. It is trivial 
-for an adversary to change the Image name ending with ``adfind.exe`` to avoid detection. It is more challenging for an adversary to 
-change the OriginalFileName, since it is derived from the PE header. Changing the PE header requires either modifying changing values at 
-the executable's compile time or modifying raw bytes with a hex editor, both of which are more complex for an adversary than 
-renaming a file on a compromised system.
+The robustness of this analytic can be increased by leveraging the OriginalFileName
+field in Sysmon Event ID 1 instead of Image. It is trivial for an adversary to change
+the Image name ending with ``adfind.exe`` to avoid detection. It is more challenging for
+an adversary to change the OriginalFileName, since it is derived from the PE header.
+Changing the PE header requires either modifying changing values at the executable's
+compile time or modifying raw bytes with a hex editor, both of which are more complex
+for an adversary than renaming a file on a compromised system.
 
-By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to 2U.
+By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves
+up a level to 2U.
 
-Another approach to improve the robustness of this analytic is to drop the condition of the ``Image`` or ``OriginalFilename`` completely since the command line arguments specified in the first clause are likely unique to the adfind tool. Adding that second clause adds a way for an adversary to evade the analytic without adding to precision or recall.
+Another approach to improve the robustness of this analytic is to drop the condition of
+the ``Image`` or ``OriginalFilename`` completely since the command line arguments
+specified in the first clause are likely unique to the adfind tool. Adding that second
+clause adds a way for an adversary to evade the analytic without adding to precision or
+recall.
 
 .. rubric:: References
 

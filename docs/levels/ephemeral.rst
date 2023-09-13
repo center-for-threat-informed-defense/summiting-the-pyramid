@@ -4,20 +4,28 @@
 Level 1: Ephemeral Values
 -------------------------
 
-**Description**: Observables that are trivial for an adversary to change, or that change even without adversary intervention.
+**Description**: Observables that are trivial for an adversary to change, or that change
+even without adversary intervention.
 
-Ephemeral values capture the context of what is currently happening to a user, process, or system. This includes observables 
-such as process IDs, hash values, domain names, file names, and others. While these observables offer high :ref:`Precision`, they are often easy to evade.
+Ephemeral values capture the context of what is currently happening to a user, process,
+or system. This includes observables such as process IDs, hash values, domain names,
+file names, and others. While these observables offer high :ref:`precision <Precision>`,
+they are often easy to evade.
 
 **Why are these observables the lowest level?**
 
-These observables cannot be relied on to identify adversary behavior. These indicators take minimal effort for an adversary to change [#f1]_. A new hash value 
-can be created if one bit is changed in a file. A file name can be obfuscated within an image. When building out analytics, these observables will mostly 
-capture values which point to the context of a certain application, user, or process. While these observables can detect known malicious applications or 
-processes, these will not detect anything new, or if the adversary decides to change an operational or environmental variable to evade detection. To 
-ensure detection in-depth, these observables should be combined with other level observables.
+These observables cannot be relied on to identify adversary behavior. These indicators
+take minimal effort for an adversary to change [#f1]_. A new hash value can be created
+if one bit is changed in a file. A file name can be obfuscated within an image. When
+building out analytics, these observables will mostly capture values which point to the
+context of a certain application, user, or process. While these observables can detect
+known malicious applications or processes, these will not detect anything new, or if the
+adversary decides to change an operational or environmental variable to evade detection.
+To ensure detection in-depth, these observables should be combined with other level
+observables.
 
-**Examples**: Hash values, IP addresses, protocol-specific ports, file names, domain names, processes, user oriented observables, others
+**Examples**: Hash values, IP addresses, protocol-specific ports, file names, domain
+names, processes, user oriented observables, others
 
 Observables
 ^^^^^^^^^^^
@@ -29,7 +37,7 @@ Observables
 |                               |                                   | unique identifying number      |                                |
 |                               |                                   |                                |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| IP address                    |  | SourceIp (Sysmon)              | Assigned by ISP [#f2]_         | Connect to a different ISP,    |                  
+| IP address                    |  | SourceIp (Sysmon)              | Assigned by ISP [#f2]_         | Connect to a different ISP,    |
 |                               |  | DestinationIp (Sysmon)         |                                | restart router or modem, or    |
 |                               |                                   |                                | utilize a VPN                  |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
@@ -57,7 +65,7 @@ Observables
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 | Pipes                         |  | Pipe names (Sysmon)            | A pipe server or user specifies| Change the name of the pipe    |
 |                               |                                   | a name for a pipe when it calls|                                |
-|                               |                                   | CreateNamedPipe functon [#f6]  |                                |
+|                               |                                   | CreateNamedPipe functon [#f6]_ |                                |
 +-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
 
 .. rubric:: References

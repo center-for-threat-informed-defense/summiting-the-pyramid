@@ -4,12 +4,16 @@
 Column A: Application
 ---------------------
 
-**Description**: Observables associated with the use of applications available to defenders before adversary use and difficult for the adversary to modify.
+**Description**: Observables associated with the use of applications available to
+defenders before adversary use and difficult for the adversary to modify.
 
-The Application event robustness category groups observables which are collected closest to applications and are potentially modifiable by the user. For example, Windows provides developers the opportunity to create service providers for tools and applications, which can be used to create detection analytics. Other frameworks can be implemented by a user for needs within their environment. While users might need to download and configure application sensor data, they are available to the defender before an adversary conducts their attack.
-
-.. note:: 
-    Other efforts within the Center for Threat-Informed Defense are conducting research on sensor data generation, and will be expanding and adding sensor data to robustness categories in the future.
+The Application event robustness category groups observables which are collected closest
+to applications and are potentially modifiable by the user. For example, Windows
+provides developers the opportunity to create service providers for tools and
+applications, which can be used to create detection analytics. Other frameworks can be
+implemented by a user for needs within their environment. While users might need to
+download and configure application sensor data, they are available to the defender
+before an adversary conducts their attack.
 
 Observables
 ^^^^^^^^^^^
@@ -31,6 +35,12 @@ Observables
 | Powershell                    |  | Event ID 4104 (Creating Scriptblock text) [#f5]_                   |
 +-------------------------------+-----------------------------------------------------------------------+
 
+**Useful resources:**
+
+* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
+
 .. rubric:: References
 
 .. [#f1] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc773449%28v=ws.10%29
@@ -38,7 +48,3 @@ Observables
 .. [#f3] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc735566%28v=ws.10%29
 .. [#f4] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc734301%28v=ws.10%29
 .. [#f5] https://www.myeventlog.com/search/show/980
-
-* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
-* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
-* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_

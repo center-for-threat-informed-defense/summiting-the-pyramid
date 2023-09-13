@@ -4,11 +4,19 @@
 Level 4: Core to Some Implementations of (Sub-)Technique
 --------------------------------------------------------
 
-**Description**: Observables associated with low-variance behaviors of the (Sub-)Technique, unavoidable without a substantially different implementation
+**Description**: Observables associated with low-variance behaviors of the
+(Sub-)Technique, unavoidable without a substantially different implementation
 
-Analytics which are core to some implementations of a technique or sub-technique look at the behaviors an adversary will demonstrate during an attack. These are defined as low variance behaviors, those which cannot be avoided by the implementation. Multiple implementations may point to the same low variance behavior, allowing a defender to create a robust analytic.
+Analytics which are core to some implementations of a technique or sub-technique look at
+the behaviors an adversary will demonstrate during an attack. These are defined as low
+variance behaviors, those which cannot be avoided by the implementation. Multiple
+implementations may point to the same low variance behavior, allowing a defender to
+create a robust analytic.
 
-*Note*: These observables may change if the definition of the Technique is modified in a new version of ATT&CK.
+.. note::
+
+    These observables may change if the definition of the Technique is modified in a
+    new version of ATT&CK.
 
 Observables
 ^^^^^^^^^^^
@@ -29,7 +37,7 @@ Observables
 |                               |                                                   | technique.                         |
 +-------------------------------+---------------------------------------------------+------------------------------------+
 |  OS Credential Dumping:       |  TargetImage = lsass.exe                          | There are multiple access masks    |
-|  LSASS Memory (T1003.001)     |  GrantedAccess: 0x1010 OR 0x1410                  | which can be used. This analytic   | 
+|  LSASS Memory (T1003.001)     |  GrantedAccess: 0x1010 OR 0x1410                  | which can be used. This analytic   |
 |                               |                                                   | covers two of those access masks.  |
 |                               |                                                   | Anything that has the right bits   |
 |                               |                                                   | are wildcards essentially [#f2]_   |

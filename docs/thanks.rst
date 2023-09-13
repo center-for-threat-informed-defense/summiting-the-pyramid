@@ -1,7 +1,7 @@
 Acknowledgements
 ================
 
-The Summiting the Pyramid Project consisted of the following MITRE Team:
+The Summiting the Pyramid project team includes:
 
 * Michaela Adams
 * Roman Daszczyszak
@@ -11,7 +11,8 @@ The Summiting the Pyramid Project consisted of the following MITRE Team:
 * Robert Schull
 * Ross Weisman
 
-The Summiting the Pyramid Project would like to thank the following for their contributions in resources and review towards STP's project research:
+The project team would also like to thank the following for their contribution of
+resources and technical review:
 
 * Robleh Esa
 * UltimateWindowsSecurity

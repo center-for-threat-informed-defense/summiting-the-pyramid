@@ -42,29 +42,29 @@ Original Analytic Scoring
     :widths: 20 20 30 20
     :header-rows: 1
 
-    * - 
+    * -
       - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Core to Part of (Sub-) Technique (4)
-      - 
+      -
       -
       -
     * - Core to Pre-Existing Tool (3)
-      - 
-      - 
+      -
+      -
       -
     * - Core to Adversary-brought Tool (2)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Ephemeral (1)
-      - 
-      - 
+      -
+      -
       - |  EventType: DeleteKey
         |  TargetObject|endswith:
         |    - '{2781761E-28E0-4109-99FE-B9D127C57AFE}'
@@ -87,30 +87,31 @@ Improved Analytic Scoring
         | - 'Computer\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\AMSI\\Providers\\'
     * - 6
       - System Calls
-      - 
+      -
     * - 5
       - OS API
-      - 
+      -
     * - 4
       - Application API
-      - 
+      -
     * - 3
       - Tools Outside Adversary Control
-      - 
+      -
     * - 2
       - Tools Within Adversary Control
-      - 
+      -
     * - 1
       - Operational/Environmental Variables
-      - 
+      -
 
 Research Notes and Caveats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The original analytic relies on the adversary removing the AMSI provider from the registry. There is a known 
-technique to evade this analytic where an new (Fake) AMSI is registered in the directory. This moves to detect 
-any change in the directory. This directory is “special” due to the way the OS uses it in the queuing of AMSI 
-tasking [#f1]_ . With these modification the adversary cannot add, remove, or modify any values in this directory, 
-detecting the activity.
+The original analytic relies on the adversary removing the AMSI provider from the
+registry. There is a known technique to evade this analytic where an new (Fake) AMSI is
+registered in the directory. This moves to detect any change in the directory. This
+directory is “special” due to the way the OS uses it in the queuing of AMSI tasking
+[#f1]_ . With these modification the adversary cannot add, remove, or modify any values
+in this directory, detecting the activity.
 
 .. rubric:: References
 

@@ -250,6 +250,10 @@ em.newsgroup {
 
 /* Figure styles */
 
+.rst-content figure {
+    margin-bottom: 1em !important;
+}
+
 .rst-content figcaption p span.caption-text {
     font-size: 10pt;
     font-style: initial;
@@ -274,4 +278,13 @@ blockquote.epigraph p.attribution {
     margin: 0;
     font-size: 12pt;
     font-style: italic;
+}
+
+/* Footnote styles */
+.rst-content .footnote-reference {
+    font-size: 8pt;
+    vertical-align: super;
+    line-height: inherit;
+    left: -0.3em;
+    top: initial;
 }

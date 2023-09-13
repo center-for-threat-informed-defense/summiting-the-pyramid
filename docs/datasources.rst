@@ -1,9 +1,9 @@
 .. _Data Sources:
 
-Example ATT&CK Technique Mappings
-=================================
+Example Mappings
+================
 
-`T1003: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
+`T1003.001: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
 -----------------------------------------------------------------------
 
 .. figure:: _static/TechniqueDataMapping_LSASS.PNG
@@ -11,7 +11,7 @@ Example ATT&CK Technique Mappings
    :align: center
 
 
-`Scheduled Tasks <https://attack.mitre.org/techniques/T1053/005/>`_
+`T1053.005 Scheduled Tasks <https://attack.mitre.org/techniques/T1053/005/>`_
 -------------------------------------------------------------------
 
 .. figure:: _static/TechniqueDataMapping_ScheduledTasks.PNG

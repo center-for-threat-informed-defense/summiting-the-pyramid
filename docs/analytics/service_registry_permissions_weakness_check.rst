@@ -5,7 +5,7 @@ Service Registry Permissions Weakness Check
 - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_get_acl_service.yml
 
 .. code-block:: yaml
-  
+
   title: Service Registry Permissions Weakness Check
   id: 95afc12e-3cbb-40c3-9340-84a032e596a3
   status: test
@@ -41,33 +41,33 @@ Original Analytic Scoring
     :widths: 20 30 20 20
     :header-rows: 1
 
-    * - 
+    * -
       - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Core to Part of (Sub-) Technique (4)
-      - 
+      -
       -
       -
     * - Core to Pre-Existing Tool (3)
-      - 
-      - 
+      -
+      -
       -
     * - Core to Adversary-brought Tool (2)
       - | EventID: 4104
-        | ScriptBlockText|contains|all:    
-        | - 'get-acl'    
+        | ScriptBlockText|contains|all:
+        | - 'get-acl'
         | - 'REGISTRY::HKLM\\SYSTEM\\CurrentControlSet\\Services\\'
-      - 
-      - 
+      -
+      -
     * - Ephemeral (1)
-      - 
-      - 
-      - 
+      -
+      -
+      -
 
 Improved Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,64 +76,69 @@ Improved Analytic Scoring
     :widths: 20 20 20 30
     :header-rows: 1
 
-    * - 
+    * -
       - Application (A)
       - User-mode (U)
       - Kernel-mode (K)
     * - Core to (Sub-) Technique (5)
-      - 
-      - 
+      -
+      -
       - | EventID: 4663​
         | TargetObject: “\*SYSTEM\\CurrentControlSet\\Services\\\*”
     * - Core to Part of (Sub-) Technique (4)
-      - 
+      -
       -
       -
     * - Core to Pre-Existing Tool (3)
-      - 
-      - 
+      -
+      -
       -
     * - Core to Adversary-brought Tool (2)
-      - 
-      - 
-      - 
+      -
+      -
+      -
     * - Ephemeral (1)
-      - 
-      - 
-      - 
+      -
+      -
+      -
 
-This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific values in the ScriptBlockText field [#f1]_. While the specified registry key 
-is core to the subtechnique [#f2]_, the actual observable is the string representation of that registry key inside the script text. It is relatively easy for an attacker to obfuscate 
-keywords or values in a PowerShell script. For example, the cmdlet ``get-acl`` is defined and included in the Microsoft.PowerShell.Security module, but equivalent functionality can be accomplished 
-with a renamed or custom cmdlet that doesn't require ``get-acl`` exist in the script text. The registry key string can be obfuscated in other ways [#f3]_, several of which are shown below.
-Since the adversary can modify their tools and associated scripts before deployment to evade this analytic, it is **2A**.
+This analytic uses the Windows PowerShell logging Event ID 4104 and detects on specific
+values in the ScriptBlockText field [#f1]_. While the specified registry key is core to
+the subtechnique [#f2]_, the actual observable is the string representation of that
+registry key inside the script text. It is relatively easy for an attacker to obfuscate
+keywords or values in a PowerShell script. For example, the cmdlet ``get-acl`` is
+defined and included in the Microsoft.PowerShell.Security module, but equivalent
+functionality can be accomplished with a renamed or custom cmdlet that doesn't require
+``get-acl`` exist in the script text. The registry key string can be obfuscated in other
+ways [#f3]_, several of which are shown below. Since the adversary can modify their
+tools and associated scripts before deployment to evade this analytic, it is **2A**.
 
-.. code-block:: 
+.. code-block::
 
   # Let’s start with a simple example:
   function Invoke-Malware {
     Write-Host ‘Malware!’;
   }
-  
+
   # Simple signature: if script contains “Write-Host ‘Malware’” → Malicious
   # Simple bypass:
   function Invoke-Malware {
     Write-Host "Malware!";
   }
-  
+
   # Simple signature: if re.findall(“Write-Host .Malware.”, script) → Malicious
   # Simple bypass:
   function Invoke-Malware {
     Write-Host (“Mal” + “ware!”);
   }
-  
+
   # Let’s start being a little more sophisticated (just a bit):
   function Invoke-NotMalware {
     $malware_base64 = "V3JpdGUtSG9zdCAiTWFsd2FyZSEi";
     $malware = [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($malware_base64));
     IEX ($malware);
   }
-  
+
   # Simple signature:
   # if script contains “V3JpdGUtSG9zdCAiTWFsd2FyZSEi” → Malicious
   # Simple bypass:
@@ -152,14 +157,21 @@ Since the adversary can modify their tools and associated scripts before deploym
   $decodedMalware = [System.Text.Encoding]::Unicode.GetString($decodedBytes)
   IEX ($decodedMalware)
 
-A more robust way of detecting the original behavior involves setting a Security Access Control List (SACL) on the registry key. Setting a SACL on the registry key 
-enables using a kernel-mode data source to detect the ``get-acl`` behavior of a script without looking at the contents of the script itself. Once the SACL is set and configured,
-an EventID 4663 will be generated whenever an attempt is made to access the registry key.
+A more robust way of detecting the original behavior involves setting a Security Access
+Control List (SACL) on the registry key. Setting a SACL on the registry key enables
+using a kernel-mode data source to detect the ``get-acl`` behavior of a script without
+looking at the contents of the script itself. Once the SACL is set and configured, an
+EventID 4663 will be generated whenever an attempt is made to access the registry key.
 
 .. note::
-  SACLs have configuration options which can change the precision of an analytic. One configuration option is to log the "Full Control" set of activity and get a complete
-  view of registry key activity, and then query those results for when the registry key is read (when the ``AccessMask`` field has the corresponding value ``READ_CONTROL`` [#f4]_). 
-  However, this approach could generate a large amount of benign noise. As an alternative, the SACL can be configured to generate an event only when the key is read.
+
+    SACLs have configuration options which can change the precision of an analytic. One
+    configuration option is to log the "Full Control" set of activity and get a complete
+    view of registry key activity, and then query those results for when the registry
+    key is read (when the ``AccessMask`` field has the corresponding value
+    ``READ_CONTROL`` [#f4]_). However, this approach could generate a large amount of
+    benign noise. As an alternative, the SACL can be configured to generate an event
+    only when the key is read.
 
 .. rubric:: References
 
