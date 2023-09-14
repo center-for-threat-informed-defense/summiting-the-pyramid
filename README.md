@@ -12,7 +12,7 @@ make adversary evasion more difficult. This project is created and maintained by
 [MITRE Engenuity Center for Threat-Informed Defense](https://ctid.mitre-engenuity.org/)
 in futherance of our mission to advance the start of the art and and the state of the
 practice in threat-informed defense globally. The project is funded by our [research
-participants](https://mitre-engenuity.org/cybersecurity/center-for-threat-informed-defense/our-work/summiting-the-pyramid/#RESEARCH-PARTICIPANTS).
+participants](https://mitre-engenuity.org/cybersecurity/center-for-threat-informed-defense/our-work/summiting-the-pyramid/#research-participants).
 
 **Table Of Contents:**
 
