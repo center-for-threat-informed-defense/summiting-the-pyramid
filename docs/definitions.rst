@@ -8,7 +8,7 @@ This page defines the key terms used throughout our research.
 Precision
 ---------
 
-**Precision is the ratio of true positives to positive results matched by an analytic.**
+**Precision is the fraction of relevant malicious events among all events matched by an analytic.**
 
 High precision analytics create fewer false positives. Precision is high at lower levels
 of the pyramid (e.g. file hashes) but can be challenging for analytics higher on the
@@ -19,7 +19,7 @@ pyramid.
 Recall
 ------
 
-**Recall is the ratio of true positives to total events matched by an analytic.**
+**Recall is the fraction of malicious events that are matched by an analytic.**
 
 High recall analytics are less likely to miss malicious activity. There is often a
 tradeoff between precision and recall: as one increases, the other decreases. This
@@ -30,7 +30,8 @@ getting overwhelmed with false positives.
 
 Robustness
 ----------
-**Robustness measures the effort needed by an adversary to evade an analytic**
+
+**Robustness measures the effort needed by an adversary to evade an analytic.**
 
 Robustness is crucial for the effectiveness of an analytic, and is the focus of the
 Summiting the Pyramid project. Robustness is directly related to the cost required by an
