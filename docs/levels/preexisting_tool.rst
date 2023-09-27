@@ -17,12 +17,11 @@ this level will remain consistent with what is available for the tool.
 
 Since the adversary cannot change the capability itself and it is managed by an
 organization, it is much more difficult to distinguish adversary use from benign use.
-This provides an opportunity for an adversary to blend into the computing environment
-without using their own malware to trigger detections, also known as a Living off the
-Land (LotL) attack [#f1]_ [#f2]_. It is likely that analytics utilizing native tool
-observables will need to be combined with other level’s observables, or require further
-research into low-variance behaviors of abusing these tools through MITRE ATT&CK
-techniques.
+This provides an opportunity for an adversary to blend into the computing environment,
+also known as a Living off the Land (LotL) attack [#f1]_ [#f2]_. It is likely that
+analytics utilizing native tool observables will need to be combined with other
+observables at other levels, or require further research into low-variance behaviors of
+abusing these tools through MITRE ATT&CK techniques.
 
 **Examples**: Signatures, command-line arguments, tool-specific configurations,
 metadata, binaries

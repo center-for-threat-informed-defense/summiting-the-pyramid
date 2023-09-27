@@ -20,9 +20,7 @@ deployment to the target system. For example, if an analytic detection is identi
 certain tool-specific configurations, an adversary can change the source code and evade
 that detection [#f1]_. While this requires knowledge on the adversary to change the tool
 configuration without changing the functionality, it gives an adversary flexibility to
-evade detection through the availability of application code itself. Even if an
-adversary does not have the power to configure the tool itself, them having control over
-the tool during an attack gives them the advantage.
+evade detection through the availability of application code itself.
 
 **Examples**: Command-line arguments, tool-specific configurations, metadata, binaries
 

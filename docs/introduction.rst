@@ -6,11 +6,11 @@ Project Goal
 
 The Pyramid of Pain [#f1]_ has been used by detection engineers to determine the cost or
 “pain” it would cause an adversary to evade defenses that are effective at that level of
-the pyramid. Starting at the bottom, changing indicators of hash values, IP addresses,
-and domains are trivial for an adversary to change and continue their attack. Indicators
-further up the pyramid are more difficult for an adversary to change and consume more
-time and money. Tactics, Techniques, and Procedures (TTPs), such as those in MITRE
-ATT&CK®, are at the top of the pyramid because they are the most costly to change.
+the pyramid. Starting at the bottom: hash values, IP addresses, and domains are trivial
+for an adversary to change and continue their attack. Indicators further up the pyramid
+are more difficult for an adversary to change and consume more time and money. Tactics,
+Techniques, and Procedures (TTPs), such as those in MITRE ATT&CK®, are at the top of the
+pyramid because they are the most costly to change.
 
 .. figure:: _static/pyramid_of_pain.png
    :alt: Pyramid of Pain - Created by David Bianco
@@ -55,25 +55,25 @@ focused on behaviors which an adversary will demonstrate during an attack.
 Having consolidated the pyramid of pain into three new groupings, the next step is to
 break out the tools and behavior groupings to derive the five rows used in the Summiting
 model. Each row corresponds to a group of :ref:`observables<Observable>` that we can use
-to build analytics. The bottom row (purple) represents ephemeral values, which are
-trivial for an adversary to change.
+to build analytics. The bottom row represents ephemeral values, which are trivial for an
+adversary to change.
 
-The next two rows distinguish two types of tools. Adversary-brought tools (blue) are
-brought in by an adversary to accomplish an attack. Pre-existing tools (green) such as
-`LOLbins <https://en.wiktionary.org/wiki/LOLBin>`__) are available to defenders before
-adversary use, making it more difficult for an adversary to modify. These two levels
-were split in recognition of the fact that an adversary will have more control over
-tools they bring to an attack, making it easier for them to evade specific tool
-detections. Tools which are managed by the target organization, on the other hand, may
-not be as easy for the attacker to modify.
+The next two rows distinguish two types of tools. Adversary-brought tools are brought in
+by an adversary to accomplish an attack. Pre-existing tools such as `LOLbins
+<https://en.wiktionary.org/wiki/LOLBin>`__) are available to defenders before adversary
+use, making it more difficult for an adversary to modify. These two levels were split in
+recognition of the fact that an adversary will have more control over tools they bring
+to an attack, making it easier for them to evade specific tool detections. Tools which
+are managed by the target organization, on the other hand, may not be as easy for the
+attacker to modify.
 
 The behavior grouping is also split into two levels. These groupings are focused on
 identifying behaviors that are associated with MITRE ATT&CK Techniques, making them the
 most difficult to evade, and providing defenders the tools to create the most robust
-analytics. The observables core to some implementations (beige) of a technique are
-associated with low-variance behaviors which are unavoidable without a substantially
-different implementation. Observables core to a technique (red) are the choke points or
-invariant behaviors, which are unavoidable by any implementation.
+analytics. The observables core to some implementations of a technique are associated
+with low-variance behaviors which are unavoidable without a substantially different
+implementation. Observables core to a technique are the choke points or invariant
+behaviors, which are unavoidable by any implementation.
 
 In addition to these five rows, the Summiting model also contains three columns that
 correspond to where detection signals come from. An OS will generate events, which can
@@ -265,7 +265,7 @@ Assumptions and Caveats
 -----------------------
 
 While the process and goals described here could be extended to cover any attack
-surface, this Summiting 1.0 project has the following scoping and limitations:
+surface, this Summiting 1.0 project has the following scope and limitations:
 
 * **Focused on Windows systems.** There is
   definitely room to create guidance for networks, cloud, virtual machines, and other

@@ -21,8 +21,8 @@ building out analytics, these observables will mostly capture values which point
 context of a certain application, user, or process. While these observables can detect
 known malicious applications or processes, these will not detect anything new, or if the
 adversary decides to change an operational or environmental variable to evade detection.
-To ensure detection in-depth, these observables should be combined with other level
-observables.
+To ensure detection in-depth, these observables should be combined observables from
+other levels.
 
 **Examples**: Hash values, IP addresses, protocol-specific ports, file names, domain
 names, processes, user oriented observables, others

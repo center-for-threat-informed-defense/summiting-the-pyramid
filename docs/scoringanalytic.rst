@@ -76,7 +76,7 @@ Step 1: Scoring the analytic's sensor data
 Just as not all analytics are created equal, not all sensors are created equal. Our
 event robustness categories identify the different layers within the OS in which
 observables can be collected. Each of the different events within each column provide
-different insight into the OS.
+different insights into the OS.
 
 In the pipe creation example, the sensor data identified is Windows, and the category is
 ``pipe_created``. Based on the types of Event IDs Windows provides and a list of field
@@ -205,14 +205,14 @@ This is how you can place the score using the 2D model diagram.
 
 And that’s it! You have officially scored an analytic based on the Summiting the Pyramid
 methodology. Knowing the steps to score an analytic, you can apply this to your
-environment, see where your analytics fall, and determine if there’s any ways your
+environment, see where your analytics fall, and determine if there are any ways your
 analytics can be improved.
 
-Remember, not all analytics will be able to be scored utilizing this methodology. For
-example, some analytics might be tuned specifically for your environment or for
-collecting contextual data rather than detection. We are documenting different use cases
-where some analytics would not be scored, and will continue to update the Summiting
-methodology to reflect this.
+Remember, not all analytics can be scored utilizing this methodology. For example, some
+analytics might be tuned specifically for your environment or for collecting contextual
+data rather than detection. We are documenting different use cases where some analytics
+would not be scored, and will continue to update the Summiting methodology to reflect
+this.
 
 **Do you have analytics that should be documented in the analytic repository? Do you
 have new fields or observables which can be added to the analytics observables table?**

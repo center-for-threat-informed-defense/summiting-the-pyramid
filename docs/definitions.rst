@@ -72,9 +72,9 @@ Analytic
 **An analytic is query logic used for detecting activity within a technology stack based
 on one more observables.**
 
-In most security operations centers (SOCs), analytics are used to alert analysts on what
-to concerning behavior in their environment. For example, an analytic can be deployed by
-a team to send an alert when a new task is scheduled on a machine. Example analytics
+In most security operations centers (SOCs), analytics are used to alert analysts to
+concerning behavior in their environment. For example, an analytic can be deployed by a
+team to send an alert when a new task is scheduled on a machine. Example analytics
 include CAR pseudocode, SIGMA rules, as well as the Splunk or Elastic queries generated
 by PySIGMA from SIGMA rules.
 
@@ -104,7 +104,7 @@ least easily evaded observables at the top of the table.
 .. _Event Robustness Categories:
 
 Event Robustness Categories
-----------------------------
+---------------------------
 
 **The three columns in the methodology represent increasing cost or difficulty for the
 adversary to avoid those sensors.**
