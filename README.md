@@ -24,7 +24,7 @@ participants](https://mitre-engenuity.org/cybersecurity/center-for-threat-inform
 
 ## Getting Started
 
-To get started, read the project website. It provides an overview of the goals and methodologies, defines all the key terms, and contains highly detailed examples. You may also want to
+To get started, read the project website. It provides an overview of the goals and methodologies, defines all the key terms, and contains highly detailed examples.
 
 | Resource                                                                                       | Description                                                   |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
