@@ -29,6 +29,7 @@ Observables
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | Registry Keys                 | | Event ID 4656 (Handle to object requested)                                            |
 |                               | | Sysmon ID 12 (Registry object added/deleted)                                          |
+|                               | | Sysmon ID 13 (Registry value set)                                                     |
 |                               | | Event ID 4660 (Object deleted)                                                        |
 |                               | | Event ID 4657 (Registry value modified)                                               |
 +-------------------------------+-----------------------------------------------------------------------------------------+

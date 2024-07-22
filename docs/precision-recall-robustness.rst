@@ -32,7 +32,7 @@ Step 1: Determine the Robustness of the Analytic
 ------------------------------------------------
 First, we will determine the robustness of the analytic in question. This will allow us to better understand not only what the analytic is looking to detect, but how robust it will be in detecting adversary activity.
 
-For example, let's take this analytic that is looking to detect the execution of ADFind.exe.[#f1]_
+For example, let's take this analytic that is looking to detect the execution of ADFind.exe [#f1]_.
 
 .. figure:: _static/adfind_example.png
    :alt: Analytic looking to detect malicious use of ADFind.exe
