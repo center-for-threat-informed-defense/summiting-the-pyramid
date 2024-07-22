@@ -59,3 +59,7 @@ expensive to evade:
 This project includes a complete toolkit for defenders to start analyzing and improving
 detection analytics: a model for evasiveness, a methodology for mappings detection
 analytics onto that model, and many worked examples of mapping real-world analytics.
+
+`Want to learn more? Hear some of the project creators talk more about Summiting the Pyramid at ShmooCon 2024!
+<https://archive.org/details/shmoocon2024/Shmoocon2024-MichaelaAdams_RomanDaszczyszak_%26_SteveLuke-Summiting_the_Pyramid_of_Pain.mp4#>`_
+
