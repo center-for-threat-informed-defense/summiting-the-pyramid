@@ -63,7 +63,7 @@ The steps to determine the impact of precision and recall on an analytic are sim
 **Step 3.1: Analyze the impact of the event source on the precision and recall of an analytic**
 The event source used within the analytic will have an impact on how many observables, fields, and related behavior could be pulled into the analytic. This will be most impactful for Technique-level analytics, as there is more of a chance that certain Techniques will be more prone to false positives.
 
-Our team did an in-depth analysis to determine which ATT&CK data sources were used for each ATT&CK Technique. Some data sources are connected to multiple Techniques, with some attaching to hundreds of Techniques. Others came in with only a few to detect the Technique. This shows us that some Techniques may require more data sources to detect the whole of the Technique or specific implementations. 
+Our team did an in-depth analysis to determine which ATT&CK data sources were used for each ATT&CK Technique. Some data sources are connected to multiple Techniques, with some attaching to hundreds of Techniques. Others came in with only a few to detect the Technique. This shows us that some Techniques may require more data sources to detect the whole of the Technique or specific implementations. :ref:`Check out our research here! <Data Source Count>`
 
 This is not to say that Techniques with a higher number of connected data sources are bad to build detections for. It gives us defenders an understanding of how to balance precision, recall, and robustness within an analytic.
 

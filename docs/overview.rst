@@ -60,6 +60,10 @@ This project includes a complete toolkit for defenders to start analyzing and im
 detection analytics: a model for evasiveness, a methodology for mappings detection
 analytics onto that model, and many worked examples of mapping real-world analytics.
 
-`Want to learn more? Hear some of the project creators talk more about Summiting the Pyramid at ShmooCon 2024!
-<https://archive.org/details/shmoocon2024/Shmoocon2024-MichaelaAdams_RomanDaszczyszak_%26_SteveLuke-Summiting_the_Pyramid_of_Pain.mp4#>`_
+Want to learn more? Hear some of the project creators talk more about Summiting the Pyramid at ShmooCon 2024!
+
+.. image:: https://img.youtube.com/vi/B86QP361t8E/maxresdefault.jpg
+    :alt: Summiting the Pyramid (of Pain) at ShmooCon 2024
+    :target: https://www.youtube.com/watch?v=B86QP361t8E
+
 
