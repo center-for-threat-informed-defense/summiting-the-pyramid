@@ -62,8 +62,10 @@ analytics onto that model, and many worked examples of mapping real-world analyt
 
 Want to learn more? Hear some of the project creators talk more about Summiting the Pyramid at ShmooCon 2024!
 
-.. image:: https://img.youtube.com/vi/B86QP361t8E/maxresdefault.jpg
-    :alt: Summiting the Pyramid (of Pain) at ShmooCon 2024
-    :target: https://www.youtube.com/watch?v=B86QP361t8E
+.. raw:: html
+   
+   <embed>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/B86QP361t8E?si=jxhS8XmJe_ihARj7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </embed>
 
 

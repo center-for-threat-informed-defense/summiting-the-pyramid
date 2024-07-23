@@ -16,7 +16,7 @@ Let's review some terminoloty:
   - **Precision is the fraction of relevant malicious events among all events matched by an analytic.** High precision analytics create fewer false positives.
   - **Recall is the fraction of relevant malicious events that are detected by an analytic.** High recall analytics are less likely to miss malicious activity. 
 
-There is often a tradeoff between precision and recall: as one increases, the other decreases. This requires dialing the right balance between minimizing detections while not getting overwhelmed with false positives. With Summiting the Pyramid, a third component has been introduced to the mix.
+There is often a tradeoff between precision and recall: as one increases, the other decreases. This requires dialing the right balance between minimizing missed detections while not getting overwhelmed with false positives. With Summiting the Pyramid, a third component has been introduced to the mix.
 
   - **Robustness measures the effort needed by an adversary to evade an analytic.** Robustness is directly related to the cost required by an adversary to evade detection, including time, resources, and money.
 
@@ -46,7 +46,7 @@ Step 2: Determine Presence of a Filter
 --------------------------------------
 The presence of a filter is meant to avoid capturing certain false positives, or benign activity, when an analytic is running. **A filter will normally increase the precision of an analytic,** lowering the false positive rate of an analytic. An analytic which has a filter will usually have a ``filter`` tag attached to it.
 
-However, **since the recall of the analytic is lowered,** the defender needs to be aware of the blind spots present due to the filtering out of certain activity. Since certain activity is filtered out, how can you ensure that activity that might occur in the analytic can be captured in other ways, potentially increasing robustness? This might be more relevant to Tool level analytics (Levels 2-3) and Technique-level analytics (Levels 4-5). However, it is important to understand the trade-offs of a filter and how it might be mitigated.
+However, **since the recall of the analytic is lowered,** the defender needs to be aware of the blind spots present due to the filtering out of certain activity. Since certain activity is filtered out, how can you ensure that activity that might occur in the analytic can be captured in other ways, potentially increasing robustness? This might be more relevant to tool level analytics (Levels 2-3) and technique-level analytics (Levels 4-5). However, it is important to understand the trade-offs of a filter and how it might be mitigated.
 
 .. figure:: _static/AnalyticAnalysis_Filter.png
    :alt: The presence of a filter will increase precision, but decrease recall.
@@ -61,11 +61,11 @@ Step 3: Analyze Individual Observables and Place in Precision Buckets
 The steps to determine the impact of precision and recall on an analytic are similar to the steps we would take to score the robustness of an analytic. Through these steps, we will look at the event source observable, the analytic observables, and the boolean logic of the analytic to see its impact on precision and recall. 
 
 **Step 3.1: Analyze the impact of the event source on the precision and recall of an analytic**
-The event source used within the analytic will have an impact on how many observables, fields, and related behavior could be pulled into the analytic. This will be most impactful for Technique-level analytics, as there is more of a chance that certain Techniques will be more prone to false positives.
+The event source used within the analytic will have an impact on how many observables, fields, and related behavior could be pulled into the analytic. This will be most impactful for technique-level analytics, as there is more of a chance that certain techniques will be more prone to false positives.
 
-Our team did an in-depth analysis to determine which ATT&CK data sources were used for each ATT&CK Technique. Some data sources are connected to multiple Techniques, with some attaching to hundreds of Techniques. Others came in with only a few to detect the Technique. This shows us that some Techniques may require more data sources to detect the whole of the Technique or specific implementations. :ref:`Check out our research here! <Data Source Count>`
+Our team did an in-depth analysis to determine which ATT&CK data sources were used for each ATT&CK technique. Some data sources are connected to multiple techniques, with some attaching to hundreds of techniques. Others came in with only a few to detect the technique. This shows us that some techniques may require more data sources to detect the whole of the technique or specific implementations. :ref:`Check out our research here! <Data Source Count>`
 
-This is not to say that Techniques with a higher number of connected data sources are bad to build detections for. It gives us defenders an understanding of how to balance precision, recall, and robustness within an analytic.
+This is not to say that techniques with a higher number of connected data sources are bad to build detections for. It gives us defenders an understanding of how to balance precision, recall, and robustness within an analytic.
 
 .. figure:: _static/AnalyticAnalysis_TechniqueDataSource.png
    :alt: Techniques which are connected to more data sources may result in less precise analytics, while low numbers may increase precision.
