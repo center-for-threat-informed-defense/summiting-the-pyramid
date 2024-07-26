@@ -24,6 +24,8 @@ of the art and the state of the practice in threat-informed defense globally.
     scoringanalytic
     analytics/index
     capability-abstraction
+    precision-recall-robustness
+    datasource-technique
     futurework
     thanks
     changelog
