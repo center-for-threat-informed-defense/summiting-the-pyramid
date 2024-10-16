@@ -47,7 +47,7 @@ row:
 
 The analytic can be improved by using observables that are in higher level groups (i.e.
 moving up the grid) or more reliable data sources (i.e. moving to the right). Moving up
-reflects the selection of indicators that are mostly costly for the adversary to change.
+reflects the selection of indicators that are more costly for the adversary to change.
 Moving right reflects the use of data sources that are harder for the attacker to
 manipulate. Taken together, these lead to analytics that are more difficult and
 expensive to evade:
