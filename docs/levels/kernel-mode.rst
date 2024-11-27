@@ -4,17 +4,9 @@
 Column K: Kernel-Mode
 ---------------------
 
-**Description**: Interfacing directly with ring 0 in the OS. Observables are in kernel
-mode.
+**Description**: Interfacing directly with ring 0 in the OS. Observables are in kernel mode.
 
-As defined by Microsoft, the kernel, “implements the core functionality that everything
-else in the operating system depends upon.” [#f1]_ This is the heart of the Operating
-System, as it provides the services for everything, including managing threads,
-conflicts and errors, and system memory [#f2]_. Some of the kernel library support
-routines available start with ``Ke`` within the Windows Operating System. Defenders can
-monitor kernel activity through observables including registry modification, some event
-IDs, and network protocols. Kernel observables are usually the hardest to evade and
-represent the most robust events and fields in the framework.
+As defined by Microsoft, the kernel “implements the core functionality that everything else in the operating system depends upon.” [#f1]_ This is the heart of the operating system, as it provides the services for everything, including managing threads, conflicts and errors, and system memory. [#f2]_ Some of the kernel library support routines available start with Ke within the Windows Operating System. Defenders can monitor kernel activity through observables including registry modification, some event IDs, and network protocols. Kernel observables are usually the hardest to evade and represent the most robust events and fields in the framework.
 
 Observables
 ^^^^^^^^^^^
@@ -23,20 +15,28 @@ Observables
 +===============================+=========================================================================================+
 | Process                       | | Event ID 4688 (Process creation)                                                      |
 |                               | | Event ID 4689 (Process exited)                                                        |
+|                               | | Sysmon ID 1 (Process creation)                                                        |
 |                               | | Sysmon ID 8 (Create remote thread)                                                    |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | File                          | | Event ID 4663 (Attempt was made to access object)                                     |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | Registry Keys                 | | Event ID 4656 (Handle to object requested)                                            |
 |                               | | Sysmon ID 12 (Registry object added/deleted)                                          |
-|                               | | Sysmon ID 13 (Registry value set)                                                     |
 |                               | | Event ID 4660 (Object deleted)                                                        |
 |                               | | Event ID 4657 (Registry value modified)                                               |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | Objects                       | | Event ID 5136 (A directory service object was modified)                               |
 +-------------------------------+-----------------------------------------------------------------------------------------+
-| Pipes                         | | Sysmon ID 17 (Pipe created)                                                           |
+| Named Pipes                   | | Sysmon ID 17 (Pipe created)                                                           |
+|                               | | Sysmon ID 18 (Pipe connected)                                                         |  
+|                               | | Event ID 5145 (A network share object was checked to see whether client can be        |
+|                               |  granted desired access)                                                                |
 +-------------------------------+-----------------------------------------------------------------------------------------+
+| Network                       | | Sysmon ID 3 (Network connection detected)                                             |
+|                               | | Event ID 5156 (The Windows Filtering Platform has allowed a connection)               |
+|                               | | Event ID 5157 (The Windows Filtering Platform has blocked a connection)               |
++-------------------------------+-----------------------------------------------------------------------------------------+
+
 
 **Useful resources:**
 

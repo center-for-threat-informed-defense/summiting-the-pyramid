@@ -4,16 +4,9 @@
 Column A: Application
 ---------------------
 
-**Description**: Observables associated with the use of applications available to
-defenders before adversary use and difficult for the adversary to modify.
+**Description**: Observables associated with the use of applications available to defenders before adversary use and difficult for the adversary to modify.
 
-The Application event robustness category groups observables which are collected closest
-to applications and are potentially modifiable by the user. For example, Windows
-provides developers the opportunity to create service providers for tools and
-applications, which can be used to create detection analytics. Other frameworks can be
-implemented by a user for needs within their environment. While users might need to
-download and configure application sensor data, they are available to the defender
-before an adversary conducts their attack.
+The Application event robustness category groups observables that are collected closest to applications and are potentially modifiable by the user. For example, Windows provides developers the opportunity to create service providers for tools and applications, which can be used to create detection analytics. Other frameworks can be implemented by a user for needs within their environment. While users might need to download and configure application sensor data, these data are available to the defender before an adversary conducts their attack.
 
 Observables
 ^^^^^^^^^^^
@@ -34,6 +27,8 @@ Observables
 +-------------------------------+-----------------------------------------------------------------------+
 | Powershell                    |  | Event ID 4104 (Creating Scriptblock text) [#f5]_                   |
 +-------------------------------+-----------------------------------------------------------------------+
+| File                          |  | Yara Rules [#f6]_                                                  |
++-------------------------------+-----------------------------------------------------------------------+
 
 **Useful resources:**
 
@@ -48,3 +43,4 @@ Observables
 .. [#f3] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc735566%28v=ws.10%29
 .. [#f4] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc734301%28v=ws.10%29
 .. [#f5] https://www.myeventlog.com/search/show/980
+.. [#f6] https://yara.readthedocs.io/en/stable/writingmodules.html
