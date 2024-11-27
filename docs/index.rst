@@ -19,7 +19,7 @@ of the art and the state of the practice in threat-informed defense globally.
     introduction
     definitions
     levels/index
-    evadability
+    booleanlogic
     datasources
     scoringanalytic
     analytics/index

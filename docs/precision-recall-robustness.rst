@@ -1,116 +1,65 @@
-Precision, Recall, Robustness
-=============================
+Components of a Robust Detection
+================================
 
-This is a draft and will be updated as research continues. Please send us feedback!
+A robust detection is one that is accurate, precise, and resistant to adversary evasion over time.  But what does that look like when we are building out a detection?
 
-**Robustness will help us make the best analytics! Right?**
+Let’s first establish some key terms that will help us distinguish the types of alerts a defender will see within their environment:
 
-The goal of Summiting the Pyramid was to develop a methodology to better understand how adversaries could evade analytics, and improve onto them. The Robustness Matrix reflects this effort, showing the difficulty for an adversary to evade both analytic observables and events generated within the Operating System. However, robustness is not the only component of building effective analytics. Effective analytics need to consider precision, recall, and robustness to create analytics which can effectively catch adversary activity.
+* True positive: An alert for a malicious event
+* False positive: An alert for a benign event
+* True negative: Benign event that does not alert
+* False negative: Malicious event that does not alert
 
-.. figure:: _static/analyticstool.png
-   :alt: An effective analytic is comprised of precision, recall, and robustness.
+Malicious activity or benign activity will be categorized as one of these four alert categories and will help defenders analyze the quality and effectiveness of their alerts.
+
+.. figure:: _static/PrecisionAccuracy_BaseDiagram.png
+   :alt: Sample detection environment
    :align: center
 
-Let's review some terminoloty:
+   A sample detection selection for scheduled task activities.
 
-  - **Precision is the fraction of relevant malicious events among all events matched by an analytic.** High precision analytics create fewer false positives.
-  - **Recall is the fraction of relevant malicious events that are detected by an analytic.** High recall analytics are less likely to miss malicious activity. 
+Precise Detection 
+-----------------
 
-There is often a tradeoff between precision and recall: as one increases, the other decreases. This requires dialing the right balance between minimizing missed detections while not getting overwhelmed with false positives. With Summiting the Pyramid, a third component has been introduced to the mix.
+A precise detection has a low probability of alerting on benign activity, making it great for detecting on specific, malicious activity. This generates a low false positive rate for one’s detection environment. 
 
-  - **Robustness measures the effort needed by an adversary to evade an analytic.** Robustness is directly related to the cost required by an adversary to evade detection, including time, resources, and money.
+Let’s think of detecting malicious Scheduled Task activity. Many actors use their own tools to schedule tasks and maintain persistence within their environment. One of those tools is Shamoon. If we wanted to build a precise detection analytic against Shamoon, [#f1]_  we could use a hash value to detect on the specific use of this malicious activity within our environment. The use of this hash value is precise because it is highly unlikely that we will capture benign activity within this detection. A precise detection allows us to alert on known malicious activity, lowering benign activity detection.
 
-Robustness, recall, and precision work in tandem together to build an effective analytic. While precision and recall usually have a tradeoff between each other, robustness is an added metric for understanding adversary behavior. It’s like when you go crab lobster catching (as all security engineers do). The size of the holes in the cage will ensure that lobster and crabs are caught, but smaller fish can get through (precision). In order to ensure you can catch enough crabs and lobster, you might increase the size of the cage to catch fish that might come through (recall). Then, the fisher needs to understand how it might look to avoid getting caught (robustness). You can also control the environment where you catch (where you collect logs), and the types of tools you use. This analogy reflects how recall, precision, and robustness all play together in the grand scheme of building robust analytics. 
-
-.. figure:: _static/PrecisionRecallRobustness_Lobster.png
-   :alt: We can compare identifying the balance between precision, recall, and robustness by looking at how to catch lobster.
+.. figure:: _static/PrecisionAccuracy_PreciseDetection.png
+   :alt: Precise detection using hash value
    :align: center
 
-Now, we will look at how we can utilize all of these components to build an effective analytic, and the tradeoffs between each.
+   A hash value is very precise, but it does not provide good accuracy or resistance to adversary evasion over time.
 
-Step 1: Determine the Robustness of the Analytic
-------------------------------------------------
-First, we will determine the robustness of the analytic in question. This will allow us to better understand not only what the analytic is looking to detect, but how robust it will be in detecting adversary activity.
+Accurate Detection 
+------------------
 
-For example, let's take this analytic that is looking to detect the execution of ADFind.exe [#f1]_.
+An accurate  detection has high probability to detect malicious activity. Visualizing this in terms of a technique or a specific topic of coverage in a detection, an analytic would catch all malicious activity. So, the selection area of an analytic could be very large. 
 
-.. figure:: _static/adfind_example.png
-   :alt: Analytic looking to detect malicious use of ADFind.exe
+The ATT&CK page identifies many malicious technique implementations of Scheduled Task activities. [#f1]_  A Scheduled Task analytic that has high recall will capture many of those documented malicious implementations. For example, when a task is scheduled, it creates a new registry key.  Because this would occur across all implementations of scheduled tasks, an analytic that detects the creation of a registry key within the task scheduler would be considered an accurate detection. This detection could also be resistant to adversary evasion over time, since this activity occurs across all implementations of a technique and cannot be avoided.
+
+.. figure:: _static/PrecisionAccuracy_AccurateDetection.png
+   :alt: Accurate detection using registry key value
    :align: center
 
-Utilizing the Summiting the Pyramid methodology, we follow the steps to score its robustness. Understanding that the logsource is looking for a process creation event and analyzing the fields present, we determine this analytic using Windows Event ID 4688, which operates in Kernel Mode (K). We have two different fields to score in this analytic. The commandline instance is looking for arguments specific to adfind, which can be scored at Core to Pre-Existing Tool (3). Meanwhile, the Image field is looking for the filename of the adfind executable file. Since this can be easily changed and evaded by the adversary, this is scored as an Ephemeral Value (1). **Since this analytic looks for both the command line argument and the image argument to fire, the analytic is determinant on the lowest-level score. With these considerations, the analytic is scored as a 1K.** 
+   A registry key detection for scheduled tasks provides great accuracy and is resistant to adversary evasion over time. However, it raises the false positive rate.
 
-It is important to score the robustness of the analytic first as we move into additional analysis on the analytic. **The type of robust analytic presented (Ephemeral, Adversary Tool, Existing Tool, Partial Technique, Whole Technique)** will help us better understand how precision and recall effect its robustness, and how those components could potentially be improved.
+Precise vs. Accurate vs. Resistance 
+-----------------------------------
 
-Step 2: Determine Presence of a Filter
---------------------------------------
-The presence of a filter is meant to avoid capturing certain false positives, or benign activity, when an analytic is running. **A filter will normally increase the precision of an analytic,** lowering the false positive rate of an analytic. An analytic which has a filter will usually have a ``filter`` tag attached to it.
+There is usually a trade-off between precision and accuracy that occurs when creating a detection. When an analyst creates a detection that is precise, it might be too specific to account for other malicious implementations of a technique, making it less accurate. On the other hand, an analytic that captures all malicious activity is more susceptible to capturing benign activity as well, raising the false positive rate. This would make the detection less precise, putting more work on the analyst to triage alerts. Let’s refer to our accurate detection of scheduled tasks. Since registry key creation occurs across all implementations, it will also alert on benign activity. For example, if a Windows application schedules an update to run, our detection analytic will alert, generating a false positive. It is possible to create detections that are both precise and accurate, but it is not possible for all techniques. When building detections, an analyst must weigh what is most important for them and the risks associated with favoring precise or accurate analytics.
 
-However, **since the recall of the analytic is lowered,** the defender needs to be aware of the blind spots present due to the filtering out of certain activity. Since certain activity is filtered out, how can you ensure that activity that might occur in the analytic can be captured in other ways, potentially increasing robustness? This might be more relevant to tool level analytics (Levels 2-3) and technique-level analytics (Levels 4-5). However, it is important to understand the trade-offs of a filter and how it might be mitigated.
+There is also our third component to a robust detection: resistance to adversary evasion over time. This ensures that detections created, regardless of current or future implementations, can remain effective. Resistance to adversary evasion over time more closely aligns with the component of accuracy. As a defender builds a detection that uses observables associated with techniques (Levels 4 and 5), it covers multiple or all implementations and is more difficult for the adversary to evade. Once a defender’s detection is at the top of the pyramid, the most likely way an adversary will evade detection is through changing their technique entirely. Because of this, accuracy and resistance to adversary evasion over time are closely aligned. However, precision can also be resistant to adversary evasion. The observables chosen to filter out benign activity can be built in a way that is difficult for adversaries to manipulate, making it more difficult for adversaries to hide in exclusions. 
 
-.. figure:: _static/AnalyticAnalysis_Filter.png
-   :alt: The presence of a filter will increase precision, but decrease recall.
-   :align: center
+The Summiting the Pyramid robustness matrix can help a defender map an analytic to their resistance to adversary evasion over time, translating to accuracy and impacting precision. Want to know how to score your detection analytics for accuracy and resistance to adversary evasion? Read our guidance  on scoring detection analytics. 
 
-After determining the presence of a filter, we can focus on identifying the precision and recall of the selection. It is nearly impossible to consider all possible intentions, actions, and implementations that can be accomplished by the adversary in this context; we can’t know the intentions of the adversary. This is why the robustness goal of the analytic will help us determine how precise and encompassing the analytic is.
+Bringing It All Together Through Robust Detection 
+-------------------------------------------------
 
-Unlike the filter, we will need to investigate further to determine the impact of precision and recall on the analytic. The precision and recall of an analytic that is detecting malicious activity will depend on the steps later in this process.
+A robust detection is what we look to achieve in our detection environment. While this might not be possible for all detections, it is important to know how to measure the accuracy, precision, and resistance to adversary evasion over time for the detection, find balance between them, and fill the gaps within your detection environment with additional logging or detections.
 
-Step 3: Analyze Individual Observables and Place in Precision Buckets
----------------------------------------------------------------------
-The steps to determine the impact of precision and recall on an analytic are similar to the steps we would take to score the robustness of an analytic. Through these steps, we will look at the event source observable, the analytic observables, and the boolean logic of the analytic to see its impact on precision and recall. 
-
-**Step 3.1: Analyze the impact of the event source on the precision and recall of an analytic**
-The event source used within the analytic will have an impact on how many observables, fields, and related behavior could be pulled into the analytic. This will be most impactful for technique-level analytics, as there is more of a chance that certain techniques will be more prone to false positives.
-
-Our team did an in-depth analysis to determine which ATT&CK data sources were used for each ATT&CK technique. Some data sources are connected to multiple techniques, with some attaching to hundreds of techniques. Others came in with only a few to detect the technique. This shows us that some techniques may require more data sources to detect the whole of the technique or specific implementations. :ref:`Check out our research here! <Data Source Count>`
-
-This is not to say that techniques with a higher number of connected data sources are bad to build detections for. It gives us defenders an understanding of how to balance precision, recall, and robustness within an analytic.
-
-.. figure:: _static/AnalyticAnalysis_TechniqueDataSource.png
-   :alt: Techniques which are connected to more data sources may result in less precise analytics, while low numbers may increase precision.
-   :align: center
-
-**Step 3.2: Place analytic observables in precision buckets**
-Next, we will analyze the individual observables in the perspective of precision and recall.
-
-Previously, we scored each of these observables for robustness, as in the effort needed by an adversary to evade an analytic. Now, we will determine if each of these might limit or increase precision, and the adverse affect on recall. To do this, we have created additional groupings to bucket certain behaviors as precise, malicious behavior or generated, potentially benign behavior. These are what we call precision buckets. Each of these buckets represent different groupings of activities which have varying impacts on the precision of an analytic based on how they are generated within the OS. 
-
-  - **Configurable:** Observables which can be edited, changed, or updated by the user.
-  - **Data Component Parameters:** Observables which result from processes running in the OS
-  - **Session Information:** Observables which relate to the specific session, process, or application running.
-  - **Server:** Observables managed by and generated by the server.
-
-Each of these buckets have a different impact on precision and recall. We’ve grouped observables into the buckets below.
-
-.. figure:: _static/PrecisionBuckets.png
-   :alt: Observables placed in precision buckets.
-   :align: center
-
-**Step 3.3: Identify the Boolean logic for each selection of the analytic**
-Finally, we will determine how the boolean logic for an analytic will increase or decrease its precision or recall. 
-
-First, we will start with OR. If an analytic is looking to detect observable A OR observable B, as long as its in the context of the malicious activity, it will increase the recall of the activity, as its widening the scope of the activity caught.
-
-.. figure:: _static/AnalyticAnalysis_ORLogic.png
-   :alt: OR Boolean Logic will increase recall of an analytic.
-   :align: center
-
-An AND boolean operator will decrease the recall of an event, since it will limit the number of relevant activities which are caught by an analytic. It could potentially increase precision, if an analytic at the specific context requires more than one observable in order to identify malicious context.
-
-.. figure:: _static/AnalyticAnalysis_ANDLogic.png
-   :alt: AND Boolean Logic will decrease recall of an analytic.
-   :align: center
-
-**Now What?**
-Through this guidance, we now understand how precision, recall, and robustness work together to build analytics. Based on this guidance, you can now update your analytic based on what you’re looking to accomplish within your detections.
-
-  - Want to increase robustness? Raise your analytics to Tool- or Technique-level robustness detections.
-  - Want to increase precision? Add a filter, or alert on specific IOCs.
-  - Want to increase recall? Widen your analytic scope to encompass more events in the specific-robustness level.
+Want to know how to bring this all together? Read our guidance  that outlines the steps needed to create a robust detection.
 
 .. rubric:: References
 
-.. [#f1] https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
-
-
+.. [#f1] https://attack.mitre.org/techniques/T1053/005/

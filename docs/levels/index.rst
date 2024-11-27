@@ -35,7 +35,7 @@ There are three columns that represent where event data originates within the OS
 
 **Columns: Network Traffic Robustness Columns**
 
-There are three columns that represent where event data originates within the OS.
+There are two columns that represent visibility into network traffic.
 
 .. toctree::
     :maxdepth: 1
