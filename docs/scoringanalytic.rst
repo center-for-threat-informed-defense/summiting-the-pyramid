@@ -158,7 +158,7 @@ The sensor data was placed at the kernel-mode level, placing the score of the fi
    :alt: Suspicious Pipe Creation final score
    :align: center
 
-   The final score of the suspicious pipes analytic is 1K [#f1]_
+   The final score of the suspicious pipes analytic is 1K. [#f1]_
 
 And that’s it! You have officially scored an analytic based on the Summiting the Pyramid methodology. You can apply these steps to your own environment, see where your analytics fall, and determine if there are any ways your analytics can be improved.
 
