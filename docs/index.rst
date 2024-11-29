@@ -24,7 +24,7 @@ of the art and the state of the practice in threat-informed defense globally.
     scoringanalytic
     analytics/index
     robustdetection
-    capability-abstraction
+    D3
     precision-recall-robustness
     futurework
     thanks
