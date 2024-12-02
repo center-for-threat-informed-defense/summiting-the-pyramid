@@ -12,6 +12,11 @@ with the Summiting the Pyramid methodology.
     task_scheduling
     service_registry_permissions_weakness_check
     access_token_manipulation
+    executable_download_webdav
+    link_download_webdav
+    remote_registry
+    file_creation_date
+    zeek_dce_rpc
 
 .. _Scored Analytics:
 
