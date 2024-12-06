@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Summiting the Pyramid"
-copyright = "2023, Center for Threat-Informed Defense"
+copyright = "2024, Center for Threat-Informed Defense"
 author = "Center for Threat-Informed Defense"
 
 # The full version, including alpha/beta/rc tags

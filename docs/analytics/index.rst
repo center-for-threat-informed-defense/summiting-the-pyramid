@@ -25,7 +25,7 @@ with the Summiting the Pyramid methodology.
 **Scored Analytics Repository:**
 
 There is also a published CSV file that contains analytics that have been scored with
-the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230802.csv>`
+the methodology: :download:`ScoredAnalytics <ScoredAnalytics_12062024.csv>`
 
 **Submitting an Analytic:**
 
