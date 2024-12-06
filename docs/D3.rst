@@ -8,7 +8,7 @@ What Is D3?
 
 The Detection Decomposition Diagram (D3) is a visual aid designed to showcase significant observables that exist across various implementations of a technique.  The focus of a D3 for a given technique is on the known malicious implementations to identify the most useful observables for use in a robust analytic.  While the primary focus is on observables that can be used for accuracy, the D3 will also include the most significant benign implementations to keep precision in mind and help guide analytic development toward as robust an analytic as possible.
 
-The D3 tool is most helpful in the first step of the robust detection development process, identifying all spanning sets of observables for malicious behavior  as a way to illuminate key observables and where those spanning sets may exist.  The D3 can also be leveraged during continual refinement of developed analytics, however, as well as during later sets.  Finally, the D3 can be a useful tool in visually depicting how accuracy, precision, and robustness come together when evaluating an analytic across various implementations of a technique.  
+The D3 tool is most helpful in the first step of the robust detection development process, :ref:`identifying all spanning sets of observables for malicious behavior<Spanning Sets>` as a way to illuminate key observables and where those spanning sets may exist. The D3 can also be leveraged during continual refinement of developed analytics, however, as well as during later sets.  Finally, the D3 can be a useful tool in visually depicting how accuracy, precision, and robustness come together when evaluating an analytic across various implementations of a technique.  
 
 One caveat is that a D3 is not necessarily comprehensive of all variations of specific technique procedures. The goal of a D3 is not to capture every single value possible for an observable in each implementation, as that could overwhelm the visual and make it too difficult to understand. Rather, the D3 should highlight the most significant implementations and observables in a way that highlights all implementations at a higher, more abstracted level in a way that is helpful for defenders and detection engineers, with the ultimate focus being on shaping robust analytics.
 
@@ -74,7 +74,7 @@ While an analytic focused on the ``TargetImage`` value is very accurate, it woul
 
    The highlighted observables (TargetImage, GrantedAccess) are fields that can be used to increase the accuracy and precision of the LSASS detection.
 
-This more precise focus for our analytic helps us get closer to a more useful, robust detection. If we place the ``GrantedAccess`` masks defined on the ATT&CK page that are associated with malicious implementations of OS Credential Dumping, specifically 0x1010 and 0x1410, [#f6]_  we see more targeted results produced by our detection analytic. Our analytic is accurate and scores at a Level 4 (Core to Some Implementations of (Sub-)Technique) on the Summiting model, making it reasonably resistant to adversary evasion over time.
+This more precise focus for our analytic helps us get closer to a more useful, robust detection. If we place the ``GrantedAccess`` masks defined on the ATT&CK page that are associated with malicious implementations of OS Credential Dumping, specifically 0x1010 and 0x1410, [#f6]_  we see more targeted results produced by our detection analytic. Our analytic is accurate and scores at a :ref:`Some Implementations` on the Summiting model, making it reasonably resistant to adversary evasion over time.
 
 .. figure:: _static/DetectionSelection_CredentialDumping_Accurate.png
    :alt: Detection selection for OS Credential Dumping with GrantedAccess mask
@@ -82,11 +82,11 @@ This more precise focus for our analytic helps us get closer to a more useful, r
 
    The result of adding in GrantedAccess to the OS Credential Dumping query.
 
-The ``GrantedAccess`` mask field also allows us to highlight the most likely malicious events, making it accurate and precise. A large majority of the benign uses of ``lsass.exe`` are made using the 0x1fffff access mask, while the 0x1010 and 0x1410 are far less common. These masks allow us to dramatically lower our false positives while retaining visibility for multiple implementations of LSASS memory access. Additional malicious GrantedAccess masks could be added to make the analytic more accurate in capturing more implementations based on what is expected within the environment. Since this is not a Level 5 (Core to (Sub-)Technique) detection, it will not capture all malicious events.
+The ``GrantedAccess`` mask field also allows us to highlight the most likely malicious events, making it accurate and precise. A large majority of the benign uses of ``lsass.exe`` are made using the 0x1fffff access mask, while the 0x1010 and 0x1410 are far less common. These masks allow us to dramatically lower our false positives while retaining visibility for multiple implementations of LSASS memory access. Additional malicious GrantedAccess masks could be added to make the analytic more accurate in capturing more implementations based on what is expected within the environment. Since this is not a :ref:`Technique`, it will not capture all malicious events.
 
 **Step 3: Add Exclusions for False Positive Reduction.**
 
-While this analytic was much better in terms of accuracy and resistance to adversary evasion over time, there is still potential for false positives that we can try to address.  From the notes on an associated Splunk analytic and analysis in our own testing environment, we were able to discern that certain users accessing LSASS is probably more indicative of malicious behavior than other system-associated accounts, and thus could be a way to reduce some false positives.  The ``SourceUser`` field is managed by the organization and specific to the environment, making it a Level 3: Core to Pre-Existing Tools or Inside Boundary. Additionally, the value ``NT AUTHORITY\SYSTEM`` is a specific value that is known to run mostly benign activities throughout the system.
+While this analytic was much better in terms of accuracy and resistance to adversary evasion over time, there is still potential for false positives that we can try to address.  From the notes on an associated Splunk analytic and analysis in our own testing environment, we were able to discern that certain users accessing LSASS is probably more indicative of malicious behavior than other system-associated accounts, and thus could be a way to reduce some false positives.  The ``SourceUser`` field is managed by the organization and specific to the environment, making it a :ref:`Pre-Existing Tools`. Additionally, the value ``NT AUTHORITY\SYSTEM`` is a specific value that is known to run mostly benign activities throughout the system.
 
 .. figure:: _static/SplunkQuery_SourceUser.png
    :alt: Field Options for OS Credential Dumping Detection
@@ -102,7 +102,7 @@ While this introduces another means for the adversary to potentially hide (by ac
 
    Increasing the precision of our analytic by looking at certain users that can call LSASS.
 
-Therefore, our final analytics scoring comes out to a 3U with the use of a filter:
+Therefore, our final analytics scoring comes out to a **3U** with the use of a filter:
 
 .. figure:: _static/RobustnessScore_CredentialDumping.png
    :alt: Robustness Score for OS Credential Dumping
@@ -113,7 +113,7 @@ Therefore, our final analytics scoring comes out to a 3U with the use of a filte
 T1053.005: Scheduled Tasks
 --------------------------
 
-For a more detailed process of the Scheduled Task D3 visual, please refer to the Building a Robust Detection walkthrough. 
+For a more detailed process of the Scheduled Task D3 visual, :ref:`please refer to the Building a Robust Detection walkthrough<Build Robust Detection>`. 
 
 .. figure:: _static/D3_ScheduledTasks_Basic.png
    :alt: D3 visual for scheduled tasks
@@ -124,13 +124,13 @@ For a more detailed process of the Scheduled Task D3 visual, please refer to the
 T1110.001: Brute Force: Password Guessing
 -----------------------------------------
 
-This example D3 depicts the Password Guessing technique, and in doing so shows the significant overlap in malicious and benign execution.  Due to this overlap, it is very difficult to differentiate adversarial failed login attempts from benign, typical attempts.
+This example D3 depicts the Password Guessing technique, [#f7]_ and in doing so shows the significant overlap in malicious and benign execution.  Due to this overlap, it is very difficult to differentiate adversarial failed login attempts from benign, typical attempts.
 
 .. figure:: _static/D3_PasswordGuessing_Basic.png
    :alt: D3 visual for password guessing
    :align: center
 
-   D3 for Brute Force: Password Guessing.
+   D3 for Brute Force: Password Guessing. [#f7]_
 
 Because of the difficulty with differentiation, precision is a key factor to making a useful analytic so that analysts are not overwhelmed with false positives they need to investigate.  One robust field that can be used to assist with narrowing down results is the Status code for Windows Event ID 4625, or the Error Code value for Windows Event ID 4776 (which conveniently have equivalent values).  One `Sigma analytic <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_susp_failed_logon_reasons.yml>`_ that leverages these values is represented on the D3 below.
 
@@ -150,3 +150,4 @@ While this analytic still does not completely eliminate the chances of returning
 .. [#f4] https://attack.mitre.org/techniques/T1003/001/
 .. [#f5] https://learn.microsoft.com/en-us/windows/win32/secauthz/access-rights-and-access-masks
 .. [#f6] https://www.splunk.com/en_us/blog/security/you-bet-your-lsass-hunting-lsass-access.html
+.. [#f7] https://attack.mitre.org/techniques/T1110/001/

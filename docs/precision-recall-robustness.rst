@@ -1,7 +1,9 @@
+.. _Components:
+
 Components of a Robust Detection
 ================================
 
-A robust detection is one that is accurate, precise, and resistant to adversary evasion over time.  But what does that look like when we are building out a detection?
+A :ref:`robust detection<Robust Detection>` is one that is accurate, precise, and resistant to adversary evasion over time.  But what does that look like when we are building out a detection?
 
 Let’s first establish some key terms that will help us distinguish the types of alerts a defender will see within their environment:
 
@@ -21,7 +23,7 @@ Malicious activity or benign activity will be categorized as one of these four a
 Precise Detection 
 -----------------
 
-A precise detection has a low probability of alerting on benign activity, making it great for detecting on specific, malicious activity. This generates a low false positive rate for one’s detection environment. 
+A :ref:`precise detection<Precision>` has a low probability of alerting on benign activity, making it great for detecting on specific, malicious activity. This generates a low false positive rate for one’s detection environment. 
 
 Let’s think of detecting malicious Scheduled Task activity. Many actors use their own tools to schedule tasks and maintain persistence within their environment. One of those tools is Shamoon. If we wanted to build a precise detection analytic against Shamoon, [#f1]_  we could use a hash value to detect on the specific use of this malicious activity within our environment. The use of this hash value is precise because it is highly unlikely that we will capture benign activity within this detection. A precise detection allows us to alert on known malicious activity, lowering benign activity detection.
 
@@ -34,9 +36,9 @@ Let’s think of detecting malicious Scheduled Task activity. Many actors use th
 Accurate Detection 
 ------------------
 
-An accurate  detection has high probability to detect malicious activity. Visualizing this in terms of a technique or a specific topic of coverage in a detection, an analytic would catch all malicious activity. So, the selection area of an analytic could be very large. 
+An :ref:`accurate detection<Accuracy>` has high probability to detect malicious activity. Visualizing this in terms of a technique or a specific topic of coverage in a detection, an analytic would catch all malicious activity. So, the selection area of an analytic could be very large. 
 
-The ATT&CK page identifies many malicious technique implementations of Scheduled Task activities. [#f1]_  A Scheduled Task analytic that has high recall will capture many of those documented malicious implementations. For example, when a task is scheduled, it creates a new registry key.  Because this would occur across all implementations of scheduled tasks, an analytic that detects the creation of a registry key within the task scheduler would be considered an accurate detection. This detection could also be resistant to adversary evasion over time, since this activity occurs across all implementations of a technique and cannot be avoided.
+The ATT&CK page identifies many malicious technique implementations of Scheduled Task activities. [#f1]_  A Scheduled Task analytic that has high recall will capture many of those documented malicious implementations. For example, when a task is scheduled, it creates a new registry key. [#f2]_ Because this would occur across all implementations of scheduled tasks, an analytic that detects the creation of a registry key within the task scheduler would be considered an accurate detection. This detection could also be resistant to adversary evasion over time, since this activity occurs across all implementations of a technique and cannot be avoided.
 
 .. figure:: _static/PrecisionAccuracy_AccurateDetection.png
    :alt: Accurate detection using registry key value
@@ -51,15 +53,16 @@ There is usually a trade-off between precision and accuracy that occurs when cre
 
 There is also our third component to a robust detection: resistance to adversary evasion over time. This ensures that detections created, regardless of current or future implementations, can remain effective. Resistance to adversary evasion over time more closely aligns with the component of accuracy. As a defender builds a detection that uses observables associated with techniques (Levels 4 and 5), it covers multiple or all implementations and is more difficult for the adversary to evade. Once a defender’s detection is at the top of the pyramid, the most likely way an adversary will evade detection is through changing their technique entirely. Because of this, accuracy and resistance to adversary evasion over time are closely aligned. However, precision can also be resistant to adversary evasion. The observables chosen to filter out benign activity can be built in a way that is difficult for adversaries to manipulate, making it more difficult for adversaries to hide in exclusions. 
 
-The Summiting the Pyramid robustness matrix can help a defender map an analytic to their resistance to adversary evasion over time, translating to accuracy and impacting precision. Want to know how to score your detection analytics for accuracy and resistance to adversary evasion? Read our guidance  on scoring detection analytics. 
+The Summiting the Pyramid robustness matrix can help a defender map an analytic to their resistance to adversary evasion over time, translating to accuracy and impacting precision. Want to know how to score your detection analytics for accuracy and resistance to adversary evasion? :ref:`Read our guidance  on scoring detection analytics<scoring analytic>`. 
 
 Bringing It All Together Through Robust Detection 
 -------------------------------------------------
 
 A robust detection is what we look to achieve in our detection environment. While this might not be possible for all detections, it is important to know how to measure the accuracy, precision, and resistance to adversary evasion over time for the detection, find balance between them, and fill the gaps within your detection environment with additional logging or detections.
 
-Want to know how to bring this all together? Read our guidance  that outlines the steps needed to create a robust detection.
+Want to know how to bring this all together? :ref:`Read our guidance  that outlines the steps needed to create a robust detection<Build Robust Detection>`.
 
 .. rubric:: References
 
 .. [#f1] https://attack.mitre.org/techniques/T1053/005/
+.. [#f2] :ref:`Scheduled Tasks`

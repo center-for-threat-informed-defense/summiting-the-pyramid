@@ -1,7 +1,9 @@
+.. _Build Robust Detection:
+
 How to Build a Robust Detection 
 ===============================
 
-Summiting the Pyramid’s goal is to build robust detection analytics that are accurate, precise,  and difficult for adversaries to evade. The following guide Pyramid provides defenders with the resources to build robust detections that account for underlying behavior and minimize false positives.
+Summiting the Pyramid’s goal is to build :ref:`robust detection<Robust Detection>` analytics that are :ref:`accurate, precise, and difficult for adversaries to evade<Components>`. The following guide Pyramid provides defenders with the resources to build robust detections that account for underlying behavior and minimize false positives.
 
 **NOTE: These results might look different in your environment.** While the guide below gives specific examples of how to increase accuracy and precision within your environment, results may vary based on policies and varying environmental baselines. Be sure to test results in your environment while implementing best practices.
 
@@ -16,7 +18,7 @@ As Jared Atkinson writes in his blog on the Funnel of Fidelity, [#f1]_  defender
 
    The Funnel of Fidelity, by SpecterOps. [#f1]_
 
-Malicious activity generates many potential observables, including ephemeral values, tool artifacts, and underlying OS function calls and events. Achieving high accuracy can be accomplished by collecting a “spanning set” of observables across many or all implementations. A spanning set is any set of observables, that when combined, will be triggered no matter how a technique is implemented. This set can also contribute to understanding observables that contribute to resistance to adversary evasion over time, because the observables are core to the underlying behaviors employed by the tools. One way to visualize the observables and which sets might span the implementations is through a Detection Decomposition Diagram (D3). 
+Malicious activity generates many potential observables, including ephemeral values, tool artifacts, and underlying OS function calls and events. Achieving high accuracy can be accomplished by collecting a “spanning set” of observables across many or all implementations. A spanning set is any set of observables, that when combined, will be triggered no matter how a technique is implemented. This set can also contribute to understanding observables that contribute to resistance to adversary evasion over time, because the observables are core to the underlying behaviors employed by the tools. One way to visualize the observables and which sets might span the implementations is through a :ref:`D3`. 
 
 These D3 visuals will provide insight into event ID and analytic observables that provide good accuracy and resistance to adversary evasion. Selecting an observable that only includes ephemeral or tool-specific elements will be less resistant to adversary evasion and less accurate. Below is the D3 visual for Scheduled Tasks.
 
@@ -26,7 +28,7 @@ These D3 visuals will provide insight into event ID and analytic observables tha
 
    D3 for Scheduled Tasks.
 
-Check out the D3 write-up  to learn how to build your own for additional techniques!
+:ref:`Check out the D3 write-up to learn how to build your own for additional techniques!<D3>`
 
 As seen in this diagram, multiple event source observables point to the creation of a Scheduled Task. We can take the observables seen in the diagram and map each one to the Summiting model.
 
@@ -51,6 +53,8 @@ At the end of this step, we have three different analytic options that provide r
    Placement of scheduled task observables in Levels 4 and 5 of scoring model.
 
 These options from the spanning set provide us good accuracy and resistance to adversary evasion over time. 
+
+.. _Spanning Sets:
 
 Select Spanning Set(s) Most Specific to the Malicious Behavior 
 --------------------------------------------------------------
@@ -212,7 +216,7 @@ Finally, an additional step that can be taken to increase the precision of detec
 
 Overall, it is important that we create detections that are difficult for adversaries to evade. However, this is only one piece of the puzzle. By following these steps, a defender can build a robust detection, including precision, accuracy, and resistance to adversary evasion over time.
 
-**Want to see some more examples? Check out our analytics repository  and D3 write-up.** 
+Want to see some more examples? Check out our :ref:`analytics repository<analytics>` and :ref:`D3 write-up<D3>`.
 
 .. rubric:: References
 

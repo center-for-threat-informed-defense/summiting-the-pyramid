@@ -22,6 +22,8 @@ observable.
     adversary_tool
     ephemeral
 
+.. _Host-Based Columns:
+
 **Columns: Host-Based Event Robustness Columns**
 
 There are three columns that represent where event data originates within the OS.
@@ -32,6 +34,8 @@ There are three columns that represent where event data originates within the OS
     application
     user-mode
     kernel-mode
+
+.. _Network Traffic Columns:
 
 **Columns: Network Traffic Robustness Columns**
 

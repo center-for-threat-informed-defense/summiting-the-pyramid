@@ -101,7 +101,7 @@ Improved Analytic Scoring #1
       - 
       - 
 
-This analytic specifically looks at Event ID 5145, which generates every time a network share object is accessed. At a glance, this can look like Sysmon 18, but when access is requested for the network share itself the field appears as ``\``. [#f1]_ Event ID 5145 was given a score of K (Kernel-Mode) due to the level of permission needed at the kernel level to access network share objects. This analytic is looking for any remote access to the registry and is filtering on the remote source, giving it a score of Level 4 (Core to Some Implementations of a (Sub-)Technique), making the total score for this observable a **4K**. 
+This analytic specifically looks at Event ID 5145, which generates every time a network share object is accessed. At a glance, this can look like Sysmon 18, but when access is requested for the network share itself the field appears as ``\``. [#f1]_ Event ID 5145 was given a score of :ref:`Kernel-Mode` due to the level of permission needed at the kernel level to access network share objects. This analytic is looking for any remote access to the registry and is filtering on the remote source, giving it a score of :ref:`Some Implementations`, making the total score for this observable a **4K**. 
 
 The initial score for the filter was a **1K** because it would be easy for an adversary to change or spoof the IP address the filter is targeting. Additionally, IPs can be shared and frequently change from user to user within an internal network, making the filter not precise. When the Boolean logic is used to combine the scores, **we get a total analytic score of 1K**.
 

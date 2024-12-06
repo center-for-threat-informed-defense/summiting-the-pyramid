@@ -1,3 +1,5 @@
+.. _scoring analytic:
+
 How to Score Resistance to Adversary Evasion Over Time
 ======================================================
 
@@ -107,8 +109,7 @@ Step 2: Break Down Each of the Observables
 Each of the observables, or the individual components of an analytic, will have its own score. Scoring each observable individually will help us define a composite score for the whole analytic. Some observable scores will be more strongly determined by the fields searched, while others will be more influenced by the values specified.
 
 Next, the ``selection_malleable_profiles`` and
-``selection_malleable_profile_CatalogChangeListener`` selections by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a Level 2 dependency, being at the Level 2: Core to Adversary-Brought Tool level, since the pipe names can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for a protocol used by Windows Task Manager.  In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part without reconfiguring the tool. Additionally, this observable is looking only for the beginning of the pipe name. Due to this fact, the group of analytics is scored at a
-:ref:`Ephemeral Values`.
+``selection_malleable_profile_CatalogChangeListener`` selections by CobaltStrike or certain Windows tools. Since the pipe names specified look to be used by CobaltStrike, this initially seems like a Level 2 dependency, being at the :ref:`Adversary Brought Tool` level, since the pipe names can be changed by the adversary. However, upon closer inspection, these are actually not the names utilized by CobaltStrike tooling. For example, the pipe name ``ntsvcs`` is meant to be mistaken for a protocol used by Windows Task Manager.  In addition to somewhat similar pipe names, these pipe names can be easily changed by the adversary, requiring little effort on their part without reconfiguring the tool. Additionally, this observable is looking only for the beginning of the pipe name. Due to this fact, the group of analytics is scored at a :ref:`Ephemeral Values`.
 
 .. figure:: _static/pipes_level1_07052023.png
    :alt: Suspicious Pipe Creation selections scored at level 1
@@ -116,7 +117,7 @@ Next, the ``selection_malleable_profiles`` and
 
    The pipes created are scored at level 1, the Operational and Environmental Variables Level [#f1]_
 
-The last component of the analytic is the filter. This is used to improve the precision of the analytic, lowering the number of false positives that are generated. We can score the filter in terms of the ability for an adversary to manipulate the values within it based on their level of control within the victim environment. In this example, specific known pipe names are used to filter out Windows processes. These pipe names are specific and are inherent to the functioning of Windows processes, including the Windows Search protocol, [#f5]_ the Windows RPC protocol, [#f6]_  and other potential pre-existing software. [#f7]_ While pipe names can be considered ephemeral, the specificity for these pipe names and the configuration and permissions required to edit the tools raise the effort needed by an adversary. Because of this, the filter itself scores as a Level 3: Core to Pre-Existing Tools or Inside Boundary. 
+The last component of the analytic is the filter. This is used to improve the precision of the analytic, lowering the number of false positives that are generated. We can score the filter in terms of the ability for an adversary to manipulate the values within it based on their level of control within the victim environment. In this example, specific known pipe names are used to filter out Windows processes. These pipe names are specific and are inherent to the functioning of Windows processes, including the Windows Search protocol, [#f5]_ the Windows RPC protocol, [#f6]_  and other potential pre-existing software. [#f7]_ While pipe names can be considered ephemeral, the specificity for these pipe names and the configuration and permissions required to edit the tools raise the effort needed by an adversary. Because of this, the filter itself scores as a :ref:`Pre-Existing Tools`. 
 
 .. figure:: _static/ScoringAnalytic_Filter.png
    :alt: Suspicious Pipe Creation filter
@@ -129,7 +130,7 @@ Step 3: Analyze the Selection or Condition of the Analytic
 
 Before scoring the analytic, the final step is to consider how the separate components of an analytic are related. Understanding the logic of an analytic will help determine how robust it is.
 
-In Sigma specifically, two steps need to be looked at to understand the robustness of the full analytic, with all components combined as specified. The condition will say if each of the selections needs to be considered as an AND statement or an OR statement. There can also be a condition at the bottom of an analytic that might identify a filter that needs to be applied to the analytic.
+In Sigma specifically, two steps need to be looked at to understand the robustness of the full analytic, with all components combined as specified. The condition will say if each of the selections needs to be considered as an AND statement or an OR statement. [#f8]_ There can also be a condition at the bottom of an analytic that might identify a filter that needs to be applied to the analytic.
 
 .. figure:: _static/pipes_condition.png
    :alt: Suspicious Pipe Creation condition
@@ -151,7 +152,7 @@ Step 4: Give the Analytic a Final Score
 
 Now that we understand the individual components of this analytic, we can score the overall detection.
 
-The sensor data was placed at the kernel-mode level, placing the score of the final analytic in Column K: Kernel-Mode. The individual observables were all scored as ephemeral values, placing them at Level 1: Ephemeral Values. The filter values placed are specific and robust, making it both difficult for the adversary to evade and precise, placing the filter at Level 3: Core to Pre-Existing Tools or Inside Boundary. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the score of this analytic is **1K**.
+The sensor data was placed at the kernel-mode level, placing the score of the final analytic in :ref:`Kernel-Mode`. The individual observables were all scored as ephemeral values, placing them at :ref:`Ephemeral Values`. The filter values placed are specific and robust, making it both difficult for the adversary to evade and precise, placing the filter at :ref:`Pre-Existing Tools`. The condition logic of the analytic indicates the relationships between the observables will be scored as an AND condition. The AND condition makes the individual observables dependent on the lowest level observable being fulfilled, putting the observables at Level 1. Therefore, the score of this analytic is **1K**.
 
 
 .. figure:: _static/ScoringAnalytic_FinalScore.png
@@ -180,3 +181,4 @@ to our team.
 .. [#f5] https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-wsp/bffd9e13-108e-4580-a859-6f6586c50bbc
 .. [#f6] https://detect.fyi/threat-hunting-suspicious-named-pipes-a4206e8a4bc8
 .. [#f7] https://www.lrqa.com/en/cyber-labs/cve-2017-16245-cve-2017-16246-avecto-defendpoint-multiple-vulnerabilities/ 
+.. [#f8] :ref:`Robustness and Boolean Logic`

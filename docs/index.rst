@@ -20,12 +20,13 @@ of the art and the state of the practice in threat-informed defense globally.
     definitions
     levels/index
     booleanlogic
-    datasources
+    examplemappings
     scoringanalytic
     analytics/index
+    precision-recall-robustness
     robustdetection
     D3
-    precision-recall-robustness
+    
     futurework
     thanks
     changelog

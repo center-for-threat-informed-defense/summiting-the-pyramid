@@ -1,4 +1,4 @@
-.. _Data Sources:
+.. _Example Mappings:
 
 Example Mappings
 ================
@@ -43,7 +43,7 @@ Data sources from the network traffic include network sensors such as Zeek netwo
 Hypertext Transfer Protocol (HTTP)
 ----------------------------------
 
-Another procedure used for remote execution of T1053.005 is the PowerShell commandlet ``Register-ScheduledTask``. This procedure generates Windows Remote Management traffic over the HTTP protocol. Data sources include both Zeek logs and Zeek real-time protocol parser events. The relevant fields within each log or parser event are assigned robustness scores according to our new network robustness matrix.
+Another procedure used for remote execution of T1053.005 is the PowerShell commandlet ``Register-ScheduledTask``. This procedure generates Windows Remote Management traffic over the HTTP protocol. Data sources include both Zeek logs and Zeek real-time protocol parser events. The relevant fields within each log or parser event are assigned robustness scores according to the :ref:`Summiting the Pyramid new network robustness model<Network Traffic Columns>`.
 
 **Observables within HTTP Protocol Headers.** Using Zeek data, just as with the RPC traffic, there are two means by which to analyze the HTTP protocol headers, as follows:
 
@@ -63,13 +63,13 @@ T1204.001: User Execution: Malicious Link (i.e., Web Distributed Authoring and V
 
 This write-up analyzes a class of malicious links related to Web Distributed Authoring and Versioning (WebDAV). Recent articles by cybersecurity researchers at Proofpoint and Any Run describe initial access and execution techniques that employ cunning usage of internet shortcut files (\*.URL), Windows shortcut files (\*.LNK), and Windows saved-search files (\*.SEARCH-MS) to manipulate victims into clicking on malicious links which then execute malicious content hosted on a WebDAV share controlled by the adversary. [#f8]_ 
 
-Detection analytics should focus on finding WebDAV URLs or Universal Naming Convention (UNC) paths within URL, link files (LNK), and SEARCH-MS files. Two approaches can be used: endpoint-based detection analytics and network-based detection analytics.
+Detection analytics should focus on finding WebDAV URLs or Universal Naming Convention (UNC) paths within URL, link files (LNK), and SEARCH-MS files. Two approaches can be used: :ref:`endpoint-based detection analytics<Host-Based Columns>` and :ref:`network-based detection analytics<Network Traffic Columns>`.
 
 **Endpoint-Based Observables**
 
-One detection analytic approach is to look at the file system of the target endpoint, using a regular expression pattern matching tool like Yara, to find instances of WebDAV links in the web cache, specifically within URL, LNK, and possibly SEARCH-MS files (if present). Any Run published Yara rules for detecting WebDAV links on the file system, and we scored these detection analytics on the endpoint robustness matrix. In most cases, the analytic robustness was Level 4 (Core to Some Implementations of a (Sub-)Technique), and the event robustness was Column A (Application), for a total score of **4A**.
+One detection analytic approach is to look at the file system of the target endpoint, using a regular expression pattern matching tool like Yara, to find instances of WebDAV links in the web cache, specifically within URL, LNK, and possibly SEARCH-MS files (if present). Any Run published Yara rules for detecting WebDAV links on the file system, and we scored these detection analytics on the endpoint robustness matrix. In most cases, the analytic robustness was :ref:`Some Implementations`, and the event robustness was :ref:`Application`, for a total score of **4A**.
 
-Another approach on the endpoint is to look for a process creation event with WebDAV links in the command-line parameters of cmd.exe or powershell.exe, which would indicate that the user actually clicked on the malicious LNK file. The analytic robustness was Level 3 (Core to Pre-Existing Tools or Inside Boundary), and the event robustness was Column K (Kernel-Mode), for a total score of **3K**.
+Another approach on the endpoint is to look for a process creation event with WebDAV links in the command-line parameters of cmd.exe or powershell.exe, which would indicate that the user actually clicked on the malicious LNK file. The analytic robustness was :ref:`Pre-Existing Tools`, and the event robustness was :ref:`Kernel-Mode`, for a total score of **3K**.
 
 .. figure:: _static/TechniqueMapping_WebDAV_Endpoint.PNG
    :alt: Technique Scoring for Scheduled Tasks Using RPC
@@ -77,7 +77,7 @@ Another approach on the endpoint is to look for a process creation event with We
 
 **Network-Based Observables**
 
-Another detection analytic approach is to monitor HTTP network traffic, using tools like Zeek or Suricata, looking for instances of WebDAV links within URL, LNK, and possibly SEARCH-MS files downloaded onto the target endpoint. Any Run also published a Suricata rule for detecting WebDAV links within HTTP network traffic, and we scored this detection analytic on the network robustness matrix. The analytic robustness was Level 4 (Core to Some Implementations of a (Sub-)Technique), and the event robustness was Column P (Protocol Payload Visibility), for a total score of **4P**. Of course, both Proofpoint and Any Run showed multiple examples of the adversary using the HTTPS protocol, instead of HTTP, which would obscure visibility into the Layer 7 payload and ultimately evade detection.
+Another detection analytic approach is to monitor HTTP network traffic, using tools like Zeek or Suricata, looking for instances of WebDAV links within URL, LNK, and possibly SEARCH-MS files downloaded onto the target endpoint. Any Run also published a Suricata rule for detecting WebDAV links within HTTP network traffic, and we scored this detection analytic on the network robustness matrix. The analytic robustness was :ref:`Some Implementations`, and the event robustness was :ref:`Payload`, for a total score of **4P**. Of course, both Proofpoint and Any Run showed multiple examples of the adversary using the HTTPS protocol, instead of HTTP, which would obscure visibility into the Layer 7 payload and ultimately evade detection.
 
 .. figure:: _static/TechniqueMapping_WebDAV_Network.PNG
    :alt: Technique Scoring for Scheduled Tasks Using RPC
