@@ -23,7 +23,7 @@ of the art and the state of the practice in threat-informed defense globally.
     examplemappings
     scoringanalytic
     analytics/index
-    precision-recall-robustness
+    detection-components
     robustdetection
     D3
     

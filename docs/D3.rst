@@ -6,11 +6,11 @@ Detection Decomposition Diagram (D3)
 What Is D3?
 -----------
 
-The Detection Decomposition Diagram (D3) is a visual aid designed to showcase significant observables that exist across various implementations of a technique.  The focus of a D3 for a given technique is on the known malicious implementations to identify the most useful observables for use in a robust analytic.  While the primary focus is on observables that can be used for accuracy, the D3 will also include the most significant benign implementations to keep precision in mind and help guide analytic development toward as robust an analytic as possible.
+The Detection Decomposition Diagram (D3) is a visual aid designed to showcase significant observables that exist across various implementations of a technique.  The focus of a D3 for a given technique is on the known malicious implementations to identify the most useful observables for use in a robust detection.  While the primary focus is on observables that can be used for resistance to adversary evasion and a low false negative rate, the D3 will also include the most significant benign implementations to keep the false positive rate in mind and help guide development toward as robust a detection as possible.
 
-The D3 tool is most helpful in the first step of the robust detection development process, :ref:`identifying all spanning sets of observables for malicious behavior<Spanning Sets>` as a way to illuminate key observables and where those spanning sets may exist. The D3 can also be leveraged during continual refinement of developed analytics, however, as well as during later sets.  Finally, the D3 can be a useful tool in visually depicting how accuracy, precision, and robustness come together when evaluating an analytic across various implementations of a technique.  
+The D3 tool is most helpful in the first step of the robust detection development process, :ref:`identifying all spanning sets of observables for malicious behavior<Spanning Sets>` as a way to illuminate key observables and where those spanning sets may exist. The D3 can also be leveraged during continual refinement of developed detections, however, as well as during later sets.  Finally, the D3 can be a useful tool in visually depicting how accuracy and robustness come together when evaluating a detection across various implementations of a technique.  
 
-One caveat is that a D3 is not necessarily comprehensive of all variations of specific technique procedures. The goal of a D3 is not to capture every single value possible for an observable in each implementation, as that could overwhelm the visual and make it too difficult to understand. Rather, the D3 should highlight the most significant implementations and observables in a way that highlights all implementations at a higher, more abstracted level in a way that is helpful for defenders and detection engineers, with the ultimate focus being on shaping robust analytics.
+One caveat is that a D3 is not necessarily comprehensive of all variations of specific technique procedures. The goal of a D3 is not to capture every single value possible for an observable in each implementation, as that could overwhelm the visual and make it too difficult to understand. Rather, the D3 should highlight the most significant implementations and observables in a way that highlights all implementations at a higher, more abstracted level in a way that is helpful for defenders and detection engineers, with the ultimate focus being on shaping robust detections.
 
 Our Inspiration: Capability Abstraction 
 ---------------------------------------
@@ -39,7 +39,7 @@ multiple tools can create a new service.
 
 These tools and implementations include standard Windows or commonly abused binaries, OS API calls or functions, and open-source or custom code that an adversary might copy or develop. These different implementations may call the Windows API differently, which in turn might call different RPC interfaces and methods. However, they all ultimately utilize the same registry key within the Registry Service Database. If an adversary wanted to evade detection at the tool level, they could create a new service by directly interacting with the Windows API, RPC, or Registry. This is not a hypothetical but has actually been seen in the wild. Threat group APT41 has utilized Windows service creation within their attacks not only through the utilization of the service creation tool (sc.exe), but also by directly modifying the registry itself. [#f3]_
 
-The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to Analytic Robustness Categories and Event Robustness Categories outlined by our methodology. As observables are assigned, further research can be conducted to identify detections based off those observables, especially for observables that might cover part or all of a technique. For example, if a kernel call is detected, is a specific Windows Event ID fired? Are any registry keys updated? Does a registry key change over all implementations of a technique? These details give the defender a broader perspective of not only the tools that use similar behaviors toward the lower levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
+The Summiting the Pyramid team is utilizing capability abstraction mappings to map certain observables to :ref:`Analytic Robustness Categories and Event Robustness Categories<Model Mapping Pages>` outlined by our methodology. As observables are assigned, further research can be conducted to identify detections based off those observables, especially for observables that might cover part or all of a technique. For example, if a kernel call is detected, is a specific Windows Event ID fired? Are any registry keys updated? Does a registry key change over all implementations of a technique? These details give the defender a broader perspective of not only the tools that use similar behaviors toward the lower levels of the operating system, but also how to think of detecting behaviors the closer an adversary gets to the kernel.
 
 T1003.001: OS Credential Dumping LSASS Memory
 ---------------------------------------------
@@ -66,15 +66,15 @@ From there, we can see a spanning set of the ``TargetImage: “lsass.exe”`` is
 
 **Step 2: Select the Spanning Set(s) Most Specific to the Malicious Behavior**
 
-While an analytic focused on the ``TargetImage`` value is very accurate, it would also capture all of the benign activity involving LSASS.  We want to keep the analytic as precise and focused on the malicious behavior as possible, so next we will look at the associated events triggered when LSASS is accessed and try to identify a more specific spanning set.  From our investigation, Sysmon EID 10, which produces the ``TargetImage`` field, also has a field called ``GrantedAccess``. ``GrantedAccess`` is a 32-bit mask that defines the access rights to a certain object. [#f5]_  The ``GrantedAccess`` mask values could help differentiate typical benign LSASS access from potentially malicious access.
+While an analytic focused on the ``TargetImage`` value has a low false negative, it would also capture all of the benign activity involving LSASS.  We want to keep the analytic focused on the malicious behavior while also maintaining a manageable false positive rate, so next we will look at the associated events triggered when LSASS is accessed and try to identify a more specific spanning set.  From our investigation, Sysmon EID 10, which produces the ``TargetImage`` field, also has a field called ``GrantedAccess``. ``GrantedAccess`` is a 32-bit mask that defines the access rights to a certain object. [#f5]_  The ``GrantedAccess`` mask values could help differentiate typical benign LSASS access from potentially malicious access.
 
 .. figure:: _static/D3_CredentialDumping_GrantedAccess.png
    :alt: D3 for Accurate OS Credential Dumping with GrantedAccess mask
    :align: center
 
-   The highlighted observables (TargetImage, GrantedAccess) are fields that can be used to increase the accuracy and precision of the LSASS detection.
+   The highlighted observables (TargetImage, GrantedAccess) are fields that can be used to increase the accuracy of the LSASS detection.
 
-This more precise focus for our analytic helps us get closer to a more useful, robust detection. If we place the ``GrantedAccess`` masks defined on the ATT&CK page that are associated with malicious implementations of OS Credential Dumping, specifically 0x1010 and 0x1410, [#f6]_  we see more targeted results produced by our detection analytic. Our analytic is accurate and scores at a :ref:`Some Implementations` on the Summiting model, making it reasonably resistant to adversary evasion over time.
+This re-focus helps us get closer to a more useful, robust detection. If we place the ``GrantedAccess`` masks defined on the ATT&CK page that are associated with malicious implementations of OS Credential Dumping, specifically 0x1010 and 0x1410, [#f6]_  we see more targeted results produced by our detection analytic. Our detection is accurate and scores at a :ref:`Some Implementations` on the Summiting model, making it reasonably resistant to adversary evasion over time.
 
 .. figure:: _static/DetectionSelection_CredentialDumping_Accurate.png
    :alt: Detection selection for OS Credential Dumping with GrantedAccess mask
@@ -82,7 +82,7 @@ This more precise focus for our analytic helps us get closer to a more useful, r
 
    The result of adding in GrantedAccess to the OS Credential Dumping query.
 
-The ``GrantedAccess`` mask field also allows us to highlight the most likely malicious events, making it accurate and precise. A large majority of the benign uses of ``lsass.exe`` are made using the 0x1fffff access mask, while the 0x1010 and 0x1410 are far less common. These masks allow us to dramatically lower our false positives while retaining visibility for multiple implementations of LSASS memory access. Additional malicious GrantedAccess masks could be added to make the analytic more accurate in capturing more implementations based on what is expected within the environment. Since this is not a :ref:`Technique`, it will not capture all malicious events.
+The ``GrantedAccess`` mask field also allows us to highlight the most likely malicious events, making it highly accurate. A large majority of the benign uses of ``lsass.exe`` are made using the 0x1fffff access mask, while the 0x1010 and 0x1410 are far less common. These masks allow us to dramatically lower our false positives while retaining visibility for multiple implementations of LSASS memory access. Additional malicious GrantedAccess masks could be added to make the detection more accurate in capturing more implementations based on what is expected within the environment. Since this is not a :ref:`Technique`, it will not capture all malicious events.
 
 **Step 3: Add Exclusions for False Positive Reduction.**
 
@@ -100,7 +100,7 @@ While this introduces another means for the adversary to potentially hide (by ac
    :alt: Detection selection for OS Credential Dumping with Filter
    :align: center
 
-   Increasing the precision of our analytic by looking at certain users that can call LSASS.
+   Increasing the accuracy of our analytic by looking at certain users that can call LSASS.
 
 Therefore, our final analytics scoring comes out to a **3U** with the use of a filter:
 
@@ -132,7 +132,7 @@ This example D3 depicts the Password Guessing technique, [#f7]_ and in doing so 
 
    D3 for Brute Force: Password Guessing. [#f7]_
 
-Because of the difficulty with differentiation, precision is a key factor to making a useful analytic so that analysts are not overwhelmed with false positives they need to investigate.  One robust field that can be used to assist with narrowing down results is the Status code for Windows Event ID 4625, or the Error Code value for Windows Event ID 4776 (which conveniently have equivalent values).  One `Sigma analytic <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_susp_failed_logon_reasons.yml>`_ that leverages these values is represented on the D3 below.
+Because of the difficulty with differentiation, understanding benign behavior and fields and values associated with it is a key factor to making a useful detection so that analysts are not overwhelmed with false positives they need to investigate.  One robust field that can be used to assist with narrowing down results is the Status code for Windows Event ID 4625, or the Error Code value for Windows Event ID 4776 (which conveniently have equivalent values).  One `Sigma analytic <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_susp_failed_logon_reasons.yml>`_ that leverages these values is represented on the D3 below.
 
 .. figure:: _static/D3_PasswordGuessing_ErrorCode.png
    :alt: D3 visual for password guessing
@@ -140,7 +140,7 @@ Because of the difficulty with differentiation, precision is a key factor to mak
 
    The Error Code provided in Windows EID 4776 can help reduce the false positive rate of this detection, but not eliminate completely.
 
-While this analytic still does not completely eliminate the chances of returning false positives, it does assist with narrowing down results for analysts to investigate while also being resistant to much adversary evasion over time.  This example highlights how some techniques do not cleanly differentiate between malicious and benign behavior, and while we can use precision guidance to narrow down alerts to more specifically focus on potentially malicious behavior, it may not be possible to do so effectively in all scenarios.
+While this analytic still does not completely eliminate the chances of returning false positives, it does assist with narrowing down results for analysts to investigate while also being resistant to much adversary evasion over time.  This example highlights how some techniques do not cleanly differentiate between malicious and benign behavior, and while we can use the robust detection guidance to narrow down alerts to more specifically focus on potentially malicious behavior, it may not be possible to do so effectively in all scenarios.
 
 .. rubric:: References
 

@@ -6,7 +6,7 @@ Level 1: Ephemeral Values
 
 **Description**: Observables that are trivial for an adversary to change, or that change even without adversary intervention.
 
-Ephemeral values capture the context of what is currently happening to a user, process, or system. These observables include process IDs, hash values, domain names, filenames, and others. While these observables offer high  :ref:`precision <Precision>`, they are often easy to evade.
+Ephemeral values capture the context of what is currently happening to a user, process, or system. These observables include process IDs, hash values, domain names, filenames, and others. While these observables offer high :ref:`accuracy <Accuracy>`, they are often easy to evade.
 
 **Why are these observables the lowest level?**
 

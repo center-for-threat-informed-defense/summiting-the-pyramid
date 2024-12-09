@@ -12,7 +12,7 @@ The Pyramid of Pain [#f1]_ has been used by detection engineers to determine the
 
    Pyramid of Pain by David Bianco
 
-Detection engineers can leverage the Pyramid of Pain to understand how difficult it is for adversaries to evade their analytics. A detection analytic focused on identifying hash values will be :ref:`precise<Precision>` in detecting a specific malware binary but will not detect a variant of that malware that has been altered by even a single byte. A detection at the tool level might be resistant to adversary evasion in detecting specific implementations of a technique but could create more false positives, pick benign user activity, and alert on system-generated noise if the implemented tool is native to the operating system (OS). Some analytics might use a combination of various indicators to increase both the precision and :ref:`accuracy<Accuracy>` of an adversary attack. In this work, we look to understand how adversaries evade detections to build stronger detection mechanisms, resulting in :ref:`robust detections<Robust Detection>`.
+Detection engineers can leverage the Pyramid of Pain to understand how difficult it is for adversaries to evade their analytics. A detection analytic focused on identifying hash values will be accurate in achieving a low false positive rate by detecting a specific malware binary but will not detect a variant of that malware that has been altered by even a single byte. A detection at the tool level might be resistant to adversary evasion in detecting specific implementations of a technique but could create more false positives, pick benign user activity, and alert on system-generated noise if the implemented tool is native to the operating system (OS). Some analytics might use a combination of various indicators to increase the :ref:`accuracy<Accuracy>` of an adversary attack. In this work, we look to understand how adversaries evade detections to build stronger detection mechanisms, resulting in :ref:`robust detections<Robust Detection>`.
 
 .. important::
 
@@ -22,7 +22,7 @@ Detection engineers can leverage the Pyramid of Pain to understand how difficult
 
 What is a Robust Detection?
 ---------------------------
-A :ref:`robust detections<Robust Detection>` is one that is :ref:`accurate<Accuracy>`, :ref:`precise<Precision>`, and resistant to adversary evasion over time. An accurate detection will capture all malicious implementations of a technique, while a precise detection will be less likely to alert on benign activity. The Summiting the Pyramid project pays extra special attention to understanding resistance to adversary evasion over time. The Pyramid of Pain can help us understand the components of a detection that are less susceptible to adversary evasion, and even help build analytics that are accurate and precise.
+A :ref:`robust detections<Robust Detection>` is one that is :ref:`accurate<Accuracy>` and resistant to adversary evasion over time. An accurate detection will capture all malicious implementations of a technique, while also being less likely to alert on benign activity. The Summiting the Pyramid project pays extra special attention to understanding resistance to adversary evasion over time. The Pyramid of Pain can help us understand the components of a detection that are less susceptible to adversary evasion, and even help build analytics that are accurate.
 
 Deconstructing the Pyramid
 --------------------------
@@ -68,11 +68,11 @@ The :ref:`network-based model<Network Traffic Columns>` looks to understand how 
 How Do We Create Robust Detections?
 -----------------------------------
 
-A robust detection is one that is accurate, precise, and resistant to adversary evasion over time. The Summiting Project provides various resources to help a defender build robust detections, changing the game on the adversary:
+A robust detection is one that is accurate and resistant to adversary evasion over time. The Summiting Project provides various resources to help a defender build robust detections, changing the game on the adversary:
 
 * :ref:`Score Analytics for Resistance to Adversary Evasion:<scoring analytic>` Score your analytic observables against the Summiting host-based model or network traffic model to determine their resistance to adversary evasion over time and their impact on a detection’s accuracy.
-* :ref:`Robust Detection Guidance:<Build Robust Detection>` Combine the Summiting model scoring model with other concepts to build precise detections. This includes building filters that are specific and difficult for adversaries to manipulate and combining those filters with additional detections for stronger confidence in malicious activity.
-* :ref:`Analytic Repository:<analytics>` Use various examples of scored analytics against the Summiting scoring models, and how accuracy, precision, and resistance to adversary evasion over time can be improved.
+* :ref:`Robust Detection Guidance:<Build Robust Detection>` Combine the Summiting model scoring model with other concepts to build accurate detections. This includes building filters that are specific and difficult for adversaries to manipulate and combining those filters with additional detections for stronger confidence in malicious activity.
+* :ref:`Analytic Repository:<analytics>` Use various examples of scored analytics against the Summiting scoring models, and how accuracy and resistance to adversary evasion over time can be improved.
 
 Assumptions and Caveats
 -----------------------
@@ -82,7 +82,7 @@ The Summiting 2.0 project has the following scope and limitations:
 * **Tampering is out of scope.** Adversaries may evade detection by tampering with data sources, but this project focuses on scenarios where the data source is trusted.
 * **Tools and techniques change over time.** The analytic score might change as well. This goes for updates to the OS, pre-existing tools, changes to network infrastructure, and new adversary tool functionality, not just at Levels 4 and 5.
 * **Higher scoring analytics are harder to build.**  This is due to the level of research required for defenders to map the higher-level abstractions of TTPs into the lower level of observables, and it may not be within the realm of the defender’s control (or data sources and detection tools) whether the requisite observables are contained within the network protocol header or the payload. In many cases, the intrinsic behavior of the operating system, service, or application dictates which observables are in the header and which observables are in the payload.
-* **Not all networks are the same.** The research completed for precision and accuracy attempts to translate generally the steps and considerations for building robust detections. However, not all networks are the same. Defenders should take stock of their own network and apply Summiting best practices based on their use case.
+* **Not all networks are the same.** The research completed for accuracy attempts to translate generally the steps and considerations for building robust detections. However, not all networks are the same. Defenders should take stock of their own network and apply Summiting best practices based on their use case.
 * **Not all network-based ATT&CK techniques are the same.** There are some network-based ATT&CK (sub-)techniques in which the adversary may control both endpoints involved in a network connection, which would be the case for tactics such as Command and Control and Data Exfiltration. There are also some (sub-)techniques in which the adversary controls only one endpoint involved in the connection, such as during the initial stages of remote Execution and Lateral Movement.
 * **Other considerations.** There continues to be important properties of detections that have not been researched in-depth, such as the cost to engineer detections, the cost to collect corresponding data, the cost to run detections at scale, and so on. This is briefly touched on in :doc:`futurework`.
 

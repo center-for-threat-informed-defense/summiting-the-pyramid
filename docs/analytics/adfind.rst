@@ -129,7 +129,7 @@ The robustness of this analytic can be increased by leveraging the ``OriginalFil
 
 By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to **2K**.
 
-Another approach to improve the robustness of this analytic is to drop the condition of the ``Image`` or ``OriginalFileName`` completely since the command-line arguments specified in the first clause are likely unique to the ADFind tool. Adding that second clause adds a way for an adversary to evade the analytic without adding to precision or accuracy.
+Another approach to improve the robustness of this analytic is to drop the condition of the ``Image`` or ``OriginalFileName`` completely since the command-line arguments specified in the first clause are likely unique to the ADFind tool. Adding that second clause adds a way for an adversary to evade the analytic without decreasing accuracy.
 
 
 .. rubric:: References

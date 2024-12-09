@@ -165,7 +165,7 @@ EventID 4663 will be generated whenever an attempt is made to access the registr
 
 .. note::
 
-    SACLs have configuration options which can change the precision of an analytic. One
+    SACLs have configuration options which can change the accuracy of an analytic. One
     configuration option is to log the "Full Control" set of activity and get a complete
     view of registry key activity, and then query those results for when the registry
     key is read (when the ``AccessMask`` field has the corresponding value

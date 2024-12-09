@@ -17,35 +17,21 @@ Detection is the core of threat hunting activities. An analyst can create detect
 Accuracy
 --------
 
-**An accurate detection is one that has a high probability of detecting most or all malicious activity relating to a technique.**
-An accurate detection is one that has a high probability of detecting most or all malicious implementations of a technique. It is related to the number of implementations of a technique. Accuracy can be thought of similarly to the concept of recall. 
+**An accurate detection is one that has low false positives and low false negatives.** [#f2]_
 
-.. _Precision:
-
-Precision
----------
-
-**A precise detection is one that has a low probability of alerting on benign activity.**
-
-A precise detection is one that does not alert on many false positives. Ideally, you would want little to no false positives, making the analytic highly precise, or having a high rate of precision. You can measure precision using this equation: 
-
-True Positives (TP) = Malicious activities detected 
-
-False Positives (FP) = Benign activities detected as malicious 
-
-**Precision = TP / (TP + FP)** 
+The definition of accurate combines traditional detection metrics precision and recall. A precise detection is one that has a low probability of alerting on benign activity. A detection with high recall is one that has a high probability of detecting malicious events. A highly accurate detection will encompass high precision and recall rates. 
 
 .. _Robust Detection:
 
 Robust Detection
 ----------------
 
-**A robust detection is one that has high accuracy, high precision, and is resistant to adversary evasion over time.**
+**A robust detection is one that has high accuracy and is resistant to adversary evasion over time.**
 
-Three components make up a robust detection: it must be precise, accurate, and resistant to adversary evasion over time. For example:
-* A hash is precise, but not accurate or resistant to evasion over time.
-* A registry key created when scheduling a task is accurate and resistant to evasion over time, but not precise.
-* Detecting LSASS dumping through GrantedAccess masks and the target image lsass.exe is precise and accurate. It can also be made resistant to adversary evasion over time based on the observables used.
+Examples of how to analyze robust detections include the following:
+* A hash can provide a low false positive rate, but is not highly accurate to false negatives or resistant to evasion over time.
+* A registry key created when scheduling a task is accurate and resistant to evasion over time, but can have a high false positive rate due to benign behavior.
+* Detecting LSASS dumping through GrantedAccess masks and the target image lsass.exe is highly accurate. It can also be made resistant to adversary evasion over time based on the observables used.
 
 .. _Observable:
 
@@ -116,7 +102,7 @@ Originator Endpoint
 
 The originator endpoint is the device that initiates the relevant activity and the associated network connection. This term is adopted from Zeek documentation to describe the roles of each endpoint in a network connection.
 
-According to Zeek, “the context of a connection between an originator and a responder ... differ from packet-level concepts of source and destination, as well as from higher-level abstractions such as client and server … when establishing the connection state, with the sender of the initial packet becoming the originator and the recipient becoming the responder.” [#f2]_ 
+According to Zeek, “the context of a connection between an originator and a responder ... differ from packet-level concepts of source and destination, as well as from higher-level abstractions such as client and server … when establishing the connection state, with the sender of the initial packet becoming the originator and the recipient becoming the responder.” [#f3]_ 
 
 .. _Responder Endpoint:
 
@@ -131,5 +117,5 @@ The responder endpoint is the device that is the target of the relevant activity
 .. rubric:: References
 
 .. [#f1] https://www.mitre.org/sites/default/files/2021-11/prs-19-3892-ttp-based-hunting.pdf 
-.. [#f2] https://docs.zeek.org/en/current/scripting/basics.html#writing-scripts-connection-record 
+.. [#f2] https://www.sciencedirect.com/topics/engineering/classification-accuracy 
 .. [#f3] https://docs.zeek.org/en/current/scripting/basics.html#writing-scripts-connection-record 

@@ -38,7 +38,7 @@ Data sources from the network traffic include network sensors such as Zeek netwo
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
-**Conclusion.** For RPC network traffic, protocol header visibility is sufficient to identify remote access to the RPC interface and operation, ITaskScheduler and RpcSchRegisterTask, respectively, which maps directly to T1053.005 for (and similarly ``AtSvc::NetrJobAdd`` maps directly to T1053.002). Protocol payload visibility is not necessary to create robust detection analytics; rather, payload visibility would facilitate accurate and precise analytics.
+**Conclusion.** For RPC network traffic, protocol header visibility is sufficient to identify remote access to the RPC interface and operation, ITaskScheduler and RpcSchRegisterTask, respectively, which maps directly to T1053.005 for (and similarly ``AtSvc::NetrJobAdd`` maps directly to T1053.002). Protocol payload visibility is not necessary to create robust detection analytics; rather, payload visibility would facilitate accurate analytics.
 
 Hypertext Transfer Protocol (HTTP)
 ----------------------------------
