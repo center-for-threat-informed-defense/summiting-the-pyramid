@@ -6,7 +6,7 @@ Example Mappings
 `T1003.001: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
 ---------------------------------------------------------------------------
 
-.. figure:: _static/TechniqueMapping_LSASS.PNG
+.. figure:: _static/TechniqueMapping_LSASS.png
    :alt: Technique Scoring for LSASS Memory
    :align: center
 
@@ -14,7 +14,7 @@ Example Mappings
 `T1053.005 Scheduled Tasks <https://attack.mitre.org/techniques/T1053/005/>`_
 -----------------------------------------------------------------------------
 
-.. figure:: _static/TechniqueMapping_ScheduledTasks.PNG
+.. figure:: _static/TechniqueMapping_ScheduledTasks.png
    :alt: Technique Scoring for Scheduled Tasks
    :align: center
 
@@ -34,7 +34,7 @@ Data sources from the network traffic include network sensors such as Zeek netwo
 
 **Observables within RPC Data Payload.** Zeek does not log the contents of the RPC data payload (also known as RPC data stub) by default, which is a reasonable design choice because the data payload can be quite large, making it costly in terms of storage, and is often encrypted, making it of little value to an analyst if encrypted. Fortunately, Zeek is flexible and still makes the RPC data payload available to the analyst via the protocol-parser event ``dce_rpc_request_stub``. [#f4]_  Therefore, an analyst would create an event handler (via Zeek script) for the ``dce_rpc_request_stub`` event to identify the RPC interface/operation tuple of interest and then either add the data payload to the dce_rpc.log or create a separate log file for the RPC data payload. Of course, to make this approach worthwhile, the analyst would be knowledgeable of which RPC interface/operation tuples have unencrypted data payloads. The ``dce_rpc_request_stub`` event contains various records with the same relevant fields that are stored in the dce_rpc.log file, including ``c$dce_rpc$endpoint``, ``c$dce_rpc$operation``, ``id$orig_h``, ``id$orig_p``, ``id$resp_h``, and ``id$resp_p``. The event also has one extra field, ``stub``, which contains the RPC data payload.
 
-.. figure:: _static/TechniqueMapping_RPC.PNG
+.. figure:: _static/TechniqueMapping_RPC.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -54,7 +54,7 @@ Another procedure used for remote execution of T1053.005 is the PowerShell comma
 
 **Conclusion.** For HTTP network traffic, protocol header visibility is sufficient to identify remote access to the Windows Remote Management (WinRM) Service, via the URI ``/wsman``, which is generally aligned with `T1021.006 Remote Services: WinRM <https://attack.mitre.org/techniques/T1021/006/>`_ more so than with T1053.005 specifically. This would be a very robust detection analytic for remote access to WinRM in general, which would necessarily include remote execution of T1053.005 via HTTP/WinRM, but it would not conclusively identify T1053.005 via WinRM. In this case, protocol payload visibility would be beneficial to create detection analytics specific to T1053.005 via HTTP/WinRM.
 
-.. figure:: _static/TechniqueMapping_HTTP.PNG
+.. figure:: _static/TechniqueMapping_HTTP.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -71,7 +71,7 @@ One detection analytic approach is to look at the file system of the target endp
 
 Another approach on the endpoint is to look for a process creation event with WebDAV links in the command-line parameters of cmd.exe or powershell.exe, which would indicate that the user actually clicked on the malicious LNK file. The analytic robustness was :ref:`Pre-Existing Tools`, and the event robustness was :ref:`Kernel-Mode`, for a total score of **3K**.
 
-.. figure:: _static/TechniqueMapping_WebDAV_Endpoint.PNG
+.. figure:: _static/TechniqueMapping_WebDAV_Endpoint.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -79,7 +79,7 @@ Another approach on the endpoint is to look for a process creation event with We
 
 Another detection analytic approach is to monitor HTTP network traffic, using tools like Zeek or Suricata, looking for instances of WebDAV links within URL, LNK, and possibly SEARCH-MS files downloaded onto the target endpoint. Any Run also published a Suricata rule for detecting WebDAV links within HTTP network traffic, and we scored this detection analytic on the network robustness matrix. The analytic robustness was :ref:`Some Implementations`, and the event robustness was :ref:`Payload`, for a total score of **4P**. Of course, both Proofpoint and Any Run showed multiple examples of the adversary using the HTTPS protocol, instead of HTTP, which would obscure visibility into the Layer 7 payload and ultimately evade detection.
 
-.. figure:: _static/TechniqueMapping_WebDAV_Network.PNG
+.. figure:: _static/TechniqueMapping_WebDAV_Network.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
