@@ -32,7 +32,7 @@ their analytics around.
 
 The first four levels of the pyramid are focused on ephemeral values, which are easy for an adversary to change. The next level is not focused on values but on the types of tools an adversary will attempt to use during an attack. Finally, the top level is strictly focused on behaviors that an adversary will demonstrate during an attack.
 
-.. figure:: _static/1pyramid_breakdown_pt2_revised.png
+.. figure:: _static/pyramid_breakdown_revised.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
