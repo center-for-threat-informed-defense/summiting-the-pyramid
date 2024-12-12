@@ -1,7 +1,7 @@
 Summiting the Pyramid |version|
 ===============================
 
-.. figure:: _static/summit_the_pyramid_illustration.png
+.. figure:: _static/Summit_the_Pyramid_12.11.2024.png
    :alt: Summiting the Pyramid, Leveling Up Your Analytics
    :align: center
 
