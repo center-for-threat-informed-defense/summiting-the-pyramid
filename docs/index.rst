@@ -16,7 +16,7 @@ threat-informed defense globally.
 
     In version 2.0, we updated and improved the project in the following ways!
 
-    * Exploring how detection accuracy relates to robustness yada yada. See: :ref:`what-is-robust-detection`.
+    * Exploring how detection accuracy relates to robustness yada yada. See: :ref:`what-is-robust-detection`
     * Introducing Detection Decomposition Diagrams (D3), a new way to visualize and identify observables which are accurate and resistant to adversary evasion. :ref:`Checkout some D3 examples here<D3>`.
     * New Summiting scoring models! We updated our :ref:`host-based model<Host-Based Columns>` to include host-based network events, and created a new :ref:`network traffic model<Network Traffic Columns>`.
 
