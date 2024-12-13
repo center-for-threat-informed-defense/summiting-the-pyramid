@@ -14,12 +14,6 @@ Let’s first establish some key terms that will help us distinguish the types o
 
 Malicious activity or benign activity will be categorized as one of these four alert categories and will help defenders analyze the quality and effectiveness of their alerts.
 
-.. figure:: _static/PrecisionAccuracy_BaseDiagram.png
-   :alt: Sample detection environment
-   :align: center
-
-   A sample detection selection for scheduled task activities.
-
 Accurate Detection
 ------------------
 
@@ -29,7 +23,7 @@ A detection with low false positives does not alert on much benign activity, mak
 
 Let’s think of detecting malicious Scheduled Task activity. Many actors use their own tools to schedule tasks and maintain persistence within their environment. One of those tools is Shamoon. If we wanted to build a detection analytic against Shamoon that has a low false positive rate, [#f1]_  we could use a hash value to detect on the specific use of this malicious activity within our environment. The use of this hash value creates a low false positive rate because it is highly unlikely that we will capture benign activity within this detection.
 
-.. figure:: _static/PrecisionAccuracy_PreciseDetection.png
+.. figure:: _static/DetectionComponents_Hash.png
    :alt: Precise detection using hash value
    :align: center
 
@@ -39,7 +33,7 @@ A detection which has a low false negative rate is one that has a high probabilt
 
 The ATT&CK page identifies many malicious technique implementations of Scheduled Task activities. [#f1]_  A Scheduled Task analytic that has low false negative rate will capture many of those documented malicious implementations. For example, when a task is scheduled, it creates a new registry key. [#f2]_ Because this would occur across all implementations of scheduled tasks, an analytic that detects the creation of a registry key within the task scheduler would be considered an accurate detection. This detection could also be resistant to adversary evasion over time, since this activity occurs across all implementations of a technique and cannot be avoided.
 
-.. figure:: _static/PrecisionAccuracy_AccurateDetection.png
+.. figure:: _static/DetectionComponents_Registry.png
    :alt: Accurate detection using registry key value
    :align: center
 
