@@ -30,7 +30,7 @@ methodologies, defines all the key terms, and contains highly detailed examples.
 | Resource                                                                                       | Description                                                   |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Project Website](https://center-for-threat-informed-defense.github.io/summiting-the-pyramid/) | Complete documentation for the Summiting the Pyramid project. |
-| [Analytics Spreadsheet](docs/analytics/Scored_Analytics_20230802.csv)                          | A summary of the analytics scored by the project team.        |
+| [Analytics Spreadsheet](docs/analytics/ScoredAnalytics_12062024.csv)                          | A summary of the analytics scored by the project team.        |
 
 
 ## Getting Involved
