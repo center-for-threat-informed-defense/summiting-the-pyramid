@@ -13,10 +13,11 @@ Observables
 +-------------------------------+-----------------------------------------------------------------------------------------+
 | Category                      | Observable Fields                                                                       |
 +===============================+=========================================================================================+
-| Network Traffic Content       | | Examples include (but are not limited to):                                            |
-|                               | | Zeek Event: dce_rpc_request_stub [#f1]_                                               |
-|                               | | Zeek Event: http_entity_data [#f2]_                                                   |
-|                               | | Suricata rules allow access to the protocol payload.[#f3]_                            |
+| Network Traffic Content       | Examples include (but are not limited to):                                              |
+|                               |                                                                                         |
+|                               | * Zeek Event: dce_rpc_request_stub [#f1]_                                               |
+|                               | * Zeek Event: http_entity_data [#f2]_                                                   |
+|                               | * Suricata rules allow access to the protocol payload. [#f3]_                           |
 +-------------------------------+-----------------------------------------------------------------------------------------+
 
 .. rubric:: References

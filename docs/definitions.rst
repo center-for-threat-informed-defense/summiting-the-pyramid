@@ -8,7 +8,7 @@ This page defines the key terms used throughout our research.
 Detection
 ---------
 
-**A detection is the identification of malicious activity within one's environment.** [#f1]_ 
+**A detection is the identification of malicious activity within one's environment.** [#f1]_
 
 Detection is the core of threat hunting activities. An analyst can create detection rules based on the malicious activity they want to be alerted on and can update these rules as necessary. Detection logic feeds into the creation of an analytic query.
 
@@ -19,7 +19,7 @@ Accuracy
 
 **An accurate detection is one that has low false positives and low false negatives.** [#f2]_
 
-The definition of accurate combines traditional detection metrics precision and recall. A precise detection is one that has a low probability of alerting on benign activity. A detection with high recall is one that has a high probability of detecting malicious events. A highly accurate detection will encompass high precision and recall rates. 
+The definition of accurate combines traditional detection metrics precision and recall. A precise detection is one that has a low probability of alerting on benign activity. A detection with high recall is one that has a high probability of detecting malicious events. A highly accurate detection will encompass high precision and recall rates.
 
 .. _Robust Detection:
 
@@ -29,6 +29,7 @@ Robust Detection
 **A robust detection is one that has high accuracy and is resistant to adversary evasion over time.**
 
 Examples of how to analyze robust detections include the following:
+
 * A hash can provide a low false positive rate, but is not highly accurate to false negatives or resistant to evasion over time.
 * A registry key created when scheduling a task is accurate and resistant to evasion over time, but can have a high false positive rate due to benign behavior.
 * Detecting LSASS dumping through GrantedAccess masks and the target image lsass.exe is highly accurate. It can also be made resistant to adversary evasion over time based on the observables used.
@@ -89,7 +90,7 @@ Detections are constrained by the sensor data being used to log observables. The
 Network Traffic Robustness Categories
 -------------------------------------
 
-**Detections are constrained by the observables in the network traffic log, and the observables are dependent on the sensor’s visibility into the relevant network protocol.** 
+**Detections are constrained by the observables in the network traffic log, and the observables are dependent on the sensor’s visibility into the relevant network protocol.**
 
 The event robustness category columns look to create groups of event data observables based on how evasive they are within the relevant network protocol. In this release, two groups are defined: protocol header and protocol payload. This is a simple, yet flexible model that can be applied to any network protocol. For example, if the adversary’s activity occurs via the Hypertext Transfer Protocol (HTTP) protocol (OSI Layer 7), then the relevant observables would be grouped as either HTTP protocol header or HTTP protocol payload. Similarly, if the adversary’s activity occurs via the ICMP protocol (OSI Layer 3), then the relevant observables would be grouped as either ICMP protocol header or ICMP protocol payload. By simply using the labels Protocol Header and Protocol Payload, these event robustness categories can be applied easily to any protocol. Future releases could expand these categories, if needed.
 
@@ -102,7 +103,7 @@ Originator Endpoint
 
 The originator endpoint is the device that initiates the relevant activity and the associated network connection. This term is adopted from Zeek documentation to describe the roles of each endpoint in a network connection.
 
-According to Zeek, “the context of a connection between an originator and a responder ... differ from packet-level concepts of source and destination, as well as from higher-level abstractions such as client and server … when establishing the connection state, with the sender of the initial packet becoming the originator and the recipient becoming the responder.” [#f3]_ 
+According to Zeek, “the context of a connection between an originator and a responder ... differ from packet-level concepts of source and destination, as well as from higher-level abstractions such as client and server … when establishing the connection state, with the sender of the initial packet becoming the originator and the recipient becoming the responder.” [#f3]_
 
 .. _Responder Endpoint:
 
@@ -116,6 +117,6 @@ The responder endpoint is the device that is the target of the relevant activity
 
 .. rubric:: References
 
-.. [#f1] https://www.mitre.org/sites/default/files/2021-11/prs-19-3892-ttp-based-hunting.pdf 
-.. [#f2] https://www.sciencedirect.com/topics/engineering/classification-accuracy 
-.. [#f3] https://docs.zeek.org/en/current/scripting/basics.html#writing-scripts-connection-record 
+.. [#f1] https://www.mitre.org/sites/default/files/2021-11/prs-19-3892-ttp-based-hunting.pdf
+.. [#f2] https://www.sciencedirect.com/topics/engineering/classification-accuracy
+.. [#f3] https://docs.zeek.org/en/current/scripting/basics.html#writing-scripts-connection-record

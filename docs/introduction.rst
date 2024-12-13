@@ -20,6 +20,8 @@ Detection engineers can leverage the Pyramid of Pain to understand how difficult
     that the deployed sensors cannot detect. Therefore, it is imperative that defenders
     understand *where* and *what type* of activity their analytics are detecting.
 
+.. _what-is-robust-detection:
+
 What is a Robust Detection?
 ---------------------------
 A :ref:`robust detections<Robust Detection>` is one that is :ref:`accurate<Accuracy>` and resistant to adversary evasion over time. An accurate detection will capture all malicious implementations of a technique, while also being less likely to alert on benign activity. The Summiting the Pyramid project pays extra special attention to understanding resistance to adversary evasion over time. The Pyramid of Pain can help us understand the components of a detection that are less susceptible to adversary evasion, and even help build analytics that are accurate.
@@ -44,7 +46,7 @@ The next two rows distinguish two types of tools. :ref:`Adversary-brought tools 
 
 The behavior grouping is also split into two levels. These groupings are focused on identifying behaviors that are associated with MITRE ATT&CK techniques, making them the most difficult to evade, and providing defenders the tools to create the most robust detections. The :ref:`observables core to some implementations of a technique<Some Implementations>` are associated with low-variance behaviors, which are unavoidable without a substantially different implementation. :ref:`Observables core to a technique<Technique>` are the choke points or invariant behaviors, which are unavoidable by any implementation.
 
-Event Observables for Hosts and Networks 
+Event Observables for Hosts and Networks
 ----------------------------------------
 
 In addition to these five rows, the Summiting model also contains columns that correspond to a different dimension of adversary evasion depending on the type of detections being built.

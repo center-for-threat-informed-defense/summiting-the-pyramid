@@ -1,13 +1,14 @@
 .. _Build Robust Detection:
 
-How to Build a Robust Detection 
+How to Build a Robust Detection
 ===============================
 
 Summiting the Pyramid’s goal is to build :ref:`robust detection<Robust Detection>` analytics that are :ref:`accurate and difficult for adversaries to evade<Components>`. The following guide Pyramid provides defenders with the resources to build robust detections that account for underlying behavior and minimize false positives.
 
-**NOTE: These results might look different in your environment.** While the guide below gives specific examples of how to increase accuracy within your environment, results may vary based on policies and varying environmental baselines. Be sure to test results in your environment while implementing best practices.
+.. note::
+   These results might look different in your environment. While the guide below gives specific examples of how to increase accuracy within your environment, results may vary based on policies and varying environmental baselines. Be sure to test results in your environment while implementing best practices.
 
-Identify All "Spanning Sets" of Observables for Malicious Behavior 
+Identify All "Spanning Sets" of Observables for Malicious Behavior
 ------------------------------------------------------------------
 
 As Jared Atkinson writes in his blog on the Funnel of Fidelity, [#f1]_  defenders should first ensure they are collecting sufficient data and writing broad enough analytics to observe all malicious behavior. Doing so will achieve a low false negative rate. Then, we can focus on filtering out the false positives to improve accuracy overall.
@@ -18,7 +19,7 @@ As Jared Atkinson writes in his blog on the Funnel of Fidelity, [#f1]_  defender
 
    The Funnel of Fidelity, by SpecterOps. [#f1]_
 
-Malicious activity generates many potential observables, including ephemeral values, tool artifacts, and underlying OS function calls and events. The first step in achieving high accuracy can be accomplished by collecting a “spanning set” of observables across many or all implementations. A spanning set is any set of observables, that when combined, will be triggered no matter how a technique is implemented. This set can also contribute to understanding observables that contribute to resistance to adversary evasion over time, because the observables are core to the underlying behaviors employed by the tools. One way to visualize the observables and which sets might span the implementations is through a :ref:`D3`. 
+Malicious activity generates many potential observables, including ephemeral values, tool artifacts, and underlying OS function calls and events. The first step in achieving high accuracy can be accomplished by collecting a “spanning set” of observables across many or all implementations. A spanning set is any set of observables, that when combined, will be triggered no matter how a technique is implemented. This set can also contribute to understanding observables that contribute to resistance to adversary evasion over time, because the observables are core to the underlying behaviors employed by the tools. One way to visualize the observables and which sets might span the implementations is through a :ref:`D3`.
 
 These D3 visuals will provide insight into event ID and analytic observables that provide good accuracy and resistance to adversary evasion. Selecting an observable that only includes ephemeral or tool-specific elements will be less resistant to adversary evasion and increasing the false negative rate. Below is the D3 visual for Scheduled Tasks.
 
@@ -52,14 +53,14 @@ At the end of this step, we have three different analytic options that provide r
 
    Placement of scheduled task observables in Levels 4 and 5 of scoring model.
 
-These options from the spanning set provide us good accuracy and resistance to adversary evasion over time. 
+These options from the spanning set provide us good accuracy and resistance to adversary evasion over time.
 
 .. _Spanning Sets:
 
-Select Spanning Set(s) Most Specific to the Malicious Behavior 
+Select Spanning Set(s) Most Specific to the Malicious Behavior
 --------------------------------------------------------------
 
-*Select the set that has the highest robustness as well as ability to distinguish malicious behavior versus benign behavior for the selected environment.* 
+*Select the set that has the highest robustness as well as ability to distinguish malicious behavior versus benign behavior for the selected environment.*
 
 Observables that score higher on the Summiting model are difficult for an adversary to evade; that means it can be difficult for normal users to evade detection as well, causing noise for the analyst and increasing the false positive rate. A tool or technique that is used by an adversary can also be used by normal users. For example, system administrators might schedule tasks to perform daily operations. When it comes to selecting observables and events for detecting tools and behaviors, it is important for the detection engineer to select sets that are most likely to alert on suspicious or malicious behavior.
 
@@ -96,7 +97,7 @@ It is important to consider the “size” of an exclusion to not create hiding 
 
 **Seek observables that are difficult for an adversary to modify.**
 
-**This next step is important because we have to assume that the adversary knows our detection analytics.** Nowadays, a lot of analytics are open source through repositories such as Sigma, Elastic, and Splunk. The only items that are not open source (and should not be) are the exclusions that are put in place by an organization. 
+**This next step is important because we have to assume that the adversary knows our detection analytics.** Nowadays, a lot of analytics are open source through repositories such as Sigma, Elastic, and Splunk. The only items that are not open source (and should not be) are the exclusions that are put in place by an organization.
 
 This step looks to understand the fields that are present in the event source and what level they score at in the Summiting scoring model. This will ensure that adversaries cannot easily control the fields when trying to instigate their attack and hide in the exclusion.
 
@@ -147,9 +148,9 @@ Based on the fields identified in the previous step and the nature of scheduled 
 
 Both approaches have the virtue of excluding many commonly seen scheduled tasks in your environment. Both also have the downside of requiring the maintenance of a (possibly long and frequently changing) allow-list. Additionally, the use of the Exec-Command field is only available in Event ID 4698, compared to just the task name in Sysmon Event IDs 11, 12, 13, or 14. Given their equality in those respects, we can focus on the crucial difference between them.
 
-**Approach 1** relies on a value that is not used by the Task Scheduler when executing the task, and can therefore be arbitrarily set to any value, including values that might appear benign or be included in the allow-list. **Approach 2** uses values that are used by the Task Scheduler, and cannot be arbitrarily set for the purpose of masquerading and evading the filter. In other words, Task Name is Ephemeral (Level 1), whereas Command and ClassId are Core to Some Implementations of a (Sub-)Technique (Level 4). Hence, we have our first example of a robust detection that has high accuracy, and is resistant to adversary evasion over time. 
+**Approach 1** relies on a value that is not used by the Task Scheduler when executing the task, and can therefore be arbitrarily set to any value, including values that might appear benign or be included in the allow-list. **Approach 2** uses values that are used by the Task Scheduler, and cannot be arbitrarily set for the purpose of masquerading and evading the filter. In other words, Task Name is Ephemeral (Level 1), whereas Command and ClassId are Core to Some Implementations of a (Sub-)Technique (Level 4). Hence, we have our first example of a robust detection that has high accuracy, and is resistant to adversary evasion over time.
 
-Now that we have the field used to build the exclusion, we next identify the unique values to add to the exclusion based on the defender’s environmental baseline. For detection engineering, having an environmental baseline helps defenders understand a network at regular intervals for identifying potential network problems and identifying observables that can help contribute to accurate detections.[#f2]_ 
+Now that we have the field used to build the exclusion, we next identify the unique values to add to the exclusion based on the defender’s environmental baseline. For detection engineering, having an environmental baseline helps defenders understand a network at regular intervals for identifying potential network problems and identifying observables that can help contribute to accurate detections. [#f2]_
 
 * What users or applications are creating scheduled tasks? (Look at the activity within your Security Information and Event Management [SIEM] system.)
 * Which activities have been investigated and deemed benign?
@@ -163,8 +164,8 @@ After answering the questions above, the defender can make an allow-list of comm
 For example, when building the scheduled task analytic, these are some of the tools which utilize scheduled tasks that could be potentially worked into our allow-list:
 
 * Microsoft Office Feature Updates
-* Microsoft Office Performance Monitor 
-* Microsoft Office ClickToRun Service Monitor 
+* Microsoft Office Performance Monitor
+* Microsoft Office ClickToRun Service Monitor
 * Launch Adobe CCXProcess
 
 To start our exclusionary list small, we’ll pick Launch Adobe CCXProcess. This is a known benign activity, in a folder that the adversary cannot modify without elevated permissions, and is specific enough that it would be difficult for them to guess where to hide.
@@ -195,7 +196,7 @@ Once you have completed the filter, observe what happens to the detection's accu
 * Are there benign instances that you did not expect?
 * Are there known suspicious or emulated instances of malicious activity that were not captured in the analytic?
 
-Run the analytic on a representative set of data. As an example, find the fields that have more than 1 but less than 12 distinct values for them. Find the intersect of those observables and the other previous steps. Exclude the ones in which an analyst has the most confidence are benign. 
+Run the analytic on a representative set of data. As an example, find the fields that have more than 1 but less than 12 distinct values for them. Find the intersect of those observables and the other previous steps. Exclude the ones in which an analyst has the most confidence are benign.
 
 It is important to note that this process is not a “one and done” deal. Just as detections should be reviewed and observed on a recurring basis, filters must also be reviewed to account for new and old users, new tools, or new adversary TTPs. Find a cadence that is right for your team, such as every six months, to ensure that filters are not abused by adversaries or malicious actors.
 
@@ -204,7 +205,7 @@ Incorporate into Fused Analytic Frameworks
 
 Finally, an additional step that can be taken to increase the accuracy of detections is to incorporate multiple analytics together through fused analytic frameworks. Sometimes, certain TTPs, tools, or other activities are best detected through the campaign that malware or an adversary will take. Attempting to distinguish malicious activity based only on the detection of one detection might be too difficult and can decrease the accuracy and the potential robustness of a detection. Below are various methods of increasing accuracy and resistance to adversary evasion over time through multiple analytic detections.
 
-* Risk-Based Alerting (RBA) [#f3]_:  A framework for alerting on combinations of observables from a user or system that a defender finds important. 
+* Risk-Based Alerting (RBA) [#f3]_:  A framework for alerting on combinations of observables from a user or system that a defender finds important.
 * Graph analysis or statistical analysis: Understand the relationships of interconnected data and form chaining detection analytics based on patterns within one’s network environment. Attack Flow can help defenders understand the patterns seen between various ATT&CK techniques. [#f4]_
 * `Technique Inference Engine (TIE) <https://center-for-threat-informed-defense.github.io/technique-inference-engine/#/>`_:  Suggests techniques an adversary is likely to have used based on a set of observed techniques. Defenders can build chaining analytics based on the adversary’s inferred techniques to highlight lateral movement and persistent behaviors.
 

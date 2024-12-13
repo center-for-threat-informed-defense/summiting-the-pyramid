@@ -7,9 +7,18 @@ Summiting the Pyramid |version|
 
 Summiting the Pyramid is a research project focused on engineering cyber analytics to
 make adversary evasion more difficult. This project is created and maintained by the
-`MITRE Engenuity Center for Threat-Informed Defense
-<https://ctid.mitre-engenuity.org/>`__ in futherance of our mission to advance the state
-of the art and the state of the practice in threat-informed defense globally.
+`MITRE Center for Threat-Informed Defense <https://ctid.mitre.org/>`__ in futherance of
+our mission to advance the state of the art and the state of the practice in
+threat-informed defense globally.
+
+.. important::
+    **What's New In V2:**
+
+    In version 2.0, we updated and improved the project in the following ways!
+
+    * Exploring how detection accuracy relates to robustness yada yada. See: :ref:`what-is-robust-detection`.
+    * Yada yada.
+    * Yada yada yada.
 
 .. toctree::
     :maxdepth: 2
@@ -26,7 +35,7 @@ of the art and the state of the practice in threat-informed defense globally.
     detection-components
     robustdetection
     D3
-    
+
     futurework
     thanks
     changelog
@@ -34,7 +43,8 @@ of the art and the state of the practice in threat-informed defense globally.
 Notice
 ------
 
-© 2023 MITRE Engenuity. Approved for public release. Document number CT0078.
+© |copyright_years| MITRE Engenuity. Approved for public release. Document number(s)
+|prs_numbers|.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 file except in compliance with the License. You may obtain a copy of the License at
