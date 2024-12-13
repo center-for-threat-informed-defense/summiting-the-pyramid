@@ -1,3 +1,5 @@
+.. _Scheduled Tasks:
+
 ------------------
 Scheduled Task/Job
 ------------------
@@ -47,13 +49,13 @@ Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 20 20 30 20
+    :widths: 20 20 20 30
     :header-rows: 1
 
     * -
       - Application (A)
-      - User-mode (U)
-      - Kernel-mode (K)
+      - User-Mode (U)
+      - Kernel-Mode (K)
     * - Core to (Sub-) Technique (5)
       -
       -
@@ -62,26 +64,25 @@ Original Analytic Scoring
       -
       -
       -
-    * - Core to Pre-Existing Tool (3)
+    * - Core to Pre-Existing Tool or Inside Boundary (3)
       -
+      - 
       - | EventID: 1
         | CommandLine|contains: '/create'
-      -
-    * - Core to Adversary-brought Tool (2)
+    * - Core to Adversary-Brought Tool or Outside Boundary (2)
       -
       -
       -
     * - Ephemeral (1)
       -
+      - 
       - Image|endswith: '\\schtasks.exe'
-      -
 
 The original analytic detects on the name of a newly-created process in combination with
 the commandline argument ``/create``. The fields references in this analytic exist in
 Sysmon EventID 1 and not Windows Event ID 4688 for process creation, therefore we know
 the intent was to use Sysmon data. We have previously scored Sysmon Event ID 1 as
-operating in user-mode since it is fired when the Win32 API function CreateProcessA is
-called.
+operating in kernel-mode.
 
 The schtasks executable can be easily copied and renamed by an adversary,
 ``Image|endswith: '\\schtasks.exe'`` therefore it is placed at the Ephemeral level. The
@@ -89,7 +90,7 @@ commandline argument is more challenging for an adversary to evade, since they w
 likely need the source code to change these arguments. However, since schtasks exists in
 the OS prior to system compromise and no source code is available, the commandline
 argument observable is placed at **Core to Pre-existing Tool**. Factoring in StP boolean
-logic, this analytic ultimately scores at a 1U because an adversary can simply change
+logic, this analytic ultimately scores at a 1K because an adversary can simply change
 the Image name and avoid detection.
 
 .. note::
@@ -177,8 +178,8 @@ Improved Analytic Scoring #1
 
     * -
       - Application (A)
-      - User-mode (U)
-      - Kernel-mode (K)
+      - User-Mode (U)
+      - Kernel-Mode (K)
     * - Core to (Sub-) Technique (5)
       -
       - | EventID: 11
@@ -190,11 +191,11 @@ Improved Analytic Scoring #1
       -
       -
       -
-    * - Core to Pre-Existing Tool (3)
+    * - Core to Pre-Existing Tool or Inside Boundary (3)
       -
       -
       -
-    * - Core to Adversary-brought Tool (2)
+    * - Core to Adversary-Brought Tool or Outside Boundary (2)
       -
       -
       -
@@ -243,8 +244,8 @@ Improved Analytic Scoring #2
 
     * -
       - Application (A)
-      - User-mode (U)
-      - Kernel-mode (K)
+      - User-Mode (U)
+      - Kernel-Mode (K)
     * - Core to (Sub-) Technique (5)
       -
       -
@@ -259,11 +260,11 @@ Improved Analytic Scoring #2
       -
       -
       -
-    * - Core to Pre-Existing Tool (3)
+    * - Core to Pre-Existing Tool or Inside Boundary (3)
       -
       -
       -
-    * - Core to Adversary-brought Tool (2)
+    * - Core to Adversary-Brought Tool or Outside Boundary (2)
       -
       -
       -

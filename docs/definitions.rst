@@ -3,62 +3,54 @@ Definitions
 
 This page defines the key terms used throughout our research.
 
-.. _Precision:
+.. _Detection:
 
-Precision
+Detection
 ---------
 
-**Precision is the fraction of relevant malicious events among all events matched by an
-analytic.**
+**A detection is the identification of malicious activity within one's environment.** [#f1]_
 
-High precision analytics create fewer false positives. Precision is high at lower levels
-of the pyramid (e.g. file hashes) but can be challenging for analytics higher on the
-pyramid.
+Detection is the core of threat hunting activities. An analyst can create detection rules based on the malicious activity they want to be alerted on and can update these rules as necessary. Detection logic feeds into the creation of an analytic query.
 
-.. _Recall:
+.. _Accuracy:
 
-Recall
-------
+Accuracy
+--------
 
-**Recall is the fraction of relevant malicious events that are detected by an analytic.**
+**An accurate detection is one that has low false positives and low false negatives.** [#f2]_
 
-High recall analytics are less likely to miss malicious activity. There is often a
-tradeoff between precision and recall: as one increases, the other decreases. This
-requires dialing in the right balance between minimizing missed detections while not
-getting overwhelmed with false positives.
+The definition of accurate combines traditional detection metrics precision and recall. A precise detection is one that has a low probability of alerting on benign activity. A detection with high recall is one that has a high probability of detecting malicious events. A highly accurate detection will encompass high precision and recall rates.
 
-.. _Robustness:
+.. _Robust Detection:
 
-Robustness
-----------
+Robust Detection
+----------------
 
-**Robustness measures the effort needed by an adversary to evade an analytic.**
+**A robust detection is one that has high accuracy and is resistant to adversary evasion over time.**
 
-Robustness is crucial for the effectiveness of an analytic, and is the focus of the
-Summiting the Pyramid project. Robustness is directly related to the cost required by an
-adversary to evade it, including time, resources, and money. High robustness indicates
-an adversary has to spend a lot to evade it, forcing them to operate at higher levels,
-such as interacting directly with the kernel. Therefore, robustness is equal to the
-level at which an adversary must operate to evade a defender’s detection.
+Examples of how to analyze robust detections include the following:
+
+* A hash can provide a low false positive rate, but is not highly accurate to false negatives or resistant to evasion over time.
+* A registry key created when scheduling a task is accurate and resistant to evasion over time, but can have a high false positive rate due to benign behavior.
+* Detecting LSASS dumping through GrantedAccess masks and the target image lsass.exe is highly accurate. It can also be made resistant to adversary evasion over time based on the observables used.
 
 .. _Observable:
 
 Observable
 ----------
 
-**An observable is an event, either benign or malicious, that is generated on a network
-or system and is visible to a defender.**
+**An observable is an event, either benign or malicious, that is generated on a network or system and is visible to a defender.**
 
 Example observables include:
 
 +-------------------------------+--------------------------------------------------------------------------------------+
 | Observable                    | Generating Activity                                                                  |
 +===============================+======================================================================================+
-| Windows Event 4688            |  Windows Kernel function monitored by ETW (e.g. PspCreateProcess) creates a process  |
+| Windows Event 4688            |  Windows Kernel function monitored by ETW (e.g., PspCreateProcess) creates a process |
 +-------------------------------+--------------------------------------------------------------------------------------+
-| Windows Event 4688 Image "foo"|  Windows Kernel function monitored by ETW creates a process with filename "foo"      |
+| Windows Event 4688 Image "foo"|  Windows Kernel function monitored by ETW creates a process with filename “foo”      |
 +-------------------------------+--------------------------------------------------------------------------------------+
-| Sysmon Event 1                | Windows function monitored by PsSetCreateProcessNotifyRoutine (e.g. CreateProcess)   |
+| Sysmon Event 1                | Windows function monitored by PsSetCreateProcessNotifyRoutine (e.g., CreateProcess)  |
 | OriginalFilename="foo"        | creates a process from a source file with "foo" filename in PE Header                |
 +-------------------------------+--------------------------------------------------------------------------------------+
 | .pcap File                    | Network traffic occurs, visible to a packet analyzer                                 |
@@ -69,48 +61,62 @@ Example observables include:
 Analytic
 --------
 
-**An analytic is query logic used for detecting activity within a technology stack based
-on one more observables.**
+**An analytic is query logic used for detecting activity within a technology stack based on one or more observables.**
 
-In most security operations centers (SOCs), analytics are used to alert analysts to
-concerning behavior in their environment. For example, an analytic can be deployed by a
-team to send an alert when a new task is scheduled on a machine. Example analytics
-include CAR pseudocode, SIGMA rules, as well as the Splunk or Elastic queries generated
-by PySIGMA from SIGMA rules.
+In most security operations centers (SOCs), analytics are used to alert analysts to concerning behavior in their environment. For example, an analytic can be deployed by a team to send an alert when a new task is scheduled on a machine. Example analytics include CAR pseudocode, Sigma rules, and the Splunk or Elastic queries generated by PySigma from Sigma rules.
 
-An analytic is made of different observables which create detection logic for an
-analytic. For example, an analytic looking for scheduled task creation could consist of
-observables such as the 4698 Task Creation Windows Event ID, the registry key path of
-the scheduled task, or the command line usage of the schtasks.exe tool. These
-observables can make an analytic more or less robust, based on how much effort an
-adversary would expend to evade it. For example, tracking the command line creation of
-task scheduling might be easier for an adversary to evade than tracking task scheduler
-event IDs, due to the fact that an adversary may not utilize the command line to
-schedule a task. Observables can be changed to create more robust analytics.
+An analytic is made of different observables that create detection logic for the analytic. For example, an analytic looking for scheduled task creation could consist of observables such as the 4698 Task Creation Windows Event ID, the registry key path of the scheduled task, or the command-line usage of the schtasks.exe tool. These observables can make an analytic score higher on the Summiting model based on how much effort an adversary would expend to evade it. For example, tracking the command-line creation of task scheduling might be easier for an adversary to evade than tracking task scheduler event IDs, because an adversary may not utilize the command line to schedule a task. Observables can be changed to create more robust detections.
 
 .. _Analytic Robustness Categories:
 
 Analytic Robustness Categories
 ------------------------------
 
-**The five levels in the methodology represent increasing cost or difficulty for the
-adversary to avoid producing those observables.**
+**The five levels in the methodology represent increasing cost or difficulty for the adversary to avoid producing those observables.**
 
-Different observables are more or less evadable than others. Summiting the Pyramid has
-defined five categories of observable robustness. The categories organize observables
-starting with the most easily evaded observables at the bottom of the table, to the
-least easily evaded observables at the top of the table.
+Different observables are more or less difficult to evade than others. Summiting the Pyramid has defined five categories of observable robustness. The categories organize observables starting with the most easily evaded observables at the bottom of the table, to the least easily evaded observables at the top of the table.
 
-.. _Event Robustness Categories:
+.. _Host-Based Event Robustness Categories:
 
 Event Robustness Categories
 ---------------------------
 
-**The three columns in the methodology represent increasing cost or difficulty for the
-adversary to avoid those sensors.**
+**The three columns in the methodology represent increasing cost or difficulty for the adversary to avoid host-based sensors.**
 
-Analytics are constrained by the sensor data that is being used to log observables. The
-event robustness category columns look to create groups of event data observables based
-on how evasive they are in the OS. In this release, the generation locations are all
-different layers of the application and OS stack. Future releases will build on this to
-model different kinds of observability on other operating systems, on networks, etc.
+Detections are constrained by the sensor data being used to log observables. The event robustness category columns look to create groups of event data observables based on how evasive they are in the OS. In this release, the generation locations are all different layers of the application and OS stack. Future releases will build on these columns to model different kinds of observability on other operating systems, on networks, and so on.
+
+.. _Network Traffic Robustness Categories:
+
+Network Traffic Robustness Categories
+-------------------------------------
+
+**Detections are constrained by the observables in the network traffic log, and the observables are dependent on the sensor’s visibility into the relevant network protocol.**
+
+The event robustness category columns look to create groups of event data observables based on how evasive they are within the relevant network protocol. In this release, two groups are defined: protocol header and protocol payload. This is a simple, yet flexible model that can be applied to any network protocol. For example, if the adversary’s activity occurs via the Hypertext Transfer Protocol (HTTP) protocol (OSI Layer 7), then the relevant observables would be grouped as either HTTP protocol header or HTTP protocol payload. Similarly, if the adversary’s activity occurs via the ICMP protocol (OSI Layer 3), then the relevant observables would be grouped as either ICMP protocol header or ICMP protocol payload. By simply using the labels Protocol Header and Protocol Payload, these event robustness categories can be applied easily to any protocol. Future releases could expand these categories, if needed.
+
+.. _Originator Endpoint:
+
+Originator Endpoint
+-------------------
+
+**The originator endpoint is the device that originates the network connection or attack.**
+
+The originator endpoint is the device that initiates the relevant activity and the associated network connection. This term is adopted from Zeek documentation to describe the roles of each endpoint in a network connection.
+
+According to Zeek, “the context of a connection between an originator and a responder ... differ from packet-level concepts of source and destination, as well as from higher-level abstractions such as client and server … when establishing the connection state, with the sender of the initial packet becoming the originator and the recipient becoming the responder.” [#f3]_
+
+.. _Responder Endpoint:
+
+Responder Endpoint
+------------------
+
+**A responder endpoint is the device that is the target of the network connection or attack.**
+
+The responder endpoint is the device that is the target of the relevant activity and receives the associated network connection. This term is adopted from Zeek documentation to describe the roles of each endpoint in a network connection. [#f3]_
+
+
+.. rubric:: References
+
+.. [#f1] https://www.mitre.org/sites/default/files/2021-11/prs-19-3892-ttp-based-hunting.pdf
+.. [#f2] https://www.sciencedirect.com/topics/engineering/classification-accuracy
+.. [#f3] https://docs.zeek.org/en/current/scripting/basics.html#writing-scripts-connection-record

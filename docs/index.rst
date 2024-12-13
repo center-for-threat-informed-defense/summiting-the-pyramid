@@ -1,15 +1,24 @@
 Summiting the Pyramid |version|
 ===============================
 
-.. figure:: _static/summit_the_pyramid_illustration.png
+.. figure:: _static/Summit_the_Pyramid_12.11.2024.png
    :alt: Summiting the Pyramid, Leveling Up Your Analytics
    :align: center
 
 Summiting the Pyramid is a research project focused on engineering cyber analytics to
 make adversary evasion more difficult. This project is created and maintained by the
-`MITRE Engenuity Center for Threat-Informed Defense
-<https://ctid.mitre-engenuity.org/>`__ in futherance of our mission to advance the state
-of the art and the state of the practice in threat-informed defense globally.
+`MITRE Center for Threat-Informed Defense <https://ctid.mitre.org/>`__ in futherance of
+our mission to advance the state of the art and the state of the practice in
+threat-informed defense globally.
+
+.. important::
+    **What's New In V2:**
+
+    In version 2.0, we updated and improved the project in the following ways!
+
+    * Exploring how detection accuracy relates to robustness yada yada. See: :ref:`what-is-robust-detection`
+    * Introducing Detection Decomposition Diagrams (D3), a new way to visualize and identify observables which are accurate and resistant to adversary evasion. :ref:`Checkout some D3 examples here<D3>`.
+    * New Summiting scoring models! We updated our :ref:`host-based model<Host-Based Columns>` to include host-based network events, and created a new :ref:`network traffic model<Network Traffic Columns>`.
 
 .. toctree::
     :maxdepth: 2
@@ -19,11 +28,14 @@ of the art and the state of the practice in threat-informed defense globally.
     introduction
     definitions
     levels/index
-    evadability
-    datasources
+    booleanlogic
+    examplemappings
     scoringanalytic
     analytics/index
-    capability-abstraction
+    detection-components
+    robustdetection
+    D3
+
     futurework
     thanks
     changelog
@@ -31,7 +43,8 @@ of the art and the state of the practice in threat-informed defense globally.
 Notice
 ------
 
-© 2023 MITRE Engenuity. Approved for public release. Document number CT0078.
+© |copyright_years| MITRE Engenuity. Approved for public release. Document number(s)
+|prs_numbers|.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 file except in compliance with the License. You may obtain a copy of the License at

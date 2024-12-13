@@ -6,21 +6,15 @@ Column U: User-Mode
 
 **Description**: Observables associated with user-mode OS activity.
 
-The OS kernel (ring 0) is typically invoked using C wrapper functions running in user
-mode (ring 3). In Windows, these system wrapper functions usually start with Nt or Zw
-[#f1]_. In other operating systems, these C wrapper functions are usually included in
-libc. In either case, the wrapper functions switch into kernel mode using a predefined
-calling convention such as setting specific register flags and calling a certain
-interrupt. The attacker may bypass these wrapper functions by writing their own code to
-switch to kernel mode.
+The OS kernel (ring 0) is typically invoked using C wrapper functions running in user mode (ring 3). In Windows, these system wrapper functions usually start with Nt or Zw.
+[#f1]_ .  In other operating systems, these C wrapper functions are usually included in libc. In either case, the wrapper functions switch into kernel mode using a predefined calling convention such as setting specific register flags and calling a certain interrupt. The attacker may bypass these wrapper functions by writing their own code to switch to kernel mode.
 
 Observables
 ^^^^^^^^^^^
 +-------------------------------+--------------------------------------------------------------------------------+
 | Category                      | Observables                                                                    |
 +===============================+================================================================================+
-| Process                       | | Sysmon ID 1 (Process creation)                                               |
-|                               | | Sysmon ID 5 (Process termination)                                            |
+| Process                       | | Sysmon ID 5 (Process termination)                                            |
 |                               | | Sysmon ID 10 (Process access)                                                |
 |                               | | Event ID 7045 (New service installed)                                        |
 +-------------------------------+--------------------------------------------------------------------------------+

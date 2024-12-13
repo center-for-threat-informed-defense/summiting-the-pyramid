@@ -18,11 +18,12 @@
 # -- Project information -----------------------------------------------------
 
 project = "Summiting the Pyramid"
-copyright = "2023, Center for Threat-Informed Defense"
 author = "Center for Threat-Informed Defense"
+copyright_years = "2023, 2024"
+prs_numbers = "CT0078, CT0128"
 
 # The full version, including alpha/beta/rc tags
-version = "v1.0.0"
+version = "v2.0.0"
 release = version
 
 
@@ -43,6 +44,10 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+rst_prolog = f"""
+.. |copyright_years| replace:: {copyright_years}
+.. |prs_numbers| replace:: {prs_numbers}
+"""
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -52,7 +57,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 html_extra_path = ["extra"]
-html_favicon = "_static/favicon.png"
+html_favicon = "_static/favicon.ico"
 html_logo = "_static/ctid_logo_white.png"
 html_css_files = [
     "css/ctid.css",
@@ -61,7 +66,10 @@ html_copy_source = False
 html_show_sourcelink = False
 html_show_sphinx = False
 html_use_smartypants = False
-
+html_context = {
+    "copyright_years": copyright_years,
+    "prs_numbers": prs_numbers,
+}
 html_theme_options = {
     "analytics_id": "G-Q5598Z1TB7",
     "display_version": True,
