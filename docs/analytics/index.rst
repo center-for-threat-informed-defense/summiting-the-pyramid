@@ -41,3 +41,7 @@ on GitHub with the following information:
 * Detection analytic with detection logic (AND, OR)
 * The score for your analytic with a brief explanation
 * Scorer
+
+**Score your own analytics in Sigma!** 
+
+Sigma now has a tag to document the STP score of an analytic. `Checkout the Sigma tags appendix to learn more <https://github.com/SigmaHQ/sigma-specification/blob/main/appendix/sigma-tags-appendix.md#namespace-stp>`_.
