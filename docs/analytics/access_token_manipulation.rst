@@ -54,13 +54,13 @@ Potential Access Token Abuse
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
-    :widths: 20 20 30 20
+    :widths: 20 20 20 30
     :header-rows: 1
 
     * -
       - Application (A)
-      - User-mode (U)
-      - Kernel-mode (K)
+      - User-Mode (U)
+      - Kernel-Mode (K)
     * - Core to (Sub-) Technique (5)
       -
       -
@@ -69,12 +69,13 @@ Original Analytic Scoring
       -
       -
       -
-    * - Core to Pre-Existing Tool (3)
+    * - Core to Pre-Existing Tool or Inside Boundary (3)
       -
       -
       -
-    * - Core to Adversary-brought Tool (2)
+    * - Core to Adversary-Brought Tool or Outside Boundary (2)
       -
+      - 
       - | EventID: 1
         | CommandLine|contains:
         |    - 'psinject'
@@ -86,9 +87,9 @@ Original Analytic Scoring
         |    - 'logonpasswords'
         |    - 'execute-assembly'
         |    - 'getsystem'
-      -
     * - Ephemeral (1)
       -
+      - 
       - | selection_img:
         |     - OriginalFileName: 'Cmd.Exe'
         |     - Image|endswith: '\\cmd.exe'
@@ -96,7 +97,6 @@ Original Analytic Scoring
         |         - 'cmd '
         |         - 'cmd.exe'
         |         - 'c:\\\\windows\\\\system32\\\\cmd.exe'
-      -
 
 This analytic's robustness score is **1U** because it relies on commands being run from
 ``cmd.exe``. While some observables of the analytic score at level 2, they are ORed with
@@ -190,8 +190,8 @@ Improved Analytic Scoring
 
     * -
       - Application (A)
-      - User-mode (U)
-      - Kernel-mode (K)
+      - User-Mode (U)
+      - Kernel-Mode (K)
     * - Core to (Sub-) Technique (5)
       -
       -
@@ -204,11 +204,11 @@ Improved Analytic Scoring
         | AuthenticationPackageName: 'Negotiate'
         | ImpersonationLevel: '%%1833'
       -
-    * - Core to Pre-Existing Tool (3)
+    * - Core to Pre-Existing Tool or Inside Boudnary (3)
       -
       -
       -
-    * - Core to Adversary-brought Tool (2)
+    * - Core to Adversary-Brought Tool or Outside Boundary (2)
       -
       -
       -

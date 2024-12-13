@@ -1,3 +1,5 @@
+.. _analytics:
+
 ====================
 Analytics Repository
 ====================
@@ -12,13 +14,18 @@ with the Summiting the Pyramid methodology.
     task_scheduling
     service_registry_permissions_weakness_check
     access_token_manipulation
+    executable_download_webdav
+    link_download_webdav
+    remote_registry
+    file_creation_date
+    zeek_dce_rpc
 
 .. _Scored Analytics:
 
 **Scored Analytics Repository:**
 
 There is also a published CSV file that contains analytics that have been scored with
-the methodology: :download:`ScoredAnalytics <Scored_Analytics_20230802.csv>`
+the methodology: :download:`ScoredAnalytics <ScoredAnalytics_12062024.csv>`
 
 **Submitting an Analytic:**
 
@@ -34,3 +41,7 @@ on GitHub with the following information:
 * Detection analytic with detection logic (AND, OR)
 * The score for your analytic with a brief explanation
 * Scorer
+
+**Score your own analytics in Sigma!** 
+
+Sigma now has a tag to document the STP score of an analytic. `Checkout the Sigma tags appendix to learn more <https://github.com/SigmaHQ/sigma-specification/blob/main/appendix/sigma-tags-appendix.md#namespace-stp>`_.
