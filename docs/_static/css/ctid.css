@@ -1,0 +1,284 @@
+/* Document styles */
+
+body {
+    /* MITRE Brand Colors */
+    --mitre-blue: rgb(0, 91, 148);
+    --mitre-highlighter: rgb(255, 246, 1);
+    --mitre-dark-navy: rgb(11, 35, 56);
+    --mitre-navy: rgb(13, 47, 79);
+    --mitre-light-blue: rgb(135, 222, 255);
+    --mitre-black: rgb(17, 25, 33);
+    --mitre-dark-gray: rgb(17, 25, 33);
+    --mitre-silver: rgb(212, 211, 212);
+    --mitre-light-silver: rgb(241, 243, 244);
+    --mitre-white: rgb(255, 255, 255);
+
+    /* These colors are holdovers from the old Engenuity branding guide. */
+    --me-ext-teal-highlighter: #29E6D0;
+    --me-ext-gray-green: #4DA185;
+    --me-ext-cranberry-highlighter: #FF006B;
+    --me-ext-orange-highlighter: #FF8A36;
+    --me-ext-yellow-dark: #FEDB22;
+
+    color: var(--mitre-black);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (min-width: 1100px) {
+    .wy-nav-content-wrap {
+        background-color: var(--mitre-light-silver);
+    }
+
+    .wy-nav-content {
+        background-color: var(--mitre-white);
+    }
+}
+
+em.newsgroup {
+    background-color: var(--mitre-highlighter);
+    padding: 5px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* Anchor styles */
+
+.rst-content a,
+.rst-content a:active,
+.rst-content a:visited {
+    color: var(--mitre-blue);
+    text-decoration: underline;
+}
+
+/* Don't underline font awesome icons in links. */
+.rst-content a .fa,
+.rst-content a:active .fa,
+.rst-content a:visited .fa {
+    text-decoration: none;
+    padding-right: 0.25em;
+}
+
+/* Don't underline the permalink icon next to headers. */
+.rst-content a.headerlink,
+.rst-content a.headerlink:active,
+.rst-content a.headerlink:visited {
+    text-decoration: none;
+}
+
+.rst-content a:hover {
+    color: var(--me-text-color);
+}
+
+.rst-content.style-external-links a.reference.external {
+    padding-right: 1em;
+}
+
+.rst-content.style-external-links a.reference.external:after {
+    font-size: 80%;
+    position: absolute;
+}
+
+/* Bootstrap button styles */
+
+.btn,
+.btn:focus,
+.btn-primary,
+.btn-primary:focus {
+    background-color: var(--mitre-navy);
+}
+
+.btn:hover,
+.btn-primary:hover {
+    background-color: var(--mitre-dark-navy);
+}
+
+.btn-secondary,
+.btn-secondary:focus {
+    background-color: var(--mitre-black);
+}
+
+.btn-secondary:hover {
+    background-color: #737373;
+}
+
+.btn-link,
+.btn-link:focus {
+    color: var(--mitre-navy);
+}
+
+.btn-link:hover {
+    color: var(--mitre-dark-navy) !important;
+}
+
+.rst-content a.btn,
+.rst-content a.btn:active,
+.rst-content a.btn:visited {
+    color: var(--mitre-white);
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* Table styles */
+.rst-content div.wy-table-responsive table.docutils {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.rst-content div.wy-table-responsive table.docutils thead th,
+.rst-content div.wy-table-responsive table.docutils tbody td {
+    white-space: normal;
+}
+
+.rst-content div.wy-table-responsive table.docutils thead th p,
+.rst-content div.wy-table-responsive table.docutils tbody td p {
+    margin: 0.5em 0;
+}
+
+.rst-content div.wy-table-responsive table.docutils thead th code.docutils,
+.rst-content div.wy-table-responsive table.docutils tbody td code.docutils {
+    white-space: pre-wrap;
+}
+
+/* Table of contents styles */
+.rst-content .toctree-wrapper a {
+    font-weight: normal;
+}
+
+.rst-content .toctree-wrapper ul li ul {
+    margin-top: 0;
+}
+
+/* Side bar styles */
+
+.wy-side-nav-search div.version {
+    color: var(--mitre-white);
+}
+
+.wy-nav-top {
+    background-color: var(--mitre-blue);
+}
+
+.wy-nav-side {
+    /* No MITRE brand color seems to work here. */
+    background-color: rgb(50, 50, 50);
+}
+
+.wy-side-nav-search a {
+    font-size: 1.6em;
+}
+
+.wy-side-nav-search a.icon img.logo {
+    max-width: 10rem;
+}
+
+.wy-side-nav-search {
+    background-color: var(--mitre-blue);
+}
+
+.wy-menu-vertical p.caption {
+    color: var(--mitre-white);
+}
+
+.wy-menu-vertical li.current {
+    background-color: var(--mitre-light-silver);
+}
+
+.wy-menu-vertical a:hover {
+    background-color: var(--mitre-blue);
+}
+
+/* Admonition styles */
+
+.admonition {
+    background-color: var(--mitre-light-silver) !important;
+    color: var(--mitre-black);
+}
+
+.admonition .admonition-title {
+    padding: 0.8em 1em !important;
+}
+
+.admonition a,
+.admonition a.reference.external:after {
+    color: var(--mitre-black) !important;
+}
+
+.admonition.attention .admonition-title {
+    background-color: var(--me-ext-yellow-dark);
+    color: var(--mitre-black);
+}
+
+.admonition.caution .admonition-title,
+.admonition.warning .admonition-title {
+    background-color: var(--me-ext-orange-highlighter);
+    color: var(--mitre-black);
+}
+
+.admonition.danger .admonition-title,
+.admonition.error .admonition-title {
+    background-color: var(--me-ext-cranberry-highlighter);
+    color: var(--mitre-white);
+}
+
+.admonition.important .admonition-title {
+    background-color: var(--me-ext-gray-green);
+    color: var(--mitre-white);
+}
+
+.admonition.hint .admonition-title,
+.admonition.tip .admonition-title {
+    background-color: var(--mitre-blue);
+    color: var(--mitre-white);
+}
+
+.admonition.note .admonition-title,
+.admonition.seealso .admonition-title {
+    background-color: var(--me-ext-teal-highlighter);
+    color: var(--mitre-black);
+}
+
+/* Figure styles */
+
+.rst-content figure {
+    margin-bottom: 1em !important;
+}
+
+.rst-content figcaption p span.caption-text {
+    font-size: 10pt;
+    font-style: initial;
+    color: #999;
+}
+
+/* Epigraph styles */
+
+blockquote.epigraph {
+    background-color: var(--mitre-light-silver);
+    margin: 2em 0;
+    padding: 1em;
+    border-top: 3px solid #c9c9c9;
+    border-bottom: 3px solid #c9c9c9;
+}
+
+blockquote.epigraph p {
+    font-size: 16pt;
+}
+
+blockquote.epigraph p.attribution {
+    margin: 0;
+    font-size: 12pt;
+    font-style: italic;
+}
+
+/* Footnote styles */
+.rst-content .footnote-reference {
+    font-size: 8pt;
+    vertical-align: super;
+    line-height: inherit;
+    left: -0.3em;
+    top: initial;
+}
+
+/* Code highlighting */
+.highlight {
+    background-color: var(--mitre-light-silver);
+}
