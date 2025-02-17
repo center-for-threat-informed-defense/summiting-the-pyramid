@@ -18,10 +18,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
       with:
-        python-version: '3.8'
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+        python-version: '3.10'
     - name: Update APT
       run: sudo apt update
     - name: Install Poetry
@@ -29,7 +26,7 @@ jobs:
     - name: Add Poetry to PATH
       run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH
     - name: Install dependencies
-      run: poetry install
+      run: poetry install || cat /home/runner/work/summiting-the-pyramid/summiting-the-pyramid/poetry-installer-error*
     - name: Build HTML docs
       run: poetry run sphinx-build -M dirhtml docs docs/_build -W --keep-going
     - name: Upload HTML docs
