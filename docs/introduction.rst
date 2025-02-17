@@ -89,7 +89,7 @@ The Summiting 2.0 project has the following scope and limitations:
 * **Other considerations.** There continues to be important properties of detections that have not been researched in-depth, such as the cost to engineer detections, the cost to collect corresponding data, the cost to run detections at scale, and so on. This is briefly touched on in :doc:`futurework`.
 
 We are always looking for feedback and public contributions! Open a `GitHub issue
-<https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new/choose>`_
+<https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues>`_
 to share your ideas, feedback, and scored analytics.
 
 .. rubric:: References

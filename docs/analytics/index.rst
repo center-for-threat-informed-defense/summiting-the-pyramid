@@ -27,21 +27,6 @@ with the Summiting the Pyramid methodology.
 There is also a published CSV file that contains analytics that have been scored with
 the methodology: :download:`ScoredAnalytics <ScoredAnalytics_12062024.csv>`
 
-**Submitting an Analytic:**
-
-The Summiting team is looking for analytics which have been scored or improved by the
-community for our Scored Analytics Repository.
-
-If you are interested in contributing to our repository, please `submit a request
-<https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new?assignees=marvel90120&labels=analytic%2Cissue&projects=&template=analytic_submission.yml&title=%5BAnalytic-Submission%5D%3A+>`__
-on GitHub with the following information:
-
-* Analytic schema (Sigma, Splunk, Elastic, etc.)
-* Log source (Windows process creation, file event, etc.)
-* Detection analytic with detection logic (AND, OR)
-* The score for your analytic with a brief explanation
-* Scorer
-
 **Score your own analytics in Sigma!** 
 
 Sigma now has a tag to document the STP score of an analytic. `Checkout the Sigma tags appendix to learn more <https://github.com/SigmaHQ/sigma-specification/blob/main/appendix/sigma-tags-appendix.md#namespace-stp>`_.

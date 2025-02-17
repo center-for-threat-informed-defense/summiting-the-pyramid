@@ -30,7 +30,7 @@ methodologies, defines all the key terms, and contains highly detailed examples.
 | Resource                                                                                       | Description                                                   |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Project Website](https://center-for-threat-informed-defense.github.io/summiting-the-pyramid/) | Complete documentation for the Summiting the Pyramid project. |
-| [Analytics Spreadsheet](docs/analytics/ScoredAnalytics_12062024.csv)                          | A summary of the analytics scored by the project team.        |
+| [Analytics Spreadsheet](docs/analytics/ScoredAnalytics_12062024.csv)                           | A summary of the analytics scored by the project team.        |
 
 
 ## Getting Involved
@@ -41,17 +41,14 @@ threat-informed defense:
 - **Review the project model and methodology and tell us what you think.** We welcome
   your feedback on any aspect of the project: from high-level concepts to low-level
   technical details.
-- **Request analytics and observables.** Send your [analytic
-  requests](https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/issues/new/choose)
-  to our team. As we have time, we will work them through the process and publish scores
-  and analysis.
-- **Submit your own analytics and observables.** We encourage you to use the methodology
-  to work through analytics or observables and send your results in a pull request so
-  that we can make them available to the entire community.
+- **Create your own analytics and observables.** We encourage you to use the methodology
+  to work through analytics or observables and send your results to
+  [SigmaHQ](https://github.com/SigmaHQ/sigma) that we can make them available to the
+  entire community.
 
 ## Questions and Feedback
 
-Please submit issues for any technical questions/concerns or contact
+Please submit GitHub issues for any technical questions/concerns or contact
 ctid@mitre-engenuity.org directly for more general inquiries.
 
 Also see the guidance for contributors if are you interested in contributing or simply
