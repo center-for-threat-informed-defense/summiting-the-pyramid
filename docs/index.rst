@@ -43,7 +43,7 @@ threat-informed defense globally.
 Notice
 ------
 
-© |copyright_years| MITRE Engenuity. Approved for public release. Document number(s)
+© |copyright_years| MITRE. Approved for public release. Document number(s)
 |prs_numbers|.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this

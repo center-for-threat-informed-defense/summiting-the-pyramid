@@ -223,12 +223,12 @@ Improved Analytic Scoring
     ATT&CK Defender's (MAD) Technique Detection Course on Access Token Manipulation.
     Learn more about the underlying research and process of discovering the behavioral
     analytics by subscribing and watching the MAD Access Token Manipulation `Technique
-    Detection course <https://mad.mitre-engenuity.org/CourseDetail/22>`_ and `Adversary
-    Emulation course <https://mad.mitre-engenuity.org/CourseDetail/21>`_.
+    Detection course <https://mad.mitre.org/CourseDetail/22>`_ and `Adversary
+    Emulation course <https://mad.mitre.org/CourseDetail/21>`_.
 
 .. rubric:: References
 
 .. [#f1] https://attack.mitre.org/techniques/T1134/001/
 .. [#f2] https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624
 .. [#f3] https://github.com/SigmaHQ/sigma/blob/a08e1b9d45e61570d26377e8f6811d37c6a01166/rules/windows/builtin/security/account_management/win_security_access_token_abuse.yml
-.. [#f4] https://mitre-engenuity.org/cybersecurity/mad/
+.. [#f4] https://mitre.org/cybersecurity/mad/
