@@ -35,27 +35,79 @@ jobs:
         name: summiting_the_pyramid_docs_html
         path: docs/_build/dirhtml/
 
-  github_pages:
-    # This job only runs when committing or merging to main branch.
-    if: github.ref_name == 'main'
+  deploy_preview:
     needs: docs
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+    env:
+      AZURE_STORAGE_ACCOUNT: ctidambtech
+      AZURE_STORAGE_SAS_TOKEN: ${{ secrets.AZURE_SAS_TOKEN }}
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+      STATICRYPT_PASS: ${{ secrets.STATICRYPT_PASS }}
+      NODE_OPTIONS: --max-old-space-size=8192
     steps:
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-    - name: Download HTML docs
-      uses: actions/download-artifact@v4
-      with:
-        name: summiting_the_pyramid_docs_html
-        path: docs
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: ./docs
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install -g staticrypt
+      - name: Download HTML
+        uses: actions/download-artifact@v4
+        with:
+          name: summiting_the_pyramid_docs_html
+          path: docs
+      - run: >
+          staticrypt --remember 30 --salt 64c02ee360e9a7eb90b1c28e89be65ac \
+            --password $STATICRYPT_PASS --short \
+            --template-title "CTID Ambiguous Techniques (branch: $BRANCH_NAME)" \
+            --template-instructions "The contents of this site are marked TLP:AMBER. Do not share with unauthorized individuals." \
+            --template-color-primary "#005B94" \
+            --template-color-secondary "#D4D4D3" \
+            --template-button "Log In" \
+            -r docs/
+      - name: Ensure StatiCrypt ran # StatiCrypt will fail without warning; verify it created a directory
+        run: test -d encrypted
+      - name: Copy encrypted HTML files
+        run: rsync -Ir -v --include='*.html' --exclude='*.*' encrypted/docs .
+      - name: Set the branch name
+        run: mv docs "$BRANCH_NAME"
+      - name: Install Azure CLI
+        run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      - name: Delete old blobs
+        run: az storage blob delete-batch -s '$web' --pattern "$BRANCH_NAME/*"
+      - name: Upload to blob storage
+        run: az storage blob upload-batch -s . --pattern "$BRANCH_NAME/*" -d '$web'
+      - uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+            script: |
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `This PR has been published to https://${process.env['AZURE_STORAGE_ACCOUNT']}.z13.web.core.windows.net/${process.env['BRANCH_NAME']}/`,
+              })
+                
+  # Uncomment after merging back to public repo.
+  # github_pages:
+  #   # This job only runs when committing or merging to main branch.
+  #   if: github.ref_name == 'main'
+  #   needs: docs
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+
+  #   steps:
+  #   - name: Setup Pages
+  #     uses: actions/configure-pages@v5
+  #   - name: Download HTML docs
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: summiting_the_pyramid_docs_html
+  #       path: docs
+  #   - name: Upload artifact
+  #     uses: actions/upload-pages-artifact@v3
+  #     with:
+  #       path: ./docs
+  #   - name: Deploy to GitHub Pages
+  #     id: deployment
+  #     uses: actions/deploy-pages@v4
