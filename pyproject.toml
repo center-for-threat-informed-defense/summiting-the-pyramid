@@ -11,15 +11,18 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.8"
+python-slugify = "^8.0.4"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
 bumpver = "^2022.1119"
 pytest = "^7.1.2"
 pytest-cov = "2.11.1"
-Sphinx = "^4.5.0"
+Sphinx = "^6.2.0"
 sphinx-autobuild = "^2021.3.14"
-sphinx-rtd-theme = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+sphinx-wagtail-theme = "^6.5.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

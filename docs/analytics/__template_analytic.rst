@@ -80,4 +80,4 @@ Make sure to change the reference number and copy/paste what is needed in there 
 
 .. rubric:: References
 
-.. [#f1] https://mitre-engenuity.org/
+.. [#f1] https://mitre.org/
