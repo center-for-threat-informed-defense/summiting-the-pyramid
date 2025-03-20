@@ -49,7 +49,7 @@ threat-informed defense:
 ## Questions and Feedback
 
 Please submit GitHub issues for any technical questions/concerns or contact
-ctid@mitre-engenuity.org directly for more general inquiries.
+ctid@mitre.org directly for more general inquiries.
 
 Also see the guidance for contributors if are you interested in contributing or simply
 reporting issues.
@@ -60,7 +60,7 @@ We welcome your feedback and contributions to hel∑
 
 ## Notice
 
-© 2023, 2024 MITRE Engenuity. Approved for public release. Document number(s) CT0078,
+© 2023, 2024 MITRE. Approved for public release. Document number(s) CT0078,
 CT0128.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
