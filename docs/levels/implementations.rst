@@ -4,9 +4,14 @@
 Level 4: Core to Some Implementations of (Sub-)Technique
 --------------------------------------------------------
 
-**Description**: Observables associated with low-variance behaviors of the (sub-)technique, unavoidable without a substantially different implementation.
+**Description**: Observables associated with low-variance behaviors of the
+(sub-)technique, unavoidable without a substantially different implementation.
 
-Analytics that are core to some implementations of a technique or sub-technique look at the behaviors an adversary will demonstrate during an attack. These behaviors are defined as low variance behaviors—those which cannot be avoided by the implementation. Multiple implementations may point to the same low variance behavior, allowing a defender to create a robust analytic.
+Analytics that are core to some implementations of a technique or sub-technique
+look at the behaviors an adversary will demonstrate during an attack. These
+behaviors are defined as low variance behaviors—those which cannot be avoided by
+the implementation. Multiple implementations may point to the same low variance
+behavior, allowing a defender to create a robust analytic.
 
 .. note::
 

@@ -12,13 +12,18 @@ our mission to advance the state of the art and the state of the practice in
 threat-informed defense globally.
 
 .. important::
-    **What's New In V2:**
+    **What's New In V3:**
 
-    In version 2.0, we updated and improved the project in the following ways!
+    In version 3.0, we updated and improved the project in the following ways!
 
-    * Exploring how detection accuracy and robustness relate to each other to create balanced analytics. See: :ref:`what-is-robust-detection`
-    * Introducing Detection Decomposition Diagrams (D3), a new way to visualize and identify observables which are accurate and resistant to adversary evasion. :ref:`Checkout some D3 examples here<D3>`.
-    * New Summiting scoring models! We updated our :ref:`host-based model<Host-Based Columns>` to include host-based network events, and created a new :ref:`network traffic model<Network Traffic Columns>`.
+    * Defined a framework for deriving :ref:`malicious intent <Intent
+      Definition>` for :ref:`ambiguous techniques<AT Definition>`.
+    * Identified a method to employ co-occuring techniques to support
+      :ref:`chained analytic development<Chaining Analytics>`.
+    * Developed a :ref:`context-based methodology<Context>` for deriving
+      malicious intent when engineering robust analytics with lower false
+      positive rates.
+
 
 .. toctree::
     :maxdepth: 2
@@ -28,16 +33,15 @@ threat-informed defense globally.
     introduction
     definitions
     levels/index
-    booleanlogic
+    combiningobservables
+    context
+    chaining
     examplemappings
     scoringanalytic
     analytics/index
     detection-components
     robustdetection
-    D3
-
-    futurework
-    thanks
+    detection-diagram
     changelog
 
 Notice

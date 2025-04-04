@@ -73,6 +73,20 @@ table p {
   margin-top: 0;
 }
 
+.site-toc .toc li.current>a {
+  font-weight: bold;
+}
+
+.site-toc .toc ul li ul {
+  background-color: #F1F3F4;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.site-toc .toc ul li ul a {
+  color: #4f5254;
+}
+
 /* Admonition styles */
 
 .admonition {
@@ -425,7 +439,8 @@ h6 {
   font-weight: 400;
 }
 
-section[id] {
+section[id],
+section[id]>span[id] {
   scroll-margin-top: 6rem;
 }
 

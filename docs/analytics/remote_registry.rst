@@ -2,7 +2,8 @@
 Remote Registry Management Using Reg Utility
 --------------------------------------------
 
-- https://github.com/SigmaHQ/sigma/blob/f33530e7561d98bc6f898f5a9137c3b2a7159a1b/rules-placeholder/windows/builtin/security/win_security_remote_registry_management_via_reg.yml 
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
@@ -36,6 +37,8 @@ Remote Registry Management Using Reg Utility
     falsepositives:
         - Legitimate usage of remote registry management by administrator
     level: medium
+
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/f33530e7561d98bc6f898f5a9137c3b2a7159a1b/rules-placeholder/windows/builtin/security/win_security_remote_registry_management_via_reg.yml>`_
 
 Original Host-Based Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,13 +104,33 @@ Improved Analytic Scoring #1
       - 
       - 
 
-This analytic specifically looks at Event ID 5145, which generates every time a network share object is accessed. At a glance, this can look like Sysmon 18, but when access is requested for the network share itself the field appears as ``\``. [#f1]_ Event ID 5145 was given a score of :ref:`Kernel-Mode` due to the level of permission needed at the kernel level to access network share objects. This analytic is looking for any remote access to the registry and is filtering on the remote source, giving it a score of :ref:`Some Implementations`, making the total score for this observable a **4K**. 
+This analytic specifically looks at Event ID 5145, which generates every time a
+network share object is accessed. At a glance, this can look like Sysmon 18, but
+when access is requested for the network share itself the field appears as
+``\``. [#f1]_ Event ID 5145 was given a score of :ref:`Kernel-Mode` due to the
+level of permission needed at the kernel level to access network share objects.
+This analytic is looking for any remote access to the registry and is filtering
+on the remote source, giving it a score of :ref:`Some Implementations`, making
+the total score for this observable a **4K**. 
 
-The initial score for the filter was a **1K** because it would be easy for an adversary to change or spoof the IP address the filter is targeting. Additionally, IPs can be shared and frequently change from user to user within an internal network, making the filter not accurate. When the Boolean logic is used to combine the scores, **we get a total analytic score of 1K**.
+The initial score for the filter was a **1K** because it would be easy for an
+adversary to change or spoof the IP address the filter is targeting.
+Additionally, IPs can be shared and frequently change from user to user within
+an internal network, making the filter not accurate. When the Boolean logic is
+used to combine the scores, **we get a total analytic score of 1K**.
 
-However, the score can be improved in two ways. First, the filter target can be improved by using ``SubjectUserName`` instead of ``IpAddress``. By using a username instead of an ephemeral IP address, the filter now targets a field that calls an specific ID set and managed by the enterprise. The filter score increases to a 3K, which then increases the overall analytic score to a **3K** as well.
+However, the score can be improved in two ways. First, the filter target can be
+improved by using ``SubjectUserName`` instead of ``IpAddress``. By using a
+username instead of an ephemeral IP address, the filter now targets a field that
+calls an specific ID set and managed by the enterprise. The filter score
+increases to a 3K, which then increases the overall analytic score to a **3K**
+as well.
 
-Additionally, the ``RelativeTargetName`` value can remove the use of “\”. According to Microsoft documentation, if access is requested to the share itself, then the value of RelativeTargetName would equal ``\``, rather than contain a slash pre-pended to the pipe name. To ensure the analytic is working properly, the slash should be removed from the ``RelativeTargetName``.
+Additionally, the ``RelativeTargetName`` value can remove the use of “\”.
+According to Microsoft documentation, if access is requested to the share
+itself, then the value of RelativeTargetName would equal ``\``, rather than
+contain a slash pre-pended to the pipe name. To ensure the analytic is working
+properly, the slash should be removed from the ``RelativeTargetName``.
 
 Original Network Traffic Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +162,14 @@ Original Network Traffic Analytic Scoring
       - 
       - 
 
-The network analytic shown above is the network equivalent of the host-based analytic, which simply detects remote access to the registry via the Windows Remote Registry Protocol via the named pipe ``winreg``. However, simply detecting the named pipe is very broadly scoped and would not necessarily indicate that a user or adversary is attempting to modify the registry by creating new keys or setting new values. It is possible to create a more detailed detection analytic by leveraging other fields within Zeek’s dce_rpc.log and identifying the specific RPC operations observed within the network traffic.
+The network analytic shown above is the network equivalent of the host-based
+analytic, which simply detects remote access to the registry via the Windows
+Remote Registry Protocol via the named pipe ``winreg``. However, simply
+detecting the named pipe is very broadly scoped and would not necessarily
+indicate that a user or adversary is attempting to modify the registry by
+creating new keys or setting new values. It is possible to create a more
+detailed detection analytic by leveraging other fields within Zeek's dce_rpc.log
+and identifying the specific RPC operations observed within the network traffic.
 
 Improved Analytic Scoring #2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

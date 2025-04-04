@@ -1,9 +1,10 @@
 
 ----------------------------
-Potential Access Token Abuse
+Access Token Abuse
 ----------------------------
 
-- https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_cobaltstrike_bloopers_cmd.yml
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
@@ -50,6 +51,8 @@ Potential Access Token Abuse
   falsepositives:
       - Unknown
   level: high
+
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_cobaltstrike_bloopers_cmd.yml>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +112,7 @@ methodoogy by researching what happens on a system when a token is impersonated.
 original analytic spans several different behaviors, tactics, and techniques including
 process injection, privilege escalation, lateral movement, access token manipulation,
 and credential access, so we also need to re-scope our analytic and focus on a single
-ATT&CK technique. We’ll continue with **T1134.001 Access Token Manipulation: Token
+ATT&CK technique. We'll continue with **T1134.001 Access Token Manipulation: Token
 Impersonation/Theft**. We will further scope down our research, focusing on access token
 theft implementations that leverage Windows API calls versus command line
 implementations like the ``runas`` command.
@@ -121,11 +124,13 @@ tools when performing access token manipulation, as seen on the ATT&CK page [#f1
   - DuplicateTokenEx
   - ImpersonateLogonUser
 
-.. figure:: ../_static/ATM_tests.png
+.. figure:: ../_static/atm_tests.png
    :alt: Test scripts used to call Windows APIs associated with Access Token Manipulation
    :align: center
+   :scale: 100%
 
-   Test script used to call Windows APIs associated with Access Token Manipulation
+   Test script used to call Windows APIs associated with Access Token
+   Manipulation. (Click to enlarge)
 
 Testing confirmed that calling these APIs generated Event ID 4624 (An account has been logged on).
 
@@ -174,9 +179,10 @@ which can be correlated to access tokens specifically.
       - Anti-Virus
   level: medium
 
-.. figure:: ../_static/1ATM_Capability_Abstraction.png
+.. figure:: ../_static/1atm_capability_abstraction.png
   :alt: Capability abstraction map for API-based implementations of Access Token Manipulation: Token Impersonation and Theft
   :align: center
+  :scale: 100%
 
   Capability abstraction map for API-based implementations of Access Token Manipulation:
   Token Impersonation and Theft

@@ -4,7 +4,8 @@
 BloodHound
 ----------
 
-https://github.com/SigmaHQ/sigma/blob/27aac9763988ade9eca6ee513919691fae0e28e3/rules/windows/file/file_event/file_event_win_bloodhound_collection.yml
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 30 70
@@ -28,6 +29,7 @@ https://github.com/SigmaHQ/sigma/blob/27aac9763988ade9eca6ee513919691fae0e28e3/r
       - | | rex field=target_file_name ".*\\\\(?<bloodhound_format>\d{14}_.*\.zip)"?
         | | where isnotnull(bloodhound_format)
 
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/27aac9763988ade9eca6ee513919691fae0e28e3/rules/windows/file/file_event/file_event_win_bloodhound_collection.yml>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
