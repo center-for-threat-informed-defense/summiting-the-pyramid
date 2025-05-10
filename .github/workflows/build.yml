@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  pull-requests: write
 
 jobs:
   docs:
@@ -34,7 +35,7 @@ jobs:
         with:
           name: summiting_the_pyramid_docs_html
           path: docs/_build/dirhtml/
-
+                
   github_pages:
     # This job only runs when committing or merging to main branch.
     if: github.ref_name == 'main'
@@ -46,7 +47,7 @@ jobs:
 
     steps:
     - name: Setup Pages
-      uses: actions/configure-pages@v2
+      uses: actions/configure-pages@v5
     - name: Download HTML docs
       uses: actions/download-artifact@v4
       with:

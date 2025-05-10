@@ -1,15 +1,15 @@
-:orphan:
-
 -------------------------
 Insert Analytic Name Here
 -------------------------
 
-..
-    Insert link to analytic here (like a Sigma rule)
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
   
   title: Insert Sigma rule here
+
+Analytic Source: `Source Name <https://foo.bar>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +76,9 @@ Improved Analytic Scoring
 
 Research Notes and Caveats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Make sure to change the reference number and copy/paste what is needed in there [#f1]_ .
+
+Make sure to change the reference number and copy/paste what is needed in there
+[#f1]_ .
 
 .. rubric:: References
 

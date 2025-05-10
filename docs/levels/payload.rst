@@ -4,9 +4,16 @@
 Column P: Payload Visibility
 ----------------------------
 
-**Description**: Observables are associated with the relevant network protocol payload, and sensor visibility into the payload is necessary for detection.
+**Description**: Observables are associated with the relevant network protocol
+payload, and sensor visibility into the payload is necessary for detection.
 
-The Payload Visibility event robustness category groups observables that are transmitted within the network protocol payload. For some network protocols, sensor visibility into the data payload may be obscured via encryption or obfuscation applied by the adversary or via encryption applied by the intrinsic behavior of the operating system, service, or application. Observables associated with network protocol payload or relying on full, plain-text visibility into the payload are less robust.
+The Payload Visibility event robustness category groups observables that are
+transmitted within the network protocol payload. For some network protocols,
+sensor visibility into the data payload may be obscured via encryption or
+obfuscation applied by the adversary or via encryption applied by the intrinsic
+behavior of the operating system, service, or application. Observables
+associated with network protocol payload or relying on full, plain-text
+visibility into the payload are less robust.
 
 Observables
 ^^^^^^^^^^^

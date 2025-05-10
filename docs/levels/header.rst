@@ -1,12 +1,24 @@
 .. _Header:
 
 ---------------------------
-Column P: Header Visibility
+Column H: Header Visibility
 ---------------------------
 
-**Description**: Observables associated with the relevant network protocol header.
+**Description**: Observables associated with the relevant network protocol
+header.
 
-The Header Visibility event robustness category groups observables that are transmitted as part of the network protocol header. For most network protocols, even encryption protocols like Internet Protocol Security (IPSEC) and Transport Layer Security (TLS), the header section of the protocol must be transmitted in plain text, while only the data payload would be encrypted or obfuscated. For example, with IPSEC (OSI Layer 3), the IP header would be visible in plain text, but the IP payload would be encrypted. With TLS (OSI Layer 4), the TCP header would be visible in plain text, but the TCP payload would be encrypted. With RPC (OSI Layer 7), the RPC header would be visible in plain text, but the RPC payload could be encrypted. Observables associated with the network protocol header, and therefore not affected by payload encryption or obfuscation, are more robust.
+The Header Visibility event robustness category groups observables that are
+transmitted as part of the network protocol header. For most network protocols,
+even encryption protocols like Internet Protocol Security (IPSEC) and Transport
+Layer Security (TLS), the header section of the protocol must be transmitted in
+plain text, while only the data payload would be encrypted or obfuscated. For
+example, with IPSEC (OSI Layer 3), the IP header would be visible in plain text,
+but the IP payload would be encrypted. With TLS (OSI Layer 4), the TCP header
+would be visible in plain text, but the TCP payload would be encrypted. With RPC
+(OSI Layer 7), the RPC header would be visible in plain text, but the RPC
+payload could be encrypted. Observables associated with the network protocol
+header, and therefore not affected by payload encryption or obfuscation, are
+more robust.
 
 Observables
 ^^^^^^^^^^^

@@ -6,8 +6,13 @@ Column U: User-Mode
 
 **Description**: Observables associated with user-mode OS activity.
 
-The OS kernel (ring 0) is typically invoked using C wrapper functions running in user mode (ring 3). In Windows, these system wrapper functions usually start with Nt or Zw.
-[#f1]_ .  In other operating systems, these C wrapper functions are usually included in libc. In either case, the wrapper functions switch into kernel mode using a predefined calling convention such as setting specific register flags and calling a certain interrupt. The attacker may bypass these wrapper functions by writing their own code to switch to kernel mode.
+The OS kernel (ring 0) is typically invoked using C wrapper functions running in
+user mode (ring 3). In Windows, these system wrapper functions usually start
+with Nt or Zw. [#f1]_ .  In other operating systems, these C wrapper functions
+are usually included in libc. In either case, the wrapper functions switch into
+kernel mode using a predefined calling convention such as setting specific
+register flags and calling a certain interrupt. The attacker may bypass these
+wrapper functions by writing their own code to switch to kernel mode.
 
 Observables
 ^^^^^^^^^^^
@@ -31,9 +36,12 @@ Observables
 
 **Useful resources:**
 
-* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
-* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
-* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
+* Roberto Rodriguez's `API - To - Event
+  <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+* Jonny Johnson's `TelemetrySource
+  <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+* UltimateWindowsSecurity `Event ID Glossary
+  <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
 
 .. rubric:: References
 

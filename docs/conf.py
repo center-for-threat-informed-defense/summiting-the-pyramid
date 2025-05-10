@@ -81,8 +81,14 @@ html_context = {
 }
 
 footer_links = [
-    ["Measure Maximize and Mature Threat-Informed Defense", "https://ctid.mitre.org/projects/measure-maximize-and-mature-threat-informed-defense-m3tid/"],
-    ["Sensor Mappings To ATT&CK", "https://ctid.mitre.org/projects/sensor-mappings-to-attack/"],   
+    [
+        "Measure Maximize and Mature Threat-Informed Defense",
+        "https://ctid.mitre.org/projects/measure-maximize-and-mature-threat-informed-defense-m3tid/",
+    ],
+    [
+        "Sensor Mappings To ATT&CK",
+        "https://ctid.mitre.org/projects/sensor-mappings-to-attack/",
+    ],
 ]
 
 html_theme_options = {

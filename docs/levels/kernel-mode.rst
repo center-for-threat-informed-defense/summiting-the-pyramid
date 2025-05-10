@@ -4,9 +4,18 @@
 Column K: Kernel-Mode
 ---------------------
 
-**Description**: Interfacing directly with ring 0 in the OS. Observables are in kernel mode.
+**Description**: Interfacing directly with ring 0 in the OS. Observables are in
+kernel mode.
 
-As defined by Microsoft, the kernel “implements the core functionality that everything else in the operating system depends upon.” [#f1]_ This is the heart of the operating system, as it provides the services for everything, including managing threads, conflicts and errors, and system memory. [#f2]_ Some of the kernel library support routines available start with Ke within the Windows Operating System. Defenders can monitor kernel activity through observables including registry modification, some event IDs, and network protocols. Kernel observables are usually the hardest to evade and represent the most robust events and fields in the framework.
+As defined by Microsoft, the kernel “implements the core functionality that
+everything else in the operating system depends upon.” [#f1]_ This is the heart
+of the operating system, as it provides the services for everything, including
+managing threads, conflicts and errors, and system memory. [#f2]_ Some of the
+kernel library support routines available start with Ke within the Windows
+Operating System. Defenders can monitor kernel activity through observables
+including registry modification, some event IDs, and network protocols. Kernel
+observables are usually the hardest to evade and represent the most robust
+events and fields in the framework.
 
 Observables
 ^^^^^^^^^^^
@@ -40,9 +49,12 @@ Observables
 
 **Useful resources:**
 
-* Roberto Rodriguez’s `API - To - Event <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
-* Jonny Johnson’s `TelemetrySource <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
-* UltimateWindowsSecurity `Event ID Glossary <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
+* Roberto Rodriguez's `API - To - Event
+  <https://docs.google.com/spreadsheets/d/1Y3MHsgDWj_xH4qrqIMs4kYJq1FSuqv4LqIrcX24L10A/edit#gid=0>`_
+* Jonny Johnson's `TelemetrySource
+  <https://docs.google.com/spreadsheets/d/1d7hPRktxzYWmYtfLFaU_vMBKX2z98bci0fssTYyofdo/edit#gid=0>`_
+* UltimateWindowsSecurity `Event ID Glossary
+  <https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx?i=j>`_
 
 .. rubric:: References
 

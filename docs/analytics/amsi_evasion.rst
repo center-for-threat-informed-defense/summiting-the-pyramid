@@ -4,7 +4,8 @@
 AMSI Evasion
 ------------
 
-- https://github.com/SigmaHQ/sigma/blob/7f3eff58e17c1edec877cf45972726588d009940/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
@@ -34,6 +35,8 @@ AMSI Evasion
   falsepositives:
       - Unlikely
   level: high
+
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/7f3eff58e17c1edec877cf45972726588d009940/rules/windows/registry/registry_delete/registry_delete_removal_amsi_registry_key.yml>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -2,7 +2,8 @@
 Service Registry Permissions Weakness Check
 -------------------------------------------
 
-- https://github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_get_acl_service.yml
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
@@ -34,6 +35,8 @@ Service Registry Permissions Weakness Check
   falsepositives:
       - Legitimate administrative script
   level: medium
+
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_get_acl_service.yml>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,12 +118,12 @@ tools and associated scripts before deployment to evade this analytic, it is **2
 
 .. code-block::
 
-  # Let’s start with a simple example:
+  # Let's start with a simple example:
   function Invoke-Malware {
-    Write-Host ‘Malware!’;
+    Write-Host 'Malware!';
   }
 
-  # Simple signature: if script contains “Write-Host ‘Malware’” → Malicious
+  # Simple signature: if script contains “Write-Host 'Malware'” → Malicious
   # Simple bypass:
   function Invoke-Malware {
     Write-Host "Malware!";
@@ -132,7 +135,7 @@ tools and associated scripts before deployment to evade this analytic, it is **2
     Write-Host (“Mal” + “ware!”);
   }
 
-  # Let’s start being a little more sophisticated (just a bit):
+  # Let's start being a little more sophisticated (just a bit):
   function Invoke-NotMalware {
     $malware_base64 = "V3JpdGUtSG9zdCAiTWFsd2FyZSEi";
     $malware = [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($malware_base64));

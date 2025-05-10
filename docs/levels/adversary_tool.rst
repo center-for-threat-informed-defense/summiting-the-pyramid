@@ -4,15 +4,27 @@
 Level 2: Core to Adversary-Brought Tool or Outside Boundary 
 -----------------------------------------------------------
 
-**Description**: Observables associated with tools that are brought in by an adversary to accomplish an attack.
+**Description**: Observables associated with tools that are brought in by an
+adversary to accomplish an attack.
 
-Tools that are brought by an adversary for an attack provide the adversary the flexibility to configure the tool and change the tool’s implementations to meet their specific needs. Malware and tools that might fall under these observables include ADFind, CobaltStrike, and others that the adversary can modify or configure to accomplish their goal.
+Tools that are brought by an adversary for an attack provide the adversary the
+flexibility to configure the tool and change the tool's implementations to meet
+their specific needs. Malware and tools that might fall under these observables
+include ADFind, CobaltStrike, and others that the adversary can modify or
+configure to accomplish their goal.
 
 **Why are adversary-brought tools placed here?**
 
-These tools give adversaries flexibility to evade detection by modifying the tool before deployment to the target system. For example, if an analytic detection is identifying certain tool-specific configurations, an adversary can change the source code and evade that detection. [#f1]_ While this requires knowledge on the adversary to change the tool configuration without changing the functionality, it gives an adversary flexibility to evade detection through the availability of application code itself.
+These tools give adversaries flexibility to evade detection by modifying the
+tool before deployment to the target system. For example, if an analytic
+detection is identifying certain tool-specific configurations, an adversary can
+change the source code and evade that detection. [#f1]_ While this requires
+knowledge on the adversary to change the tool configuration without changing the
+functionality, it gives an adversary flexibility to evade detection through the
+availability of application code itself.
 
-**Examples**: Command-line arguments, tool-specific configurations, metadata, binaries
+**Examples**: Command-line arguments, tool-specific configurations, metadata,
+binaries
 
 Observables
 ^^^^^^^^^^^

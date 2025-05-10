@@ -4,16 +4,29 @@
 Level 1: Ephemeral Values
 -------------------------
 
-**Description**: Observables that are trivial for an adversary to change, or that change even without adversary intervention.
+**Description**: Observables that are trivial for an adversary to change, or
+that change even without adversary intervention.
 
-Ephemeral values capture the context of what is currently happening to a user, process, or system. These observables include process IDs, hash values, domain names, filenames, and others. While these observables offer high :ref:`accuracy <Accuracy>`, they are often easy to evade.
+Ephemeral values capture the context of what is currently happening to a user,
+process, or system. These observables include process IDs, hash values, domain
+names, filenames, and others. While these observables offer high :ref:`accuracy
+<Accuracy>`, they are often easy to evade.
 
 **Why are these observables the lowest level?**
 
-These observables cannot be relied on to identify adversary behavior. These indicators take minimal effort for an adversary to change [#f1]_. A new hash value can be created if one bit is changed in a file. A filename can be obfuscated within an image. When building out analytics, these observables will mostly capture values that point to the context of a certain application, user, or process. While these observables can detect known malicious applications or processes, they will not detect anything new, nor will they detect if the adversary decides to change an operational or environmental variable to evade detection. To ensure detection in-depth, these observables should be combined with observables from other levels.
+These observables cannot be relied on to identify adversary behavior. These
+indicators take minimal effort for an adversary to change [#f1]_. A new hash
+value can be created if one bit is changed in a file. A filename can be
+obfuscated within an image. When building out analytics, these observables will
+mostly capture values that point to the context of a certain application, user,
+or process. While these observables can detect known malicious applications or
+processes, they will not detect anything new, nor will they detect if the
+adversary decides to change an operational or environmental variable to evade
+detection. To ensure detection in-depth, these observables should be combined
+with observables from other levels.
 
-**Examples**: Hash values, IP addresses, protocol-specific ports, file names, domain
-names, processes, user oriented observables, others
+**Examples**: Hash values, IP addresses, protocol-specific ports, file names,
+domain names, processes, user oriented observables, others
 
 Observables
 ^^^^^^^^^^^

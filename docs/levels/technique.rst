@@ -4,9 +4,16 @@
 Level 5: Core to Sub-Technique or Technique
 -------------------------------------------
 
-**Description**: Observables associated with “chokepoints” or “invariant behaviors” of the (sub-)technique, unavoidable by any implementation.
+**Description**: Observables associated with “chokepoints” or “invariant
+behaviors” of the (sub-)technique, unavoidable by any implementation.
 
-Some ATT&CK techniques produce artifacts that are the same across all implementations of that behavior. These artifacts are considered invariant behaviors, i.e., an essential part of any implementation of the behavior. While identifying these invariant behaviors requires research into all possible implementations of a technique and the observables that are produced, it provides the defender the most robust analytic option, as it forces the adversary to switch to an entirely different technique.
+Some ATT&CK techniques produce artifacts that are the same across all
+implementations of that behavior. These artifacts are considered invariant
+behaviors, i.e., an essential part of any implementation of the behavior. While
+identifying these invariant behaviors requires research into all possible
+implementations of a technique and the observables that are produced, it
+provides the defender the most robust analytic option, as it forces the
+adversary to switch to an entirely different technique.
 
 .. note::
 

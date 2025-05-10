@@ -1,10 +1,11 @@
 .. _AD Find:
 
 -----------------
-Suspicious ADFind
+ADFind
 -----------------
 
-- https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml
+Original Analytic
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
 
@@ -41,6 +42,8 @@ Suspicious ADFind
   falsepositives:
       - Administrative activity
   level: medium
+
+Analytic Source: `SigmaHQ <https://github.com/SigmaHQ/sigma/blob/30bee7204cc1b98a47635ed8e52f44fdf776c602/rules/windows/process_creation/win_susp_adfind.yml>`_
 
 Original Analytic Scoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,17 +122,54 @@ Improved Analytic Scoring
       -
       -
 
-This analytic looks for specific command-line arguments of the ADFind tool, identified when ``Image`` ends with ``adfind.exe``. The logsource for this analytic is ``process_creation``, so it could potentially fire for Windows Event ID 4688 or Sysmon Event ID 1. This analytic references the ``Image`` field, which does not exist in Event ID 4688 but does exist in Sysmon Event ID 1. [#f1]_ Event ID 4688 has the field NewProcessName, though it could be mapped to another field name in your SIEM of choice. We proceed with the interpretation that 4688 events will not be returned, and therefore score this using Event ID 1.
+This analytic looks for specific command-line arguments of the ADFind tool,
+identified when ``Image`` ends with ``adfind.exe``. The logsource for this
+analytic is ``process_creation``, so it could potentially fire for Windows Event
+ID 4688 or Sysmon Event ID 1. This analytic references the ``Image`` field,
+which does not exist in Event ID 4688 but does exist in Sysmon Event ID 1.
+[#f1]_ Event ID 4688 has the field NewProcessName, though it could be mapped to
+another field name in your SIEM of choice. We proceed with the interpretation
+that 4688 events will not be returned, and therefore score this using Event ID
+1.
 
-Sysmon Event ID 1 is generated when Win32 API functions are called to create a new process. [#f2]_  However, instead of operating from a userland artifact, it awaits a kernel callback to notify it via the ``PsSetCreateProcessNotifyRoutineEx`` function that a new process has been created. The aforementioned routine is normally triggered by the driver any time a new process is registered with the kernel, at which point it notifies all drivers in its callback array of the new process registration. Although it is possible for the notification routine to be avoided, doing so generally requires modifying either Sysmon (to suppress the driver callback) or the driver itself (to avoid notifications of process registration ever being sent out), both of which are quite impractical. Therefore, it is a kernel-mode log source and we can place the observables in the :ref:`Kernel-Mode`.
+Sysmon Event ID 1 is generated when Win32 API functions are called to create a
+new process. [#f2]_  However, instead of operating from a userland artifact, it
+awaits a kernel callback to notify it via the
+``PsSetCreateProcessNotifyRoutineEx`` function that a new process has been
+created. The aforementioned routine is normally triggered by the driver any time
+a new process is registered with the kernel, at which point it notifies all
+drivers in its callback array of the new process registration. Although it is
+possible for the notification routine to be avoided, doing so generally requires
+modifying either Sysmon (to suppress the driver callback) or the driver itself
+(to avoid notifications of process registration ever being sent out), both of
+which are quite impractical. Therefore, it is a kernel-mode log source and we
+can place the observables in the :ref:`Kernel-Mode`.
 
-``Image|endswith: '\adfind.exe'`` is placed at the :ref:`Ephemeral Values`. An adversary can easily obfuscate or change the Image value by renaming the file. The command-line arguments are placed at :ref:`Adversary Brought Tool`, since the command-line arguments are specific to the ADFind tool and require modifying source code to change. Since the ``CommandLine`` and ``Image`` observables in the analytic are ANDed together, according to our Boolean logic, the entire analytic scores as a **1K**.
+``Image|endswith: '\adfind.exe'`` is placed at the :ref:`Ephemeral Values`. An
+adversary can easily obfuscate or change the Image value by renaming the file.
+The command-line arguments are placed at :ref:`Adversary Brought Tool`, since
+the command-line arguments are specific to the ADFind tool and require modifying
+source code to change. Since the ``CommandLine`` and ``Image`` observables in
+the analytic are ANDed together, according to our Boolean logic, the entire
+analytic scores as a **1K**.
 
-The robustness of this analytic can be increased by leveraging the ``OriginalFileName`` field in Sysmon Event ID 1 instead of ``Image``. It is trivial for an adversary to change the ``Image`` name ending with ``adfind.exe`` to avoid detection. It is more challenging for an adversary to change the ``OriginalFileName``, since it is derived from the PE header. Changing the PE header requires either modifying values at the executable’s compile time or modifying raw bytes with a hex editor, both of which are more complex for an adversary than renaming a file on a compromised system.
+The robustness of this analytic can be increased by leveraging the
+``OriginalFileName`` field in Sysmon Event ID 1 instead of ``Image``. It is
+trivial for an adversary to change the ``Image`` name ending with ``adfind.exe``
+to avoid detection. It is more challenging for an adversary to change the
+``OriginalFileName``, since it is derived from the PE header. Changing the PE
+header requires either modifying values at the executable's compile time or
+modifying raw bytes with a hex editor, both of which are more complex for an
+adversary than renaming a file on a compromised system.
 
-By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic moves up a level to **2K**.
+By instead detecting ``OriginalFileName|endswith: '\adfind.exe'``, this analytic
+moves up a level to **2K**.
 
-Another approach to improve the robustness of this analytic is to drop the condition of the ``Image`` or ``OriginalFileName`` completely since the command-line arguments specified in the first clause are likely unique to the ADFind tool. Adding that second clause adds a way for an adversary to evade the analytic without decreasing accuracy.
+Another approach to improve the robustness of this analytic is to drop the
+condition of the ``Image`` or ``OriginalFileName`` completely since the
+command-line arguments specified in the first clause are likely unique to the
+ADFind tool. Adding that second clause adds a way for an adversary to evade the
+analytic without decreasing accuracy.
 
 
 .. rubric:: References
