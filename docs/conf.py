@@ -24,8 +24,8 @@ googleanalytics_id = (
 )
 
 author = "Center for Threat-Informed Defense"
-copyright_years = "2023, 2024"
-prs_numbers = "CT0078, CT0128"
+copyright_years = "2023, 2024, 2025"
+prs_numbers = "CT0078, CT0128, 25-1550"
 
 # The full version, including alpha/beta/rc tags
 version = "v3.0.0"
