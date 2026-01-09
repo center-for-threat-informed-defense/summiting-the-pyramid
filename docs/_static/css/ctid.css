@@ -10,6 +10,8 @@ body {
   --mitre-dark-gray: #7e8284;
   --mitre-silver: #d4d4d3;
   --mitre-light-silver: #f1f3f4;
+  --me-ext-code: #880132;
+  --me-orange-dark: #c94f1f;
 
   --text-color-inverse: #ffffff;
 
@@ -65,26 +67,47 @@ table p {
 }
 
 /* Table of contents styles */
+.collapse {
+  overflow: visible;
+  min-height: fit-content;
+}
 .rst-content .toctree-wrapper a {
   font-weight: normal;
+}
+
+.site-toc .toc .current > a {
+  color: var(--mitre-black);
 }
 
 .rst-content .toctree-wrapper ul li ul {
   margin-top: 0;
 }
 
-.site-toc .toc li.current>a {
+.site-toc .toc li.current > a {
   font-weight: bold;
 }
 
 .site-toc .toc ul li ul {
-  background-color: #F1F3F4;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: 1rem;
 }
 
-.site-toc .toc ul li ul a {
-  color: #4f5254;
+.toc .current > .toctree-expand,
+.toctree-expand {
+  color: var(--mitre-blue);
+  background-color: inherit !important;
+  transition: none !important;
+}
+body.theme-dark {
+  .toc .current > .toctree-expand,
+  .toctree-expand {
+    color: var(--mitre-light-blue) !important;
+  }
+  .current.reference.internal {
+    color: white;
+  }
+}
+.toc li[aria-expanded="false"] {
+  color: red !important;
 }
 
 /* Admonition styles */
@@ -116,8 +139,7 @@ body.theme-dark .admonition p:last-child {
 
 .admonition.caution .admonition-title,
 .admonition.warning .admonition-title {
-  background-color: var(--me-ext-gray-green-dark);
-  /* background-color: var(--me-ext-orange-dark); */
+  background-color: var(--me-orange-dark);
   color: var(--mitre-black);
 }
 
@@ -171,6 +193,17 @@ blockquote.epigraph p.attribution {
   font-size: 12pt;
   font-style: italic;
 }
+body.theme-dark blockquote {
+  background-color: var(--mitre-dark-navy);
+  color: white;
+}
+
+body.theme-dark .admonition.note blockquote {
+  background-color: var(--mitre-light-silver) !important;
+  border-color: var(--mitre-light-silver);
+  color: var(--mitre-black);
+  border-radius: var(--border-radius);
+}
 
 body.theme-dark {
   background-color: var(--mitre-black);
@@ -214,7 +247,6 @@ a:hover {
 }
 
 body.theme-dark {
-
   h1,
   h2,
   h3,
@@ -306,7 +338,7 @@ body.theme-dark .admonition.note p {
 
 .navbar .version {
   font-size: 16px;
-  color: #87DEFF;
+  color: #87deff;
 }
 
 .navbar .logo-img {
@@ -395,9 +427,14 @@ footer p {
   font-size: 16px;
 }
 
-.highlight-bash .highlight pre {
+.highlight-bash .highlight pre,
+pre {
   background-color: var(--mitre-black);
   border-radius: var(--border-radius);
+}
+body.theme-dark .highlight-bash .highlight pre,
+body.theme-dark pre {
+  background-color: var(--mitre-dark-navy);
 }
 
 .table .thead-dark th,
@@ -440,7 +477,7 @@ h6 {
 }
 
 section[id],
-section[id]>span[id] {
+section[id] > span[id] {
   scroll-margin-top: 6rem;
 }
 
@@ -539,4 +576,7 @@ iframe {
     width: 1370px;
     max-width: 1370px;
   }
+}
+dl dt {
+  font-weight: normal;
 }
