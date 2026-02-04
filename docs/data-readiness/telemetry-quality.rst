@@ -1,4 +1,4 @@
-Telemetry QUality Scoring
---------------------------
+Telemetry Quality Scoring
+================================
 
 Metrics
