@@ -13,7 +13,7 @@ determining intent.
 -----------------------------------------------------
 Peripheral-Level Context
 -----------------------------------------------------
-.. figure:: ./_static/peripheral.png
+.. figure:: ../_static/peripheral.png
    :alt: Peripheral-Level Context
    :align: center
    :scale: 25%
@@ -37,7 +37,7 @@ anticipate and mitigate risks before they materialize.
 Chain-Level Context
 ------------------------------------------------------
 
-.. figure:: ./_static/analysis_archive_chain.png
+.. figure:: ../_static/analysis_archive_chain.png
    :alt: Chain-Level Context
    :align: center
    :scale: 100%
@@ -74,7 +74,7 @@ and precision is critical.
 Technique-Level Context
 ------------------------------------------------------
 
-.. figure:: ./_static/technique.png
+.. figure:: ../_static/technique.png
    :alt: Technique-Level Context
    :align: center
    :scale: 100%
@@ -117,7 +117,7 @@ differentiate between benign and malicious behavior.
 --------------------------------------
 How to Use Context to Determine Intent
 --------------------------------------
-.. figure:: ./_static/context_flow_chart.png
+.. figure:: ../_static/context_flow_chart.png
    :alt: Contextual Requirements Flowchart
    :align: center
    :scale: 100%
