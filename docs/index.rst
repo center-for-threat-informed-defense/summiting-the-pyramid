@@ -26,6 +26,7 @@ threat-informed defense globally.
 
 
 .. toctree::
+    :titlesonly:
     :maxdepth: 2
     :caption: Contents
 
