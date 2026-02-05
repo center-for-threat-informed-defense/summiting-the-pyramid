@@ -21,7 +21,7 @@ broad enough analytics to observe all malicious behavior. Doing so will achieve
 a low false negative rate. Then, we can focus on filtering out the false
 positives to improve accuracy overall.
 
-.. figure:: _static/funneloffidelity.png
+.. figure:: ../_static/funneloffidelity.png
    :alt: Funnel of Fidelity
    :align: center
 
@@ -44,7 +44,7 @@ observable that only includes ephemeral or tool-specific elements will be less
 resistant to adversary evasion and increasing the false negative rate. Below is
 the D3 visual for Scheduled Tasks.
 
-.. figure:: _static/d3_scheduledtasks_basic.png
+.. figure:: ../_static/d3_scheduledtasks_basic.png
    :alt: D3 for Scheduled Tasks
    :align: center
 
@@ -54,7 +54,7 @@ As seen in this diagram, multiple event source observables point to the creation
 of a Scheduled Task. We can take the observables seen in the diagram and map
 each one to the Summiting model.
 
-.. figure:: _static/robustdetection_eventplacement.png
+.. figure:: ../_static/robustdetection_eventplacement.png
    :alt: Scheduled tasks event source mapping
    :align: center
 
@@ -84,7 +84,7 @@ of scheduled tasks, this would score at a **4A**.
 At the end of this step, we have three different analytic options that provide
 robust detections for scheduled tasks.
 
-.. figure:: _static/robustdetection_analyticoptions.png
+.. figure:: ../_static/robustdetection_analyticoptions.png
    :alt: Scheduled tasks analytic options
    :align: center
 
@@ -134,7 +134,7 @@ malicious versus benign task creation, but the detections will fire for the
 creation of any registry key under that sub-path. The trade-off for a low false
 negative rate in this context could result in a higher false positive rate.
 
-.. figure:: _static/d3_scheduledtasks_filename.png
+.. figure:: ../_static/d3_scheduledtasks_filename.png
    :alt: D3 for Scheduled Tasks - Filename
    :align: center
 
@@ -153,7 +153,7 @@ new registry key creations under the Tree and Tasks keys.
 Windows EID 4698 provides an accurate detection for scheduled tasks, while also
 providing some resistance to adversary evasion over time.
 
-.. figure:: _static/d3_scheduledtasks_4698.png
+.. figure:: ../_static/d3_scheduledtasks_4698.png
    :alt: D3 for Scheduled Tasks Event ID 4698
    :align: center
 
@@ -196,7 +196,7 @@ attack and hide in the exclusion.
 Let's first look at the Windows EID 4698 and determine robust fields that can
 improve accuracy.
 
-.. figure:: _static/eid4698.png
+.. figure:: ../_static/eid4698.png
    :alt: Scheduled Tasks Event ID 4698
    :align: center
 
@@ -331,7 +331,7 @@ is a known benign activity, in a folder that the adversary cannot modify without
 elevated permissions, and is specific enough that it would be difficult for them
 to guess where to hide.
 
-.. figure:: _static/d3_scheduledtasks_4698filter.png
+.. figure:: ../_static/d3_scheduledtasks_4698filter.png
    :alt: Scheduled Tasks Event ID 4698 with Filter
    :align: center
 
@@ -339,7 +339,7 @@ to guess where to hide.
 
 Our final analytics maps out to a 4A.
 
-.. figure:: _static/robustnessscore_scheduledtasks.png
+.. figure:: ../_static/robustnessscore_scheduledtasks.png
    :alt: Scheduled Tasks Robustness Score of 4A
    :align: center
 
@@ -398,7 +398,7 @@ resistance to adversary evasion over time through multiple analytic detections.
   adversary's inferred techniques to highlight lateral movement and persistent
   behaviors.
 
-.. figure:: _static/tie_scheduledtasks.png
+.. figure:: ../_static/tie_scheduledtasks.png
    :alt: TIE mapping for Scheduled Tasks
    :align: center
 
