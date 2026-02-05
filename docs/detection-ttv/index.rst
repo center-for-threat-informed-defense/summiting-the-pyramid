@@ -1,4 +1,4 @@
-Detection Tuning, Testing, & Validation
+Detection Evaluation & Validation
 ========================================
 
 .. toctree::
