@@ -1,3 +1,6 @@
+Analytic Design & Engineering
+==============================
+
 .. toctree::
     :maxdepth: 1
 
