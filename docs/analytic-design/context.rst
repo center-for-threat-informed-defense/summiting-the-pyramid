@@ -1,7 +1,7 @@
 .. _Context:
 
 ==============================================================
-Context to Determine Intent
+Using Context to Determine Intent
 ==============================================================
 
 Our research on ambiguous techniques led us to classify three different types of
