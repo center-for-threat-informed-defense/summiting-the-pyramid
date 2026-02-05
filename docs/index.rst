@@ -29,9 +29,7 @@ threat-informed defense globally.
     :maxdepth: 2
     :caption: Contents
 
-    overview
-    introduction
-    definitions
+    overview/index
     data-readiness/index
     analytic-design/index
     detection-ttv/index
