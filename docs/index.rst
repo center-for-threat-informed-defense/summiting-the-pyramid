@@ -32,16 +32,10 @@ threat-informed defense globally.
     overview
     introduction
     definitions
-    levels/index
-    combiningobservables
-    context
-    chaining
-    examplemappings
-    scoringanalytic
-    analytics/index
-    detection-components
-    robustdetection
-    detection-diagram
+    data-readiness/index
+    analytic-design/index
+    detection-ttv/index
+    examples/index
     changelog
 
 Notice
