@@ -1,3 +1,6 @@
+Detection Tuning, Testing, & Validation
+========================================
+
 .. toctree::
     :maxdepth: 1
 
