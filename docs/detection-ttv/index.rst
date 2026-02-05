@@ -2,7 +2,7 @@ Detection Evaluation & Validation
 ========================================
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     ../levels/index
     combiningobservables
