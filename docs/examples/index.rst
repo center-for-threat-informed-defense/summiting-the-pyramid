@@ -5,4 +5,5 @@ Examples & Use Cases
     :maxdepth: 2
 
     examplemappings
+    ../analytics/index
     usecases/index
