@@ -76,7 +76,7 @@ attacks not only through the utilization of the service creation tool (sc.exe),
 but also by directly modifying the registry itself. [#f3]_
 
 The Summiting the Pyramid team is utilizing capability abstraction mappings to
-map certain observables to the :doc:`levels/index` outlined by our methodology. As
+map certain observables to the :doc:`../levels/index` outlined by our methodology. As
 observables are assigned, further research can be conducted to identify
 detections based off those observables, especially for observables that might
 cover part or all of a technique. For example, if a kernel call is detected, is
