@@ -1,5 +1,5 @@
-Robust Detection Engineering
-================================
+Detection Engineering Work Overview
+=====================================
 
 .. toctree::
     :maxdepth: 1
