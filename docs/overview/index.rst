@@ -21,7 +21,7 @@ and consume more time and money, imposing more pain. Tactics, Techniques, and
 Procedures (TTPs), such as those in MITRE ATT&CK®, are at the top of the pyramid
 because they are the most costly for an adversary to change
 
-.. figure:: _static/pyramid_of_pain.png
+.. figure:: ../_static/pyramid_of_pain.png
    :alt: Pyramid of Pain - Created by David Bianco
    :align: center
 
@@ -73,7 +73,7 @@ the types of tools an adversary will attempt to use during an attack. Finally,
 the top level is strictly focused on behaviors that an adversary will
 demonstrate during an attack.
 
-.. figure:: _static/pyramid_breakdown_revised.png
+.. figure:: ../_static/pyramid_breakdown_revised.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
@@ -124,7 +124,7 @@ user, some are functions of the kernel, and so on. Adversaries may be able to
 bypass certain event IDs by calling lower-level APIs in the OS or making direct
 syscalls into the kernel.
 
-.. figure:: _static/summitingmodel_hostbased_blank.png
+.. figure:: ../_static/summitingmodel_hostbased_blank.png
    :alt: Summiting Host-Based Model
    :align: center
 
@@ -147,7 +147,7 @@ understanding of the network traffic can help defenders understand what protocol
 information is necessary for detecting malicious activity and use that
 information to both build and improve network-traffic detections.
 
-.. figure:: _static/summitingmodel_network_blank.png
+.. figure:: ../_static/summitingmodel_network_blank.png
    :alt: Summiting Network Traffic Model
    :align: center
 
