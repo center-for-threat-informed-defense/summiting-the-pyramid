@@ -2,7 +2,7 @@ Introduction
 ============
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     stp-overview
     at-overview
