@@ -5,7 +5,7 @@ Summiting Levels
 ===================
 
 Our model defines five levels of analytic robustness and three columns of event
-robustness. (See: :doc:`../definitions`) This section goes into deeper detail about how the
+robustness. (See: :doc:`../overview/definitions`) This section goes into deeper detail about how the
 levels and columns are defined and how to map observables onto our model.
 
 **Levels: Analytic Robustness Categories**
