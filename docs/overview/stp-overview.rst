@@ -1,4 +1,4 @@
-Summiting the Pyramid Project Overview
+Summiting the Pyramid Overview
 =======================================
 
 ..
