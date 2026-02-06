@@ -1,5 +1,5 @@
-Ambiguous Techniques Project
-=============================
+Ambiguous Techniques Overview
+==============================
 
 Determining Malicious Intent for Ambiguous Techniques
 -------------------------------------------------------
