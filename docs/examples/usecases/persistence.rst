@@ -1,14 +1,20 @@
 Persistence via Registry/Startup
-===================================
+=================================
 
 Description of Use Case
 ------------------------
-Description
+This was a very specialized use case where the top-performing log sources were those designed with the explicit purpose of monitoring for system configuration changes. General-purpose logs were far less effective. The results show a clear preference for telemetry that provides high-fidelity "before and after" states or real-time modification alerts.
+
 
 Techniques Evaluated
 ---------------------
-* list
-
+* T1547 Boot or Logon Autostart Execution
+* T1112 Modify Registry
+* T1053 Scheduled Task/Job
+* T1543 Create or Modify System Process
+* T1546 Event Triggered Execution
+* T1574 Hijack Execution Flow
+* T1197 BITS Jobs
 
 
 Top Scoring Log Sources
@@ -18,17 +24,29 @@ Top Scoring Log Sources
    +------------------------------------------------------+-------+
    | Log Source                                           | Score |
    +======================================================+=======+
-   | Windows PowerShell: EID 4104: Script Block Logging   | 27.2  |
+   | EDR: Telemetry                                       | 27.7  |
+   +------------------------------------------------------+-------+
+   | Sysmon: EID 12/13/14: Registry Events                | 27.0  |
+   +------------------------------------------------------+-------+
+   | EDR: Registry Modifications                          | 26.0  |
+   +------------------------------------------------------+-------+
+   | Autoruns Data                                        | 26.0  |
+   +------------------------------------------------------+-------+
+   | Windows Security: EID 4657                           | 24.6  |
    +------------------------------------------------------+-------+
 
 
 Key Trends & Generalizations
 ------------------------------
-* **List**: info
+* **Specificity is Paramount**: This use case proves that a specialized tool for a narrow job (like Autoruns or Sysmon's registry monitoring) is often more valuable than a general-purpose log that happens to catch some of the activity.
+
+* **There is a Place for Snapshot Analysis**: Not all security data needs to be real-time. The high score of Autoruns demonstrates that periodic, high-fidelity snapshots are extremely effective for non-urgent but critical tasks like persistence hunting.
+
+* **The Action is on the Endpoint**: Similar to Lateral Movement, network data is almost completely irrelevant for detecting this category of persistence. The entire story is told through file, registry, and process events on the host itself.
 
 
 Evaluation of Log Source Types
 -------------------------------
-Info
+Registry modification events were the clear #1 category. File creation events (for startup folders) were a strong #2. Process creation events were #3, useful for seeing the actor but not the persistence artifact itself.
 
-**Technology Comparison: info**
+**Technology Comparison: EDR ≈ Sysmon > Specialized Tools (Autoruns) > Native Windows Logs**
