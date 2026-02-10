@@ -63,3 +63,8 @@ Evaluation of Log Source Types
 Content-aware alerts (DLP, CASB) were the undisputed champions. Network traffic metadata (NetFlow, Firewall logs) ranked significantly lower, establishing a clear pattern: seeing the content and destination context is more valuable than seeing the volume and connection data alone. Process events were middle-tier: useful for seeing a tool like 7z.exe run, but not for seeing the data leave.
 
 **Technology Comparison: Specialized Security Tools (DLP, CASB, EDR) >> Cloud-Native Security >> Native OS / Network Gear**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here: :download:`Data Exfiltration via Web or Cloud Services <FinalConfidenceScores_Data Exfil via WebCloud.csv>`
