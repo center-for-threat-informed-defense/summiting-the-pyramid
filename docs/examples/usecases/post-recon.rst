@@ -64,3 +64,8 @@ Evaluation of Log Source Types
 Process creation logs with full command-line auditing were the massive margin, the most important log type. Scripting logs (PowerShell) were a strong second. API call monitoring was a more advanced but highly valuable third.
 
 **Technology Comparison: EDR ≈ Sysmon >> Native Windows Logs >> Network/Cloud**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here: :download:`Post-Exploitation Reconnaissance<FinalConfidenceScores_Post-Exploit Recon.csv>`
