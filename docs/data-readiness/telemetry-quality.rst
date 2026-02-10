@@ -42,7 +42,7 @@ Timeliness measures the latency between an event occurring on a system and that 
 
 Context
 ----------
-Context quantifies how much useful, differentiating information a log source provides when trying to determine if a specific adversary technique is occurring. The steps for scoring Context are as follows:
+:ref:`Context<Context>` quantifies how much useful, differentiating information a log source provides when trying to determine if a specific adversary technique is occurring. The steps for scoring Context are as follows:
 
 - Identify All Relevant Techniques: For the log source being scored, identify all the techniques within the given use case for which this log could provide any evidence.
 - Score Each Technique Individually: For each technique that the log source covers, perform the following assessment:
@@ -66,7 +66,7 @@ Coverage measures the breadth of a log source's visibility across the relevant t
 
 Robustness
 -----------
-Robustness measures how difficult it is for an adversary to tamper with or evade the specific observables a log source provides for detection. The steps for scoring Robustness are as follows:
+:ref:`Robustness<Summiting Levels>` measures how difficult it is for an adversary to tamper with or evade the specific observables a log source provides for detection. The steps for scoring Robustness are as follows:
 
 - Score at the Technique Level: For each technique the log source covers: 
 
@@ -82,4 +82,8 @@ Cost is a metric that is included only for prioritization purposes, and thus can
 
 Telemetry Quality Evaluation
 -----------------------------
-Graphic and explanation
+
+.. figure:: ../_static/TQ_scoring_new.png
+   :alt: Telemetry Quality scoring process
+   :align: center
+   :scale: 100%
