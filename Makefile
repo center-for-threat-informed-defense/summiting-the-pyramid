@@ -22,7 +22,9 @@ docs: ## Build Sphinx HTML documentation
 .PHONY: docs-server
 docs-server: ## Run Sphinx build server
 	sphinx-autobuild -b dirhtml -a "$(SOURCEDIR)" "$(BUILDDIR)"
-
+.PHONY: docs-ci
+docs-ci: ## Generate HTML documentation for publishing to GitHub Pages.
+	sphinx-build -M dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" -W --keep-going
 
 .PHONY: docs-pdf
 docs-pdf: ## Build Sphinx PDF documentation
