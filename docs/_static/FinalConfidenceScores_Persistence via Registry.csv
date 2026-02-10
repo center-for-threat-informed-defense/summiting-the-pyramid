@@ -1,0 +1,30 @@
+Log Source ,Fidelity ,Noise ,Timeliness ,Coverage ,Context ,Robustness ,Total 
+"Sysmon Logs,Sysmon Event ID 13 (Registry Value Set) ",4 ,4 ,5 ,4.5 ,4.7 ,4.8 ,27.0 
+"Sysmon Logs,Sysmon Event ID 14 (Registry Key Rename) ",4 ,4 ,5 ,4.5 ,4.7 ,4.8 ,27.0 
+"Windows Event Logs,Event ID 4657 ",3 ,3 ,5 ,4.5 ,4.5 ,4.6 ,24.6 
+"Sysmon Logs,Sysmon Event ID 1 (Process Create) ",4 ,2 ,5 ,4.8 ,4.2 ,4.3 ,24.3 
+"Windows Event Logs,Event ID 4103 (Module Logging) ",4 ,4 ,5 ,2.0 ,4.8 ,4.5 ,24.3 
+"Windows Event Logs,Event ID 4104 (Script Block Logging) ",4 ,4 ,5 ,2.0 ,4.8 ,4.5 ,24.3 
+"Windows Event Logs,WinEventLog:WMI ",4 ,4 ,5 ,1.2 ,4.5 ,4.6 ,23.3 
+"Windows Event Logs,Event ID 4688 (Process Creation) ",3 ,2 ,5 ,4.8 ,3.9 ,4.0 ,22.7 
+"Other Platform / Application Logs,fs:fsusage ",3 ,2 ,5 ,4.2 ,4.0 ,4.1 ,22.3 
+"Sysmon Logs,Sysmon Event ID 11 (File Create) ",3 ,2 ,5 ,4.2 ,4.0 ,4.1 ,22.1 
+"Windows Event Logs,Event ID 4697 (Service Installation) ",3 ,4 ,5 ,1.0 ,4.2 ,4.5 ,21.7 
+"Windows Event Logs,Event ID 7036 ",3 ,4 ,5 ,1.0 ,4.2 ,4.5 ,21.7 
+"Windows Event Logs,Event ID 4698 ",3 ,4 ,5 ,1.0 ,4.1 ,4.4 ,21.5 
+"ESXi Logs,esxi:cron ",3 ,4 ,5 ,1.0 ,4.1 ,4.4 ,21.5 
+"ESXi Logs,esxi:hostd ",3 ,4 ,5 ,1.0 ,4.1 ,4.4 ,21.5 
+"ESXi Logs,esxi:vmkernel ",3 ,4 ,5 ,1.0 ,4.1 ,4.4 ,21.5 
+"Sysmon Logs,Sysmon Event ID 7 (Image Load) ",3 ,2 ,5 ,2.5 ,3.8 ,4.2 ,20.5 
+"Authentication Logs,auditd:SYSCALL ",3 ,2 ,5 ,2.5 ,3.8 ,4.1 ,20.4 
+"macOS Logs,macos:unifiedlog ",3 ,2 ,5 ,2.5 ,3.9 ,4.0 ,20.4 
+"Linux Logs,linux:osquery ",3 ,2 ,5 ,2.5 ,3.8 ,4.1 ,20.4 
+"Linux Logs,linux:syslog ",3 ,2 ,5 ,2.5 ,3.8 ,4.1 ,20.4 
+"macOS Logs,macos:osquery ",3 ,2 ,5 ,2.5 ,3.9 ,4.0 ,20.4 
+"Other Platform / Application Logs,m365:office ",3 ,4 ,4 ,1.8 ,4.0 ,3.5 ,20.3 
+"Other Platform / Application Logs,m365:unified ",3 ,4 ,4 ,1.8 ,4.0 ,3.5 ,20.3 
+"Sysmon Logs,Sysmon Event ID 2 ",3 ,2 ,5 ,1.5 ,3.5 ,3.8 ,18.8 
+"Sysmon Logs,Sysmon Event ID 3 (Network Connection) ",4 ,3 ,5 ,1.0 ,2.8 ,3.0 ,18.8 
+"Other Platform / Application Logs,containerd:runtime ",3 ,3 ,5 ,0.5 ,3.0 ,3.5 ,18.0 
+"Other Platform / Application Logs,docker:events ",3 ,3 ,5 ,0.5 ,3.0 ,3.5 ,18.0 
+"Cloud Logs,AWS:CloudTrail ",3 ,3 ,4 ,0.5 ,3.0 ,3.5 ,17.0 
