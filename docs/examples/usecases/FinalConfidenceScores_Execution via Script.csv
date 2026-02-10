@@ -1,0 +1,24 @@
+Log Source,Fidelity,Noise,Timeliness,Coverage,Context,Robustness,Total
+Windows PowerShell: EID 4104: Script Block Logging,4,4,5,4.8,4.9,4.5,27.2
+EDR: Suspicious Child Process,4,4,5,4.8,4.8,4.6,27.2
+EDR: Telemetry (API Calls),4,3,5,4.5,4.7,4.6,25.8
+Sysmon: EID 8: CreateRemoteThread,4,5,5,2,4.9,4.9,25.8
+Windows PowerShell: EID 4103: Module Logging,4,3,5,4.5,4.6,4.4,25.5
+Sysmon: EID 1: Process Create,4,2,5,5,4.3,4.4,24.7
+EDR: WMI Events,4,4,5,2.2,4.7,4.5,24.4
+Sysmon: EID 19/20/21: WMI Events,4,4,5,2.2,4.7,4.5,24.4
+Autoruns Data,4,5,2,2.5,5,5,23.5
+Windows Security: EID 4688: Process Creation,3,2,5,5,4,4.1,23.1
+macOS: ESF Process Events (unifiedlog),3,2,5,4.2,3.9,4.1,22.2
+Linux: Auditd (execve),3,2,5,4.2,3.9,4,22.1
+Linux: Auditd (SYSCALL),3,2,5,4.2,3.8,4,22
+Sysmon: EID 3: Network Connection,4,3,5,2.5,3.3,3.4,21.2
+Sysmon: EID 7: Image Load (DLL Load),3,2,5,3.5,3.5,3.9,20.9
+EDR: Module Loads,3,2,5,3.5,3.5,3.9,20.9
+WinEventLog: WMI-Activity,3,2,5,2.2,4.2,4.3,20.7
+Microsoft Office Events,3,4,4,2,4,3.5,20.5
+EDR: File Creation,3,2,5,3,3.6,3.8,20.4
+Sysmon: EID 11: FileCreate,3,2,5,3,3.6,3.8,20.4
+Sysmon: EID 2: File Creation Time Changed,3,3,5,1,3,3.5,18.5
+Windows Security: EID 4624: Logon Events,3,2,5,1,3.4,3.5,17.9
+Firewall Logs,2,3,4,2.5,2.5,3,17
