@@ -55,3 +55,8 @@ Evaluation of Log Source Types
 * Scripting logs (PowerShell) are also critical for this vector.
 
 **Technology Comparison: EDR > Sysmon > Native Windows Logs**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here: :download:`Abuse of Native OS Features<FinalConfidenceScores_Abuse of Native Feat.csv>`
