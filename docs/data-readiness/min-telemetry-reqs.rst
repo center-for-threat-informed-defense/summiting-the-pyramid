@@ -1,3 +1,5 @@
+.. _mintelreq:
+
 Minimum Telemetry Requirements
 ===============================
 
