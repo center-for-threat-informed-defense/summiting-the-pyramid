@@ -63,3 +63,8 @@ Evaluation of Log Source Types
 The data clearly splits into two top-tier categories: Memory/API Monitoring for the dumping phase and Detailed Authentication Logs for the abuse phase. Generic process logs are a solid secondary source, useful for seeing the tools being run, while generic file logs are a distant third.
 
 **Technology Comparison: Endpoint Security (EDR/Sysmon) & Cloud Identity Protection are co-dominant > Native Windows Authentication Logs**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here :download:`Credential Access & Abuse <FinalConfidenceScores_Credential AccessAbuse.csv>`
