@@ -59,3 +59,8 @@ Evaluation of Log Source Types
 Endpoint Behavioral Alerts (like Suspicious Child Process) proved to be the highest value for detection. This was followed closely by raw Endpoint Process Creation Logs. Prevention-focused Email Security Alerts were also top-tier. Network and file creation logs were important but secondary, providing supporting evidence for the Ingress Tool Transfer phase.
 
 **Technology Comparison: EDR > Sysmon > Native Windows Logs**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here: :download:`Initial Access via Spearphishing<FinalConfidenceScores_Spearphishing.csv>`
