@@ -38,7 +38,7 @@ jobs:
       - name: Upload HTML docs
         uses: actions/upload-artifact@v4
         with:
-          name: inform-docs-html
+          name: stp-docs-html
           path: docs/_build/dirhtml/
 
   deploy_preview:
@@ -58,12 +58,12 @@ jobs:
       - name: Download HTML
         uses: actions/download-artifact@v4
         with:
-          name: inform-docs-html
+          name: stp-docs-html
           path: docs
       - run: >
           staticrypt --remember 30 --salt 64c02ee360e9a7eb90b1c28e89be65ac \
             --password $STATICRYPT_PASS --short \
-            --template-title "CTID INFORM Your Defenses (branch: $BRANCH_NAME)" \
+            --template-title "CTID Summitting the Pyramid (branch: $BRANCH_NAME)" \
             --template-instructions "The contents of this site are marked TLP:AMBER. Do not share with unauthorized individuals." \
             --template-color-primary "#005B94" \
             --template-color-secondary "#D4D4D3" \
@@ -77,8 +77,8 @@ jobs:
         run: mv docs "$BRANCH_NAME"
       - name: Install Azure CLI
         run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-      - name: Delete old blobs
-        run: az storage blob delete-batch -s '$web' --pattern "$BRANCH_NAME/*"
+      # - name: Delete old blobs
+      #   run: az storage blob delete-batch -s '$web' --pattern "$BRANCH_NAME/*"
       - name: Upload to blob storage
         run: az storage blob upload-batch -s . --pattern "$BRANCH_NAME/*" -d '$web'
       - uses: actions/github-script@v6
@@ -107,7 +107,7 @@ jobs:
   #   - name: Download HTML docs
   #     uses: actions/download-artifact@v4
   #     with:
-  #       name: inform-docs-html
+  #       name: stp-docs-html
   #       path: docs
   #   - name: Upload artifact
   #     uses: actions/upload-pages-artifact@v3
