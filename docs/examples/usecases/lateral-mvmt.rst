@@ -62,3 +62,8 @@ Evaluation of Log Source Types
 Process execution and authentication events were the top two categories. Specifically, logs that could parse the details of an authentication event (like NTLM vs. Kerberos) scored much higher than generic logon events. Network connection logs were a solid #3, useful for seeing the connection but lacking the "why" that process logs provide.
 
 **Technology Comparison: EDR ≈ Sysmon >> Native Windows Logs >> Network Gear**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here: :download:`Lateral Movement<FinalConfidenceScores_Lateral Movement.csv>`
