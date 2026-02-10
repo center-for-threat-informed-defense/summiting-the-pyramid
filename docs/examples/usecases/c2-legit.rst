@@ -66,4 +66,4 @@ This use case had the most balanced distribution. Process creation, network conn
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here :download:`C2 Over Legitimate Channels <FinalConfidenceScores_C2 Over Legit Channels.csv>`
+The raw TQ scores broken down by metric can be found here: :download:`C2 Over Legitimate Channels<FinalConfidenceScores_C2 Over Legit Channels.csv>`
