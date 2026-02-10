@@ -1,3 +1,5 @@
+.. _Use Cases:
+
 Use Cases
 ==========
 
