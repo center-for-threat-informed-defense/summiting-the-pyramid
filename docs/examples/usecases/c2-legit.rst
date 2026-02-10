@@ -62,3 +62,8 @@ Evaluation of Log Source Types
 This use case had the most balanced distribution. Process creation, network connection, and DNS logs were all critically important. The highest value came from sources that could link them together. Signature-based network alerts (IDS) also scored very well.
 
 **Technology Comparison: Endpoint (EDR/Sysmon) & Network Security Monitoring (Zeek/Suricata) are co-dependent > Cloud > Windows > Basic Network Gear**
+
+
+Scoring Data
+-------------
+The raw TQ scores broken down by metric can be found here :download:`C2 Over Legitimate Channels <FinalConfidenceScores_C2 Over Legit Channels.csv>`
