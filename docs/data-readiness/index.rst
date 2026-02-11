@@ -31,6 +31,7 @@ Telemetry Strategy & Readiness
        	   Evaluating how well a telemetry source supports robust detection<br>
            <ul>
               <li><a href="../analytic-design/detection-diagram">Detection Decomposition Diagram</a></li>
+              <li><a href="../examples/usecases/index">Use Case Analysis</a></li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#four">Logging Standards & Implementation</button>
