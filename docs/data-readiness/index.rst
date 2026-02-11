@@ -1,5 +1,5 @@
-Data & Telemetry Readiness
-===========================
+Telemetry Strategy & Readiness
+================================
 
 .. toctree::
     :maxdepth: 1
