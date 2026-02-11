@@ -42,58 +42,27 @@ Telemetry Strategy & Readiness
 
 .. raw:: html
 
-   <div class="container">
-     <h3>Telemetry Strategy & Readiness</h3>
-     <div class="row">
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Telemetry Capability Modeling</a></li>
-           <li><a href="/../data-readiness/min-telemetry-reqs">Minimum Telemetry Requirements</a></li>
-         </ul>
-       </div>
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Data Collection Prioritization</a></li>
-           <li><a href="/data-readiness/telemetry-quality.rst">Telemetry Quality (TQ) Scoring</a></li>
-         </ul>
-       </div>
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Telemetry Effectiveness Assessment</a></li>
-           <li><a href="../analytic-design/detection-diagram.rst">Detection Decomposition Diagrams</a></li>
-         </ul>
-       </div>
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Logging Standards & Instrumentation</a></li>
-         </ul>
-       </div>
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Data Quality & Scheme Engineering</a></li>
-         </ul>
-       </div>
-         </ul>
-       </div>
-       <div class="col-md-3">
-         <ul class="nav nav-pills nav-stacked">
-           <li class="active"><a href="#">Entity & Context Modeling</a></li>
-         </ul>
-       </div>
-       <div class="clearfix visible-lg"></div>
+   <div class="btn-group">
+     <button type="button" class="btn btn-primary">Apple</button>
+     <button type="button" class="btn btn-primary">Samsung</button>
+     <div class="btn-group">
+       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+       Sony <span class="caret"></span></button>
+       <ul class="dropdown-menu" role="menu">
+         <li><a href="#">Tablet</a></li>
+         <li><a href="#">Smartphone</a></li>
+       </ul>
      </div>
+   </div>
+
+   <button data-toggle="collapse" data-target="#demo">Collapsible</button>
+   <div id="demo" class="collapse">
+   Lorem ipsum dolor text....
    </div>
 
 --------------------------------------------------
 
-.. raw:: html
 
-   <ul class="nav nav-tabs">
-     <li class="active"><a href="#">Home</a></li>
-     <li><a href="#">Menu 1</a></li>
-     <li><a href="#">Menu 2</a></li>
-     <li><a href="#">Menu 3</a></li>
-   </ul>
 
 
 .. toctree::
