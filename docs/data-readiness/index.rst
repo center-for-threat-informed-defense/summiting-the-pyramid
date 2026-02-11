@@ -3,42 +3,9 @@ Telemetry Strategy & Readiness
 
 .. epigraph::
 
-  Detection strength begins with the right telemetry. We prioritize high-value data collection, assess telemetry effectiveness, and ensure logging is configured to support robust behavioral inference — not just atomic matching.
+  Detection strength begins with the right telemetry. We prioritize high-value data collection, assess telemetry effectiveness, and ensure logging is configured to support robust behavioral inference.
 
 ------------------------
-
-* Telemetry Capability Modeling
-
-  *Understanding what a telemetry source can and cannot support from a detection perspective*
-
-  * :ref:`Identifying minimum telemetry requirements<mintelreq>` to assess log source detection support
-
-* Data Collection Prioritization
- 
-  *Choosing what telemetry to enable based on detection value*
-
-  * :ref:`Calculating Telemetry Quality (TQ) score<Telemetry Quality>` to prioritize detection potential of log sources based on defined metrics
-
-* Telemetry Effectiveness Assessment
-
-  *Evaluating how well a telemetry source supports robust detection*
-
-  * :ref:`Creating Detection Decomposition Diagrams<d3>` to evaluate overlapping analytic observables and assess gaps and redundancies
-
-* Logging Standards & Instrumentation
-
-  *Defining how telemetry must be configured to support analytics*
-
-* Data Quality & Scheme Engineering
-
-  *Ensuring data fields are reliable enough to build logic on*
-
-* Entity & Context Modeling
-
-  *Creating consistent identity, host, and lineage models so analytics can infer intent*
-
-
-------------------------------
 
 .. raw:: html
 
@@ -66,16 +33,16 @@ Telemetry Strategy & Readiness
               <li><a href="../analytic-design/detection-diagram">Detection Decomposition Diagram</a></li>
            </ul>
          </div>
-         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#one">Logging Standards & Implementation</button>
-         <div id="one" class="collapse">
+         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#four">Logging Standards & Implementation</button>
+         <div id="four" class="collapse">
        	   Defining how telemetry must be configured to support analytics<br>
          </div>
-         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#one">Data Quality & Schema Engineering</button>
-         <div id="one" class="collapse">
+         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#five">Data Quality & Schema Engineering</button>
+         <div id="five" class="collapse">
        	   Ensuring data fields are reliable enough to build logic on<br>
          </div>
-         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#one">Entity & Context Modeling</button>
-         <div id="one" class="collapse">
+         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#six">Entity & Context Modeling</button>
+         <div id="six" class="collapse">
        	   Creating consistent identity, host, and lineage models so analytics can infer intent<br>
          </div>
      </div>
