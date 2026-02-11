@@ -18,6 +18,7 @@ with the Summiting the Pyramid methodology.
     executable_download_webdav
     file_creation_date
     link_download_webdav
+    remote_registry
     service_registry_permissions_weakness_check
     task_scheduling
     zeek_dce_rpc
@@ -34,7 +35,7 @@ The following examples demonstrate how to incorporate contextual requirements fo
     domain_account_discovery
     file_directory_discovery
     lsass_memory
-    remote_registry
+
 
 
 .. _Scored Analytics:
