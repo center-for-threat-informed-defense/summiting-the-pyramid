@@ -9,7 +9,7 @@ Telemetry Strategy & Readiness
 
 * Telemetry Capability Modeling
 
-  *Understanding what a telemetry source cna and cannot support from a detection perspective*
+  *Understanding what a telemetry source can and cannot support from a detection perspective*
 
   * :ref:`Identifying minimum telemetry requirements<mintelreq>` to assess log source detection support
 
@@ -39,6 +39,53 @@ Telemetry Strategy & Readiness
 
 
 ------------------------------
+
+.. raw:: html
+
+   <div class="container">
+     <h3>Telemetry Strategy & Readiness</h3>
+     <div class="row">
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Telemetry Capability Modeling</a></li>
+           <li><a href="/data-readiness/min-telemetry-reqs.rst">Minimum Telemetry Requirements</a></li>
+         </ul>
+       </div>
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Data Collection Prioritization</a></li>
+           <li><a href="/data-readiness/telemetry-quality.rst">Telemetry Quality (TQ) Scoring</a></li>
+         </ul>
+       </div>
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Telemetry Effectiveness Assessment</a></li>
+           <li><a href="../analytic-design/detection-diagram.rst">Detection Decomposition Diagrams</a></li>
+         </ul>
+       </div>
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Logging Standards & Instrumentation</a></li>
+         </ul>
+       </div>
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Data Quality & Scheme Engineering</a></li>
+         </ul>
+       </div>
+         </ul>
+       </div>
+       <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+           <li class="active"><a href="#">Entity & Context Modeling</a></li>
+         </ul>
+       </div>
+       <div class="clearfix visible-lg"></div>
+     </div>
+   </div>
+
+--------------------------------------------------
+
 
 .. toctree::
     :maxdepth: 1
