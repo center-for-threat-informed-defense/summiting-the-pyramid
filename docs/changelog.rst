@@ -48,6 +48,8 @@ The Ambiguous Techniques project team includes:
 * Robert Schull
 * Robert Shovan
 * Sean Sweeney
+* Mike Cunningham
+* Apurva Virkud
 
 Additional thanks for contributing time, resources, and technical review:
 
