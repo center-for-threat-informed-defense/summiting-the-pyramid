@@ -36,15 +36,15 @@ Telemetry Strategy & Readiness
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#four">Logging Standards & Implementation</button>
          <div id="four" class="collapse">
-       	   <br>Defining how telemetry must be configured to support analytics<br>
+       	   <br>Defining how telemetry must be configured to support analytics<br><br>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#five">Data Quality & Schema Engineering</button>
          <div id="five" class="collapse">
-       	   <br>Ensuring data fields are reliable enough to build logic on<br>
+       	   <br>Ensuring data fields are reliable enough to build logic on<br><br>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#six">Entity & Context Modeling</button>
          <div id="six" class="collapse">
-       	   <br>Creating consistent identity, host, and lineage models so analytics can infer intent<br>
+       	   <br>Creating consistent identity, host, and lineage models so analytics can infer intent<br><br>
          </div>
      </div>
    </div>
