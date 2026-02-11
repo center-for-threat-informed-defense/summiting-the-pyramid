@@ -3,7 +3,7 @@ Detection Evaluation & Validation
 
 .. epigraph::
 
-We evaluate analytic depth, evasion resistance, and behavioral coverage to ensure detections operate high on the behavioral pyramid. Robust detections withstand variation, obfuscation, and environmental drift.
+  We evaluate analytic depth, evasion resistance, and behavioral coverage to ensure detections operate high on the behavioral pyramid. Robust detections withstand variation, obfuscation, and environmental drift.
 
 ------------------------
 
