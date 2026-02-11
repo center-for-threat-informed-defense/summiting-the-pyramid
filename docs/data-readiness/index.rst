@@ -11,7 +11,7 @@ Telemetry Strategy & Readiness
 
    <div class="container">
      <h2>Telemetry Strategy & Readiness Key Components</h2>
-     <div class="btn-group-vertical">
+     <div class="btn-group-vertical btn-block">
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#one">Telemetry Capability Modeling</button>
          <div id="one" class="collapse">
        	   Understanding what a telemetry source can and cannot support from a detection perspective<br>
