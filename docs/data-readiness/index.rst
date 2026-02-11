@@ -11,7 +11,7 @@ Telemetry Strategy & Readiness
 
   *Understanding what a telemetry source cna and cannot support from a detection perspective*
 
-  * :ref:`Identifying minimum telemetry requirements<mintelreqs>` to assess log source detection support
+  * :ref:`Identifying minimum telemetry requirements<mintelreq>` to assess log source detection support
 
 * Data Collection Prioritization
  
@@ -36,3 +36,12 @@ Telemetry Strategy & Readiness
 * Entity & Context Modeling
 
   *Creating consistent identity, host, and lineage models so analytics can infer intent*
+
+
+------------------------------
+
+.. toctree::
+    :maxdepth: 1
+ 
+    min-telemetry-reqs
+    telemetry-quality
