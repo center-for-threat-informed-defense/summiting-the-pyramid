@@ -10,8 +10,25 @@ Detection Engineering Work Overview
     definitions
     pubs
 
-Project Goal
-------------
+.. figure:: ../_static/detectionengineering.png
+   :alt: CTID Detection Engineering alignment
+   :align: center
+   :scale: 50%
+
+CTID’s detection engineering work treats DCO-focused detections as a rigorous engineering discipline organized around three interconnected domains: telemetry strategy and readiness, analytic design and engineering, and detection evaluation and validation. At the telemetry layer, the focus is on prioritizing and assessing data sources based on their ability to support specific detection objectives, measuring the quality and reliability of telemetry for enabling behavior-level analysis. Within analytic design and engineering, the emphasis shifts from brittle, artifact-based matching to robust, behavior-driven detections that model adversary actions in context and reduce false positives through environmental and inference of intent. Finally, detection evaluation and validation centers on measuring analytic strength, assessing behavioral depth, evasion resistance, telemetry dependencies, and overall robustness to ensure detections operate higher on the behavioral pyramid. Collectively, this work reframes detection engineering as an evidence-based practice that integrates purposeful data collection, resilient behavioral modeling, and measurable assurances of detection effectiveness.
+
+.. raw:: html
+
+  <div class="btn-group btn-group-justified">
+    <a href="../data-readiness/index" class="btn btn-secondary">Telemetry Strategy & Readiness</a>
+    <a href="../analytic-design/index" class="btn btn-secondary">Analytic Design & Engineering</a>
+    <a href="../detection-ttv/index" class="btn btn-secondary">Detection Evaluation & Validation</a>
+  </div>
+
+-----------------------------------------
+
+Developing Behavior-Focused Detections
+----------------------------------------
 
 The Pyramid of Pain [#f1]_ has been used by detection engineers to determine the
 cost or “pain” it would impose on an adversary to evade defenses at a given
