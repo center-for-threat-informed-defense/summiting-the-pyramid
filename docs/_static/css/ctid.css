@@ -55,16 +55,9 @@ body {
   color: var(--mitre-navy) !important;
 }
 
-/* Custom background color for active pills */
-.nav-pills .nav-link.active, 
-.nav-pills .show > .nav-link {
-    color: white; /* Text color */
-    background-color: #ff6600; /* Your desired color */
-}
-
-/* Optional: Custom color for hover state */
-.nav-pills .nav-link:hover {
-    background-color: #ff8533; 
+.btn-block {
+    display: block;
+    width: 100%;
 }
 
 figure img {
