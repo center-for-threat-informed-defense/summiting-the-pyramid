@@ -15,6 +15,38 @@ Full Telemetry Quality scoring data can be found on each use case page linked be
 
 -----------------------
 
+How-To Guide for Use Case Analysis
+-----------------------------------
+Each use case page linked below contains a summary of our analysis performed for each activity, including on overall summary of the use case's attack objective, the techniques analyzed as part of that use case, top-scoring telemetry sources based on our Telemetry Quality scoring process, key trends and generalizations gleaned from the analysis, and an overview of the effectiveness of the various log source types. The sections are as follows:
+
+* **Description**
+
+  A narrative overview that explains what fundamentally defines the detection problem for that set of related techniques and what kind of visibility is required to detect it effectively. These summaries often highlight whether visibility must be centered on endpoint activity, whether single-source detection is insufficient, and/or what telemetry is key for the detection objective.
+
+* **Techniques Evaluated**
+
+  A list of all of the ambiguous techniques that were significant in activities tied to the use case objective, either directly or indirectly.
+
+* **Top Scoring Log Sources**
+
+  A ranked list of the top 10 telemetry sources evaluated for that use case (derived from the minimum telemetry requirements for the techniques listed). The Score value is the total aggregate score across all of the 6 metrics that comprise Telemetry Quality. Higher totals indicate relative strength of effectiveness for that detection objective.
+
+* **Key Trends & Generalizations**
+
+  A small set of generalized conclusions that explain what consistently worked (or failed) across the scoring and why. These trends often express detection engineering principles such as the relative value of content vs. simple event indicators, the importance of chokepoints, the need for specialized visibility, the need for correlation, and the risks of relying on artifacts that adversaries can easily change.
+
+* **Evaluation of Log Source Types**
+
+  A synthesis that groups individual log sources into categories (log source types) and describes which categories were most valuable, which were essential baselines, and which were largely irrelevant for that detection objective. The "Technology Comparison” statement (e.g., ordering of classes of technologies) tries to capture relevant performance across technology types in a simplified manner.
+
+* **Scoring Data**
+
+  The full scoring data, broken down by metric, for the entire list of log sources evaluated as a part of the analysis. In some cases, log sources that were applicable to less than 40% of techniques were not included in the overall assessment.
+
+----------------------------
+
+Use Case Analysis
+------------------
 .. toctree::
     :maxdepth: 1
 
