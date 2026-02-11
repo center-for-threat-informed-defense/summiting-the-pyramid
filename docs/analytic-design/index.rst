@@ -58,6 +58,7 @@ Analytic Design & Engineering
 
 .. toctree::
     :maxdepth: 1
+    :hidden:
 
     detection-components
     robustdetection
