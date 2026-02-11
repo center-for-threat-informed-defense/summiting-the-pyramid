@@ -54,7 +54,6 @@ Telemetry Strategy & Readiness
 
 
 .. toctree::
-    :hidden:
     :maxdepth: 1
  
     min-telemetry-reqs
