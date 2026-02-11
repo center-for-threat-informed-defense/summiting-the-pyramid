@@ -1,7 +1,7 @@
 .. _Example Mappings:
 
-Example Mappings
-================
+Example Robustness Mappings
+============================
 
 `T1003.001: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
 ---------------------------------------------------------------------------
