@@ -1,3 +1,5 @@
+.. _d3:
+
 Detection Decomposition Diagram (D3)
 ====================================
 
