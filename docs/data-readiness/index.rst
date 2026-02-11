@@ -14,21 +14,21 @@ Telemetry Strategy & Readiness
      <div class="btn-group-vertical btn-block">
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#one">Telemetry Capability Modeling</button>
          <div id="one" class="collapse">
-       	   Understanding what a telemetry source can and cannot support from a detection perspective<br>
+       	   <br>Understanding what a telemetry source can and cannot support from a detection perspective<br>
            <ul>
               <li><a href="../data-readiness/min-telemetry-reqs">Minimum Telemetry Requirements</a></li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#two">Data Collection Prioritization</button>
          <div id="two" class="collapse">
-       	   Choosing what telemetry to enable based on detection value<br>
+       	   <br>Choosing what telemetry to enable based on detection value<br>
            <ul>
               <li><a href="../data-readiness/telemetry-quality">Calculating Telemetry Quality (TQ) Score</a></li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#three">Telemetry Effectiveness Assessment</button>
          <div id="three" class="collapse">
-       	   Evaluating how well a telemetry source supports robust detection<br>
+       	   <br>Evaluating how well a telemetry source supports robust detection<br>
            <ul>
               <li><a href="../analytic-design/detection-diagram">Detection Decomposition Diagram</a></li>
               <li><a href="../examples/usecases/index">Use Case Analysis</a></li>
@@ -36,15 +36,15 @@ Telemetry Strategy & Readiness
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#four">Logging Standards & Implementation</button>
          <div id="four" class="collapse">
-       	   Defining how telemetry must be configured to support analytics<br>
+       	   <br>Defining how telemetry must be configured to support analytics<br>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#five">Data Quality & Schema Engineering</button>
          <div id="five" class="collapse">
-       	   Ensuring data fields are reliable enough to build logic on<br>
+       	   <br>Ensuring data fields are reliable enough to build logic on<br>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#six">Entity & Context Modeling</button>
          <div id="six" class="collapse">
-       	   Creating consistent identity, host, and lineage models so analytics can infer intent<br>
+       	   <br>Creating consistent identity, host, and lineage models so analytics can infer intent<br>
          </div>
      </div>
    </div>
