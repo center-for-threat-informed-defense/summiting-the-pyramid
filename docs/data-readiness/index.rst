@@ -48,7 +48,7 @@ Telemetry Strategy & Readiness
        <div class="col-md-3">
          <ul class="nav nav-pills nav-stacked">
            <li class="active"><a href="#">Telemetry Capability Modeling</a></li>
-           <li><a href="/data-readiness/min-telemetry-reqs.rst">Minimum Telemetry Requirements</a></li>
+           <li><a href="/../data-readiness/min-telemetry-reqs">Minimum Telemetry Requirements</a></li>
          </ul>
        </div>
        <div class="col-md-3">
@@ -85,6 +85,15 @@ Telemetry Strategy & Readiness
    </div>
 
 --------------------------------------------------
+
+.. raw:: html
+
+   <ul class="nav nav-tabs">
+     <li class="active"><a href="#">Home</a></li>
+     <li><a href="#">Menu 1</a></li>
+     <li><a href="#">Menu 2</a></li>
+     <li><a href="#">Menu 3</a></li>
+   </ul>
 
 
 .. toctree::
