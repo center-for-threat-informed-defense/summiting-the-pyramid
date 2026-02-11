@@ -2,6 +2,7 @@ Detection Engineering Work Overview
 =====================================
 
 .. toctree::
+    :hidden:
     :maxdepth: 1
 
     stp-overview
