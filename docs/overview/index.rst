@@ -1,3 +1,5 @@
+.. _Detection Engineering:
+
 Detection Engineering Work Overview
 =====================================
 
