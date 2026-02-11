@@ -46,6 +46,7 @@ Detection Evaluation & Validation
 --------------------------------------------------
 
 .. toctree::
+    :hidden:
     :maxdepth: 2
 
     ../levels/index
