@@ -2,7 +2,7 @@ Examples & Use Cases
 =====================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     examplemappings
     ../analytics/index
