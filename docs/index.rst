@@ -12,24 +12,21 @@ our mission to advance the state of the art and the state of the practice in
 threat-informed defense globally.
 
 .. important::
-    **What's New In V3:**
+    **What's New In V4:**
 
-    In version 3.0, we updated and improved the project in the following ways!
+    In version 4.0, we updated and improved the project in the following ways!
 
-    * Defined a framework for deriving :ref:`malicious intent <Intent
-      Definition>` for :ref:`ambiguous techniques<AT Definition>`.
-    * Identified a method to employ co-occuring techniques to support
-      :ref:`chained analytic development<Chaining Analytics>`.
-    * Developed a :ref:`context-based methodology<Context>` for deriving
-      malicious intent when engineering robust analytics with lower false
-      positive rates.
+    * Defined a methodology for identifying the :ref:`minimum telemetry requirements<mintelreq>` for ambiguous techniques.
+    * Developed a process for calculating :ref:`Telemetry Quality<Telemetry Quality>' scores that provide relative detection effectiveness potentials. We also extended this work to look at groupings of techniques with similiar objectives (called :ref:`use cases<Use Cases>`) and leveraged :ref:`automation via AI/LLM<automation>` to assist with the analysis.
+    * Re-factored the Summiting website to better align to CTID's portfolio of :ref:`Detection Engineering<Detection Engineering>` work.
 
+----------------------------------
 
 .. toctree::
     :titlesonly:
     :includehidden:
     :maxdepth: 2
-    :caption: Contents
+    :caption: Site Contents
 
     overview/index
     data-readiness/index
@@ -37,6 +34,8 @@ threat-informed defense globally.
     detection-ttv/index
     examples/index
     changelog
+
+---------------------------------------
 
 Notice
 ------
