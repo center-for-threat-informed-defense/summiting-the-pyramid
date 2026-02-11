@@ -43,29 +43,23 @@ Telemetry Strategy & Readiness
 .. raw:: html
 
    <div class="container">
-     <h2>Justified Button Groups</h2>
+     <h2>Telemetry Strategy & Readiness Key Components</h2>
      <div class="btn-group-vertical">
-       <div class="btn-group">
          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#one">Telemetry Capability Modeling</button>
          <div id="one" class="collapse">
        	   Understanding what a telemetry source can and cannot support from a detection perspective
            <a class="btn btn-info" href="../data-readiness/min-telemetry-reqs">Minimum Telemetry Requirements</a>
          </div>
-       </div>
-       <div class="btn-group">
          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#two">Data Collection Prioritization</button>
          <div id="two" class="collapse">
        	   Choosing what telemetry to enable based on detection value
            <a class="btn btn-info" href="../data-readiness/telelemtry-quality">Calculating Telemetry Quality (TQ) Score</a>
          </div>
-       </div>
-       <div class="btn-group">
          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#three">Telemetry Effectiveness Assessment</button>
          <div id="three" class="collapse">
        	   Evaluating how well a telemetry source supports robust detection
            <a class="btn btn-info" href="../../analytic-design/detection-diagram">Detection Decomposition Diagram</a>
          </div>
-       </div>
      </div>
    </div>
 
