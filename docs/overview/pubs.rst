@@ -10,3 +10,6 @@ Hear some of the project creators talk more about Summiting the Pyramid at Shmoo
    </embed>
   <hr>
   <a href="https://www.sans.org/presentations/ambiguous-techniques-determining-malice-through-context">SANS Hack & Defend Summit [2025] - Ambiguous Techniques: Determining Malice Through Context</a>
+
+  <iframe src="https://www.sans.org/presentations/ambiguous-techniques-determining-malice-through-context" title="Test">
+  </iframe>
