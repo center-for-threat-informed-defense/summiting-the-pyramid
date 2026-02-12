@@ -129,7 +129,7 @@ Cost is a metric that is included only for prioritization purposes, and thus can
 Telemetry Quality Evaluation
 -----------------------------
 
-.. figure:: ../_static/TQ_scoring_new.png
+.. figure:: ../_static/evalprocess.png
    :alt: Telemetry Quality scoring process
    :align: center
    :scale: 100%
