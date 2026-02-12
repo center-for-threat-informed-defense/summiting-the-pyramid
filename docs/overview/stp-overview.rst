@@ -1,9 +1,14 @@
 Summiting the Pyramid Overview
 =======================================
 
+.. figure:: ../_static/Summit_the_Pyramid_12.11.2024.png
+   :alt: Summiting the Pyramid, Leveling Up Your Analytics
+   :align: center
+
 ..
   Whenever you update overview.rst, also look at README.md and consider whether
   you should make a corresponding update there.
+
 
 .. epigraph::
 
