@@ -1,0 +1,82 @@
+Log Source ,Fidelity ,Noise ,Timeliness ,Coverage ,Context ,Robustness ,Total 
+EDR: Suspicious Child Process ,4 ,4 ,5 ,4.8 ,4.5 ,4.4 ,26.7 
+Sysmon: EID 8: CreateRemoteThread ,4 ,5 ,5 ,2.2 ,4.9 ,4.9 ,26.0 
+EDR / Endpoint Telemetry ,4 ,3 ,5 ,4.9 ,4.5 ,4.4 ,25.8 
+AWS: GuardDuty Findings ,4 ,5 ,4 ,3.5 ,4.8 ,4.5 ,25.8 
+Azure: Sentinel Detections ,4 ,5 ,4 ,3.5 ,4.8 ,4.5 ,25.8 
+GCP: Security Command Center Findings ,4 ,5 ,4 ,3.5 ,4.8 ,4.5 ,25.8 
+EDR: Remote Access Software Detections ,4 ,5 ,5 ,1.8 ,4.8 ,4.7 ,25.3 
+Windows PowerShell: EID 4104: Script Block Logging ,4 ,4 ,5 ,3.0 ,4.9 ,4.4 ,25.3 
+EDR: API Calls ,4 ,3 ,5 ,4.0 ,4.7 ,4.6 ,25.3 
+EDR: DNS over HTTPS Detection ,4 ,5 ,5 ,2.0 ,4.8 ,4.5 ,25.3 
+EDR: Command & Scripting Interpreter ,4 ,4 ,5 ,3.0 ,4.9 ,4.4 ,25.3 
+Suricata/Snort Alerts ,4 ,4 ,5 ,4.0 ,4.7 ,3.5 ,25.2 
+Zeek/Bro: conn.log ,4 ,3 ,5 ,5.0 ,4.0 ,4.1 ,25.1 
+Zeek/Bro: ssl.log ,4 ,3 ,5 ,4.2 ,4.5 ,4.3 ,25.0 
+"EDR: Proxy Tool Usage (chisel, ligolo, etc.) ",4 ,5 ,5 ,1.5 ,4.8 ,4.7 ,25.0 
+Windows Defender: AV Detections ,4 ,5 ,5 ,3.5 ,4.9 ,2.5 ,24.9 
+Sysmon: EID 25: Process Tampering ,4 ,5 ,5 ,1.0 ,4.9 ,5.0 ,24.9 
+EDR: Credential Access ,4 ,5 ,5 ,1.0 ,4.9 ,5.0 ,24.9 
+CASB (Cloud Access Security Broker) Logs ,4 ,4 ,4 ,3.8 ,4.6 ,4.4 ,24.8 
+Sysmon: EID 3: Network Connection ,4 ,3 ,5 ,5.0 ,3.8 ,3.8 ,24.6 
+Zeek/Bro: http.log ,4 ,3 ,5 ,3.8 ,4.6 ,4.2 ,24.6 
+EDR: Removable Media Detections ,4 ,5 ,5 ,1.2 ,4.5 ,4.8 ,24.5 
+Sysmon: EID 1: Process Create ,4 ,2 ,5 ,4.9 ,4.3 ,4.2 ,24.4 
+Sysmon: EID 13: Registry Value Set ,4 ,4 ,5 ,1.5 ,4.7 ,4.8 ,24.0 
+EDR: Suspicious TLS Certificate ,4 ,4 ,5 ,2.5 ,4.3 ,4.2 ,24.0 
+EDR: JA3/JA3S Hashing ,4 ,4 ,5 ,2.5 ,4.0 ,4.2 ,23.7 
+TLS Inspection Logs (Proxy/Firewall) ,4 ,3 ,4 ,4.2 ,4.4 ,4.0 ,23.6 
+macOS: ESF Network Events ,4 ,2 ,5 ,5.0 ,3.7 ,3.8 ,23.5 
+Zeek/Bro: dns.log ,4 ,3 ,5 ,3.5 ,4.0 ,4.0 ,23.5 
+Web Proxy Logs (Uncategorized/Suspicious Domains) ,4 ,3 ,4 ,4.2 ,4.3 ,4.0 ,23.5 
+EDR: Non-Standard Port Protocol Mismatch ,4 ,4 ,5 ,1.8 ,4.5 ,4.2 ,23.5 
+Windows Security: EID 1102: Audit Log Cleared ,3 ,5 ,5 ,0.5 ,5.0 ,5.0 ,23.5 
+EDR: Uncommonly Used Ports/Protocols ,4 ,4 ,5 ,1.8 ,4.5 ,4.2 ,23.5 
+Sysmon: EID 17/18: Named Pipe Events ,4 ,4 ,5 ,1.2 ,4.6 ,4.6 ,23.4 
+EDR: Named Pipe Events ,4 ,4 ,5 ,1.2 ,4.6 ,4.6 ,23.4 
+Sysmon: EID 22: DNS Query ,4 ,3 ,5 ,3.5 ,3.9 ,3.9 ,23.3 
+EDR: Encoding/Decoding Activity ,4 ,4 ,5 ,1.5 ,4.5 ,4.2 ,23.2 
+EDR: WMI Events ,4 ,4 ,5 ,1.0 ,4.7 ,4.5 ,23.2 
+Sysmon: EID 19/20/21: WMI Events ,4 ,4 ,5 ,1.0 ,4.7 ,4.5 ,23.2 
+Windows Security: EID 4688: Process Creation ,3 ,2 ,5 ,4.9 ,4.1 ,4.1 ,23.1 
+EDR: Ingress Tool Transfer ,4 ,4 ,5 ,1.5 ,4.5 ,4.0 ,23.0 
+Packet Capture (Full PCAP) ,4 ,1 ,5 ,5.0 ,4.0 ,3.8 ,22.8 
+Zeek/Bro: pe.log ,4 ,4 ,5 ,1.5 ,4.2 ,4.0 ,22.7 
+EDR: Encryption Library Usage ,4 ,4 ,5 ,1.5 ,4.2 ,4.0 ,22.7 
+Sysmon: EID 16: Service Configuration Change ,3 ,5 ,5 ,1.0 ,4.2 ,4.5 ,22.7 
+"Linux: Auditd (connect, sendto) ",3 ,2 ,5 ,5.0 ,3.6 ,3.8 ,22.4 
+Zeek/Bro: weird.log ,3 ,4 ,5 ,3.0 ,3.8 ,3.5 ,22.3 
+EDR: Data Staging Heuristics ,4 ,4 ,5 ,1.2 ,4.0 ,3.8 ,22.0 
+Windows Security: EID 4697: Service Installed ,3 ,4 ,5 ,1.0 ,4.2 ,4.5 ,21.7 
+Windows Security: EID 7045: Service Installation ,3 ,4 ,5 ,1.0 ,4.2 ,4.5 ,21.7 
+Windows Security: EID 4657: Registry Value Modified ,3 ,3 ,5 ,1.5 ,4.5 ,4.6 ,21.6 
+Zeek/Bro: files.log ,4 ,3 ,5 ,1.5 ,4.0 ,3.9 ,21.4 
+Windows Defender: Firewall Logs ,2 ,3 ,5 ,4.8 ,3.2 ,3.3 ,21.3 
+macOS: ESF Auth Events ,4 ,3 ,5 ,2.0 ,3.6 ,3.6 ,21.2 
+Windows Security: EID 5156: Firewall Connection ,3 ,1 ,5 ,4.8 ,3.4 ,3.5 ,20.7 
+Linux: iptables logs ,2 ,3 ,5 ,4.5 ,3.0 ,3.2 ,20.7 
+macOS: pf logs ,2 ,3 ,5 ,4.5 ,3.0 ,3.2 ,20.7 
+AWS: CloudTrail (VPC Flow Logs) ,3 ,2 ,4 ,4.5 ,3.5 ,3.6 ,20.6 
+Azure: Network Watcher ,3 ,2 ,4 ,4.5 ,3.5 ,3.6 ,20.6 
+GCP: VPC Flow Logs ,3 ,2 ,4 ,4.5 ,3.5 ,3.6 ,20.6 
+"Linux: Auditd (user_auth, user_avc) ",3 ,3 ,5 ,2.0 ,3.5 ,3.6 ,20.1 
+Windows Security: EID 4624: Successful Logon ,3 ,2 ,5 ,2.0 ,3.4 ,3.5 ,19.9 
+DNS Query Logs (Server) ,3 ,2 ,4 ,3.5 ,3.6 ,3.7 ,19.8 
+Firewall Logs ,2 ,3 ,4 ,4.5 ,3.0 ,3.2 ,19.7 
+Sysmon: EID 7: Image Load ,3 ,2 ,5 ,2.0 ,3.5 ,4.0 ,19.5 
+EDR: Module Loads ,3 ,2 ,5 ,2.0 ,3.5 ,4.0 ,19.5 
+Windows Security: EID 5157: Firewall Connection Blocked ,2 ,2 ,5 ,4.5 ,2.8 ,3.0 ,19.3 
+M365: Unified Audit Log (SharePoint/OneDrive) ,3 ,2 ,4 ,2.2 ,4.1 ,4.0 ,19.3 
+Sysmon: EID 11: File Create ,3 ,2 ,5 ,1.5 ,3.5 ,3.8 ,18.8 
+EDR: File Creation ,3 ,2 ,5 ,1.5 ,3.5 ,3.8 ,18.8 
+AWS: S3 Access Logs ,3 ,2 ,4 ,2.0 ,3.8 ,3.9 ,18.7 
+Azure: Storage Analytics Logs ,3 ,2 ,4 ,2.0 ,3.8 ,3.9 ,18.7 
+GCP: Cloud Storage Logs ,3 ,2 ,4 ,2.0 ,3.8 ,3.9 ,18.7 
+Sysmon: EID 2: File Creation Time Changed ,3 ,3 ,5 ,1.0 ,3.0 ,3.5 ,18.5 
+Microsoft 365: Mailbox Audit Logs ,3 ,3 ,4 ,1.2 ,3.8 ,3.5 ,18.5 
+Sysmon: EID 23: FileDelete ,3 ,3 ,5 ,1.0 ,3.2 ,3.0 ,18.2 
+Sysmon: EID 26: FileDelete ,3 ,3 ,5 ,1.0 ,3.2 ,3.0 ,18.2 
+NetFlow/IPFIX Telemetry ,2 ,2 ,4 ,4.5 ,2.5 ,2.8 ,18.0 
+Windows Security: EID 4663: Object Access ,3 ,1 ,5 ,1.5 ,3.2 ,3.5 ,17.2 
+VPN Logs ,2 ,3 ,4 ,1.5 ,3.0 ,3.1 ,16.6 
+DHCP Logs ,2 ,2 ,4 ,1.0 ,2.5 ,2.8 ,14.3 

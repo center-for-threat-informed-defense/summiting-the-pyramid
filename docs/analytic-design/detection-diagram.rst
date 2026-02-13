@@ -1,3 +1,5 @@
+.. _d3:
+
 Detection Decomposition Diagram (D3)
 ====================================
 
@@ -41,7 +43,7 @@ also help identify commonalities between implementations. Those commonalities
 are excellent candidates for low-variance or invariant behaviors and, therefore,
 robust observables.
 
-.. figure:: _static/capability_abstraction_specterops.png
+.. figure:: ../_static/capability_abstraction_specterops.png
    :alt: Kerberoasting - Specter Ops
    :align: center
    :scale: 100%
@@ -54,7 +56,7 @@ The capability abstraction map below for `T1543 - Create or Modify System Proces
 Windows Service <https://attack.mitre.org/techniques/T1543/003/>`_ illustrates how
 multiple tools can create a new service.
 
-.. figure:: _static/new_service_capability_abstraction.png
+.. figure:: ../_static/new_service_capability_abstraction.png
    :alt: New Service Capability Abstraction - Created by SpecterOps
    :align: center
    :scale: 100%
@@ -76,7 +78,7 @@ attacks not only through the utilization of the service creation tool (sc.exe),
 but also by directly modifying the registry itself. [#f3]_
 
 The Summiting the Pyramid team is utilizing capability abstraction mappings to
-map certain observables to the :doc:`levels/index` outlined by our methodology. As
+map certain observables to the :doc:`../levels/index` outlined by our methodology. As
 observables are assigned, further research can be conducted to identify
 detections based off those observables, especially for observables that might
 cover part or all of a technique. For example, if a kernel call is detected, is
@@ -98,7 +100,7 @@ To begin, the Technique T1003.001: OS Credential Dumping: LSASS Memory was
 researched to identify all potential implementations for how it could be
 conducted, as well as one of the most prominent benign implementations.
 
-.. figure:: _static/d3_credentialdumping_basic.png
+.. figure:: ../_static/d3_credentialdumping_basic.png
    :alt: D3 for OS Credential Dumping 
    :align: center
    :scale: 100%
@@ -110,7 +112,7 @@ easily identified. Like a capability abstraction, this observable occurs across
 multiple implementations of this technique and could be used for building out a
 robust detection.
 
-.. figure:: _static/d3_credentialdumping_targetimage.png
+.. figure:: ../_static/d3_credentialdumping_targetimage.png
    :alt: D3 for Accurate OS Credential Dumping 
    :align: center
    :scale: 100%
@@ -131,7 +133,7 @@ mask that defines the access rights to a certain object. [#f5]_  The
 ``GrantedAccess`` mask values could help differentiate typical benign LSASS
 access from potentially malicious access.
 
-.. figure:: _static/d3_credentialdumping_grantedaccess.png
+.. figure:: ../_static/d3_credentialdumping_grantedaccess.png
    :alt: D3 for Accurate OS Credential Dumping with GrantedAccess mask
    :align: center
    :scale: 100%
@@ -146,7 +148,7 @@ with malicious implementations of OS Credential Dumping, specifically 0x1010 and
 Our detection is accurate and scores at a :ref:`Some Implementations` on the
 Summiting model, making it reasonably resistant to adversary evasion over time.
 
-.. figure:: _static/detectionselection_credentialdumping_accurate.png
+.. figure:: ../_static/detectionselection_credentialdumping_accurate.png
    :alt: Detection selection for OS Credential Dumping with GrantedAccess mask
    :align: center
    :scale: 100%
@@ -177,7 +179,7 @@ to the environment, making it a :ref:`Pre-Existing Tools`. Additionally, the
 value ``NT AUTHORITY\SYSTEM`` is a specific value that is known to run mostly
 benign activities throughout the system.
 
-.. figure:: _static/splunkquery_sourceuser.png
+.. figure:: ../_static/splunkquery_sourceuser.png
    :alt: Field Options for OS Credential Dumping Detection
    :align: center
    :scale: 100%
@@ -191,7 +193,7 @@ filtering on user was more beneficial in terms of reducing false positives than
 it would be harmful to robustness.  Thus, we arrived at our final analytic in
 its most robust form.
 
-.. figure:: _static/detectionselection_precise.png
+.. figure:: ../_static/detectionselection_precise.png
    :alt: Detection selection for OS Credential Dumping with Filter
    :align: center
    :scale: 100%
@@ -201,7 +203,7 @@ its most robust form.
 
 Therefore, our final analytics scoring comes out to a **3U** with the use of a filter:
 
-.. figure:: _static/robustnessscore_credentialdumping.png
+.. figure:: ../_static/robustnessscore_credentialdumping.png
    :alt: Robustness Score for OS Credential Dumping
    :align: center
    :scale: 100%
@@ -213,7 +215,7 @@ T1053.005: Scheduled Tasks
 
 For a more detailed process of the Scheduled Task D3 visual, :ref:`please refer to the Building a Robust Detection walkthrough<Build Robust Detection>`. 
 
-.. figure:: _static/d3_scheduledtasks_basic.png
+.. figure:: ../_static/d3_scheduledtasks_basic.png
    :alt: D3 visual for scheduled tasks
    :align: center
    :scale: 100%
@@ -228,7 +230,7 @@ shows the significant overlap in malicious and benign execution.  Due to this
 overlap, it is very difficult to differentiate adversarial failed login attempts
 from benign, typical attempts.
 
-.. figure:: _static/d3_passwordguessing_basic.png
+.. figure:: ../_static/d3_passwordguessing_basic.png
    :alt: D3 visual for password guessing
    :align: center
    :scale: 100%
@@ -245,7 +247,7 @@ for Windows Event ID 4776 (which conveniently have equivalent values).  One
 <https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_susp_failed_logon_reasons.yml>`_
 that leverages these values is represented on the D3 below.
 
-.. figure:: _static/d3_passwordguessing_errorcode.png
+.. figure:: ../_static/d3_passwordguessing_errorcode.png
    :alt: D3 visual for password guessing
    :align: center
    :scale: 100%

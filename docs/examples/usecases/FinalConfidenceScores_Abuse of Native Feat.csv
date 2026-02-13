@@ -1,0 +1,24 @@
+Log Source ,Fidelity ,Noise ,Timeliness ,Coverage ,Context ,Robustness ,Total 
+EDR: Telemetry ,4 ,3 ,5 ,5.0 ,4.8 ,4.6 ,26.4 
+EDR: Suspicious Child Process ,4 ,4 ,5 ,4.5 ,4.5 ,4.4 ,26.4 
+EDR: Suspicious Service Creation ,4 ,5 ,5 ,1.8 ,4.9 ,4.8 ,25.5 
+EDR: WMI Events ,4 ,4 ,5 ,2.5 ,4.9 ,4.7 ,25.1 
+Sysmon: EID 19/20/21: WMI Events ,4 ,4 ,5 ,2.5 ,4.9 ,4.7 ,25.1 
+Autoruns Data ,4 ,5 ,2 ,4.0 ,5.0 ,5.0 ,25.0 
+Sysmon: EID 1: Process Create ,4 ,2 ,5 ,5.0 ,4.4 ,4.3 ,24.7 
+EDR: Registry Modifications ,4 ,4 ,5 ,2.0 ,4.7 ,4.8 ,24.5 
+Sysmon: EID 13: Registry Value Set ,4 ,4 ,5 ,2.0 ,4.7 ,4.8 ,24.5 
+Windows PowerShell: EID 4104: Script Block Logging ,4 ,4 ,5 ,2.0 ,4.9 ,4.4 ,24.3 
+EDR: Scheduled Task Creation ,4 ,4 ,5 ,1.8 ,4.8 ,4.7 ,24.3 
+Windows Security: EID 4688: Process Creation ,3 ,2 ,5 ,5.0 ,4.1 ,4.1 ,23.2 
+macOS: ESF Process Events ,4 ,2 ,5 ,3.5 ,4.3 ,4.4 ,23.2 
+Windows Security: EID 7045: Service Installation ,3 ,4 ,5 ,1.8 ,4.8 ,4.5 ,23.1 
+Windows Security: EID 4698: Scheduled Task Created ,3 ,4 ,5 ,1.8 ,4.7 ,4.6 ,23.1 
+Sysmon: Digital Signature Validation Status ,4 ,3 ,5 ,1.5 ,4.5 ,4.8 ,22.8 
+Windows Security: EID 4657: Registry Modified ,3 ,3 ,5 ,2.0 ,4.5 ,4.6 ,22.1 
+Linux: Auditd (execve) ,3 ,2 ,5 ,3.5 ,4.2 ,4.3 ,22.0 
+Sysmon: EID 7: Image Load (DLL Load) ,3 ,2 ,5 ,3.0 ,3.8 ,4.2 ,21.0 
+WinEventLog: WMI-Activity (Operational) ,3 ,2 ,5 ,2.5 ,4.2 ,4.3 ,21.0 
+EDR: Module Loads ,3 ,2 ,5 ,3.0 ,3.8 ,4.2 ,21.0 
+Sysmon: EID 11: FileCreate ,3 ,2 ,5 ,2.5 ,3.6 ,3.8 ,19.9 
+EDR: File Creation ,3 ,2 ,5 ,2.5 ,3.6 ,3.8 ,19.9 

@@ -1,12 +1,12 @@
 .. _Example Mappings:
 
-Example Mappings
-================
+Example Robustness Mappings
+============================
 
 `T1003.001: LSASS Memory <https://attack.mitre.org/techniques/T1003/001/>`_
 ---------------------------------------------------------------------------
 
-.. figure:: _static/techniquemapping_lsass.png
+.. figure:: ../_static/techniquemapping_lsass.png
    :alt: Technique Scoring for LSASS Memory
    :align: center
 
@@ -14,7 +14,7 @@ Example Mappings
 `T1053.005 Scheduled Tasks <https://attack.mitre.org/techniques/T1053/005/>`_
 -----------------------------------------------------------------------------
 
-.. figure:: _static/techniquemapping_scheduledtasks.png
+.. figure:: ../_static/techniquemapping_scheduledtasks.png
    :alt: Technique Scoring for Scheduled Tasks
    :align: center
 
@@ -111,7 +111,7 @@ fields that are stored in the dce_rpc.log file, including
 ``id$resp_h``, and ``id$resp_p``. The event also has one extra field, ``stub``,
 which contains the RPC data payload.
 
-.. figure:: _static/techniquemapping_rpc.png
+.. figure:: ../_static/techniquemapping_rpc.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -182,7 +182,7 @@ remote execution of T1053.005 via HTTP/WinRM, but it would not conclusively
 identify T1053.005 via WinRM. In this case, protocol payload visibility would be
 beneficial to create detection analytics specific to T1053.005 via HTTP/WinRM.
 
-.. figure:: _static/techniquemapping_http.png
+.. figure:: ../_static/techniquemapping_http.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -219,7 +219,7 @@ would indicate that the user actually clicked on the malicious LNK file. The
 analytic robustness was :ref:`Pre-Existing Tools`, and the event robustness was
 :ref:`Kernel-Mode`, for a total score of **3K**.
 
-.. figure:: _static/techniquemapping_webdav_endpoint.png
+.. figure:: ../_static/techniquemapping_webdav_endpoint.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 
@@ -236,7 +236,7 @@ Proofpoint and Any Run showed multiple examples of the adversary using the HTTPS
 protocol, instead of HTTP, which would obscure visibility into the Layer 7
 payload and ultimately evade detection.
 
-.. figure:: _static/techniquemapping_webdav_network.png
+.. figure:: ../_static/techniquemapping_webdav_network.png
    :alt: Technique Scoring for Scheduled Tasks Using RPC
    :align: center
 

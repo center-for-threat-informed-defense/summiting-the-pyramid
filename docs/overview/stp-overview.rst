@@ -1,9 +1,14 @@
-Overview
-========
+Summiting the Pyramid Overview
+=======================================
+
+.. figure:: ../_static/Summit_the_Pyramid_12.11.2024.png
+   :alt: Summiting the Pyramid, Leveling Up Your Analytics
+   :align: center
 
 ..
   Whenever you update overview.rst, also look at README.md and consider whether
   you should make a corresponding update there.
+
 
 .. epigraph::
 
@@ -21,7 +26,7 @@ ability to evade detections based on those indicators. Summiting the Pyramid bui
 this conceptual foundation with a rigorous analysis of how to engineer analytics to
 increase robustness and make adversary evasion as costly as possible.
 
-.. figure:: _static/event_robustness_table_revised.png
+.. figure:: ../_static/event_robustness_table_revised.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
@@ -38,7 +43,7 @@ detected. An adversary can easily evade detection by recompiling their tools wit
 one-byte difference. This is visually represented by placing the observable on the first
 row:
 
-.. figure:: _static/summit_level1_revised.png
+.. figure:: ../_static/summit_level1_revised.png
    :alt: Hash value at level 1: Ephemeral values
    :align: center
 
@@ -49,7 +54,7 @@ Moving right reflects the use of data sources that are harder for the attacker t
 manipulate. Taken together, these lead to analytics that are more difficult and
 expensive to evade:
 
-.. figure:: _static/summit_level5_revised.PNG
+.. figure:: ../_static/summit_level5_revised.PNG
    :alt: Event ID at level 5: Core to Technique
    :align: center
 
@@ -57,12 +62,5 @@ This project includes a complete toolkit for defenders to start analyzing and im
 detection analytics: a model for evasiveness, a methodology for mappings detection
 analytics onto that model, and many worked examples of mapping real-world analytics.
 
-Want to learn more? Hear some of the project creators talk more about Summiting the Pyramid at ShmooCon 2024!
-
-.. raw:: html
-
-   <embed>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/B86QP361t8E?si=jxhS8XmJe_ihARj7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-   </embed>
 
 

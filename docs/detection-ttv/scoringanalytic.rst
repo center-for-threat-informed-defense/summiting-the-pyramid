@@ -89,7 +89,7 @@ Sysmon events are triggered with a minifilter. [#f3]_ Minifilters are executed b
 Filter manager, operating in kernel-mode. [#f4]_ Because of this, the data sensor
 placement of this analytic will be in :ref:`Kernel-Mode`.
 
-.. figure:: _static/pipes_collectionsource_08022023.PNG
+.. figure:: ../_static/pipes_collectionsource_08022023.PNG
    :alt: Suspicious Pipe Creation Analytic Sensor Data
    :align: center
 
@@ -125,7 +125,7 @@ Additionally, this observable is looking only for the beginning of the pipe
 name. Due to this fact, the group of detections is scored at a :ref:`Ephemeral
 Values`.
 
-.. figure:: _static/pipes_level1_07052023.png
+.. figure:: ../_static/pipes_level1_07052023.png
    :alt: Suspicious Pipe Creation selections scored at level 1
    :align: center
 
@@ -145,7 +145,7 @@ for these pipe names and the configuration and permissions required to edit the
 tools raise the effort needed by an adversary. Because of this, the filter
 itself scores as a :ref:`Pre-Existing Tools`. 
 
-.. figure:: _static/scoringanalytic_filter.png
+.. figure:: ../_static/scoringanalytic_filter.png
    :alt: Suspicious Pipe Creation filter
    :align: center
 
@@ -165,7 +165,7 @@ statement or an OR statement. [#f8]_ There can also be a condition at the bottom
 of an analytic that might identify a filter that needs to be applied to the
 analytic.
 
-.. figure:: _static/pipes_condition.png
+.. figure:: ../_static/pipes_condition.png
    :alt: Suspicious Pipe Creation condition
    :align: center
 
@@ -210,7 +210,7 @@ observable being fulfilled, putting the observables at Level 1. Therefore, the
 score of this analytic is **1K**.
 
 
-.. figure:: _static/scoringanalytic_finalscore.png
+.. figure:: ../_static/scoringanalytic_finalscore.png
    :alt: Suspicious Pipe Creation final score
    :align: center
 

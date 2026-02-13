@@ -39,7 +39,7 @@ environment. The use of this hash value creates a low false positive rate
 because it is highly unlikely that we will capture benign activity within this
 detection.
 
-.. figure:: _static/detectioncomponents_hash.png
+.. figure:: ../_static/detectioncomponents_hash.png
    :alt: Precise detection using hash value
    :align: center
    :scale: 100%
@@ -63,7 +63,7 @@ accurate detection. This detection could also be resistant to adversary evasion
 over time, since this activity occurs across all implementations of a technique
 and cannot be avoided.
 
-.. figure:: _static/detectioncomponents_registry.png
+.. figure:: ../_static/detectioncomponents_registry.png
    :alt: Accurate detection using registry key value
    :align: center
    :scale: 100%
@@ -126,7 +126,7 @@ to incorporate situational awareness via :ref:`context<Context>` to accurately
 infer intent and distinguish malicious activity, while maintaining robustness to
 ensure operational feasibility.
 
-.. figure:: _static/context_categories.png
+.. figure:: ../_static/context_categories.png
    :alt: Overview of Context Categories
    :align: center
 
