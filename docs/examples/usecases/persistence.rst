@@ -64,4 +64,4 @@ Registry modification events were the clear #1 category. File creation events (f
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Persistence via Registry/Startup<FinalConfidenceScores_Persistence via Registry.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Persistence via Registry/Startup<FinalConfidenceScores_Persistence via Registry.csv>`
