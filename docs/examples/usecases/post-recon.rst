@@ -68,4 +68,4 @@ Process creation logs with full command-line auditing were the massive margin, t
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Post-Exploitation Reconnaissance<FinalConfidenceScores_Post-Exploit Recon.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Post-Exploitation Reconnaissance<FinalConfidenceScores_Post-Exploit Recon.csv>`
