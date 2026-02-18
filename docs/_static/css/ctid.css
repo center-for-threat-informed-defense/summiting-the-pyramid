@@ -55,6 +55,11 @@ body {
   color: var(--mitre-navy) !important;
 }
 
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
 figure img {
   border-radius: 0;
   box-shadow: none;

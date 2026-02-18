@@ -1,8 +1,36 @@
-Introduction
-============
+.. _Detection Engineering:
 
-Project Goal
-------------
+Detection Engineering Work Overview
+=====================================
+
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+
+    stp-overview
+    at-overview
+    definitions
+    pubs
+
+.. figure:: ../_static/detectionengineering.png
+   :alt: CTID Detection Engineering alignment
+   :align: center
+   :scale: 50%
+
+CTID’s detection engineering work treats DCO-focused detections as a rigorous engineering discipline organized around three interconnected domains: telemetry strategy and readiness, analytic design and engineering, and detection evaluation and validation. At the telemetry layer, the focus is on prioritizing and assessing data sources based on their ability to support specific detection objectives, measuring the quality and reliability of telemetry for enabling behavior-level analysis. Within analytic design and engineering, the emphasis shifts from brittle, artifact-based matching to robust, behavior-driven detections that model adversary actions in context and reduce false positives through environmental and inference of intent. Finally, detection evaluation and validation centers on measuring analytic strength, assessing behavioral depth, evasion resistance, telemetry dependencies, and overall robustness to ensure detections operate higher on the behavioral pyramid. Collectively, this work reframes detection engineering as an evidence-based practice that integrates purposeful data collection, resilient behavioral modeling, and measurable assurances of detection effectiveness.
+
+.. raw:: html
+
+  <div class="btn-group btn-group-justified">
+    <a href="../data-readiness/index" class="btn btn-secondary">Telemetry Strategy & Readiness</a>
+    <a href="../analytic-design/index" class="btn btn-secondary">Analytic Design & Engineering</a>
+    <a href="../detection-ttv/index" class="btn btn-secondary">Detection Evaluation & Validation</a>
+  </div>
+
+-----------------------------------------
+
+Developing Behavior-Focused Detections
+----------------------------------------
 
 The Pyramid of Pain [#f1]_ has been used by detection engineers to determine the
 cost or “pain” it would impose on an adversary to evade defenses at a given
@@ -13,7 +41,7 @@ and consume more time and money, imposing more pain. Tactics, Techniques, and
 Procedures (TTPs), such as those in MITRE ATT&CK®, are at the top of the pyramid
 because they are the most costly for an adversary to change
 
-.. figure:: _static/pyramid_of_pain.png
+.. figure:: ../_static/pyramid_of_pain.png
    :alt: Pyramid of Pain - Created by David Bianco
    :align: center
 
@@ -65,7 +93,7 @@ the types of tools an adversary will attempt to use during an attack. Finally,
 the top level is strictly focused on behaviors that an adversary will
 demonstrate during an attack.
 
-.. figure:: _static/pyramid_breakdown_revised.png
+.. figure:: ../_static/pyramid_breakdown_revised.png
    :alt: Breaking down the Pyramid of Pain
    :align: center
 
@@ -116,7 +144,7 @@ user, some are functions of the kernel, and so on. Adversaries may be able to
 bypass certain event IDs by calling lower-level APIs in the OS or making direct
 syscalls into the kernel.
 
-.. figure:: _static/summitingmodel_hostbased_blank.png
+.. figure:: ../_static/summitingmodel_hostbased_blank.png
    :alt: Summiting Host-Based Model
    :align: center
 
@@ -139,23 +167,11 @@ understanding of the network traffic can help defenders understand what protocol
 information is necessary for detecting malicious activity and use that
 information to both build and improve network-traffic detections.
 
-.. figure:: _static/summitingmodel_network_blank.png
+.. figure:: ../_static/summitingmodel_network_blank.png
    :alt: Summiting Network Traffic Model
    :align: center
 
    The Summiting network traffic model contains five rows and two columns.
-
-Determining Malicious Intent for Ambiguous Techniques
--------------------------------------------------------
-
-For :ref:`ambiguous techniques<AT Definition>`, invariant behaviors overlap
-significantly between malicious and benign implementations, and so more
-:ref:`context<Context Definition>` is needed to differentiate malicious
-:ref:`intent<Intent Definition>` and behavior, otherwise detection analytics
-risk drowning in false positives.  There is also a need when trying to identify
-differentiators to maintain as high a level of robustness as possible, so that
-you don't render the analytic ineffective in trying to gain a higher level of
-precision.  
 
 
 How Do We Create Robust Detections?
@@ -180,6 +196,20 @@ build robust detections, changing the game on the adversary:
 * :ref:`Determine Malicious Intent through Context:<Context>` Determine the
   contextual requirements for developing analytics for an ambiguous technique in
   order to effectively focus on malicious behaviors and optimize robustness.
+
+
+Determining Malicious Intent for Ambiguous Techniques
+-------------------------------------------------------
+ 
+For :ref:`ambiguous techniques<AT Definition>`, invariant behaviors overlap
+significantly between malicious and benign implementations, and so more
+:ref:`context<Context Definition>` is needed to differentiate malicious
+:ref:`intent<Intent Definition>` and behavior, otherwise detection analytics
+risk drowning in false positives.  There is also a need when trying to identify
+differentiators to maintain as high a level of robustness as possible, so that
+you don't render the analytic ineffective in trying to gain a higher level of
+precision.  
+
 
 Assumptions and Caveats
 -----------------------
