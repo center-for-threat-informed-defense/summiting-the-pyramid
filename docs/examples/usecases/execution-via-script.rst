@@ -69,4 +69,4 @@ There was a very distinct ranking:
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Execution via Scripting Languages <FinalConfidenceScores_Execution via Script.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Execution via Scripting Languages <FinalConfidenceScores_Execution via Script.csv>`
