@@ -67,4 +67,4 @@ Content-aware alerts (DLP, CASB) were the undisputed champions. Network traffic 
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Data Exfiltration via Web or Cloud Services <FinalConfidenceScores_Data Exfil via WebCloud.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Data Exfiltration via Web or Cloud Services <FinalConfidenceScores_Data Exfil via WebCloud.csv>`
