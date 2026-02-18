@@ -17,7 +17,7 @@ threat-informed defense globally.
     In version 4.0, we updated and improved the project in the following ways!
 
     * Defined a methodology for identifying the :ref:`minimum telemetry requirements<mintelreq>` for ambiguous techniques.
-    * Developed a process for calculating :ref:`Telemetry Quality<Telemetry Quality>` scores that provide relative detection effectiveness values for log sources against a given technique. We also extended this work to look at groupings of techniques with similiar objectives (called :ref:`use cases<Use Cases>`) and leveraged :ref:`automation via AI/LLM<automation>` to assist with the analysis.
+    * Developed a process for calculating :ref:`Telemetry Confidence<Telemetry Quality>` scores that provide relative detection effectiveness values for log sources against a given technique. We also extended this work to look at groupings of techniques with similiar objectives (called :ref:`use cases<Use Cases>`) and leveraged :ref:`automation via AI/LLM<automation>` to assist with the analysis.
     * Re-factored the Summiting website to better align to CTID's portfolio of :ref:`Detection Engineering<Detection Engineering>` work.
 
 ----------------------------------
