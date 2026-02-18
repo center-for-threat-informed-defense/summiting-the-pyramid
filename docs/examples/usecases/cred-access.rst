@@ -67,4 +67,4 @@ The data clearly splits into two top-tier categories: Memory/API Monitoring for 
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Credential Access & Abuse <FinalConfidenceScores_Credential AccessAbuse.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Credential Access & Abuse <FinalConfidenceScores_Credential AccessAbuse.csv>`
