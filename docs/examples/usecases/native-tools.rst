@@ -59,4 +59,4 @@ Evaluation of Log Source Types
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Abuse of Native OS Features<FinalConfidenceScores_Abuse of Native Feat.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Abuse of Native OS Features<FinalConfidenceScores_Abuse of Native Feat.csv>`
