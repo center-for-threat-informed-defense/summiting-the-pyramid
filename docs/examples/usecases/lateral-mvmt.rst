@@ -66,4 +66,4 @@ Process execution and authentication events were the top two categories. Specifi
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Lateral Movement<FinalConfidenceScores_Lateral Movement.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Lateral Movement<FinalConfidenceScores_Lateral Movement.csv>`
