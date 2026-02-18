@@ -3,8 +3,8 @@
 Automation Overview
 ====================
 
-Replicating AI-Driven Telemetry Quality Scoring
--------------------------------------------------
+Replicating AI-Driven Telemetry Confidence Scoring
+---------------------------------------------------
 
 To replicate our process, it is not about "training" in the traditional machine learning sense, but rather a sophisticated, multi-step execution of instructions based on provided data. It is a form of in-context learning and prompt engineering.
 

@@ -63,4 +63,4 @@ Endpoint Behavioral Alerts (like Suspicious Child Process) proved to be the high
 
 Scoring Data
 -------------
-The raw TQ scores broken down by metric can be found here: :download:`Initial Access via Spearphishing<FinalConfidenceScores_Spearphishing.csv>`
+The raw TC scores broken down by metric can be found here: :download:`Initial Access via Spearphishing<FinalConfidenceScores_Spearphishing.csv>`

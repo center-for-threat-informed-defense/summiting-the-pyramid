@@ -1,13 +1,13 @@
 .. _Telemetry Quality:
 
-Telemetry Quality Scoring
-==========================
+Telemetry Confidence Scoring
+=============================
 
 Overview
 ----------
 Minimum telemetry requirements identify the narrowest set of telemetry that can accomplish a given detection objective, but by themselves they don’t tell defenders which log sources are most effective or how to prioritize collection and ingestion when multiple sources could work. In practice, defenders need a way to rank and compare telemetry sources, because simply knowing what is “sufficient” does not convey how robust, noisy, or operationally practical each option will be (especially for ambiguous techniques where intent cannot be determined from observables alone).
 
-Telemetry Quality scoring addresses this by assigning an aggregate score based on seven metrics: Fidelity, Noise Level, Timeliness, Context, Coverage, Robustness, and Cost. Together, these metrics measure key factors that contribute to estimating a log source’s effectiveness against ambiguous techniques (or techniques in general). These metrics capture both log source characteristics (e.g., richness of data, event volume, and latency) and technique-driven usefulness (e.g., breadth of technique visibility and how much differentiating detail the telemetry provides), producing a quantitative, customizable model that supports more actionable detection strategy planning and prioritization. The Telemetry Quality score aims to approximate a log source's potential utility or effectiveness for use in the detection of technique behaviors, but does not prescribe or evaluate specific analytics or detection logic; it is a tool that is primarily designed to inform data collection prioritization and strategy development by giving a relative assessment of relevant telemetry sources.
+Telemetry Confidence scoring addresses this by assigning an aggregate score based on seven metrics: Fidelity, Noise Level, Timeliness, Context, Coverage, Robustness, and Cost. Together, these metrics measure key factors that contribute to estimating a log source’s effectiveness against ambiguous techniques (or techniques in general). These metrics capture both log source characteristics (e.g., richness of data, event volume, and latency) and technique-driven usefulness (e.g., breadth of technique visibility and how much differentiating detail the telemetry provides), producing a quantitative, customizable model that supports more actionable detection strategy planning and prioritization. The Telemetry Confidence (TC) score aims to approximate a log source's potential utility or effectiveness for use in the detection of technique behaviors, but does not prescribe or evaluate specific analytics or detection logic; it is a tool that is primarily designed to inform data collection prioritization and strategy development by giving a relative assessment of relevant telemetry sources.
 
 Fidelity
 ----------
@@ -126,23 +126,23 @@ Cost
 Cost is a metric that is included only for prioritization purposes, and thus can be defined as customized by the organization based on internal priorities and considerations. Given that it is highly dependent on the operating environment, it is the only optional metric listed, and can be defined as needed by the user.
 
 
-Telemetry Quality Evaluation
------------------------------
+Telemetry Confidence Evaluation
+---------------------------------
 
 .. figure:: ../_static/evalprocess.png
    :alt: Telemetry Quality scoring process
    :align: center
    :scale: 100%
 
-The Telemetry Quality (TQ) is calculated by scoring a telemetry source across the defined metrics and rolling them up into a single total that can be used to rank and compare sources. The scoring process is explicitly two-step: technique-agnostic scoring focuses on characteristics of the telemetry source itself, and technique-focused scoring evaluates how that source performs for the technique in question. In execution, the scorer evaluates each log source against the metrics, averages technique-focused measures across the relevant techniques where applicable, and then sums the final metric values into a single total score (Telemetry Quality). For defenders, that total represents a comparative, quantitative way to estimate which sources will be most effective (and practical) for detection, which they can use to prioritize which telemetry to enable, ingest, and tune first, and use lower-scoring sources as supporting context rather than primary detection drivers.
+The Telemetry Confidence (TC) is calculated by scoring a telemetry source across the defined metrics and rolling them up into a single total that can be used to rank and compare sources. The scoring process is explicitly two-step: technique-agnostic scoring focuses on characteristics of the telemetry source itself, and technique-focused scoring evaluates how that source performs for the technique in question. In execution, the scorer evaluates each log source against the metrics, averages technique-focused measures across the relevant techniques where applicable, and then sums the final metric values into a single total score (Telemetry Confidence). For defenders, that total represents a comparative, quantitative way to estimate which sources will be most effective (and practical) for detection, which they can use to prioritize which telemetry to enable, ingest, and tune first, and use lower-scoring sources as supporting context rather than primary detection drivers.
 
 -----------------------------------
 
 **Example: T1053: Scheduled Task/Job**
 
 .. figure:: ../_static/TQscore_ScheduledTask.png
-   :alt: Telemetry Quality scoring process
+   :alt: Telemetry Confidence scoring process
    :align: center
    :scale: 100%
 
-The Scheduled Task/Job example table illustrates how this scoring produces actionable differentiation across common endpoint telemetry options. In that example, the highest Telemetry Quality scores are achieved by sources that provide more direct, high-context visibility into task creation artifacts and related change, such as registry modification telemetry and file monitoring, while more general sources (like basic process creation or native task-related security events) score lower or are flagged with operational trade-offs. The notes reinforce this interpretation: some sources are “high-value telemetry” but can be “noisy in enterprise environments,” some are useful because they detect creation “regardless of method (GUI, script, CLI),” and others are worth alerting on because they indicate meaningful state changes (like re-enabling a disabled task). The result is a defensible, side-by-side way to decide which telemetry sources are best positioned to drive primary detections for Scheduled Tasks and which are better used for correlation and investigation support.
+The Scheduled Task/Job example table illustrates how this scoring produces actionable differentiation across common endpoint telemetry options. In that example, the highest Telemetry Confidence scores are achieved by sources that provide more direct, high-context visibility into task creation artifacts and related change, such as registry modification telemetry and file monitoring, while more general sources (like basic process creation or native task-related security events) score lower or are flagged with operational trade-offs. The notes reinforce this interpretation: some sources are “high-value telemetry” but can be “noisy in enterprise environments,” some are useful because they detect creation “regardless of method (GUI, script, CLI),” and others are worth alerting on because they indicate meaningful state changes (like re-enabling a disabled task). The result is a defensible, side-by-side way to decide which telemetry sources are best positioned to drive primary detections for Scheduled Tasks and which are better used for correlation and investigation support.

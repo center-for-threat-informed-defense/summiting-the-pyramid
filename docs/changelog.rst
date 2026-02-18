@@ -14,7 +14,7 @@ Version History
            <ul>
               <li>Refactored the Summiting website to align to overall CTID Detection Engineering work and make it easier to navigate</li>
               <li>Added in Telemetry Strategy & Readiness content that describes how to identify minimum telemetry requirements for a given ambiguous technique</li>
-              <li>Added description of the Telemetry Quality (TQ) scoring methodology with examples, extensions to use cases and results from 10 use cases related to ambiguous behaviors, and shared our methodology for automating the process using AI/LLM augmentation</li>
+              <li>Added description of the Telemetry Confidence (TC) scoring methodology with examples, extensions to use cases and results from 10 use cases related to ambiguous behaviors, and shared our methodology for automating the process using AI/LLM augmentation</li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#two">Version 3.0 - May 8th, 2025</button>
