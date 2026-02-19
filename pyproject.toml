@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "summiting-the-pyramid"
-version = "3.0.0"
+version = "4.0.0"
 description = ""
 authors = [
     "Ross Weisman <rpweisman@mitre.org>",
