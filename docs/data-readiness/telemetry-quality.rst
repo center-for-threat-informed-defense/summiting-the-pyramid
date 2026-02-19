@@ -55,9 +55,9 @@ Timeliness measures the latency between an event occurring on a system and that 
 
    - **Score 1 (Days):** Data is available in days. 
    - **Score 2 (Hours):** Data is available in hours. 
-   - **Score 3 (Minutes):** Data is available in 15-60 minutes. 
-   - **Score 4 (Near Real-Time:** Data is available in 1-15 minutes. 
-   - **Score 5 (Real-Time):** Data is available in under 1 minute. 
+   - **Score 3 (Minutes):** Data is available in a few or more minutes. 
+   - **Score 4 (Near Real-Time):** Data is available within seconds to a few minutes. 
+   - **Score 5 (Real-Time):** Data is available virtually instantaneously. 
 
 
 Context
