@@ -96,6 +96,10 @@ table p {
   margin-left: 1rem;
 }
 
+.reference.external {
+  overflow-wrap: break-word;
+}
+
 .toc .current > .toctree-expand,
 .toctree-expand {
   color: var(--mitre-blue);
