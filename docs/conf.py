@@ -24,11 +24,11 @@ googleanalytics_id = (
 )
 
 author = "Center for Threat-Informed Defense"
-copyright_years = "2023, 2024, 2025"
-prs_numbers = "CT0078, CT0128, 25-1550"
+copyright_years = "2023, 2024, 2025, 2026"
+prs_numbers = "CT0078, CT0128, 25-1550, 26-0334"
 
 # The full version, including alpha/beta/rc tags
-version = "v3.0.0"
+version = "v4.0.0"
 release = version
 
 
@@ -82,8 +82,8 @@ html_context = {
 
 footer_links = [
     [
-        "Measure Maximize and Mature Threat-Informed Defense",
-        "https://ctid.mitre.org/projects/measure-maximize-and-mature-threat-informed-defense-m3tid/",
+        "MITRE INFORM",
+        "https://ctid.mitre.org/projects/inform-your-defense/",
     ],
     [
         "Sensor Mappings To ATT&CK",
