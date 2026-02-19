@@ -92,27 +92,27 @@ jobs:
                 body: `This PR has been published to https://${process.env['AZURE_STORAGE_ACCOUNT']}.z13.web.core.windows.net/${process.env['BRANCH_NAME']}/`,
               })
 
-  # github_pages:
-  #   # This job only runs when committing or merging to main branch.
-  #   if: github.ref_name == 'main'
-  #   needs: docs
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+  github_pages:
+    # This job only runs when committing or merging to main branch.
+    if: github.ref_name == 'main'
+    needs: docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  #   steps:
-  #   - name: Setup Pages
-  #     uses: actions/configure-pages@v2
-  #   - name: Download HTML docs
-  #     uses: actions/download-artifact@v4
-  #     with:
-  #       name: stp-docs-html
-  #       path: docs
-  #   - name: Upload artifact
-  #     uses: actions/upload-pages-artifact@v3
-  #     with:
-  #       path: ./docs
-  #   - name: Deploy to GitHub Pages
-  #     id: deployment
-  #     uses: actions/deploy-pages@v4
+    steps:
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+    - name: Download HTML docs
+      uses: actions/download-artifact@v4
+      with:
+        name: stp-docs-html
+        path: docs
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./docs
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
