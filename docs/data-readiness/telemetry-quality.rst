@@ -140,7 +140,7 @@ The Telemetry Confidence (TC) is calculated by scoring a telemetry source across
 
 **Example: T1053: Scheduled Task/Job**
 
-.. figure:: ../_static/TQscore_ScheduledTask.png
+.. figure:: ../_static/TCscore_ScheduledTask.png
    :alt: Telemetry Confidence scoring process
    :align: center
    :scale: 100%
