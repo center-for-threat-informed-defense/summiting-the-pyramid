@@ -60,25 +60,6 @@ body {
     width: 100%;
 }
 
-.changelog-accordion .changelog-toggle {
-  position: relative;
-  padding-left: 2.5rem;
-  text-align: center;
-}
-
-.changelog-accordion .changelog-toggle::before {
-  content: "+";
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: bold;
-}
-
-.changelog-accordion .changelog-toggle[aria-expanded="true"]::before {
-  content: "-";
-}
-
 figure img {
   border-radius: 0;
   box-shadow: none;
