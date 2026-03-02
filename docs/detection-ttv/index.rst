@@ -9,17 +9,17 @@ Detection Evaluation & Validation
 
 .. raw:: html
 
-   <div class="container">
+   <div class="container stp-accordion">
      <h2>Detection Evaluation & Validation Key Components</h2>
      <div class="btn-group-vertical btn-block">
-         <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#one">Analytic Validation</button>
+        <button type="button" class="btn btn-primary btn-block stp-toggle" data-toggle="collapse" data-target="#one" aria-expanded="false">Analytic Validation</button>
          <div id="one" class="collapse">
        	   <br>Varifying the analytic fires when expected<br>
            <ul>
               <li><a href="https://attack.mitre.org/resources/learn-more-about-attack/training/threat-hunting/#mod5">ATT&CK Training: Threat Hunting & Detection Engineering</a></li>
            </ul>
          </div>
-         <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#two">Behavioral Coverage Depth</button>
+        <button type="button" class="btn btn-primary btn-block stp-toggle" data-toggle="collapse" data-target="#two" aria-expanded="false">Behavioral Coverage Depth</button>
          <div id="two" class="collapse">
        	   <br>Assessing how high on the behavioral pyramid a detection operates<br>
            <ul>
@@ -28,7 +28,7 @@ Detection Evaluation & Validation
               <li><a href="../examples/examplemappings">Example Mappings</a></li>
            </ul>
          </div>
-         <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#three">Detection Strength Scoring</button>
+        <button type="button" class="btn btn-primary btn-block stp-toggle" data-toggle="collapse" data-target="#three" aria-expanded="false">Detection Strength Scoring</button>
          <div id="three" class="collapse">
        	   <br>Scoring detections based on behavioral depth and robustness<br>
            <ul>
@@ -36,7 +36,7 @@ Detection Evaluation & Validation
               <li><a href="../analytics/index">Scored Analytics</a></li>
            </ul>
          </div>
-         <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#four">Performance & Stability Monitoring</button>
+        <button type="button" class="btn btn-primary btn-block stp-toggle" data-toggle="collapse" data-target="#four" aria-expanded="false">Performance & Stability Monitoring</button>
          <div id="four" class="collapse">
        	   <br>Monitoring detection health over time<br>
          </div>
