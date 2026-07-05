@@ -177,12 +177,14 @@ the ``selection_malleable_profile*`` conditions is met, unless the filter
 condition is also true. There are four sections in
 ``selection_malleable_profile``: ``PipeName | startswith``, ``PipeName``,
 ``selection_malleable_profile_CatalogChangeListener``, and ``PipeName |
-endswith``. The observables within each of the selections are connected using an
-AND. The condition states that at least one of the
-``selection_malleable_profile*`` will be selected, making each of the selections
-connected by an OR. So, the final analytic would look like this:
+endswith``. The observables within ``selection_malleable_profiles``
+are connected using an OR, while observables within
+``selection_malleable_profile_CatalogChangeListener`` are connected using an AND.
+The condition states that at least one of the ``selection_malleable_profile*``
+will be selected, making each of the selections connected by an OR.
+So, the final analytic would look like this:
 
-``((selection_malleable_profiles: Pipename | startswith AND Pipename) OR
+``((selection_malleable_profiles: Pipename | startswith OR Pipename) OR
 (selection_malleable_profile_CatalogChangeListener: Pipename | startswith AND
 Pipename | endswith)) AND (NOT filter) = (1 AND 1) AND 3  = 1``
 
