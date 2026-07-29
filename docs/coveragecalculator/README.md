@@ -29,26 +29,26 @@ On Windows, activate the environment with:
 Run the script from this directory and give it a Sigma YAML file, a directory of YAML files, a glob, or a GitHub URL.
 
 ```sh
-python3 sigma_analytic_tables.py path/to/rule.yml
+python3 coveragecalculator.py path/to/rule.yml
 ```
 
 For example, process the SigmaHQ Windows process-access rules directly from GitHub:
 
 ```sh
-python3 sigma_analytic_tables.py \
+python3 coveragecalculator.py \
   "https://github.com/SigmaHQ/sigma/tree/master/rules/windows/process_access"
 ```
 
 Multiple inputs may be supplied either positionally or with `--analytic-yaml`:
 
 ```sh
-python3 sigma_analytic_tables.py rules/windows/*.yml --analytic-yaml rules/custom_rule.yml
+python3 coveragecalculator.py rules/windows/*.yml --analytic-yaml rules/custom_rule.yml
 ```
 
 The default output is `outputs/consolidated_analysis.xlsx`. Set a different output prefix with `--out-prefix`:
 
 ```sh
-python3 sigma_analytic_tables.py rules/ --out-prefix outputs/windows_coverage
+python3 coveragecalculator.py rules/ --out-prefix outputs/windows_coverage
 ```
 
 This writes `outputs/windows_coverage.xlsx`.
@@ -69,7 +69,7 @@ The generated workbook contains these worksheets:
 By default, the script reads the three reference workbooks stored beside it. You can provide updated versions or select worksheet names when needed:
 
 ```sh
-python3 sigma_analytic_tables.py rule.yml \
+python3 coveragecalculator.py rule.yml \
   --scoring-workbook data/scoring_dictionary.xlsx \
   --scoring-sheet "New Scores" \
   --implementation-catalog data/implementation_catalog.xlsx \
@@ -84,10 +84,10 @@ For private GitHub repositories or to avoid unauthenticated GitHub API limits, s
 
 ```sh
 export GITHUB_TOKEN=your_token
-python3 sigma_analytic_tables.py "https://github.com/OWNER/REPOSITORY/tree/BRANCH/path"
+python3 coveragecalculator.py "https://github.com/OWNER/REPOSITORY/tree/BRANCH/path"
 ```
 
-Run `python3 sigma_analytic_tables.py --help` for the complete list of options.
+Run `python3 coveragecalculator.py --help` for the complete list of options.
 
 ## Troubleshooting
 
