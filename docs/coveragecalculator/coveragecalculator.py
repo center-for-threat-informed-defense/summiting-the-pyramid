@@ -109,10 +109,21 @@ IMPLEMENTATION_HEADERS = [
     "ATT&CK Data Component (v19)",
     "Detection Observables",
     "Covered By Analytics",
-    "Matched Implementation Count",
-    "Total Implementation Count",
-    "Implementation Coverage Ratio",
-    "Implementation Coverage Percent",
+    "Analytic Files",
+    "Analytic Titles",
+]
+
+IMPLEMENTATION_COVERAGE_HEADERS = [
+    "ATT&CK Technique ID",
+    "ATT&CK Technique Name",
+    "Technique Implementation name",
+    "Implementation Covered",
+    "Covered Step Count",
+    "Total Step Count",
+    "Implementation Step Coverage Ratio",
+    "Implementation Step Coverage",
+    "Covered Implementation Steps",
+    "Uncovered Implementation Steps",
     "Analytic Files",
     "Analytic Titles",
 ]
@@ -336,8 +347,8 @@ def main() -> None:
         analytic_summaries,
         attack_rows,
         matched_implementation_rows,
-        technique_coverage_rows,
     )
+    implementation_coverage_rows = build_implementation_coverage_rows(implementation_rows)
     summary_rows = build_summary_rows(
         analytic_summaries,
         scoring_sheet,
@@ -346,6 +357,7 @@ def main() -> None:
         all_event_context_rows,
         all_field_score_rows,
         implementation_rows,
+        implementation_coverage_rows,
         technique_coverage_rows,
         all_analytic_score_rows,
     )
@@ -355,6 +367,7 @@ def main() -> None:
     write_workbook(
         workbook_path,
         implementation_rows,
+        implementation_coverage_rows,
         all_field_score_rows,
         all_event_context_rows,
         technique_coverage_rows,
@@ -364,6 +377,7 @@ def main() -> None:
     print(f"Analytics processed: {len(analytic_summaries)}")
     print(f"Implementation catalog rows: {len(implementation_rows)}")
     print(f"Covered implementation rows: {sum(1 for row in implementation_rows if row.get('Covered By Analytics') == 'yes')}")
+    print(f"Implementation coverage rows: {len(implementation_coverage_rows)}")
     print(f"Technique coverage rows: {len(technique_coverage_rows)}")
     print(f"Field score rows: {len(all_field_score_rows)}")
     print(f"Field score matches: {sum(1 for row in all_field_score_rows if row['Matched'] == 'yes')}")
@@ -1474,15 +1488,11 @@ def build_implementation_catalog_rows(
     analytic_summaries: list[dict[str, Any]],
     attack_rows: list[dict[str, Any]],
     matched_implementation_rows: list[dict[str, Any]],
-    technique_coverage_rows: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     technique_ids = {
         technique_id
         for summary in analytic_summaries
         for technique_id in summary["rule"]["attack_technique_ids"]
-    }
-    coverage_by_technique = {
-        clean_cell(row.get("ATT&CK Technique ID")): row for row in technique_coverage_rows
     }
     matched_by_technique_implementation_and_step: dict[tuple[str, str, str], dict[str, list[str]]] = {}
     for row in matched_implementation_rows:
@@ -1509,7 +1519,6 @@ def build_implementation_catalog_rows(
         match_key = (technique_id, normalize_token(implementation_name), normalize_token(implementation_step))
         match_info = matched_by_technique_implementation_and_step.get(match_key, {"files": [], "titles": []})
         covered = "yes" if match_info["files"] or match_info["titles"] else "no"
-        coverage = coverage_by_technique.get(technique_id, {})
         output_row = {
             "ATT&CK Technique ID": technique_id,
             "ATT&CK Technique Name": clean_cell(row.get("ATT&CK Technique Name")),
@@ -1520,10 +1529,6 @@ def build_implementation_catalog_rows(
             "ATT&CK Data Component (v19)": clean_cell(row.get("ATT&CK Data Component (v19)")),
             "Detection Observables": clean_cell(row.get("Detection Observable")),
             "Covered By Analytics": covered,
-            "Matched Implementation Count": clean_cell(coverage.get("Matched Implementation Count")),
-            "Total Implementation Count": clean_cell(coverage.get("Total Implementation Count")),
-            "Implementation Coverage Ratio": clean_cell(coverage.get("Implementation Coverage Ratio")),
-            "Implementation Coverage Percent": clean_cell(coverage.get("Implementation Coverage Percent")),
             "Analytic Files": "; ".join(match_info["files"]),
             "Analytic Titles": "; ".join(match_info["titles"]),
         }
@@ -1533,6 +1538,92 @@ def build_implementation_catalog_rows(
         seen.add(row_key)
         output_rows.append(output_row)
     return output_rows
+
+
+def build_implementation_coverage_rows(implementation_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for row in implementation_rows:
+        technique_id = clean_cell(row.get("ATT&CK Technique ID"))
+        technique_name = clean_cell(row.get("ATT&CK Technique Name"))
+        implementation_name = clean_cell(row.get("Technique Implementation name"))
+        if not technique_id or not implementation_name:
+            continue
+
+        group_key = (technique_id, technique_name, implementation_name)
+        group = grouped.setdefault(
+            group_key,
+            {
+                "steps": {},
+                "step_order": [],
+                "analytic_files": [],
+                "analytic_titles": [],
+            },
+        )
+        step_key = implementation_step_key(row)
+        if step_key not in group["steps"]:
+            group["steps"][step_key] = {
+                "label": implementation_step_label(row),
+                "covered": False,
+            }
+            group["step_order"].append(step_key)
+
+        if row.get("Covered By Analytics") == "yes":
+            group["steps"][step_key]["covered"] = True
+            for analytic_file in split_multi_value(row.get("Analytic Files"), separators=(";",)):
+                append_unique(group["analytic_files"], analytic_file)
+            for analytic_title in split_multi_value(row.get("Analytic Titles"), separators=(";",)):
+                append_unique(group["analytic_titles"], analytic_title)
+
+    output_rows: list[dict[str, Any]] = []
+    for technique_id, technique_name, implementation_name in sorted(grouped):
+        group = grouped[(technique_id, technique_name, implementation_name)]
+        steps = [group["steps"][step_key] for step_key in group["step_order"]]
+        covered_steps = [step["label"] for step in steps if step["covered"]]
+        uncovered_steps = [step["label"] for step in steps if not step["covered"]]
+        covered_count = len(covered_steps)
+        total_count = len(steps)
+        output_rows.append(
+            {
+                "ATT&CK Technique ID": technique_id,
+                "ATT&CK Technique Name": technique_name,
+                "Technique Implementation name": implementation_name,
+                "Implementation Covered": "yes" if covered_count else "no",
+                "Covered Step Count": covered_count,
+                "Total Step Count": total_count,
+                "Implementation Step Coverage Ratio": f"{covered_count}/{total_count}",
+                "Implementation Step Coverage": coverage_percent(covered_count, total_count),
+                "Covered Implementation Steps": "; ".join(covered_steps),
+                "Uncovered Implementation Steps": "; ".join(uncovered_steps),
+                "Analytic Files": "; ".join(group["analytic_files"]),
+                "Analytic Titles": "; ".join(group["analytic_titles"]),
+            }
+        )
+    return output_rows
+
+
+def implementation_step_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        clean_cell(row.get("Implementation Step Number")),
+        normalize_token(row.get("Implementation Step")),
+        normalize_data_component(row.get("ATT&CK Data Component (v19)")),
+    )
+
+
+def implementation_step_label(row: dict[str, Any]) -> str:
+    step_number = clean_cell(row.get("Implementation Step Number"))
+    step_text = clean_cell(row.get("Implementation Step"))
+    data_component = clean_cell(row.get("ATT&CK Data Component (v19)"))
+
+    if step_number and step_text:
+        label = f"Step {step_number}: {step_text}"
+    elif step_number:
+        label = f"Step {step_number}"
+    else:
+        label = step_text or "(no step text)"
+
+    if data_component:
+        label = f"{label} [{data_component}]"
+    return label
 
 
 def build_technique_coverage_rows(
@@ -1601,21 +1692,6 @@ def build_technique_coverage_rows(
             }
         )
     return coverage_rows
-
-
-def add_coverage_to_implementation_rows(
-    implementation_rows: list[dict[str, Any]],
-    technique_coverage_rows: list[dict[str, Any]],
-) -> None:
-    coverage_by_technique = {
-        clean_cell(row.get("ATT&CK Technique ID")): row for row in technique_coverage_rows
-    }
-    for row in implementation_rows:
-        coverage = coverage_by_technique.get(clean_cell(row.get("ATT&CK Technique ID")), {})
-        row["Matched Implementation Count"] = clean_cell(coverage.get("Matched Implementation Count"))
-        row["Total Implementation Count"] = clean_cell(coverage.get("Total Implementation Count"))
-        row["Implementation Coverage Ratio"] = clean_cell(coverage.get("Implementation Coverage Ratio"))
-        row["Implementation Coverage Percent"] = clean_cell(coverage.get("Implementation Coverage Percent"))
 
 
 def coverage_percent(matched_count: int, total_count: int) -> str:
@@ -1787,6 +1863,7 @@ def build_summary_rows(
     event_context_rows: list[dict[str, Any]],
     field_rows: list[dict[str, Any]],
     implementation_rows: list[dict[str, Any]],
+    implementation_coverage_rows: list[dict[str, Any]],
     technique_coverage_rows: list[dict[str, Any]],
     analytic_score_rows: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
@@ -1807,6 +1884,7 @@ def build_summary_rows(
         {"Metric": "Event Context Match Count", "Value": len(event_context_rows)},
         {"Metric": "Implementation Catalog Row Count", "Value": len(implementation_rows)},
         {"Metric": "Covered Implementation Row Count", "Value": sum(1 for row in implementation_rows if row.get("Covered By Analytics") == "yes")},
+        {"Metric": "Implementation Coverage Row Count", "Value": len(implementation_coverage_rows)},
         {"Metric": "Technique Coverage Row Count", "Value": len(technique_coverage_rows)},
         {"Metric": "Analytic Score Row Count", "Value": len(analytic_score_rows)},
         {"Metric": "Field Score Row Count", "Value": len(field_rows)},
@@ -1864,6 +1942,7 @@ def write_csv(path: Path, headers: list[str], rows: list[dict[str, Any]]) -> Non
 def write_workbook(
     path: Path,
     implementation_rows: list[dict[str, Any]],
+    implementation_coverage_rows: list[dict[str, Any]],
     field_score_rows: list[dict[str, Any]],
     event_context_rows: list[dict[str, Any]],
     technique_coverage_rows: list[dict[str, Any]],
@@ -1875,6 +1954,7 @@ def write_workbook(
     summary_sheet.title = "Summary"
     write_sheet(summary_sheet, ["Metric", "Value"], summary_rows)
     write_sheet(workbook.create_sheet("Implementations"), IMPLEMENTATION_HEADERS, implementation_rows)
+    write_sheet(workbook.create_sheet("Implementation Coverage"), IMPLEMENTATION_COVERAGE_HEADERS, implementation_coverage_rows)
     write_sheet(workbook.create_sheet("Technique Coverage"), TECHNIQUE_COVERAGE_HEADERS, technique_coverage_rows)
     write_sheet(workbook.create_sheet("Analytic Scores"), ANALYTIC_SCORE_HEADERS, analytic_score_rows)
     write_sheet(workbook.create_sheet("Field Scores"), FIELD_SCORE_HEADERS, field_score_rows)
