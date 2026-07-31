@@ -162,11 +162,21 @@ TECHNIQUE_COVERAGE_HEADERS = [
     "All Technique Implementations",
     "Analytic Files",
     "Analytic Titles",
+    "Tagged Analytic Files",
+    "Tagged Analytic Titles",
 ]
 
 ANALYTIC_SCORE_HEADERS = [
     "Analytic File",
     "Analytic Title",
+    "ATT&CK Technique ID",
+    "ATT&CK Technique Name",
+    "Matched Implementation Count",
+    "Total Implementation Count",
+    "Implementation Coverage Ratio",
+    "Implementation Coverage Percent",
+    "Matched Technique Implementations",
+    "All Technique Implementations",
     "Detection Condition",
     "Robustness Score",
     "Precision Score",
@@ -302,11 +312,12 @@ def main() -> None:
         analytic_score_row = build_analytic_score_row(rule, field_score_rows)
         data_component_candidates = build_data_component_candidates(rule, field_score_rows, event_context_rows)
         implementation_rows = build_implementation_rows(rule, attack_rows, data_component_candidates)
+        analytic_score_rows = build_analytic_score_rows(rule, analytic_score_row, attack_rows, implementation_rows)
 
         all_event_context_rows.extend(event_context_rows)
         all_field_score_rows.extend(field_score_rows)
         all_implementation_rows.extend(implementation_rows)
-        all_analytic_score_rows.append(analytic_score_row)
+        all_analytic_score_rows.extend(analytic_score_rows)
         analytic_summaries.append(
             {
                 "rule": rule,
@@ -1015,9 +1026,14 @@ def build_analytic_score_row(rule: dict[str, Any], field_score_rows: list[dict[s
     notes.extend(field_score_notes)
 
     try:
+        scoreable_detection_blocks = {
+            block_name: block
+            for block_name, block in rule["detection_blocks"].items()
+            if not expression_is_empty(block.get("expression", {"type": "empty"}))
+        }
         block_scores = {
             block_name: evaluate_score_expression(block["expression"], field_scores)
-            for block_name, block in rule["detection_blocks"].items()
+            for block_name, block in scoreable_detection_blocks.items()
         }
         condition_expression = parse_detection_condition(rule)
         result = evaluate_score_expression(condition_expression, field_scores, block_scores)
@@ -1043,6 +1059,75 @@ def build_analytic_score_row(rule: dict[str, Any], field_score_rows: list[dict[s
         "Missing Scores": "; ".join(missing_scores),
         "Notes": "; ".join(dedupe_preserve_order(notes)),
     }
+
+
+def build_analytic_score_rows(
+    rule: dict[str, Any],
+    analytic_score_row: dict[str, Any],
+    attack_rows: list[dict[str, Any]],
+    implementation_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    technique_ids = rule["attack_technique_ids"]
+    if not technique_ids:
+        return [analytic_score_coverage_row(analytic_score_row, "", "", [], [])]
+
+    output_rows: list[dict[str, Any]] = []
+    for technique_id in technique_ids:
+        technique_name, all_implementations = technique_catalog_details(technique_id, attack_rows)
+        matched_implementations: list[str] = []
+        for row in implementation_rows:
+            if clean_cell(row.get("ATT&CK Technique ID")) != technique_id:
+                continue
+            if not technique_name and clean_cell(row.get("ATT&CK Technique Name")):
+                technique_name = clean_cell(row.get("ATT&CK Technique Name"))
+            append_unique(matched_implementations, clean_cell(row.get("Technique Implementation name")))
+        output_rows.append(
+            analytic_score_coverage_row(
+                analytic_score_row,
+                technique_id,
+                technique_name,
+                matched_implementations,
+                all_implementations,
+            )
+        )
+    return output_rows
+
+
+def technique_catalog_details(technique_id: str, attack_rows: list[dict[str, Any]]) -> tuple[str, list[str]]:
+    technique_name = ""
+    implementations: list[str] = []
+    for row in attack_rows:
+        if clean_cell(row.get("ATT&CK Technique ID")) != technique_id:
+            continue
+        if not technique_name and clean_cell(row.get("ATT&CK Technique Name")):
+            technique_name = clean_cell(row.get("ATT&CK Technique Name"))
+        append_unique(implementations, clean_cell(row.get("Technique Implementation")))
+    return technique_name, implementations
+
+
+def analytic_score_coverage_row(
+    analytic_score_row: dict[str, Any],
+    technique_id: str,
+    technique_name: str,
+    matched_implementations: list[str],
+    all_implementations: list[str],
+) -> dict[str, Any]:
+    matched_count = len(matched_implementations)
+    total_count = len(all_implementations)
+    row = dict(analytic_score_row)
+    row.update(
+        {
+            "ATT&CK Technique ID": technique_id,
+            "ATT&CK Technique Name": technique_name,
+            "Matched Implementation Count": clean_cell(matched_count) if technique_id else "",
+            "Total Implementation Count": clean_cell(total_count) if technique_id else "",
+            "Implementation Coverage Ratio": f"{matched_count}/{total_count}" if technique_id else "",
+            "Implementation Coverage Percent": coverage_percent(matched_count, total_count) if technique_id else "",
+            "Matched Technique Implementations": "; ".join(matched_implementations),
+            "All Technique Implementations": "; ".join(all_implementations),
+        }
+    )
+    return row
 
 
 def build_field_score_lookup(field_score_rows: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], list[str]]:
@@ -1082,24 +1167,32 @@ def parse_score_value(value: Any) -> int | None:
 
 def parse_detection_condition(rule: dict[str, Any]) -> dict[str, Any]:
     condition = clean_cell(rule.get("detection_condition"))
-    block_order = rule.get("detection_block_order") or []
+    all_block_order = rule.get("detection_block_order") or []
+    detection_blocks = rule.get("detection_blocks") or {}
+    block_order = [
+        block_name
+        for block_name in all_block_order
+        if not expression_is_empty(detection_blocks.get(block_name, {}).get("expression", {"type": "empty"}))
+    ]
+    ignored_block_names = {block_name for block_name in all_block_order if block_name not in set(block_order)}
     if not condition:
         if len(block_order) == 1:
             return {"type": "ref", "name": block_order[0]}
         if block_order:
             return combine_expression_nodes("and", [{"type": "ref", "name": name} for name in block_order])
         raise ValueError("Detection condition is empty and no detection blocks were found.")
-    parser = ConditionParser(condition, block_order)
+    parser = ConditionParser(condition, block_order, ignored_block_names)
     return parser.parse()
 
 
 class ConditionParser:
     TOKEN_PATTERN = re.compile(r"\b(?:all|any|1|of|them|and|or|not)\b|[()]|[A-Za-z0-9_*?.-]+", re.I)
 
-    def __init__(self, condition: str, block_names: list[str]):
+    def __init__(self, condition: str, block_names: list[str], ignored_block_names: set[str] | None = None):
         self.condition = condition
         self.tokens = self.TOKEN_PATTERN.findall(condition)
         self.block_names = block_names
+        self.ignored_block_names = ignored_block_names or set()
         self.index = 0
 
     def parse(self) -> dict[str, Any]:
@@ -1152,17 +1245,25 @@ class ConditionParser:
         self.index += 1
         if lower_token == "them" or has_glob_chars(token):
             return self.expand_selector(token, "or")
+        if token in self.ignored_block_names:
+            return {"type": "empty"}
         return {"type": "ref", "name": token}
 
     def expand_selector(self, pattern: str, operator: str) -> dict[str, Any]:
         lower_pattern = pattern.lower()
+        ignored_matches: list[str] = []
         if lower_pattern == "them":
             matches = self.block_names
+            ignored_matches = list(self.ignored_block_names)
         elif has_glob_chars(pattern):
             matches = [name for name in self.block_names if fnmatch.fnmatchcase(name, pattern)]
+            ignored_matches = [name for name in self.ignored_block_names if fnmatch.fnmatchcase(name, pattern)]
         else:
             matches = [pattern] if pattern in self.block_names else []
+            ignored_matches = [pattern] if pattern in self.ignored_block_names else []
         if not matches:
+            if ignored_matches:
+                return {"type": "empty"}
             return {"type": "missing_ref", "name": pattern}
         return combine_expression_nodes(operator, [{"type": "ref", "name": name} for name in matches])
 
@@ -1446,13 +1547,13 @@ def build_technique_coverage_rows(
             for technique_id in summary["rule"]["attack_technique_ids"]
         }
     )
-    analytic_files_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
-    analytic_titles_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
+    tagged_analytic_files_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
+    tagged_analytic_titles_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
     for summary in analytic_summaries:
         rule = summary["rule"]
         for technique_id in rule["attack_technique_ids"]:
-            append_unique(analytic_files_by_technique.setdefault(technique_id, []), rule["analytic_file"])
-            append_unique(analytic_titles_by_technique.setdefault(technique_id, []), rule["rule_title"])
+            append_unique(tagged_analytic_files_by_technique.setdefault(technique_id, []), rule["analytic_file"])
+            append_unique(tagged_analytic_titles_by_technique.setdefault(technique_id, []), rule["rule_title"])
 
     all_implementations_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
     technique_names: dict[str, str] = {}
@@ -1465,11 +1566,17 @@ def build_technique_coverage_rows(
         append_unique(all_implementations_by_technique[technique_id], clean_cell(row.get("Technique Implementation")))
 
     matched_implementations_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
+    matched_analytic_files_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
+    matched_analytic_titles_by_technique: dict[str, list[str]] = {technique_id: [] for technique_id in technique_ids}
     for row in implementation_rows:
         technique_id = clean_cell(row.get("ATT&CK Technique ID"))
         if technique_id not in matched_implementations_by_technique:
             continue
         append_unique(matched_implementations_by_technique[technique_id], clean_cell(row.get("Technique Implementation name")))
+        for analytic_file in split_multi_value(row.get("Analytic Files"), separators=(";",)):
+            append_unique(matched_analytic_files_by_technique[technique_id], analytic_file)
+        for analytic_title in split_multi_value(row.get("Analytic Titles"), separators=(";",)):
+            append_unique(matched_analytic_titles_by_technique[technique_id], analytic_title)
         if technique_id not in technique_names and clean_cell(row.get("ATT&CK Technique Name")):
             technique_names[technique_id] = clean_cell(row.get("ATT&CK Technique Name"))
 
@@ -1487,8 +1594,10 @@ def build_technique_coverage_rows(
                 "Implementation Coverage Percent": coverage_percent(matched_count, total_count),
                 "Matched Technique Implementations": "; ".join(matched_implementations_by_technique.get(technique_id, [])),
                 "All Technique Implementations": "; ".join(all_implementations_by_technique.get(technique_id, [])),
-                "Analytic Files": "; ".join(analytic_files_by_technique.get(technique_id, [])),
-                "Analytic Titles": "; ".join(analytic_titles_by_technique.get(technique_id, [])),
+                "Analytic Files": "; ".join(matched_analytic_files_by_technique.get(technique_id, [])),
+                "Analytic Titles": "; ".join(matched_analytic_titles_by_technique.get(technique_id, [])),
+                "Tagged Analytic Files": "; ".join(tagged_analytic_files_by_technique.get(technique_id, [])),
+                "Tagged Analytic Titles": "; ".join(tagged_analytic_titles_by_technique.get(technique_id, [])),
             }
         )
     return coverage_rows
