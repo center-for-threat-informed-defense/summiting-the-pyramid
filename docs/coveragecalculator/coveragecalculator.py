@@ -124,6 +124,7 @@ IMPLEMENTATION_COVERAGE_HEADERS = [
     "Implementation Step Coverage",
     "Covered Implementation Steps",
     "Uncovered Implementation Steps",
+    "Analytic File Count",
     "Analytic Files",
     "Analytic Titles",
 ]
@@ -1594,6 +1595,7 @@ def build_implementation_coverage_rows(implementation_rows: list[dict[str, Any]]
                 "Implementation Step Coverage": coverage_percent(covered_count, total_count),
                 "Covered Implementation Steps": "; ".join(covered_steps),
                 "Uncovered Implementation Steps": "; ".join(uncovered_steps),
+                "Analytic File Count": len(group["analytic_files"]),
                 "Analytic Files": "; ".join(group["analytic_files"]),
                 "Analytic Titles": "; ".join(group["analytic_titles"]),
             }
