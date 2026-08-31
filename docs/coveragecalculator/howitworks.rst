@@ -17,19 +17,20 @@ The Ingestion step in the pipeline automates rule processing for all of your det
 
 There is no need to clean up the directory. It steps through level by level and only loads in YAML files. The process then uses a combination of regular expressions and context clues to extract the information. 
 
-Extracted Fields: 
+*Extracted Fields:*
 
-+---------------------------+-----------------------------------------------------------------------+
-| Field Extracted           | Description                                                           |
-+---------------------------+-----------------------------------------------------------------------+
-| rule_title                | The title of the SIGMA rule                                           |
-| rule_logsource_product    | The product that the rule was created to defend                       |
-| rule_logsource_category   | The type of log that the rule is from                                 |
-| rule_tags                 | Any tags that the rule is with. Mainly ATT&CK Techniques and Tactics  |
-| detection_fields          | The fields the rule uses to detect the activity                       |
-| detection_filters         | Any filters the rule may use                                          |
-| detection_condition       | What causes the rule to trigger a positive detection                  |
-+---------------------------+-----------------------------------------------------------------------+
+=========================  ======================================================================
+Field Extracted            Description
+=========================  ======================================================================
+rule_title                 The title of the SIGMA rule
+rule_logsource_product     The product that the rule was created to defend
+rule_logsource_category    | The type of log that the rule is from
+rule_tags                  Any tags that the rule is with. Mainly ATT&CK Techniques and Tactics
+detection_fields           The fields the rule uses to detect the activity
+detection_filters          Any filters the rule may use
+detection_condition        What causes the rule to trigger a positive detection
+=========================  ======================================================================
+
 
 Example
 *********
