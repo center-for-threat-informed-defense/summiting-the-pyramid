@@ -15,25 +15,24 @@ The work was limited to documenting the published XML structure and normalizing 
 The example below demonstrates how a Windows Event Log entry is mapped.
 
 *Example Usage:*
-.. code-block:: xml
-
+::
    <System>
-       <Provider Name="Microsoft-Windows-Security-Auditing" />
-       <EventID>4624</EventID>
-       <Version>2</Version>
-       ...
+      <Provider Name="Microsoft-Windows-Security-Auditing"/>
+      <EventID>4624</EventID>
+      <Version>2</Version>
+      ...
    </System>
 
    <EventData>
-       <Data Name="SubjectUserSid"/>
-       <Data Name="SubjectUserName"/>
-       <Data Name="SubjectDomainName"/>
-       <Data Name="TargetUserSid"/>
-       <Data Name="TargetUserName"/>
-       <Data Name="TargetDomainName"/>
-       <Data Name="LogonType"/>
-       <Data Name="IpAddress"/>
-       <Data Name="IpPort"/>
+      <Data Name="SubjectUserSid"/>
+      <Data Name="SubjectUserName"/>
+      <Data Name="SubjectDomainName"/>
+      <Data Name="TargetUserSid"/>
+      <Data Name="TargetUserName"/>
+      <Data Name="TargetDomainName"/>
+      <Data Name="LogonType"/>
+      <Data Name="IpAddress"/>
+      <Data Name="IpPort"/>
    </EventData>
 
 *System Fields*
