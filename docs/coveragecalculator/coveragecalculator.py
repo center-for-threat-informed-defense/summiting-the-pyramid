@@ -768,6 +768,10 @@ def classify_detection_key(key: str) -> str:
     return "filter" if normalized == "filter" or normalized.startswith("filter_") else "field"
 
 
+def inferred_detection_field_name(key: str) -> str:
+    return re.sub(r"^(selection_|filter_)", "", clean_cell(key))
+
+
 def build_detection_block_expression(key: str, value: Any) -> dict[str, Any]:
     if isinstance(value, dict):
         return combine_expression_nodes(
@@ -776,6 +780,7 @@ def build_detection_block_expression(key: str, value: Any) -> dict[str, Any]:
         )
     if isinstance(value, list):
         children: list[dict[str, Any]] = []
+        scalar_values_found = False
         for item in value:
             if isinstance(item, dict):
                 children.append(
@@ -785,11 +790,12 @@ def build_detection_block_expression(key: str, value: Any) -> dict[str, Any]:
                     )
                 )
             else:
-                children.append(field_expression(item))
+                scalar_values_found = True
+        if scalar_values_found:
+            children.append(field_expression(inferred_detection_field_name(key)))
         return combine_expression_nodes("or", children)
 
-    inferred_name = re.sub(r"^(selection_|filter_)", "", key)
-    return field_expression(inferred_name)
+    return field_expression(inferred_detection_field_name(key))
 
 
 def field_expression(raw_name: Any) -> dict[str, Any]:
@@ -816,6 +822,8 @@ def expression_is_empty(expression: dict[str, Any]) -> bool:
         return not clean_cell(expression.get("field"))
     if expression_type in {"ref", "missing_ref"}:
         return not clean_cell(expression.get("name"))
+    if expression_type == "not":
+        return expression_is_empty(expression.get("child", {"type": "empty"}))
     if expression_type in {"and", "or"}:
         return not expression.get("children")
     return False
@@ -827,15 +835,17 @@ def extract_detection_entries(key: str, value: Any) -> list[tuple[str, str]]:
         for field_name, field_value in value.items():
             append_detection_entry(entries, field_name, field_value)
     elif isinstance(value, list):
+        scalar_values: list[Any] = []
         for item in value:
             if isinstance(item, dict):
                 for field_name, field_value in item.items():
                     append_detection_entry(entries, field_name, field_value)
             else:
-                append_detection_entry(entries, item, "")
+                scalar_values.append(item)
+        for item in scalar_values:
+            append_detection_entry(entries, inferred_detection_field_name(key), item)
     else:
-        inferred_name = re.sub(r"^(selection_|filter_)", "", key)
-        append_detection_entry(entries, inferred_name, value)
+        append_detection_entry(entries, inferred_detection_field_name(key), value)
     return entries
 
 
