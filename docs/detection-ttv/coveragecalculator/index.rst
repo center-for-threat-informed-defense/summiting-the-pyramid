@@ -1,3 +1,5 @@
+.. _detection-coverage-calculator:
+
 Detection Coverage Calculator
 =============================
 
