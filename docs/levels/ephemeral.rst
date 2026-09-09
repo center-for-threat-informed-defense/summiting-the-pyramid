@@ -1,73 +1,118 @@
 .. _Ephemeral Values:
 
--------------------------
-Level 1: Ephemeral Values
--------------------------
+Level 1: Ephemeral
+==================
 
-**Description**: Observables that are trivial for an adversary to change, or
-that change even without adversary intervention.
+**Description:** Observables that describe a specific instance of activity but
+not durable behavior. These values are easy for an adversary to change without
+materially affecting the attack.
 
-Ephemeral values capture the context of what is currently happening to a user,
-process, or system. These observables include process IDs, hash values, domain
-names, filenames, and others. While these observables offer high :ref:`accuracy
-<Accuracy>`, they are often easy to evade.
+Ephemeral observables capture characteristics of what is happening at a
+particular point in time, such as a filename, hash, process ID, domain name, or
+other value associated with a specific execution. These observables can be highly useful for identifying known malicious
+activity. However, they generally provide limited resistance to adversary
+evasion because changing the observable does not require the adversary to
+meaningfully change the underlying behavior.
 
-**Why are these observables the lowest level?**
 
-These observables cannot be relied on to identify adversary behavior. These
-indicators take minimal effort for an adversary to change [#f1]_. A new hash
-value can be created if one bit is changed in a file. A filename can be
-obfuscated within an image. When building out analytics, these observables will
-mostly capture values that point to the context of a certain application, user,
-or process. While these observables can detect known malicious applications or
-processes, they will not detect anything new, nor will they detect if the
-adversary decides to change an operational or environmental variable to evade
-detection. To ensure detection in-depth, these observables should be combined
-with observables from other levels.
+Why are these observables placed at Level 1?
+--------------------------------------------
 
-**Examples**: Hash values, IP addresses, protocol-specific ports, file names,
-domain names, processes, user oriented observables, others
+Level 1 observables are either directly controlled by the adversary or can
+change between executions without changing the underlying attack. For example, changing a single bit in a file produces a different hash, a file
+can be renamed without changing its functionality, and a process receives a
+different process ID each time it executes. To evade a detection based on a Level 1 observable, an adversary generally
+needs only to **change a simple value or rerun the attack differently**. Because these observables describe a particular instance of activity rather
+than durable behavior, detections that rely exclusively on them may not detect
+the same behavior when the adversary changes incidental details.
+
+
+Examples
+--------
+
+Examples of Level 1 observables include:
+
+* Hash values
+* Attacker-controlled filenames
+* Attacker-controlled domain names and IP addresses
+* Process IDs and process-instance identifiers
+* Attacker-selected pipe names
+* Configurable ports
+* Other transient or attacker-selected values
+
 
 Observables
-^^^^^^^^^^^
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Category                      | Observables                       |   Generating Activity          | Evade Behavior                 |
-+===============================+===================================+================================+================================+
-| Hash Values                   |  | Hashes (Sysmon)                | Passing a file or object       | Change one bit in a file and   |
-|                               |                                   | through a mathmatical formula  | regenerate the hash.           |
-|                               |                                   | to create a unique identifying |                                |
-|                               |                                   | number.                        |                                |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| IP Address                    |  | SourceIp (Sysmon)              | Assigned by ISP. [#f2]_        | Connect to a different ISP,    |
-|                               |  | DestinationIp (Sysmon)         |                                | restart the router or modem, or|
-|                               |                                   |                                | utilize a VPN.                 |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Protocol-Specific Ports       |  | DestinationPort (Sysmon)       | Ports are standardized across  | Change port configuration      |
-|                               |  | SourcePort (Sysmon)            | network devices, [#f3]_ while  | settings in the code or        |
-|                               |                                   | others aren't associated       | computer.                      |
-|                               |                                   | with a protocol standard.      |                                |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Filenames                     |  | Image (Sysmon)                 | Created by the user to identify| Filename can be changed by the |
-|                               |  | Parent image (Sysmon)          | a file.                        | user or can be obfuscated in   |
-|                               |  | CurrentDirectory (Sysmon)      |                                | code deployment.               |
-|                               |  | Extension (Sysmon)             |                                |                                |
-|                               |  | TargetFilename (Sysmon)        |                                |                                |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Domain Names                  |  | SourceHostname (Sysmon)        | Reigster the domain name with  | Map tools or website           |
-|                               |  | DestinationHostname (Sysmon)   | the registrar. [#f4]_          | to a different domain name.    |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Processes                     |  | ProcessGuid (Sysmon)           | New processes create a child   | Operating System Kernel creates|
-|                               |  | ProcessId (Sysmon)             | process. The parent and child  | a new process and associated   |
-|                               |  | Parent process GUID (Sysmon)   | processes are each assigned a  | metadata.                      |
-|                               |  | Subject SID (EID)              | PID. [#f5]_                    |                                |
-|                               |  | Target SID (EID)               |                                |                                |
-|                               |  | New Process ID (EID)           |                                |                                |
-|                               |  | Creator Process ID (WEID)      |                                |                                |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
-| Pipes                         |  | Pipe Names (Sysmon)            | A pipe server or user specifies| Change the name of the pipe.   |
-|                               |                                   | a name for a pipe when it calls|                                |
-|                               |                                   | CreateNamedPipe functon. [#f6]_|                                |
-+-------------------------------+-----------------------------------+--------------------------------+--------------------------------+
+-----------
+
+The examples below illustrate common Level 1 observables and how they may
+change or be modified to evade detection.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 25 33 20
+
+   * - Category
+     - Observable
+     - Generating Activity
+     - Evade Behavior
+
+   * - Hash Values
+     - ``Hashes`` (Sysmon)
+     - A hash identifies the contents of a particular file or object.
+     - Modify the file and generate a new hash.
+
+   * - IP Addresses
+     - ``SourceIp`` (Sysmon), ``DestinationIp`` (Sysmon)
+     - An address identifies a network endpoint used during a particular
+       instance of activity.
+     - Use a different address, host, proxy, VPN, or infrastructure.
+
+   * - Protocol-Specific or Configurable Ports
+     - ``SourcePort`` (Sysmon), ``DestinationPort`` (Sysmon)
+     - A port identifies the network endpoint used for a connection.
+     - Change the port when the implementation or protocol permits it.
+
+   * - Filenames
+     - ``Image`` (Sysmon), ``ParentImage`` (Sysmon),
+       ``TargetFilename`` (Sysmon)
+     - A filename identifies a particular file, image, or executable involved
+       in the activity.
+     - Rename the file or deploy it under another name.
+
+   * - Domain Names
+     - ``SourceHostname`` (Sysmon), ``DestinationHostname`` (Sysmon)
+     - A domain or hostname identifies infrastructure used during the activity.
+     - Use different infrastructure or change the associated domain name.
+
+   * - Process-Instance Metadata
+     - ``ProcessGuid`` (Sysmon), ``ProcessId`` (Sysmon),
+       ``ParentProcessGuid`` (Sysmon)
+     - The operating system assigns identifiers to individual process
+       instances.
+     - Rerun the activity, causing new process-instance values to be generated.
+
+   * - Pipe Names
+     - ``PipeName`` (Sysmon)
+     - A pipe creator may select a name when creating a named pipe.
+     - Use a different pipe name when the name is controlled by the
+       implementation.
+
+
+Classification Depends on Context
+---------------------------------
+
+An observable type is not inherently assigned to a single Summiting level.
+Its classification depends on why the observable exists and what the
+adversary must change to avoid it. For example, an attacker-selected filename or pipe name may be ephemeral.
+However, a filename, pipe name, or other value that is imposed by a required
+system interaction may be system-constrained or even shared across multiple
+implementations. Similarly, a port is Level 1 only when the adversary can freely change it
+without materially changing the behavior. A port required by a protocol or
+system interaction should be evaluated according to that constraint rather
+than automatically classified as ephemeral. When scoring an observable, consider the relationship between the observable
+and the behavior being detected—not simply the field or data type in which it
+appears.
+
 
 .. rubric:: References
 
