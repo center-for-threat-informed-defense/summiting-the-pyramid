@@ -14,7 +14,7 @@ Detection Evaluation & Coverage
      <div class="btn-group-vertical btn-block">
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#one">Analytic Validation</button>
          <div id="one" class="collapse">
-       	   <br>Varifying the analytic fires when expected<br>
+       	   <br>Verifying the analytic fires when expected<br>
            <ul>
               <li><a href="https://attack.mitre.org/resources/learn-more-about-attack/training/threat-hunting/#mod5">ATT&CK Training: Threat Hunting & Detection Engineering</a></li>
            </ul>
@@ -23,15 +23,17 @@ Detection Evaluation & Coverage
          <div id="two" class="collapse">
        	   <br>Assessing how high on the behavioral pyramid a detection operates<br>
            <ul>
+              <li><a href="../detection-ttv/detectioncoverage/index">Detection Coverage</a></li>
+              <li><a href="../levels/index">Summiting Level Definitions</a></li>
               <li><a href="../detection-ttv/combiningobservables">Combining Observables</a></li>
-              <li><a href="../examples/examplemappings">Example Mappings</a></li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#three">Detection Strength Scoring</button>
          <div id="three" class="collapse">
        	   <br>Scoring detections based on behavioral depth and robustness<br>
            <ul>
-              <li><a href="../levels/index">Summiting Level Definitions</a></li>
+              <li><a href="../detection-ttv/detectioncoverage/dcc">Detection Coverage Calculator</a></li>
+              
               <li><a href="../analytics/index">Scored Analytics</a></li>
            </ul>
          </div>
