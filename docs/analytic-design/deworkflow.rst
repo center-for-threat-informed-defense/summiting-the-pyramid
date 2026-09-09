@@ -1,3 +1,5 @@
+.. _detection-engineering-workflow:
+
 Detection Engineering Workflow
 ==============================
 
