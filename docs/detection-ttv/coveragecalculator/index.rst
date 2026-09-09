@@ -36,9 +36,7 @@ The :download:`Implementation Catalog <../DCC/implementation_catalog_with_attack
 executing ATT&CK techniques. Built from ATT&CK procedure examples and Atomic
 Red Team tests, the catalog normalizes specific examples into reusable
 implementation paths and identifies the system interactions required to
-perform them.
-
-The DCC uses the catalog as the behavioral baseline against which
+perform them. The DCC uses the catalog as the behavioral baseline against which
 Implementation Coverage is measured.
 
 
