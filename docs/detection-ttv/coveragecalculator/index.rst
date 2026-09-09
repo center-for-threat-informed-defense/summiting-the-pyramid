@@ -17,9 +17,7 @@ detection coverage by analyzing what detection logic actually observes, looking 
 The DCC evaluates detection content across two complementary dimensions:
 **Detection Quality**, measured through robustness and precision, and
 **Implementation Coverage**, which measures how much of the known behavioral
-implementation space for a mapped ATT&CK technique is detected.
-
-The result provides a more evidence-based view of coverage: what behavior is
+implementation space for a mapped ATT&CK technique is detected. The result provides a more evidence-based view of coverage: what behavior is
 detected, how durable and precise the underlying detection signals are, and
 where meaningful gaps remain.
 
