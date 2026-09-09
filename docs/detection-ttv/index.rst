@@ -23,7 +23,6 @@ Detection Evaluation & Coverage
          <div id="two" class="collapse">
        	   <br>Assessing how high on the behavioral pyramid a detection operates<br>
            <ul>
-              <li><a href="../detection-ttv/scoringanalytic">How to Score Resistance to Adversary Evasion</a></li>
               <li><a href="../detection-ttv/combiningobservables">Combining Observables</a></li>
               <li><a href="../examples/examplemappings">Example Mappings</a></li>
            </ul>
