@@ -54,7 +54,7 @@ others provide relatively little information on their own.
 Field-level scoring characterizes these differences so defenders can reason
 about the relative value of the specific observables available within their
 telemetry. These characteristics can then inform assessments of
-:doc:`Detection Quality <detection-quality>`, including robustness and
+:ref:`Detection Quality <detection-quality>`, including robustness and
 precision. This approach also provides a more meaningful basis for comparing detections
 that use the same telemetry source but rely on different fields or
 combinations of evidence.
@@ -90,8 +90,8 @@ Field-level telemetry mappings and scoring can help defenders:
 Field-level telemetry also provides an important foundation for other parts of
 the Summiting the Pyramid methodology. It connects the behaviors and system
 interactions represented through
-:doc:`Implementation Coverage <implementation-coverage>` to observable
-evidence, informs :doc:`Detection Quality <detection-quality>` assessment,
+:ref:`Implementation Coverage <implementation-coverage>` to observable
+evidence, informs :ref:`Detection Quality <detection-quality>` assessment,
 and can be used by tools such as the
-:doc:`Detection Coverage Calculator <detection-coverage-calculator>` to
+:ref:`Detection Coverage Calculator <detection-coverage-calculator>` to
 automate portions of that analysis.
