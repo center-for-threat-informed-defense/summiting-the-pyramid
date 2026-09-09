@@ -24,8 +24,7 @@ Analytic Design & Engineering
          <div id="two" class="collapse">
        	   <br>Reusable detection design approaches that survive small changes<br>
            <ul>
-              <li><a href="../analytic-design/detection-components">Components of a Robust Detection</a></li>
-              <li><a href="../analytic-design/robustdetection">How to Build a Robust Detection</a></li>
+
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#three">Contextual Intent Inference</button>
