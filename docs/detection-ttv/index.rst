@@ -50,4 +50,5 @@ Detection Evaluation & Coverage
 
     ../levels/index
     combiningobservables
-    scoringanalytic
+    detectioncoverage/index
+    coveragecalculator/index
