@@ -89,7 +89,7 @@ Connecting implementation requirements to field-level telemetry mappings helps
 identify where evidence of an implementation should appear and whether the
 available telemetry contains enough information to support detection.
 
-See :doc:`Field-Level Telemetry Mappings & Scoring
+See :ref:`Field-Level Telemetry Mappings & Scoring
 <field-level-telemetry-mappings>` for more information.
 
 
@@ -97,7 +97,7 @@ Using the Catalog for Coverage Analysis
 ---------------------------------------
 
 The Implementation Catalog provides the behavioral baseline used to measure
-:doc:`Implementation Coverage <implementation-coverage>`.
+:ref:`Implementation Coverage <implementation-coverage>`.
 
 For a mapped ATT&CK technique, detection logic can be evaluated against the
 implementations represented in the catalog to determine which execution paths
