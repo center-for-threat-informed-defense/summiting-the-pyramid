@@ -64,7 +64,7 @@ opportunities that are more durable than indicators associated with a single
 tool or execution path.
 
 The :ref:`Detection Decomposition Diagram (D3)
-<detection-decomposition-diagram>` can be used to visualize significant
+<d3>` can be used to visualize significant
 observables across implementations and identify common detection
 opportunities.
 
@@ -116,7 +116,7 @@ without unnecessarily narrowing the analytic and creating avoidable blind
 spots.
 
 See :ref:`Using Context to Determine Intent
-<using-context-to-determine-intent>` for guidance on technique-level,
+<Context>` for guidance on technique-level,
 chain-level, and peripheral-level context.
 
 
@@ -167,7 +167,7 @@ combining behaviors that collectively increase confidence.
 Correlation should be used when the relationship between observations adds
 meaningful information, rather than simply to increase analytic complexity.
 
-See :ref:`Chaining Analytics <chaining-analytics>` for guidance on direct and
+See :ref:`Chaining Analytics <Chaining Analytics>` for guidance on direct and
 loose correlation approaches.
 
 
