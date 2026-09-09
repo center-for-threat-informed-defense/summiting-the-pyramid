@@ -69,15 +69,7 @@ may modify them to evade detection.
      - Configuration settings that determine how a tool operates.
      - Reconfigure the tool or use a different configuration.
 
-   * - Metadata
-     - Implementation-specific metadata
-     - Metadata associated with the implementation or its deployment.
-     - Modify or regenerate the implementation with different metadata.
 
-   * - Binaries
-     - Binary characteristics associated with an implementation
-     - Artifacts associated with a particular binary implementation.
-     - Modify, replace, or recompile the binary.
 
 .. rubric:: References
 
