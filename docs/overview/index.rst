@@ -9,6 +9,7 @@ Detection Engineering Work Overview
 
     stp-overview
     at-overview
+    detectioncoverage
     definitions
     pubs
 
