@@ -1,3 +1,5 @@
+.. _field-level-telemetry-mappings:
+
 Field-Level Telemetry Mappings & Scoring
 ========================================
 
