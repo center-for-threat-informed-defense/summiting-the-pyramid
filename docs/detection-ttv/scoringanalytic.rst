@@ -1,6 +1,6 @@
 .. _scoring analytic:
 
-How to Score Resistance to Adversary Evasion Over Time
+Scoring Detection Robustness
 ======================================================
 These are the steps that should be taken to score an analytic with the Summiting the
 Pyramid methodology. This walkthrough is based on the analytic for `suspicious pipe
