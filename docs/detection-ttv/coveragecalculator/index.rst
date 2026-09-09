@@ -3,6 +3,11 @@
 Detection Coverage Calculator
 =============================
 
+.. figure:: ../../_static/dcc.png
+   :alt: Detection Coverage Calculator
+   :align: center
+   :scale: 100%
+
 Calculator Overview
 -------------------
 
@@ -218,10 +223,16 @@ identified gaps.
 We have also developed a ChatGPT skill that takes the spreadsheet as an input to generate an executive-level report highlighting major findings and giving more of an overview of the results to assist in decision-making. Both are available in our STP Github repository!
 
 
+.. figure:: ../../_static/coveragereport.png
+   :alt: Executive Coverage Report Snippet
+   :align: center
+   :scale: 100%
+
+
 GitHub / Download
 -----------------
 
-**Download the Detection Coverage Calculator / View on GitHub**
+`View the Detection Coverage Calculator on GitHub <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/tree/stp3/docs/detection-ttv/coveragecalculator/DCC>`_
 
 The project repository contains the DCC, supporting data, and documentation
 needed to run coverage assessments.
