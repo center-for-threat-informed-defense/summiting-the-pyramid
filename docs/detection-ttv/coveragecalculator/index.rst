@@ -73,7 +73,7 @@ Example
 
 Take the following rule, for example.
 
-.. figure:: ../_static/sigma-rule.jpg
+.. figure:: ../../_static/sigma-rule.jpg
    :alt: Sigma Rule: WMI Persistence - Security
    :align: center
 
@@ -81,7 +81,7 @@ It is a rule to detect WMI Persistance from the Windows Security logs.
 
 The script, analyzes the rule, and creates the following JSON.
 
-.. figure:: ../_static/extracted-field-json.png
+.. figure:: ../../_static/extracted-field-json.png
    :alt: Sigma Rule: WMI Persistence - Security
    :align: center
    :scale: 50
