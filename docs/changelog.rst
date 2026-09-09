@@ -8,8 +8,8 @@ Version History
 
    <div class="container changelog-accordion">
      <div class="btn-group-vertical btn-block">
-        <button type="button" class="btn btn-primary btn-block changelog-toggle" data-toggle="collapse" data-target="#one" aria-expanded="false">Version 5.0 - September 10th, 2026</button>
-         <div id="one" class="collapse">
+        <button type="button" class="btn btn-primary btn-block changelog-toggle" data-toggle="collapse" data-target="#five" aria-expanded="false">Version 5.0 - September 10th, 2026</button>
+         <div id="five" class="collapse">
        	   <br>
            <ul>
               <li>Added Detection Coverage Calculator tool, supporting work, and documentation</li>
