@@ -17,8 +17,8 @@ rate in mind and help guide development toward as robust a detection as
 possible.
 
 The D3 tool is most helpful in the first step of the robust detection
-development process, :ref:`identifying all spanning sets of observables for
-malicious behavior<Spanning Sets>` as a way to illuminate key observables and
+development process, identifying all spanning sets of observables for
+malicious behavior, as a way to illuminate key observables and
 where those spanning sets may exist. The D3 can also be leveraged during
 continual refinement of developed detections, however, as well as during later
 sets.  Finally, the D3 can be a useful tool in visually depicting how accuracy
@@ -211,9 +211,7 @@ Therefore, our final analytics scoring comes out to a **3U** with the use of a f
    Our final score for OS Credential Dumping: LSASS Memory is 3U. (Click to enlarge)
 
 T1053.005: Scheduled Tasks
---------------------------
-
-For a more detailed process of the Scheduled Task D3 visual, :ref:`please refer to the Building a Robust Detection walkthrough<Build Robust Detection>`. 
+-------------------------- 
 
 .. figure:: ../_static/d3_scheduledtasks_basic.png
    :alt: D3 visual for scheduled tasks
