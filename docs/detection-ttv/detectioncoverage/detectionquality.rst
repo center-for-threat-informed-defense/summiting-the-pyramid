@@ -47,7 +47,7 @@ Additional fields, conditions, or contextual information can improve the
 precision of a robust signal. Conversely, more durable behavioral observables
 can strengthen a precise but easily changed signal.
 
-See :doc:`Building High-Quality Detections
+See :ref:`Building High-Quality Detections
 <high-quality-detection-design-principles>` for guidance on applying these trade-offs
 during detection design.
 
@@ -68,13 +68,13 @@ At the highest levels of robustness, evasion may require the adversary to
 substantially change how the behavior is implemented or abandon the technique
 altogether.
 
-The :doc:`Summiting Levels <Summiting Levels>` provide a framework for
-describing this progression. :doc:`Combining Observables
+The :ref:`Summiting Levels <Summiting Levels>` provide a framework for
+describing this progression. :ref:`Combining Observables
 <combiningobservables>` explains how multiple observables contribute to the
 robustness of a detection.
 
 For a worked example of applying the methodology to an analytic, see
-:doc:`Scoring Detection Robustness <scoring analytic>`.
+:ref:`Scoring Detection Robustness <scoring analytic>`.
 
 
 Precision
@@ -109,7 +109,7 @@ distinguishing legitimate use from adversary behavior. High-quality detection
 logic incorporates the information necessary to narrow that ambiguity and
 establish stronger evidence of the behavior being detected.
 
-See :doc:`Using Context to Determine Intent
+See :ref:`Using Context to Determine Intent
 <Context>` for guidance on incorporating contextual
 evidence.
 
@@ -127,7 +127,7 @@ provide stronger precision.
 
 Field-level telemetry information can help identify the evidence available to
 detection logic and support more granular assessment of precision. See
-:doc:`Field-Level Telemetry Mappings & Scoring
+:ref:`Field-Level Telemetry Mappings & Scoring
 <field-level-telemetry-mappings>` for more information.
 
 
@@ -149,7 +149,7 @@ activity may also create an opportunity for an adversary to evade the analytic.
 In some cases, multiple analytics may provide a better balance than trying to
 make a single analytic perform every function.
 
-See :doc:`Chaining Analytics <Chaining Analytics>` for guidance on combining
+See :ref:`Chaining Analytics <Chaining Analytics>` for guidance on combining
 multiple analytics.
 
 
@@ -160,7 +160,7 @@ Detection Quality describes the strength of the detection logic providing
 coverage; it does not describe how much of an ATT&CK technique's behavioral
 space is covered.
 
-That question is addressed through :doc:`Implementation Coverage
+That question is addressed through :ref:`Implementation Coverage
 <implementation-coverage>`.
 
 Considering both dimensions provides a more complete view of effective
