@@ -3,6 +3,11 @@
 Measuring Detection Coverage
 ============================
 
+.. figure:: ../../_static/dog.png
+   :alt: Everything is Mapped
+   :align: center
+   :scale: 100%
+
 Detection coverage is more than the presence of an analytic mapped to an
 ATT&CK technique. Meaningful coverage requires understanding both how much of
 the behavior can be detected and the quality of the detection logic providing
@@ -77,9 +82,7 @@ complementary questions:
 Considering both dimensions provides a more complete view of defensive
 coverage. A detection set may cover many implementations using fragile or
 ambiguous signals, while another may use highly robust and precise detections
-for only a narrow portion of a technique's behavioral space.
-
-The goal is not simply to maximize the number of ATT&CK techniques associated
+for only a narrow portion of a technique's behavioral space. The goal is not simply to maximize the number of ATT&CK techniques associated
 with detection content. It is to understand the strength and depth of the
 coverage behind those mappings.
 
