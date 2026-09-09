@@ -19,6 +19,7 @@ threat-informed defense globally.
     * Defined :ref:`Detection Coverage<measuring-detection-coverage>` and a method for calculating it based on detection quality and implementation coverage.
     * Built out an :ref:`Implementation Catalog<implementation-catalog>` that breaks down each ATT&CK technique into distinct execution paths and system interactions.
     * Developed a fully automated :ref:`Detection Coverage Calculator (DCC)<detection-coverage-calculator>` that ingests analytic files and outputs detailed results about the actual detection coverage they provide.
+    * Updated analytic design pages that describe a comprehensive :ref:`Detection Engineering Workflow<detection-engineering-workflow>` and :ref:`High-Quality Detection Design Principles<high-quality-detection-design-principles>`.
 
 ----------------------------------
 
