@@ -1,128 +1,154 @@
 .. _Pre-Existing Tools:
 
-------------------------------------------------------
-Level 3: Core to Pre-Existing Tools or Inside Boundary
-------------------------------------------------------
+Level 3: System-Constrained Interaction
+=======================================
 
-**Description**: Observables associated with a tool or functionality that
-existed on the system pre-compromise, may be managed by the defending
-organization, and is difficult for an adversary to modify.
+**Description:** Observables associated with interactions the adversary must
+perform with the target system or environment and cannot freely change at the
+point of execution.
 
-**Why are tools split between adversary-brought and pre-existing?**
+Level 3 observables are constrained by the system, application, account,
+target, protocol, or environment with which the adversary must interact.
+Unlike ephemeral or implementation-specific values, these observables are not
+entirely determined by the adversary's tooling or configuration choices. These constraints make the observable more difficult to change without also
+changing how or where the adversary performs the operation.
 
-Pre-existing tools provide less flexibility to adversaries than tools that are
-brought by an adversary, as an adversary must behave and act with what is
-available to them through the tool. The configurations, command-line arguments,
-and other observables for this level will remain consistent with what is
-available for the tool.
 
-Since the adversary cannot change the capability because it is managed by an
-organization, it is much more difficult to distinguish adversary use from benign
-use. This provides an opportunity for an adversary to blend into the computing
-environment, also known as a Living off the Land (LotL) attack [#f1]_ [#f2]_.
-It is likely that analytics utilizing native tool observables will need to be
-combined with other observables at other levels or require further research into
-low-variance behaviors of abusing these tools through MITRE ATT&CK techniques.
+Why are these observables placed at Level 3?
+--------------------------------------------
 
-**Why are detections between the inside and outside boundaries split?**
+At Levels 1 and 2, an adversary can generally evade a detection by changing an
+incidental value or reconfiguring the implementation. At Level 3, the observable is imposed or constrained by something outside the
+adversary's immediate control at the point of interaction. The adversary must
+operate within the functionality, permissions, interfaces, protocols, or
+resources exposed by the target environment. To evade a Level 3 observable, the adversary generally must **change the
+operational approach or interact with a different target**, rather than simply
+modify a value or reconfigure their tooling.
 
-Detections are split between the inside and outside boundaries because the
-analytic robustness is greatly dependent on whether the adversary controls one
-or both endpoints in a network connection. For example, given a network
-connection that extends outside the defender's boundary, such as to an endpoint
-somewhere on the public internet, we presume that the adversary has control over
-both the external endpoint and the internal, compromised endpoint. If the
-adversary has control of both endpoints, then they have the advantage and the
-flexibility to configure the tool or network connection, such as encryption,
-obfuscation, and so on, and change implementations to meet their specific needs,
-which lowers the analytic robustness to Level 2: Core to Adversary-Brought Tool
-or Outside Boundary.
 
-On the other hand, if a network connection stays inside the defender's boundary,
-then the analytic robustness depends on the ATT&CK tactic or phase of the
-adversary's cyber operation. If the network connection is for the purpose of
-lateral movement or remote execution, then the adversary controls only the
-originator endpoint and has not yet achieved control of the target endpoint. The
-analytic robustness would improve to Level 3: Core to Pre-Existing Tools or
-Inside Boundary because the adversary must behave and act with what is available
-to them through network protocols, operating systems, and applications running
-on the target endpoint.
+System Constraints and Pre-Existing Functionality
+--------------------------------------------------
 
-**What is the difference between Ephemeral observables and Core to Pre-Existing
-Tool observables?**
+Pre-existing tools and native system functionality are common sources of
+Level 3 observables because the adversary typically does not control how that
+functionality is implemented. An adversary using PowerShell, a Windows service, an authentication service, or
+another pre-existing capability must operate within the interfaces and
+constraints exposed by that functionality. While the adversary may control how
+they invoke the capability, they may not be able to freely change the
+system-generated or target-dependent interactions that result. This is also why some Living off the Land activity can produce useful Level 3
+observables. The adversary may choose to use legitimate functionality, but
+doing so can require interactions determined by the environment rather than by
+the adversary's tooling.
 
-Some observables that may seem to have Level 1 (Ephemeral) properties may be
-classified as Level 3 (Core to Pre-Existing Tools or Inside Boundary) if they
-meet certain conditions, notably if they are key to the operation of the attack
-and not able to be modified at that point in the attack chain.  For example,
-while an “Image” is an Ephemeral observable, a “TargetImage” value can be deemed
-Core to Pre-Existing Tools when it is a key component of the program's function
-and at the point where it is being detected (e.g., in Sysmon EID 10), and thus
-it is not directly accessible for change by the adversary. To evade detection
-would require the adversary to have already accessed and modified the value.
-Additionally, a Level 1 value can move up to a Level 3 value if the value itself
-is critical for the functioning of the program. For example, a specific
-filename, including a file path, that is in the environment would be considered
-a Level 3.
 
-**Examples**: Signatures, command-line arguments, tool-specific configurations,
-metadata, binaries
+Inside-Boundary Interactions
+----------------------------
 
-.. note::
+Network interactions can also become system-constrained when the adversary
+does not control both sides of the interaction. For example, if an adversary initiates lateral movement or remote execution
+from a compromised endpoint toward another internal system that they do not
+yet control, the target system constrains how the adversary can interact with
+it. The adversary must use the protocols, services, authentication mechanisms,
+and applications available on that target. Observables generated on the responder or target side can therefore provide
+greater robustness than characteristics of a connection for which the
+adversary controls both endpoints. The important distinction is not simply whether traffic crosses an
+organizational boundary. It is **how much control the adversary has over the
+interaction being observed**.
 
-    These observables may change as pre-existing tools present in the environment change.
+
+Examples
+--------
+
+Examples of Level 3 observables may include:
+
+* Target resources or system objects that the adversary must interact with
+* System-assigned or system-constrained values
+* Authentication and session properties imposed by the target environment
+* Access or privilege context required for an operation
+* Interactions with pre-existing functionality that the adversary cannot
+  freely modify
+* Responder-side observations of network interactions where the adversary
+  does not control the target
+
 
 Observables
-^^^^^^^^^^^
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Category                      | Observables                       | Generating Activity          |  Evade Behavior                |
-+===============================+===================================+==============================+================================+
-| Command-Line Arguments        |  | CommandLine (Sysmon)           | Built into the tool to       | Change the tool or             |
-|                               |  | Process Command Line (EID)     | identify different           | configuration that has         |
-|                               |  | ParentCommandLine (Sysmon)     | functionalities, be called   | different command-line         |
-|                               |                                   | by a tool or scripts, or be  | arguments.                     |
-|                               |                                   | called by an interactive     |                                |
-|                               |                                   | sessions with a user.        |                                |
-|                               |                                   |                              |                                |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Process Creation              |  | OriginalFileName (Sysmon)      | Filename is embedded into the| Use a tool with a different    |
-|                               |                                   | PE header of a tool.         | filename or edit the PE header |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Signatures                    |  | Signature (Sysmon)             |                              |                                |
-|                               |  | SignatureStatus (Sysmon)       |                              |                                |
-|                               |  | link_target (Sysmon)           |                              |                                |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Tool-Specific Configurations  |  | Integrity Level (Sysmon)       | A recommendation for setting | Pivot to tool or raise         |
-|                               |  | Mandatory Label (EID)          | up and using tools that      | permissions to avoid alerts    |
-|                               |  | Token Elevation Type (EID)     | support processing of        | on a specific-configuration.   |
-|                               |  | Access Level (EID)             | information. [#f3]_          |                                |
-|                               |  | File Path Outside Adversary    |                              |                                |
-|                               |   Control                         |                              |                                |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| User Session                  |  | Login Type (EID)               | A user log ons to a profile  | Log in to application or user  |
-|                               |  | Login successful (EID)         | or application [#f4]_        | with a different logon type    |
-|                               |                                   |                              | [#f5]_                         |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Authentication                |  | Auth Service (CAR)             |                              |                                |
-|                               |  | Decision Reason (CAR)          |                              |                                |
-|                               |  | Method (CAR)                   |                              |                                |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Network Connection            |  | Originator IP Address          | The adversary initiates an   | For Inside Boundary, if the    |
-|                               |  | Responder IP Address           | activity on the originator   | adversary controls only the    |
-|                               |  | TCP/UDP Ports                  | endpoint that results in a   | originator endpoint and not the| 
-|                               |  | Inbound/Outbound               | network connection to another| responder endpoint, then this  |
-|                               |  | Process Name                   | endpoint.                    | observable would not be        |
-|                               |  | Process ID                     |                              | evadable when observed on the  |
-|                               |  | User Account                   |                              | responder endpoint.            |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
-| Named Pipe Connection         |  | Pipe Name                      | The adversary initiates an   | For Inside Boundary, if the    |
-|                               |  | Originator IP Address          | activity on the originator   | adversary controls only the    |
-|                               |  | Originator Port                | endpoint that results in a   | originator endpoint and not the| 
-|                               |  | Process Name                   | network connection to a named| responder endpoint, then this  | 
-|                               |  | Process ID                     | pipe on another endpoint.    | observable would not be        |
-|                               |  | User Account                   |                              | evadable when observed on the  |
-|                               |  | User Account                   |                              | responder endpoint.            |
-+-------------------------------+-----------------------------------+------------------------------+--------------------------------+
+-----------
+
+The examples below illustrate types of observables that may represent
+system-constrained interactions.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 28 30 20
+
+   * - Category
+     - Observable
+     - System Constraint
+     - Evade Behavior
+
+   * - Target Resource
+     - ``TargetImage`` or other required target object
+     - The operation requires interaction with a particular system resource or
+       target that the adversary cannot freely rename or modify at the point
+       of execution.
+     - Change the target or use a different operational approach.
+
+   * - Authentication
+     - Authentication method, service, or decision information
+     - The target environment determines which authentication mechanisms and
+       access requirements are available.
+     - Use a different authentication path, identity, or target.
+
+   * - User Session
+     - Logon type or session characteristics
+     - Session properties may be determined by the access mechanism and target
+       environment.
+     - Change the access method or operational approach.
+
+   * - Access / Privilege Context
+     - Integrity level, token elevation, access level, or similar
+       system-derived context
+     - The system assigns or enforces the access context required for the
+       interaction.
+     - Obtain different privileges or use an alternative method.
+
+   * - Network Interaction
+     - Responder-side protocol, service, endpoint, or connection information
+     - A target not controlled by the adversary constrains the protocols,
+       services, and interfaces available for interaction.
+     - Interact with a different target or use another operational approach.
+
+   * - Pre-Existing Functionality
+     - System- or application-constrained behavior associated with native
+       functionality
+     - The adversary can invoke the functionality but cannot freely change how
+       the target system implements it.
+     - Use different functionality or change the operational approach.
+
+
+The Same Field Can Appear at Different Levels
+---------------------------------------------
+
+The field containing an observable does not determine its robustness level by
+itself. The classification depends on the relationship between the observable
+and the behavior. For example, an ``Image`` value selected by an adversary may be Level 1 because
+the executable can simply be renamed. A ``TargetImage`` value may be Level 3
+when the operation requires interaction with a particular system process or
+resource that the adversary cannot change at the point of execution. The same principle applies to command-line arguments, filenames, pipe names,
+network values, and other observable types. An attacker-selected value may be
+ephemeral or implementation-controlled, while a similar value imposed by the
+target system may be system-constrained.
+
+When assigning a Summiting level, ask:
+
+**What would the adversary actually have to change to prevent this observable
+from occurring?**
+
+If the answer is that they must change their operational approach, interact
+with a different target, or otherwise work around a system or environmental
+constraint, the observable may belong at Level 3.
+
+
 
 .. rubric:: References
 
