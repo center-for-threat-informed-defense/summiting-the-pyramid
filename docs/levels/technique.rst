@@ -55,7 +55,7 @@ implementations of a technique.
      - These operations represent the directory replication activity required
        by DCSync implementations using this mechanism.
 
-.. rubric:: References
+.. rubric:: References [#f1]_ [#f2]_ [#f3]_ [#f4]_ 
 
 .. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
 .. [#f2] https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47
