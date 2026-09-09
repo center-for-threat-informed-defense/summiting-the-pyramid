@@ -168,55 +168,6 @@ analytic.
 
 
 
-Understanding Your Results
---------------------------
-
-The DCC produces three primary measurements: robustness, precision, and
-Implementation Coverage. Together, they describe both the quality and depth of
-detection coverage.
-
-
-Detection Quality
-~~~~~~~~~~~~~~~~~
-
-Detection Quality characterizes the signals used by detection logic through
-two measures:
-
-
-Robustness Score
-^^^^^^^^^^^^^^^^
-
-The Robustness Score measures how difficult a detection signal is for an
-adversary to evade or manipulate. Higher robustness reflects signals tied to
-behaviors or system interactions that require increasingly significant changes
-for an adversary to avoid.
-
-
-Precision Score
-^^^^^^^^^^^^^^^
-
-The Precision Score measures how well a detection signal distinguishes
-malicious activity from benign activity. Higher precision reflects signals
-that provide stronger context for identifying the behavior of interest.
-
-
-Implementation Coverage
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Implementation Coverage measures which known implementations of an ATT&CK
-technique are meaningfully observed by the detection logic.
-
-Rather than reporting a technique as simply covered or uncovered, the DCC
-expresses coverage against the implementations represented in the catalog.
-
-
-Detection Coverage
-~~~~~~~~~~~~~~~~~~
-
-Detection Coverage brings Detection Quality and Implementation Coverage
-together to provide a more complete view of defensive coverage.
-
-
 Using the Calculator
 --------------------
 
