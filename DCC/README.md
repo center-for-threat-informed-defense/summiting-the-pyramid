@@ -1,6 +1,6 @@
-# Coverage Calculator
+# Detection Coverage Calculator
 
-Coverage Calculator analyzes one or more [Sigma](https://sigmahq.io/) detection rules and produces an Excel workbook that connects those analytics to ATT&CK technique implementations. It also scores analytic fields for robustness and precision, and adds OCSF event/field context where available.
+The Detection Coverage Calculator analyzes one or more [Sigma](https://sigmahq.io/) detection rules and produces an Excel workbook that connects those analytics to ATT&CK technique implementations. It also scores analytic fields for robustness and precision, and adds OCSF event/field context where available.
 
 ## Requirements
 
