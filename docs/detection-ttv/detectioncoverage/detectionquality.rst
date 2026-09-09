@@ -1,3 +1,5 @@
+.. _detection-quality:
+
 Detection Quality
 =================
 
