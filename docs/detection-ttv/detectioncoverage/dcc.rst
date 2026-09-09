@@ -11,7 +11,7 @@ Detection Coverage Calculator
 Calculator Overview
 -------------------
 
-The **Detection Coverage Calculator (DCC)** automates the evaluation of
+The `Detection Coverage Calculator <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/tree/stp3/DCC>`_ automates the evaluation of
 detection coverage by analyzing what detection logic actually observes, looking deeper than just what it is mapped to.
 
 The DCC evaluates detection content across two complementary dimensions:
@@ -32,7 +32,7 @@ observable behavior and detection logic.
 Implementation Catalog
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The :download:`Implementation Catalog <../DCC/implementation_catalog_with_attack_components.xlsx>` describes behaviorally distinct ways of
+The `Implementation Catalog <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/blob/stp3/DCC/implementation_catalog_with_attack_components.xlsx>`_ describes behaviorally distinct ways of
 executing ATT&CK techniques. Built from ATT&CK procedure examples and Atomic
 Red Team tests, the catalog normalizes specific examples into reusable
 implementation paths and identifies the system interactions required to
@@ -43,7 +43,7 @@ Implementation Coverage is measured.
 Sensor Mappings
 ~~~~~~~~~~~~~~~
 
-:download:`Sensor-Field Mappings <../DCC/mappings.xlsx> connect system activity to the telemetry available to
+`Sensor-Field Mappings <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/blob/stp3/DCC/mappings.xlsx>`_ connect system activity to the telemetry available to
 observe it. The DCC extends previous sensor-mapping work with field-level
 information for supported telemetry sources, allowing it to evaluate the
 specific fields used by detection logic rather than treating the presence of
@@ -96,7 +96,7 @@ With this formatted output, the next step in the pipeline can now take place.
 Scoring Dictionary
 ~~~~~~~~~~~~~~~~~~
 
-The :download:`Scoring Dictionary <../DCC/scoring_dictionary.xlsx> provides standardized robustness and precision
+The `Scoring Dictionary <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/blob/stp3/DCC/scoring_dictionary.xlsx>`_ provides standardized robustness and precision
 values for supported telemetry sources and fields. The DCC uses these values
 to automatically evaluate the Detection Quality of the signals used by an
 analytic.
