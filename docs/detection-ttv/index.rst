@@ -51,4 +51,3 @@ Detection Evaluation & Coverage
     ../levels/index
     combiningobservables
     detectioncoverage/index
-    coveragecalculator/index
