@@ -37,7 +37,7 @@ malicious activity while being easy for an adversary to change. Conversely, an
 observable that is difficult for an adversary to avoid may also occur frequently
 during legitimate activity.
 
-See :doc:`Detection Quality <detection-quality>` for detailed guidance on
+See :ref:`Detection Quality <detection-quality>` for detailed guidance on
 these dimensions.
 
 
@@ -53,7 +53,7 @@ different system interactions and observable signals, meaning a detection
 associated with a technique may provide visibility into some implementations
 but not others.
 
-See :doc:`Implementation Coverage <implementation-coverage>` for guidance on
+See :ref:`Implementation Coverage <implementation-coverage>` for guidance on
 identifying and measuring coverage across implementations.
 
 
@@ -83,7 +83,7 @@ The goal is not simply to maximize the number of ATT&CK techniques associated
 with detection content. It is to understand the strength and depth of the
 coverage behind those mappings.
 
-See :doc:`Detection Coverage Calculator <detection-coverage-calculator>` for
+See :ref:`Detection Coverage Calculator <detection-coverage-calculator>` for
 guidance on automating this analysis.
 
 
