@@ -59,8 +59,10 @@ Analytic Design & Engineering
     :maxdepth: 1
     :hidden:
 
-    detection-components
-    robustdetection
+   
     detection-diagram
     context
     chaining
+    buildingdetections
+    deworkflow
+    mappingdetections
