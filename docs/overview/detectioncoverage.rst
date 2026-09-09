@@ -33,7 +33,7 @@ Considering both helps defenders understand not simply whether a behavior can
 be detected, but how much confidence they can place in the detection providing
 that visibility.
 
-:doc:`Learn more about Detection Quality <detection-quality>`
+:ref:`Learn more about Detection Quality <detection-quality>`
 
 
 Implementation Coverage
