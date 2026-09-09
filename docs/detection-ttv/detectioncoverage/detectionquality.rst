@@ -48,7 +48,7 @@ precision of a robust signal. Conversely, more durable behavioral observables
 can strengthen a precise but easily changed signal.
 
 See :doc:`Building High-Quality Detections
-<building-high-quality-detections>` for guidance on applying these trade-offs
+<high-quality-detection-principles>` for guidance on applying these trade-offs
 during detection design.
 
 
@@ -68,13 +68,13 @@ At the highest levels of robustness, evasion may require the adversary to
 substantially change how the behavior is implemented or abandon the technique
 altogether.
 
-The :doc:`Summiting Levels <summiting-levels>` provide a framework for
+The :doc:`Summiting Levels <Summiting Levels>` provide a framework for
 describing this progression. :doc:`Combining Observables
-<combining-observables>` explains how multiple observables contribute to the
+<combiningobservables>` explains how multiple observables contribute to the
 robustness of a detection.
 
 For a worked example of applying the methodology to an analytic, see
-:doc:`Scoring Detection Robustness <scoring-detection-robustness>`.
+:doc:`Scoring Detection Robustness <scoring analytic>`.
 
 
 Precision
@@ -110,7 +110,7 @@ logic incorporates the information necessary to narrow that ambiguity and
 establish stronger evidence of the behavior being detected.
 
 See :doc:`Using Context to Determine Intent
-<using-context-to-determine-intent>` for guidance on incorporating contextual
+<Context>` for guidance on incorporating contextual
 evidence.
 
 
@@ -149,7 +149,7 @@ activity may also create an opportunity for an adversary to evade the analytic.
 In some cases, multiple analytics may provide a better balance than trying to
 make a single analytic perform every function.
 
-See :doc:`Chaining Analytics <chaining-analytics>` for guidance on combining
+See :doc:`Chaining Analytics <Chaining Analytics>` for guidance on combining
 multiple analytics.
 
 
