@@ -69,7 +69,7 @@ Whenever possible, combine durable behavioral signals with enough context to
 make the resulting detection meaningful.
 
 The :ref:`Detection Decomposition Diagram (D3)
-<detection-decomposition-diagram>` can help identify useful observables across
+<d3>` can help identify useful observables across
 implementations, while :ref:`Field-Level Telemetry Mappings & Scoring
 <field-level-telemetry-mappings>` can help determine what evidence is
 available within the underlying telemetry.
@@ -138,7 +138,7 @@ The goal is to recognize when intent is being inferred and incorporate
 additional evidence where necessary.
 
 See :ref:`Using Context to Determine Intent
-<using-context-to-determine-intent>` for guidance on incorporating contextual
+<Context>` for guidance on incorporating contextual
 evidence.
 
 
@@ -188,7 +188,7 @@ adversary behavior.
 Correlation is most useful when the relationship between observations provides
 information that the individual analytics cannot provide independently.
 
-See :ref:`Chaining Analytics <chaining-analytics>` for guidance on combining
+See :ref:`Chaining Analytics <Chaining Analytics>` for guidance on combining
 analytics through direct and loose correlation.
 
 
