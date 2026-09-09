@@ -68,7 +68,7 @@ coverage while remaining reusable across tools, actors, and procedures.
 Implementation Catalog
 ----------------------
 
-The :doc:`Implementation Catalog <implementation-catalog>` provides a
+The :ref:`Implementation Catalog <implementation-catalog>` provides a
 structured representation of behaviorally distinct ways ATT&CK techniques can
 be executed.
 
@@ -116,7 +116,7 @@ Coverage analysis can help separate these problems so defenders can determine
 whether the appropriate response is to improve an analytic, collect different
 telemetry, correct a mapping, or develop new detection content.
 
-See :doc:`Field-Level Telemetry Mappings & Scoring
+See :ref:`Field-Level Telemetry Mappings & Scoring
 <field-level-telemetry-mappings>` for guidance on connecting system
 interactions to available telemetry.
 
@@ -141,7 +141,7 @@ Detection Quality and Implementation Coverage
 ----------------------------------------------
 
 Implementation Coverage describes the breadth of behavior detected, while
-:doc:`Detection Quality <detection-quality>` describes the quality of the
+:ref:`Detection Quality <detection-quality>` describes the quality of the
 signals providing that coverage.
 
 Both dimensions are necessary to understand the defensive value of a
