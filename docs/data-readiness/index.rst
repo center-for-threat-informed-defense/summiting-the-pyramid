@@ -40,7 +40,10 @@ Telemetry Strategy & Readiness
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#five">Data Quality & Schema Engineering</button>
          <div id="five" class="collapse">
-       	   <br>Ensuring data fields are reliable enough to build logic on<br><br>
+       	   <br>Ensuring data fields are reliable enough to build logic on<br>
+           <ul>
+              <li><a href="../data-readiness/fieldleveltelemetry">Field Level Telemetry</a></li>
+           </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#six">Entity & Context Modeling</button>
          <div id="six" class="collapse">
