@@ -65,7 +65,7 @@ implementations.
      - Remote Registry access through the ``winreg`` mechanism is characteristic
        of implementations that use this interface.
 
-.. rubric:: References:
+.. rubric:: References: [#f1]_ [#f2]_ [#f3]_ [#f4]_ 
 
 .. [#f1] https://cyberstoph.org/posts/2022/03/detecting-shadow-credentials/
 .. [#f2] https://www.splunk.com/en_us/blog/security/you-bet-your-lsass-hunting-lsass-access.html
