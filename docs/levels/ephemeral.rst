@@ -114,7 +114,7 @@ and the behavior being detected—not simply the field or data type in which it
 appears.
 
 
-.. rubric:: References
+.. rubric:: References [#f1]_ [#f2]_ [#f3]_ [#f4]_ [#f5]_ [#f6]_ 
 
 .. [#f1] http://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html
 .. [#f2] https://usa.kaspersky.com/resource-center/definitions/what-is-an-ip-address
