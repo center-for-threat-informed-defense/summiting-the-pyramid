@@ -16,8 +16,7 @@ malicious activity but be easy for an adversary to change. Conversely, an
 observable tied to a system interaction that an adversary cannot easily avoid
 may also occur frequently during legitimate activity.
 
-Considering both provides a more complete picture of the quality of detection
-logic and the trade-offs involved in improving it.
+Considering both provides a more complete picture of detection quality.
 
 
 Balancing Robustness and Precision
@@ -26,33 +25,29 @@ Balancing Robustness and Precision
 Robustness and precision describe different properties of a detection, and
 improving one does not necessarily improve the other.
 
-For example, a detection based on a known malicious hash may be highly
-discriminating when that exact value is observed. However, the adversary can
-usually change the file—and therefore its hash—without changing the underlying
-behavior. The signal may provide strong confidence when it appears while
-providing little resistance to evasion.
+A detection based on a known malicious hash, for example, may be highly
+specific when that value is observed. However, an adversary may be able to
+change the file and therefore its hash without changing the underlying
+behavior. The signal can provide strong confidence when it appears while
+remaining relatively easy to evade.
 
 At the other extreme, a detection may observe a system interaction that is
-required across many implementations of a technique. This can provide durable
-visibility because the adversary has fewer opportunities to avoid the
-observable. But if the same interaction occurs frequently during legitimate
-activity, the signal alone may not provide enough information to distinguish
-malicious behavior.
+required across many implementations of a technique. This can provide more
+durable visibility, but the interaction may also occur frequently during
+legitimate activity.
 
-This means that the strongest detection is not always the most specific signal
-or the signal that covers the most behavior. Detection engineers should
-consider both dimensions and determine what combination of evidence provides
-useful visibility for the behavior and environment being monitored.
+The strongest detection is therefore not always the most specific signal or
+the signal that observes the most behavior. Detection engineers should
+consider both characteristics and determine what combination of evidence
+provides useful visibility for the behavior and environment being monitored.
 
-Where a robust signal lacks sufficient precision, additional fields,
-conditions, environmental information, or correlated activity may provide the
-context needed to distinguish malicious from benign behavior. Where a precise
-signal is easily changed, more durable behavioral observables may provide
-additional resistance to adversary evasion.
+Additional fields, conditions, or contextual information can improve the
+precision of a robust signal. Conversely, more durable behavioral observables
+can strengthen a precise but easily changed signal.
 
-See :ref:`High-Quality Detection Design Principles
-<high-quality-detection-design-principles>` for guidance on applying these
-trade-offs when designing detection logic.
+See :doc:`Building High-Quality Detections
+<building-high-quality-detections>` for guidance on applying these trade-offs
+during detection design.
 
 
 Robustness
@@ -63,60 +58,75 @@ evade or manipulate.
 
 Signals based on attacker-controlled values—such as filenames, hashes, or
 specific command-line arguments—may be effective when those values appear but
-relatively inexpensive for an adversary to change. More robust signals rely on
-behaviors and system interactions that become increasingly difficult to avoid
+relatively inexpensive for an adversary to change. More robust detections rely
+on behaviors and system interactions that are increasingly difficult to avoid
 while still accomplishing the adversary's objective.
-
-The Summiting the Pyramid model describes this progression through
-:ref:`Summiting Levels <summiting-levels>`. As signals move from ephemeral and
-attacker-controlled observables toward system-constrained and invariant
-behaviors, the changes required to evade them become increasingly significant.
 
 At the highest levels of robustness, evasion may require the adversary to
 substantially change how the behavior is implemented or abandon the technique
 altogether.
 
-Robustness should be considered over time as well as against known activity
-today. A detection built around one current tool or implementation may perform
-well against that activity while failing when the adversary changes an
-incidental detail. Robust detections seek observables that remain relevant
-across changes in tools and implementations.
+The :doc:`Summiting Levels <summiting-levels>` provide a framework for
+describing this progression. :doc:`Combining Observables
+<combining-observables>` explains how multiple observables contribute to the
+robustness of a detection.
 
-See :ref:`Summiting Levels <summiting-levels>`,
-:ref:`Combining Observables <combining-observables>`, and
-:ref:`Scoring Resistance to Adversary Evasion
-<scoring-resistance-to-adversary-evasion>` for detailed guidance on evaluating
-robustness.
+For a worked example of applying the methodology to an analytic, see
+:doc:`Scoring Detection Robustness <scoring-detection-robustness>`.
 
 
 Precision
 ---------
 
-Precision describes how well a detection signal distinguishes malicious
+Precision measures how well a detection signal distinguishes malicious
 behavior from benign activity.
 
 A signal can be highly robust while still providing limited information about
-intent. For example, an operating system interaction required by an ATT&CK
-technique may also occur routinely during legitimate administration. Detecting
-the interaction provides visibility, but additional evidence may be necessary
-to determine whether the activity is malicious.
+intent. An operating system interaction required by a technique, for example,
+may also occur routinely during legitimate administration. Detecting the
+interaction provides visibility, but additional evidence may be necessary to
+determine whether the activity is malicious.
 
 Precision can be improved by incorporating fields, values, conditions, or
-context that more specifically characterize the behavior of interest. The
-appropriate evidence will depend on both the behavior and the environment in
-which the detection operates.
+context that more specifically characterize the behavior of interest.
+However, increasing specificity can also narrow the behavior the analytic
+detects or introduce conditions an adversary can manipulate.
 
-This does not mean that detection logic should simply become as specific as
-possible. Adding highly specific conditions can reduce unwanted alerts while
-also narrowing the activity the analytic can detect or introducing conditions
-an adversary can manipulate. Precision should therefore be considered
-alongside robustness rather than optimized independently.
+Precision should therefore be considered alongside robustness rather than
+optimized independently.
 
-See :ref:`Using Context to Determine Intent
-<using-context-to-determine-intent>` for guidance on distinguishing ambiguous
-behavior and :ref:`Field-Level Telemetry Mappings & Scoring
-<field-level-telemetry-mappings>` for guidance on understanding the information
-available within telemetry.
+
+Distinguishing Malicious from Benign Activity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Telemetry tells us that activity occurred; detection logic must provide enough
+context to determine what that activity means.
+
+An event or field alone may describe a system interaction without
+distinguishing legitimate use from adversary behavior. High-quality detection
+logic incorporates the information necessary to narrow that ambiguity and
+establish stronger evidence of the behavior being detected.
+
+See :doc:`Using Context to Determine Intent
+<using-context-to-determine-intent>` for guidance on incorporating contextual
+evidence.
+
+
+Precision Scoring
+~~~~~~~~~~~~~~~~~
+
+Precision scoring characterizes the discriminating value of the signals used
+by detection logic.
+
+Signals and combinations of conditions that provide little context for
+separating malicious from benign activity provide weaker precision, while
+signals that more specifically characterize the behavior of interest can
+provide stronger precision.
+
+Field-level telemetry information can help identify the evidence available to
+detection logic and support more granular assessment of precision. See
+:doc:`Field-Level Telemetry Mappings & Scoring
+<field-level-telemetry-mappings>` for more information.
 
 
 Combining Evidence
@@ -126,40 +136,30 @@ A single signal does not always provide both strong robustness and strong
 precision.
 
 Detection logic can combine multiple pieces of evidence to improve Detection
-Quality. A durable behavioral observable may establish that an important system
-interaction occurred, while additional fields or contextual signals help
-determine whether that interaction is suspicious or malicious.
+Quality. A durable behavioral observable may establish that an important
+system interaction occurred, while additional fields or contextual signals
+help determine whether that interaction is suspicious or malicious.
 
-When adding conditions, filters, or exclusions, consider their effect on both
-dimensions. A condition that reduces benign alerts may improve precision but
-also create an opportunity for an adversary to evade the analytic. Likewise,
-broadening an analytic to observe additional implementations may improve
-visibility while introducing activity that requires additional context.
+Filters and exclusions can similarly improve precision, but they should be
+evaluated for the blind spots they may create. A condition that reduces benign
+activity may also create an opportunity for an adversary to evade the analytic.
 
-The objective is not necessarily to produce a single analytic that perfectly
-optimizes every dimension. In some cases, multiple analytics or correlated
-observations may provide a better balance.
+In some cases, multiple analytics may provide a better balance than trying to
+make a single analytic perform every function.
 
-See :ref:`Chaining Analytics <chaining-analytics>` for guidance on combining
-multiple analytics when additional context is required.
+See :doc:`Chaining Analytics <chaining-analytics>` for guidance on combining
+multiple analytics.
 
 
 Detection Quality in Coverage
 -----------------------------
 
 Detection Quality describes the strength of the detection logic providing
-coverage, but it does not describe how much of an ATT&CK technique's behavioral
-space is detected.
+coverage; it does not describe how much of an ATT&CK technique's behavioral
+space is covered.
 
-That question is addressed through :ref:`Implementation Coverage
+That question is addressed through :doc:`Implementation Coverage
 <implementation-coverage>`.
 
-Considering Detection Quality and Implementation Coverage together helps
-distinguish between different kinds of defensive capability. A detection may
-use robust, precise signals while observing only a narrow portion of a
-technique's implementations. Another detection set may observe many
-implementations but rely on signals that are fragile or difficult to
-distinguish from legitimate activity.
-
-See :ref:`Measuring Detection Coverage <measuring-detection-coverage>` for
-guidance on using these dimensions together to evaluate detection coverage.
+Considering both dimensions provides a more complete view of effective
+detection coverage.
