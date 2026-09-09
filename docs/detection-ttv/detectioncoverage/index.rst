@@ -1,3 +1,5 @@
+.. _measuring-detection-coverage:
+
 Measuring Detection Coverage
 ============================
 
