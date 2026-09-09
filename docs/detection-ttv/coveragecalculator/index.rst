@@ -130,7 +130,7 @@ two measures:
 Robustness Score
 ^^^^^^^^^^^^^^^^
 
-The **Robustness Score** measures how difficult a detection signal is for an
+The Robustness Score measures how difficult a detection signal is for an
 adversary to evade or manipulate. Higher robustness reflects signals tied to
 behaviors or system interactions that require increasingly significant changes
 for an adversary to avoid.
@@ -139,7 +139,7 @@ for an adversary to avoid.
 Precision Score
 ^^^^^^^^^^^^^^^
 
-The **Precision Score** measures how well a detection signal distinguishes
+The Precision Score measures how well a detection signal distinguishes
 malicious activity from benign activity. Higher precision reflects signals
 that provide stronger context for identifying the behavior of interest.
 
@@ -147,7 +147,7 @@ that provide stronger context for identifying the behavior of interest.
 Implementation Coverage
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Implementation Coverage** measures which known implementations of an ATT&CK
+Implementation Coverage measures which known implementations of an ATT&CK
 technique are meaningfully observed by the detection logic.
 
 Rather than reporting a technique as simply covered or uncovered, the DCC
@@ -157,13 +157,8 @@ expresses coverage against the implementations represented in the catalog.
 Detection Coverage
 ~~~~~~~~~~~~~~~~~~
 
-**Detection Coverage** brings Detection Quality and Implementation Coverage
+Detection Coverage brings Detection Quality and Implementation Coverage
 together to provide a more complete view of defensive coverage.
-
-Implementation Coverage describes the breadth of behavior detected; Detection
-Quality describes the strength of the signals providing that coverage.
-Together, they help distinguish broad, durable detection coverage from
-coverage that may be narrow, fragile, or difficult to operationalize.
 
 
 Using the Calculator
@@ -172,7 +167,7 @@ Using the Calculator
 Supported Detection Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The current DCC supports **Sigma YAML** detection content and can process
+The current DCC supports `Sigma specification-formatted <https://github.com/SigmaHQ/sigma/tree/master>`_ YAML detection content and can process
 Sigma files stored locally or in a GitHub repository. The ingestion framework
 is designed to support additional detection formats as the project evolves.
 
