@@ -11,9 +11,7 @@ A technique may be performed in multiple behaviorally distinct ways, and a
 detection that observes one of those paths may not observe others. At the same
 time, the signals underlying that detection may vary in how difficult they are
 for an adversary to evade and how well they distinguish malicious from benign
-activity.
-
-Summiting the Pyramid addresses these dimensions through two complementary
+activity. Summiting the Pyramid addresses these dimensions through two complementary
 concepts: **Detection Quality** and **Implementation Coverage**. Together, they provide a more evidence-based way to understand what sits behind
 an ATT&CK coverage claim.
 
@@ -40,9 +38,7 @@ Implementation Coverage
 -----------------------
 
 **Implementation Coverage** describes how much of the known behavioral space
-for an ATT&CK technique can be detected.
-
-ATT&CK techniques can often be performed through multiple behaviorally distinct
+for an ATT&CK technique can be detected. ATT&CK techniques can often be performed through multiple behaviorally distinct
 execution paths, or **implementations**. These paths may produce different
 system interactions and observable signals, meaning a detection associated with
 a technique may provide visibility into some implementations but not others.
