@@ -60,3 +60,4 @@ Telemetry Strategy & Readiness
  
     min-telemetry-reqs
     telemetry-quality
+    fieldleveltelemetry
