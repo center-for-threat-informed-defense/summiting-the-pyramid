@@ -8,6 +8,15 @@ Version History
 
    <div class="container changelog-accordion">
      <div class="btn-group-vertical btn-block">
+        <button type="button" class="btn btn-primary btn-block changelog-toggle" data-toggle="collapse" data-target="#one" aria-expanded="false">Version 5.0 - September 10th, 2026</button>
+         <div id="one" class="collapse">
+       	   <br>
+           <ul>
+              <li>Added Detection Coverage Calculator tool, supporting work, and documentation</li>
+              <li>Added conceptual work regarding measuring detection coverage and examining precision and implementations as factors</li>
+              <li>Cleaned up repetitive pages on the Summiting website to reduce redundant explanations and streamline information</li>
+           </ul>
+         </div>
         <button type="button" class="btn btn-primary btn-block changelog-toggle" data-toggle="collapse" data-target="#one" aria-expanded="false">Version 4.0 - February 20th, 2026</button>
          <div id="one" class="collapse">
        	   <br>
