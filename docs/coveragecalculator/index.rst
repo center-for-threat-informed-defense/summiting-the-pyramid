@@ -98,11 +98,6 @@ values for supported telemetry sources and fields. The DCC uses these values
 to automatically evaluate the Detection Quality of the signals used by an
 analytic.
 
-Together, these components connect:
-
-**ATT&CK Technique → Implementation → System Interaction → Telemetry →
-Detection Logic**
-
 
 
 Understanding Your Results
