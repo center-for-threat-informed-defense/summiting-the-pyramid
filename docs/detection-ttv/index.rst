@@ -1,4 +1,4 @@
-Detection Evaluation & Validation
+Detection Evaluation & Coverage
 ========================================
 
 .. epigraph::
