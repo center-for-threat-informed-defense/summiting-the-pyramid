@@ -12,13 +12,13 @@ our mission to advance the state of the art and the state of the practice in
 threat-informed defense globally.
 
 .. important::
-    **What's New In V4:**
+    **What's New In 2026:**
 
-    In version 4.0, we updated and improved the project in the following ways!
+    In our latest work, we updated and improved the project in the following ways!
 
-    * Defined a methodology for identifying the :ref:`minimum telemetry requirements<mintelreq>` for ambiguous techniques.
-    * Developed a process for calculating :ref:`Telemetry Confidence<Telemetry Quality>` scores that provide relative detection effectiveness values for log sources against a given technique. We also extended this work to look at groupings of techniques with similiar objectives (called :ref:`use cases<Use Cases>`) and leveraged :ref:`automation via AI/LLM<automation>` to assist with the analysis.
-    * Re-factored the Summiting website to better align to CTID's portfolio of :ref:`Detection Engineering<Detection Engineering>` work.
+    * Defined :ref:`Detection Coverage<measuring-detection-coverage>` and a method for calculating it based on detection quality and implementation coverage.
+    * Built out an :ref:`Implementation Catalog<implementation-catalog>` that breaks down each ATT&CK technique into distinct execution paths and system interactions.
+    * Developed a fully automated :ref:`Detection Coverage Calculator (DCC)<detection-coverage-calculator>` that ingests analytic files and outputs detailed results about the actual detection coverage they provide.
 
 ----------------------------------
 
