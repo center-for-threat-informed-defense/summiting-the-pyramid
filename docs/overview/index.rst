@@ -186,7 +186,7 @@ build robust detections, changing the game on the adversary:
   Score your analytic observables against the Summiting host-based model or
   network traffic model to determine their resistance to adversary evasion over
   time and their impact on a detection's accuracy.
-* :ref:`Robust Detection Guidance:<high-quality-design-principles>` Combine the
+* :ref:`Robust Detection Guidance:<high-quality-detection-design-principles>` Combine the
   Summiting model scoring model with other concepts to build accurate
   detections. This includes building filters that are specific and difficult for
   adversaries to manipulate and combining those filters with additional
