@@ -5,7 +5,7 @@ Examples & Use Cases
     :titlesonly:
     :maxdepth: 1
 
-    examplemappings
+    robustness/examplemappings
     ../analytics/index
     usecases/index
 
