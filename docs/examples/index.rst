@@ -5,7 +5,7 @@ Examples & Use Cases
     :titlesonly:
     :maxdepth: 1
 
-    robustness/examplemappings
+    robustness/index
     ../analytics/index
     usecases/index
     casestudies
