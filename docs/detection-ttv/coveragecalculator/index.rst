@@ -29,7 +29,7 @@ observable behavior and detection logic.
 Implementation Catalog
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The **Implementation Catalog** describes behaviorally distinct ways of
+The :download:`Implementation Catalog <../DCC/implementation_catalog_with_attack_components.xlsx>` describes behaviorally distinct ways of
 executing ATT&CK techniques. Built from ATT&CK procedure examples and Atomic
 Red Team tests, the catalog normalizes specific examples into reusable
 implementation paths and identifies the system interactions required to
@@ -42,7 +42,7 @@ Implementation Coverage is measured.
 Sensor Mappings
 ~~~~~~~~~~~~~~~
 
-**Sensor Mappings** connect system activity to the telemetry available to
+:download:`Sensor-Field Mappings <../DCC/mappings.xlsx> connect system activity to the telemetry available to
 observe it. The DCC extends previous sensor-mapping work with field-level
 information for supported telemetry sources, allowing it to evaluate the
 specific fields used by detection logic rather than treating the presence of
@@ -86,7 +86,7 @@ The script, analyzes the rule, and creates the following JSON.
 .. figure:: ../../_static/extracted-field-json.png
    :alt: Sigma Rule: WMI Persistence - Security
    :align: center
-   :scale: 50
+   :scale: 75
 
 With this formatted output, the next step in the pipeline can now take place.
 
@@ -95,15 +95,15 @@ With this formatted output, the next step in the pipeline can now take place.
 Scoring Dictionary
 ~~~~~~~~~~~~~~~~~~
 
-The **Scoring Dictionary** provides standardized robustness and precision
+The :download:`Scoring Dictionary <../DCC/scoring_dictionary.xlsx> provides standardized robustness and precision
 values for supported telemetry sources and fields. The DCC uses these values
 to automatically evaluate the Detection Quality of the signals used by an
 analytic.
 
-.. figure:: ../_static/scoringdictionary.png
+.. figure:: ../../_static/scoringdictionary.jpg
    :alt: Scoring Dictionary Excerpt
    :align: center
-   :scale: 75%
+   :scale: 100
 
 
 
