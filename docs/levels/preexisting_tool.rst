@@ -150,7 +150,7 @@ constraint, the observable may belong at Level 3.
 
 
 
-.. rubric:: References
+.. rubric:: References [#f1]_ [#f2]_ [#f3]_ [#f4]_ [#f5]_ 
 
 .. [#f1] https://darktrace.com/blog/living-off-the-land-how-hackers-blend-into-your-environment
 .. [#f2] https://www.gdatasoftware.com/blog/2022/02/37248-living-off-the-land
