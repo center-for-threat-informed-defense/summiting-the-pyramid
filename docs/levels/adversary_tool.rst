@@ -73,7 +73,7 @@ may modify them to evade detection.
 
 .. rubric:: References
 
-.. [#f1] https://posts.specterops.io/capability-abstraction-fbeaeeb26384
-.. [#f2] https://csrc.nist.gov/glossary/term/tool_configuration
-.. [#f3] https://www.techtarget.com/whatis/definition/metadata
-.. [#f4] https://www.computerhope.com/jargon/b/binaries.htm
+https://posts.specterops.io/capability-abstraction-fbeaeeb26384
+https://csrc.nist.gov/glossary/term/tool_configuration
+https://www.techtarget.com/whatis/definition/metadata
+https://www.computerhope.com/jargon/b/binaries.htm
