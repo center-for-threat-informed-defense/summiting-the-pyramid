@@ -52,7 +52,7 @@ known implementations are meaningfully observed by detection logic. This
 provides a measure of detection depth that goes beyond treating a technique as
 simply covered or uncovered.
 
-:doc:`Learn more about Implementation Coverage <implementation-coverage>`
+:ref:`Learn more about Implementation Coverage <implementation-coverage>`
 
 
 Bringing the Two Together
