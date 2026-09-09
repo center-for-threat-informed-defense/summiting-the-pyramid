@@ -8,5 +8,6 @@ Examples & Use Cases
     robustness/examplemappings
     ../analytics/index
     usecases/index
+    casestudies
 
 
