@@ -1,3 +1,5 @@
+.. _implementation-catalog:
+
 Implementation Catalog
 ======================
 
