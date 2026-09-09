@@ -48,7 +48,7 @@ precision of a robust signal. Conversely, more durable behavioral observables
 can strengthen a precise but easily changed signal.
 
 See :doc:`Building High-Quality Detections
-<high-quality-detection-principles>` for guidance on applying these trade-offs
+<high-quality-detection-design-principles>` for guidance on applying these trade-offs
 during detection design.
 
 
