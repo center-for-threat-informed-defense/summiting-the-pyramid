@@ -3,10 +3,8 @@
 Implementation Catalog
 ======================
 
-The **Implementation Catalog** provides a structured, behavior-first
-representation of the different ways ATT&CK techniques can be executed.
-
-The catalog provides a common behavioral baseline for evaluating detection
+The `Implementation Catalog <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/blob/stp3/DCC/implementation_catalog_with_attack_components.xlsx>`_ provides a structured, behavior-first
+representation of the different ways ATT&CK techniques can be executed, with each technique having a common behavioral baseline for evaluating detection
 coverage. Instead of treating each ATT&CK procedure example as a separate unit,
 it organizes related examples into reusable implementations based on meaningful
 differences in execution path and required system interactions.
@@ -15,15 +13,13 @@ differences in execution path and required system interactions.
 How the Catalog Is Constructed
 ------------------------------
 
-The catalog is built from ATT&CK procedure examples and Atomic Red Team tests.
+The catalog is built from ATT&CK procedure examples and `Atomic Red Team tests <https://www.atomicredteam.io/docs/atomic-red-team>`_.
 These sources provide concrete evidence of how techniques can be performed and
 are analyzed to identify behaviorally distinct execution paths.
 
-Tool-, actor-, and procedure-specific details are abstracted where they do not
+Tool, actor, and procedure-specific details are abstracted where they do not
 represent meaningful differences for detection, while differences that affect
-system interactions and observability are preserved.
-
-The resulting implementations provide reusable behavioral models for coverage
+system interactions and observability are preserved. The resulting implementations provide reusable behavioral models for coverage
 analysis.
 
 
@@ -45,14 +41,10 @@ Behaviorally Distinct Implementation Paths
 
 Two examples represent different implementations when they accomplish the same
 ATT&CK technique through meaningfully different execution paths or required
-system interactions.
-
-This distinction matters because different paths may expose different
+system interactions. This distinction matters because different paths may expose different
 detection opportunities. An observable produced by one implementation may not
 appear when the adversary uses another, while some system interactions may be
-shared across multiple implementations.
-
-The catalog therefore focuses on differences that matter for detection rather
+shared across multiple implementations. The catalog focuses on differences that matter for detection rather
 than differences that are merely incidental to a particular procedure.
 
 
@@ -60,9 +52,7 @@ Required System Interactions
 ----------------------------
 
 Each implementation is characterized by the system interactions required to
-execute it.
-
-Required interactions shift the focus from *which tool the adversary used* to
+execute it. Required interactions shift the focus from *which tool the adversary used* to
 *what the adversary had to cause the system to do*. These interactions provide
 the connection between an ATT&CK behavior and the telemetry that can make that
 behavior observable.
@@ -71,10 +61,8 @@ behavior observable.
 System-Interaction Taxonomy
 ---------------------------
 
-The **system-interaction taxonomy** provides a common vocabulary for describing
-required system interactions consistently across implementations.
-
-Using a shared taxonomy allows similar interactions to be recognized across
+The system-interaction taxonomy provides a common vocabulary for describing
+required system interactions consistently across implementations. Using a shared taxonomy allows similar interactions to be recognized across
 different techniques, tools, and procedures and provides a consistent basis
 for connecting implementations to telemetry.
 
@@ -83,9 +71,7 @@ Connections to Telemetry
 ------------------------
 
 System interactions become useful for detection only when defenders have
-telemetry capable of observing them.
-
-Connecting implementation requirements to field-level telemetry mappings helps
+telemetry capable of observing them. Connecting implementation requirements to field-level telemetry mappings helps
 identify where evidence of an implementation should appear and whether the
 available telemetry contains enough information to support detection.
 
@@ -97,12 +83,10 @@ Using the Catalog for Coverage Analysis
 ---------------------------------------
 
 The Implementation Catalog provides the behavioral baseline used to measure
-:ref:`Implementation Coverage <implementation-coverage>`.
-
-For a mapped ATT&CK technique, detection logic can be evaluated against the
+:ref:`Implementation Coverage <implementation-coverage>`. For a mapped ATT&CK technique, detection logic can be evaluated against the
 implementations represented in the catalog to determine which execution paths
 are meaningfully observed.
 
-The catalog is therefore not intended to represent every possible procedure or
+The catalog is not intended to represent every possible procedure or
 variation of a technique. Its purpose is to provide a useful, reusable
 behavioral model for detection coverage analysis.
