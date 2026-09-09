@@ -1,3 +1,5 @@
+.. _implementation-coverage:
+
 Implementation Coverage
 =======================
 
