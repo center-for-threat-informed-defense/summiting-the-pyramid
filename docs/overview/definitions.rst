@@ -49,6 +49,15 @@ Examples of how to analyze robust detections include the following:
   lsass.exe is highly accurate. It can also be made resistant to adversary
   evasion over time based on the observables used.
 
+.. _Precision:
+
+Precision
+----------------
+
+**Precision is how well a detection signal itself can distinguish malicious from benign activity.**
+
+The definition of precision is based on it being used as a metric for differentiating malicious activity from benign, and coincides with how noisy the signal itself may be.
+
 .. _Observable:
 
 Observable
@@ -224,6 +233,17 @@ An ambiguous technique is a technique which has observables and key behaviors
 that can originate with either benign or malicious intent, and thus more
 deliberate and conclusive detections must be enacted in order to reduce
 potentially significant false positives.
+
+.. _Implementation Definition:
+
+Implementation
+------------------------------
+
+**An implementation is a behaviorally-distinct way of executing a technique, defined by execution path and required system interactions.**
+
+Implementations bridge broad ATT&CK Techniques and overly-specific Procedures by capturing reusable behavioral patterns.
+
+--------------------------------------------------------------
 
 .. rubric:: References
 
