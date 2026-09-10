@@ -1,0 +1,6 @@
+Perform the analysis and follow the CSV output guidelines. Include the header for each column as the first line of the CSV. If a field doesn't exist, then fill in the output with --
+Only output the pure CSV and nothing else (no code blocks or title) as your output is going directly into a pipeline that reads a CSV. The first line must be the exact required header. Every header and data row must contain exactly 9 fields separated by exactly 8 || delimiters. Before responding, count 8 delimiters in each row. Never include || or a line break inside a field, and use -- rather than omitting a field.
+Produce at least one output row for every input JSON object, including parent techniques that have sub-techniques. Never replace a parent-technique row with only its sub-technique rows.
+JSONL begins:
+
+<JSON HERE>
