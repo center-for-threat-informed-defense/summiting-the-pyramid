@@ -1,0 +1,7 @@
+# Copy to .env and enter your API URL, key, and model.
+LLM_BASE_URL='https://your-llm-provider.example/v1'
+LLM_API_KEY=''
+LLM_MODEL='openai/gpt-oss-120b'
+
+# Optional: path to a custom CA bundle. Leave blank if not needed.
+LLM_CA_BUNDLE=''

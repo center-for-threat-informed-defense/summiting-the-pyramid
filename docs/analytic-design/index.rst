@@ -24,8 +24,7 @@ Analytic Design & Engineering
          <div id="two" class="collapse">
        	   <br>Reusable detection design approaches that survive small changes<br>
            <ul>
-              <li><a href="../analytic-design/detection-components">Components of a Robust Detection</a></li>
-              <li><a href="../analytic-design/robustdetection">How to Build a Robust Detection</a></li>
+              <li><a href="../analytic-design/deworkflow">Detection Engineering Workflow</a></li>
            </ul>
          </div>
          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#three">Contextual Intent Inference</button>
@@ -43,6 +42,7 @@ Analytic Design & Engineering
          <div id="five" class="collapse">
        	   <br>Actual query construction and correlation logic<br>
            <ul>
+              <li><a href="../analytic-design/buildingdetections">High-Quality Detection Design Principles</a></li>
               <li><a href="../analytic-design/chaining">Chaining Analytics</a></li>
               <li><a href="../analytics/index">Analytic Repository</a></li>
            </ul>
@@ -60,8 +60,10 @@ Analytic Design & Engineering
     :maxdepth: 1
     :hidden:
 
-    detection-components
-    robustdetection
+   
     detection-diagram
     context
     chaining
+    buildingdetections
+    deworkflow
+    mappingdetections

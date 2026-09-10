@@ -1,57 +1,71 @@
 .. _Some Implementations:
 
---------------------------------------------------------
-Level 4: Core to Some Implementations of (Sub-)Technique
---------------------------------------------------------
+Level 4: Low-Variance Behaviors / Core Sometimes
+=================================================
 
-**Description**: Observables associated with low-variance behaviors of the
-(sub-)technique, unavoidable without a substantially different implementation.
+**Description:** Observables associated with low-variance behaviors that are
+core to some implementations of a technique or sub-technique and are
+unavoidable without using a substantially different implementation.
 
-Analytics that are core to some implementations of a technique or sub-technique
-look at the behaviors an adversary will demonstrate during an attack. These
-behaviors are defined as low variance behaviors—those which cannot be avoided by
-the implementation. Multiple implementations may point to the same low variance
-behavior, allowing a defender to create a robust analytic.
+Level 4 observables represent behaviors that recur across multiple ways of
+performing a technique. They are not necessarily required by every
+implementation, but when an adversary chooses an implementation that relies on
+the behavior, the observable is difficult to avoid without changing the
+implementation strategy. Identifying these low-variance behaviors can provide robust detection
+opportunities across multiple implementations of a technique.
 
-.. note::
 
-    These observables may change if the definition of the technique is modified in a
-    new version of ATT&CK.
+Why are these observables placed at Level 4?
+--------------------------------------------
+
+An adversary may be able to evade a Level 4 observable by choosing a different
+implementation of the technique. However, doing so requires more than
+reconfiguring a tool or changing an incidental value. The adversary must instead change the **implementation strategy** used to
+accomplish the behavior. Level 4 therefore represents observables that are core to some implementations
+of a technique or sub-technique, while Level 5 observables represent behaviors
+that are invariant across all known implementations.
+
 
 Observables
-^^^^^^^^^^^
-+-------------------------------+---------------------------------------------------+--------------------------------------+
-| Sub-Technique/Technique       | Observables                                       | Low Variance Behavior                |
-+===============================+===================================================+======================================+
-| Modify Authentication         |  AttributeLDAPDisplayName: msDS-KeyCredentialLink | AttritubuteLDAPDisplayName is        |
-| Process (T1556)               |                                                   | similar to a registry key, as it     |
-|                               |                                                   | could be an arbitrary value or one of|
-|                               |                                                   | several built-in "special" values.   |
-|                               |                                                   | msDS-KeyCredentialLink is a special  |
-|                               |                                                   | value used by the system for         |
-|                               |                                                   | authentication. [#f1]_               |
-+-------------------------------+---------------------------------------------------+--------------------------------------+
-|  OS Credential Dumping:       |  TargetImage = lsass.exe                          | There are multiple access masks      |
-|  LSASS Memory (T1003.001)     |  GrantedAccess: 0x1010 OR 0x1410                  | that can be used. This analytic      |
-|                               |                                                   | covers two of those access masks.    |
-|                               |                                                   | Anything that has the right bits     |
-|                               |                                                   | is essentially a wildcard. [#f2]_    |
-+-------------------------------+---------------------------------------------------+--------------------------------------+
-| Scheduled Task/Job: At        | Event 5145: Relative Target Name = atsvc          | Remote access to the Windows At      |
-| (T1053.002) - Remote          | Sysmon 18: PipeName = \atsvc                      | Service is achieved via the named    |
-|                               | RPC Network Protocol                              | pipe "atsvc". [#f3]_                 |
-|                               | - Endpoint: atsvc                                 |                                      |
-|                               | - RPCOperation: NetrJobAdd                        |                                      |  
-+-------------------------------+---------------------------------------------------+--------------------------------------+
-| Modify Registry (T1112)       | Event 5145: Relative Target Name = winreg         | Remote access to the Windows Registry|
-| Remote                        | Sysmon 18: PipeName = \winreg                     | is achieved via the named pipe       |
-|                               | RPC Network Protocol                              | "winreg". [#f4]_                     |
-|                               | - Endpoint: winreg                                |                                      |
-|                               | - RPCOperation: BaseRegCreateKey OR               |                                      |  
-|                               | BaseRegSetValue                                   |                                      | 
-+-------------------------------+---------------------------------------------------+--------------------------------------+
+-----------
 
-.. rubric:: References:
+The examples below illustrate low-variance behaviors that are core to some
+implementations.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
+
+   * - Technique / Sub-Technique
+     - Observable
+     - Low-Variance Behavior
+
+   * - Modify Authentication Process (T1556)
+     - ``AttributeLDAPDisplayName: msDS-KeyCredentialLink``
+     - ``msDS-KeyCredentialLink`` is a system-recognized attribute used by
+       the authentication infrastructure and is required by implementations
+       that use this mechanism.
+
+   * - OS Credential Dumping: LSASS Memory (T1003.001)
+     - ``TargetImage = lsass.exe`` and
+       ``GrantedAccess = 0x1010`` or ``0x1410``
+     - Access to ``lsass.exe`` using these access patterns is characteristic
+       of some implementations of LSASS memory access. Other access masks and
+       implementations may also be possible.
+
+   * - Scheduled Task/Job: At (T1053.002) - Remote
+     - Event 5145: ``Relative Target Name = atsvc``;
+       Sysmon Event 18: ``PipeName = atsvc``
+     - Remote use of the Windows At Service through the ``atsvc`` named pipe
+       is characteristic of implementations using this mechanism.
+
+   * - Modify Registry (T1112) - Remote
+     - Event 5145: ``Relative Target Name = winreg``;
+       Sysmon Event 18: ``PipeName = winreg``
+     - Remote Registry access through the ``winreg`` mechanism is characteristic
+       of implementations that use this interface.
+
+.. rubric:: References: [#f1]_ [#f2]_ [#f3]_ [#f4]_ 
 
 .. [#f1] https://cyberstoph.org/posts/2022/03/detecting-shadow-credentials/
 .. [#f2] https://www.splunk.com/en_us/blog/security/you-bet-your-lsass-hunting-lsass-access.html

@@ -1,43 +1,61 @@
 .. _Technique:
 
--------------------------------------------
-Level 5: Core to Sub-Technique or Technique
--------------------------------------------
+Level 5: Invariant Behaviors / Core to Technique
+================================================
 
-**Description**: Observables associated with “chokepoints” or “invariant
-behaviors” of the (sub-)technique, unavoidable by any implementation.
+**Description:** Observables associated with invariant behaviors or
+behavioral chokepoints that all implementations of a technique or sub-technique
+must exhibit.
 
-Some ATT&CK techniques produce artifacts that are the same across all
-implementations of that behavior. These artifacts are considered invariant
-behaviors, i.e., an essential part of any implementation of the behavior. While
-identifying these invariant behaviors requires research into all possible
-implementations of a technique and the observables that are produced, it
-provides the defender the most robust analytic option, as it forces the
-adversary to switch to an entirely different technique.
+Level 5 observables represent fundamental behaviors that cannot be avoided
+without abandoning the technique altogether. They are shared across the known
+implementation space and therefore provide the most robust detection
+opportunities in the Summiting the Pyramid model. An invariant behavior is not simply an observable that appears frequently. It
+is a behavior that is fundamentally required for accomplishing the technique.
 
-.. note::
 
-    These observables may change if the definition of the technique is modified in a
-    new version of ATT&CK.
+Why are these observables placed at Level 5?
+--------------------------------------------
+
+Level 5 observables are behavioral chokepoints: points where different
+implementations converge on an interaction that is fundamental to achieving
+the technique. Because every implementation must exhibit the behavior, the adversary cannot
+evade a Level 5 detection by changing tools, configuration, or implementation
+strategy while still performing the same technique. To evade the detection, the adversary must instead **switch to an entirely
+different ATT&CK technique**. Identifying invariant behaviors therefore provides the most robust detection
+opportunities in the Summiting the Pyramid model.
+
 
 Observables
-^^^^^^^^^^^
-+---------------------------+----------------------------------------------------------+---------------------------------------+
-| Sub-Technique/Technique   | Observables                                              | Invariant Behavior                    |
-+===========================+==========================================================+=======================================+
-|  Scheduled Tasks (T1053)  |  TargetObject = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\ |  The registry key value is generated  |
-|                           |  CurrentVersion\\Schedule\\TaskCache\\Tree" OR "HKLM\\   |  whenever a new task is created,      |
-|                           |  SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\       |  regardless of implementation. [#f1]_ |
-|                           |  Schedule\\TaskCache"                                    |                                       |
-+---------------------------+----------------------------------------------------------+---------------------------------------+
-|  OS Credential Dumping:   |  RPC Network Protocol                                    | DRSReplicaSync triggers replication   |
-|  DCSync (T1003.006)       |  - Endpoint (aka, Interface) = drsuapi [#f2]_            | from another Domain Controller. [#f3]_|
-|                           |  - Operation (aka, Method) = DRSReplicaSync OR           | DRSGetNCChanges replicates updates    |
-|                           |  DRSGetNCChanges                                         | from a naming context (NC) on another |
-|                           |                                                          | server. [#f4]_                        | 
-+---------------------------+----------------------------------------------------------+---------------------------------------+
+-----------
 
-.. rubric:: References
+The examples below illustrate invariant behaviors that occur across
+implementations of a technique.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
+
+   * - Technique / Sub-Technique
+     - Observable
+     - Invariant Behavior
+
+   * - Scheduled Tasks (T1053)
+     - ``TargetObject = HKLM\\SOFTWARE\\Microsoft\\Windows
+       NT\\CurrentVersion\\Schedule\\TaskCache\\Tree`` or
+       ``HKLM\\SOFTWARE\\Microsoft\\Windows
+       NT\\CurrentVersion\\Schedule\\TaskCache\\Tasks``
+     - Creation of a scheduled task results in the Task Scheduler maintaining
+       corresponding Registry data regardless of the implementation used to
+       create the task.
+
+   * - OS Credential Dumping: DCSync (T1003.006)
+     - RPC endpoint/interface ``drsuapi`` with operations such as
+       ``DRSReplicaSync`` or ``DRSGetNCChanges``
+     - These operations represent the directory replication activity required
+       by DCSync implementations using this mechanism.
+
+.. rubric:: References [#f1]_ [#f2]_ [#f3]_ [#f4]_ 
 
 .. [#f1] https://posts.specterops.io/abstracting-scheduled-tasks-3b6451f6a1c5
 .. [#f2] https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47
