@@ -60,13 +60,15 @@ body {
     width: 100%;
 }
 
-.changelog-accordion .changelog-toggle {
+.changelog-accordion .changelog-toggle,
+.stp-accordion .stp-toggle {
   position: relative;
   padding-left: 2.5rem;
   text-align: center;
 }
 
-.changelog-accordion .changelog-toggle::before {
+.changelog-accordion .changelog-toggle::before,
+.stp-accordion .stp-toggle::before {
   content: "+";
   position: absolute;
   left: 1rem;
@@ -75,7 +77,8 @@ body {
   font-weight: bold;
 }
 
-.changelog-accordion .changelog-toggle[aria-expanded="true"]::before {
+.changelog-accordion .changelog-toggle[aria-expanded="true"]::before,
+.stp-accordion .stp-toggle[aria-expanded="true"]::before {
   content: "-";
 }
 
