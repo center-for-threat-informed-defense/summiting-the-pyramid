@@ -15,9 +15,7 @@ How the Catalog Is Constructed
 
 The catalog is built from ATT&CK procedure examples and `Atomic Red Team tests <https://www.atomicredteam.io/docs/atomic-red-team>`_.
 These sources provide concrete evidence of how techniques can be performed and
-are analyzed to identify behaviorally distinct execution paths.
-
-Tool, actor, and procedure-specific details are abstracted where they do not
+are analyzed to identify behaviorally distinct execution paths. Tool, actor, and procedure-specific details are abstracted where they do not
 represent meaningful differences for detection, while differences that affect
 system interactions and observability are preserved. The resulting implementations provide reusable behavioral models for coverage
 analysis.
@@ -25,7 +23,7 @@ analysis.
 AI-Assisted Catalog Development
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build the Implementation Catalog at scale, we developed an AI-assisted analysis pipeline that transforms existing ATT&CK and Atomic Red Team content into structured implementation data. The pipeline first collects ATT&CK techniques, sub-techniques, procedure examples, and available Atomic Red Team tests and organizes them into a standardized input for analysis. An LLM then analyzes this source material to identify behaviorally distinct implementation paths, decompose them into the system interactions required to perform the behavior, and produce structured catalog entries. Automated validation checks ensure that the resulting data follows the expected schema and corresponds to the techniques provided as input, after which individual technique results can be combined into the larger Implementation Catalog. This approach allows a large and diverse body of existing threat knowledge to be systematically normalized into reusable behavioral models for detection coverage analysis.
+To build the Implementation Catalog at scale, we developed an `AI-assisted analysis pipeline <https://github.com/center-for-threat-informed-defense/summiting-the-pyramid/tree/stp3/DCC/implementation_pipeline>`_ that transforms existing ATT&CK and Atomic Red Team content into structured implementation data. The pipeline first collects ATT&CK techniques, sub-techniques, procedure examples, and available Atomic Red Team tests and organizes them into a standardized input for analysis. An LLM then analyzes this source material to identify behaviorally distinct implementation paths, decompose them into the system interactions required to perform the behavior, and produce structured catalog entries. Automated validation checks ensure that the resulting data follows the expected schema and corresponds to the techniques provided as input, after which individual technique results can be combined into the larger Implementation Catalog. This approach allows a large and diverse body of existing threat knowledge to be systematically normalized into reusable behavioral models for detection coverage analysis.
 
 
 
@@ -52,7 +50,7 @@ behavior observable.
 
 
 System-Interaction Taxonomy
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The system-interaction taxonomy provides a common vocabulary for describing
 required system interactions consistently across implementations. Using a shared taxonomy allows similar interactions to be recognized across
@@ -61,7 +59,7 @@ for connecting implementations to telemetry.
 
 
 Connections to Telemetry
-------------------------
+--------------------------
 
 System interactions become useful for detection only when defenders have
 telemetry capable of observing them. Connecting implementation requirements to field-level telemetry mappings helps
