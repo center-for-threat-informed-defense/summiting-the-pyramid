@@ -22,18 +22,11 @@ represent meaningful differences for detection, while differences that affect
 system interactions and observability are preserved. The resulting implementations provide reusable behavioral models for coverage
 analysis.
 
+AI-Assisted Catalog Development
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ATT&CK Procedure Examples & Atomic Red Team Tests
--------------------------------------------------
+To build the Implementation Catalog at scale, we developed an AI-assisted analysis pipeline that transforms existing ATT&CK and Atomic Red Team content into structured implementation data. The pipeline first collects ATT&CK techniques, sub-techniques, procedure examples, and available Atomic Red Team tests and organizes them into a standardized input for analysis. An LLM then analyzes this source material to identify behaviorally distinct implementation paths, decompose them into the system interactions required to perform the behavior, and produce structured catalog entries. Automated validation checks ensure that the resulting data follows the expected schema and corresponds to the techniques provided as input, after which individual technique results can be combined into the larger Implementation Catalog. This approach allows a large and diverse body of existing threat knowledge to be systematically normalized into reusable behavioral models for detection coverage analysis.
 
-ATT&CK procedure examples provide real-world examples of how adversaries have
-performed techniques. Atomic Red Team tests provide concrete, executable
-examples of technique behavior.
-
-Using both sources provides a broader foundation for identifying practical
-implementation paths. The objective is not to treat every procedure or test
-as a distinct implementation, but to identify the meaningful behavioral
-differences that affect detection opportunities.
 
 
 Behaviorally Distinct Implementation Paths
