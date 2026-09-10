@@ -1,0 +1,199 @@
+System Interactions List
+
+1. Process
+
+- process created
+- process terminated
+- process accessed
+- process injected
+- process token modified
+- process image loaded
+- process command line interpreted
+- parent-child process relationship established
+
+2. File
+
+- file created
+- file modified
+- file deleted
+- file renamed
+- file moved
+- file read
+- file executed
+- file metadata changed
+- file permissions changed
+- archive extracted
+
+3. Registry / configuration
+
+- registry key created
+- registry key deleted
+- registry value created
+- registry value modified
+- registry value deleted
+- system configuration changed
+- policy setting changed
+
+4. Service / driver / task / startup persistence
+
+- service created
+- service modified
+- service started
+- service stopped
+- driver loaded
+- scheduled task created
+- scheduled task modified
+- scheduled task executed
+- startup item created
+- startup item modified
+
+5. Authentication / identity / session
+
+- authentication attempted
+- authentication succeeded
+- authentication failed
+- session created
+- session terminated
+- account created
+- account modified
+- account deleted
+- credentials used
+- MFA challenged
+- MFA satisfied
+- privilege assigned
+- group membership changed
+
+6. Authorization / privilege
+
+- privileged action requested
+- privileged action granted
+- role assumed
+- token elevated
+- access denied
+- policy bypass attempted
+
+7. Network
+
+- network connection initiated
+- network connection accepted
+- network connection terminated
+- DNS query issued
+- DNS response received
+- HTTP request issued
+- HTTP response received
+- TLS session established
+- proxy request issued
+- remote service accessed
+
+8. Host / system state
+
+- host started
+- host shut down
+- host rebooted
+- time changed
+- system setting changed
+- security control disabled
+- security control enabled
+- sensor tampering attempted
+
+9. Script / interpreter / macro
+
+- script executed
+- script content interpreted
+- macro executed
+- interpreter launched
+- interpreter loaded external content
+
+10. Memory / code execution
+
+- memory allocated for execution
+- memory protection changed
+- remote thread created
+- code injected into process
+- reflective code loaded
+
+11. Module / library / binary load
+
+- module loaded
+- library loaded
+- driver loaded
+- unsigned code loaded
+- binary trust evaluated
+
+12. Email / collaboration
+
+- message sent
+- message received
+- attachment delivered
+- attachment opened
+- link clicked
+- mailbox rule created
+- mailbox rule modified
+- message forwarded
+
+13. Cloud / control plane
+
+- API call invoked
+- resource created
+- resource modified
+- resource deleted
+- role binding changed
+- secret accessed
+- secret modified
+- storage object created
+- storage object accessed
+- storage object shared
+- instance launched
+- function invoked
+
+14. Container / Kubernetes
+
+- container created
+- container started
+- container stopped
+- image pulled
+- pod created
+- pod modified
+- exec into container initiated
+- secret mounted
+- service account used
+- workload exposed externally
+
+15. Directory / identity provider
+
+- directory object created
+- directory object modified
+- directory object deleted
+- group membership changed
+- application consent granted
+- service principal credential added
+- federation setting changed
+
+16. Remote access / lateral movement
+
+- remote session established
+- remote command executed
+- remote file copied
+- remote service created
+- shares accessed
+- admin protocol used
+
+17. Data access / collection / exfiltration
+
+- data accessed
+- data queried
+- data aggregated
+- data compressed
+- data encrypted
+- data staged
+- data transferred externally
+- removable media written
+
+18. Defensive control interactions
+
+- detection rule changed
+- logging configuration changed
+- audit policy changed
+- alert generated
+- response action executed
+- quarantine applied
