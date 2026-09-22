@@ -3,7 +3,7 @@
 Measuring Detection Coverage
 ============================
 
-.. figure:: ../../_static/dog.png
+.. figure:: ../../_static/cat.png
    :alt: Everything is Mapped
    :align: center
    :scale: 100%
